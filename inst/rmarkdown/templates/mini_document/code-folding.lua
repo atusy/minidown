@@ -1,7 +1,7 @@
 function CodeBlock(elem)
   if elem.classes and elem.classes:find("details") then
     local open = ""
-    if elem.classes:find("open") then
+    if elem.classes:find("show") then
       open = " open"
     end
     local summary = "Code"

@@ -3,7 +3,7 @@ function Div(elem)
     local title = elem.attr.attributes.menu
     local id = title .. '-menu'
     local checked = ''
-    if elem.classes:find('active') then
+    if elem.classes:find('show') then
       checked = 'checked'
     end
     return{
