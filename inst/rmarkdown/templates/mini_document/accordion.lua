@@ -1,11 +1,15 @@
-function Header(elem)
-  if elem.classes and elem.classes:find("menu") then
-    local id = elem.identifier .. '-menu'
-    local title = pandoc.utils.stringify(elem.content)
+function Div(elem)
+  if elem.attr.attributes.menu then
+    local title = elem.attr.attributes.menu
+    local id = title .. '-menu'
+    local checked = ''
+    if elem.classes:find('active') then
+      checked = 'checked'
+    end
     return{
       pandoc.RawBlock(
         "html",
-        '<input type="checkbox" id="' .. id .. '" checked aria-hidden="true">'
+        '<input type="checkbox" id="' .. id .. '" ' .. checked .. ' aria-hidden="true">'
         ..
         '<label for="' .. id .. '" aria-hidden="true">'
         ..
