@@ -1,18 +1,26 @@
-hook_class = function(type, code_folding = c('none', 'show', 'hide')) {
+hook_code_class = function(type, code_folding = c('none', 'show', 'hide')) {
   force(type)
   details <- list(
-    none = NULL, show = c('details', 'open'), hide = 'details'
-  )[[match.arg(code_folding)]]
+      none = NULL, show = c('details', 'show'), hide = 'details'
+    )[[match.arg(code_folding)]]
   class_type = paste0('class.', type)
+
   function(options) {
-    options[[class_type]] <- c(
-      options[[class_type]],
+    cls <- c(
+      unlist(strsplit(options[[class_type]], ' ')),
       'source',
       details
     )
-    print(options[[class_type]])
+    if ((code_folding == 'show') && (any(c('.hide', 'hide') %in% cls))) {
+      cls <- cls[cls != 'show']
+    }
+    options[[class_type]] <- cls
     options
   }
+}
+
+hook_code_summary = function(type) {
+  force(type)
 }
 
 #' Convert to an HTML document powered by the 'mini.css' framework.
@@ -38,10 +46,10 @@ mini_document <- function(
           class.source = '', class.message = '', class.warning = '', class.error =''
         ),
         opts_hooks = list(
-          class.source = hook_class('source', folding),
-          class.message = hook_class('message'),
-          class.warning = hook_class('warning'),
-          class.error = hook_class('error')
+          class.source = hook_code_class('source', folding),
+          class.message = hook_code_class('message'),
+          class.warning = hook_code_class('warning'),
+          class.error = hook_code_class('error')
         )
       ),
     pandoc = NULL,
