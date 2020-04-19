@@ -27,7 +27,7 @@ mini_document <- function(
   ...
 ) {
   folding <- match.arg(code_folding)
-  dir_template <- system.file("rmarkdown", "templates", "html5_document", package = "minidown")
+  dir_template <- system.file("rmarkdown", "templates", "mini_document", package = "minidown")
   lua <- dir(dir_template, pattern = '\\.lua$', full.names = TRUE)
   pandoc_args_lua <- c(rbind(rep_len('--lua', length(lua)), lua))
   includes$in_header <- c(includes$in_header, file.path(dir_template, 'head.html'))
