@@ -1,0 +1,10 @@
+.chunk-summary {text-align: right}
+.chunk-output,
+.chunk-message,
+.chunk-warning,
+.chunk-error {
+  background-color: white;
+}
+pre code {
+  background-color: transparent;
+}
