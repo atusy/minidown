@@ -11,9 +11,9 @@ function CodeBlock(elem)
     return{
       pandoc.RawBlock(
         "html",
-        "<details class=rmd" .. open .. ">"
+        "<details class=chunk-details" .. open .. ">"
         ..
-        "<summary class=rmd>" .. summary .. "</summary>"
+        "<summary class=chunk-summary>" .. summary .. "</summary>"
       ),
       elem,
       pandoc.RawBlock("html", "</details>")

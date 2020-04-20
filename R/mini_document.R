@@ -16,28 +16,30 @@ hook_code_class = function(type, code_folding = c('none', 'show', 'hide')) {
   details <- list(
       none = NULL, show = c('details', 'show'), hide = 'details'
     )[[match.arg(code_folding)]]
-  class_type = paste0('class.', type)
+  class_type <- paste0('class.', type)
   attr_type = paste0('attr.', type)
+  summary_type = paste0('summary.', type)
 
   function(options) {
-    cls <- c(
+    .class <- c(
       unlist(strsplit(options[[class_type]], ' ')),
+      paste0('chunk-', type),
       details
     )
-    atr <- options[[attr_type]]
-    if ((code_folding == 'show') && (any(c('.hide', 'hide') %in% cls))) {
-      cls <- cls[cls != 'show']
+    .attr <- options[[attr_type]]
+    if ((code_folding == 'show') && (any(c('.hide', 'hide') %in% .class))) {
+      .class <- .class[.class != 'show']
     }
-    if ('details' %in% cls) {
+    if ('details' %in% .class) {
       summary = paste0(
         "summary='",
-        if (is.null(options$summary)) default_summary[type] else options$summary,
+        if (is.null(options[[summary_type]])) default_summary[type] else options[[summary_type]],
         "'"
       )
-      atr <- c(atr, summary)
+      .attr <- c(.attr, summary)
     }
-    options[[class_type]] <- cls
-    options[[attr_type]] <- atr
+    options[[class_type]] <- .class
+    options[[attr_type]] <- .attr
     options
   }
 }
@@ -63,6 +65,7 @@ fold <- function(code_folding = c('none', 'show', 'hide')) {
   return(folding)
 }
 
+
 #' Convert to an HTML document powered by the 'mini.css' framework.
 #' @param ... Arguments passed to `rmarkdown::html_document`
 #' @inheritParams rmarkdown::html_document
@@ -75,11 +78,16 @@ mini_document <- function(
   ...
 ) {
   folding <- fold(code_folding)
-  print(folding)
-  dir_template <- system.file("rmarkdown", "templates", "mini_document", package = "minidown")
+  dir_template <-
+    system.file("rmarkdown", "templates", "mini_document", package = "minidown")
+  css_dependency <- htmltools::htmlDependency(
+    'style', '0.0.1', dir_template, stylesheet = 'style.css'
+  )
+
   lua <- dir(dir_template, pattern = '\\.lua$', full.names = TRUE)
   pandoc_args_lua <- c(rbind(rep_len('--lua', length(lua)), lua))
-  includes$in_header <- c(includes$in_header, file.path(dir_template, 'head.html'))
+  includes$in_header <-
+    c(includes$in_header, file.path(dir_template, 'head.html'))
 
   rmarkdown::output_format(
     knitr = rmarkdown::knitr_options(
@@ -101,6 +109,7 @@ mini_document <- function(
       theme = NULL,
       pandoc_args = c(pandoc_args, pandoc_args_lua),
       includes = includes,
+      extra_dependencies = list(css_dependency),
       ...
     )
   )
