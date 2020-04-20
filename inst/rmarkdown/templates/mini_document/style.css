@@ -1,3 +1,15 @@
+div.sourceCode {
+  margin: none;
+}
+
+pre.sourceCode {
+  margin: var(--universal-margin);
+}
+
+.math.display {
+  text-align: center;
+}
+
 .chunk-summary {text-align: right}
 .chunk-output,
 .chunk-message,
