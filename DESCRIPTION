@@ -1,13 +1,16 @@
 Package: minidown
 Type: Package
-Title: What the Package Does (Title Case)
+Title: HTML Document with the 'mini.css' Framework
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Atsushi Yasumoto
+Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
+Description: Create minimal, responsive, style-agnostic html document base on the
+    'rmarkdown' package and the 'mini.css' framework.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
+Imports:
+  rmarkdown,
+  htmltools
