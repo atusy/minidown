@@ -1,26 +1,66 @@
+default_summary = c(
+  'source' = 'Source', 'output' = 'Output',
+  'message' = 'Message', 'warning' = 'Warning', 'error' = 'Error'
+  )
+
+default_folding <- c(
+  source = 'none',
+  output = 'none',
+  message = 'none',
+  warning = 'none',
+  error = 'none'
+)
+
 hook_code_class = function(type, code_folding = c('none', 'show', 'hide')) {
   force(type)
   details <- list(
       none = NULL, show = c('details', 'show'), hide = 'details'
     )[[match.arg(code_folding)]]
   class_type = paste0('class.', type)
+  attr_type = paste0('attr.', type)
 
   function(options) {
     cls <- c(
       unlist(strsplit(options[[class_type]], ' ')),
-      'source',
       details
     )
+    atr <- options[[attr_type]]
     if ((code_folding == 'show') && (any(c('.hide', 'hide') %in% cls))) {
       cls <- cls[cls != 'show']
     }
+    if ('details' %in% cls) {
+      summary = paste0(
+        "summary='",
+        if (is.null(options$summary)) default_summary[type] else options$summary,
+        "'"
+      )
+      atr <- c(atr, summary)
+    }
     options[[class_type]] <- cls
+    options[[attr_type]] <- atr
     options
   }
 }
 
-hook_code_summary = function(type) {
-  force(type)
+
+
+fold <- function(code_folding = c('none', 'show', 'hide')) {
+  folding <- default_folding
+
+  if (is.character(code_folding)) {
+    folding['source'] <- match.arg(code_folding, c('none', 'show', 'hide'))
+    return(folding)
+  }
+
+  if (is.null(names(code_folding)) || !is.list(code_folding)) {
+    stop('`code_folding` must be a string or a named list.')
+  }
+
+
+  for (nm in names(code_folding)) {
+    folding[nm] <- code_folding[[nm]]
+  }
+  return(folding)
 }
 
 #' Convert to an HTML document powered by the 'mini.css' framework.
@@ -28,13 +68,14 @@ hook_code_summary = function(type) {
 #' @inheritParams rmarkdown::html_document
 #' @export
 mini_document <- function(
-  code_folding =  c('none', 'show', 'hide'),
+  code_folding = c('none', 'show', 'hide'),
   pandoc_args = NULL,
   keep_md = FALSE,
   includes = list(),
   ...
 ) {
-  folding <- match.arg(code_folding)
+  folding <- fold(code_folding)
+  print(folding)
   dir_template <- system.file("rmarkdown", "templates", "mini_document", package = "minidown")
   lua <- dir(dir_template, pattern = '\\.lua$', full.names = TRUE)
   pandoc_args_lua <- c(rbind(rep_len('--lua', length(lua)), lua))
@@ -43,13 +84,15 @@ mini_document <- function(
   rmarkdown::output_format(
     knitr = rmarkdown::knitr_options(
         opts_chunk = list(
-          class.source = '', class.message = '', class.warning = '', class.error =''
+          class.source = '', class.output = '',
+          class.message = '', class.warning = '', class.error = ''
         ),
         opts_hooks = list(
-          class.source = hook_code_class('source', folding),
-          class.message = hook_code_class('message'),
-          class.warning = hook_code_class('warning'),
-          class.error = hook_code_class('error')
+          class.source = hook_code_class('source', folding['source']),
+          class.output = hook_code_class('output', folding['output']),
+          class.message = hook_code_class('message', folding['message']),
+          class.warning = hook_code_class('warning', folding['warning']),
+          class.error = hook_code_class('error', folding['error'])
         )
       ),
     pandoc = NULL,
