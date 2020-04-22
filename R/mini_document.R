@@ -11,7 +11,7 @@ mini_depends <- function(extra_dependencies = NULL,
       ),
       htmltools::htmlDependency(
         "minidown", packageVersion("minidown"),
-        path_mini_document(),
+        path_mini_document("css"),
         stylesheet = c("style.css", if (toc_float) "toc-float.css")
       )
     ),
@@ -19,9 +19,13 @@ mini_depends <- function(extra_dependencies = NULL,
   )
 }
 
-mini_pandoc_args <- function(pandoc_args = NULL) {
-  lua <- dir(path_mini_document(), pattern = "\\.lua$", full.names = TRUE)
-  c(pandoc_args, c(rbind(rep_len("--lua", length(lua)), lua)), '--mathjax')
+mini_pandoc_args <- function(pandoc_args = NULL, mini) {
+  lua <- dir(path_mini_document("lua"), pattern = "\\.lua$", full.names = TRUE)
+  c(
+    pandoc_args,
+    c(rbind(rep_len("--lua", length(lua)), lua)),
+    if (mini) '--mathjax'
+  )
 }
 
 mini_template <- function(template, mini) {
@@ -70,12 +74,12 @@ mini_document <- function(
 
   fmt <- rmarkdown::html_document(
     theme = if (mini) NULL else theme,
-    pandoc_args = mini_pandoc_args(pandoc_args),
+    pandoc_args = mini_pandoc_args(pandoc_args, mini),
     extra_dependencies = mini_depends(extra_dependencies, mini, toc_float),
     template = mini_template(template, mini),
     includes = mini_includes(includes, mini),
     toc = toc,
-    toc_float = if (mini) FALSE else toc_float,
+    toc_float = !mini && toc_float,
     ...
   )
 
