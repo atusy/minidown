@@ -1,12 +1,15 @@
 div.sourceCode {
-  margin: none;
+  margin: 0;
 }
 
 pre.sourceCode {
   margin: var(--universal-margin);
 }
 
-.chunk-summary {text-align: right}
+.chunk-summary {
+  text-align: right;
+  margin-right: var(--universal-margin);
+}
 .chunk-output,
 .chunk-message,
 .chunk-warning,
@@ -15,6 +18,11 @@ pre.sourceCode {
 }
 pre code {
   background-color: transparent;
+  padding: 0;
+}
+
+header {
+  height: auto;
 }
 
 nav > ul {
