@@ -11,7 +11,7 @@ output:
       message: hide
       warning: hide
       error: show
-    self_contained: false
+    self_contained: true
     toc: true
     toc_float: true
     keep_md: false
