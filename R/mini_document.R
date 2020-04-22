@@ -83,7 +83,8 @@ mini_document <- function(
     ...
   )
 
-  fmt$opts_hooks <- mini_opts_hooks(code_folding)
+  fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
+  fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
 
   fmt$post_processor <- mini_post_processor(fmt$post_processor)
 
