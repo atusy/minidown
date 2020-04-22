@@ -11,10 +11,8 @@ output:
       message: hide
       warning: hide
       error: show
-    self_contained: true
     toc: true
     toc_float: true
-    keep_md: false
 ---
 
 This article introduces rich features of `minidown::mini_document` with live examples.
