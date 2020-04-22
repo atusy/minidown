@@ -9,12 +9,15 @@ NULL
 mini_depends <- function(extra_dependencies = NULL,
                          mini = TRUE,
                          toc_float = FALSE) {
-  if (!mini) return(extra_dependencies)
+  if (!mini) {
+    return(extra_dependencies)
+  }
   c(
     list(
       htmltools::htmlDependency(
         "minicss", "3.0.1",
-        path_minicss(), stylesheet = "mini-default.min.css",
+        path_minicss(),
+        stylesheet = "mini-default.min.css",
         meta = list(viewport = "width=device-width, initial-scale=1")
       ),
       htmltools::htmlDependency(
@@ -32,13 +35,13 @@ mini_pandoc_args <- function(pandoc_args = NULL, mini = TRUE) {
   c(
     pandoc_args,
     c(rbind(rep_len("--lua", length(lua)), lua)),
-    if (mini) '--mathjax'
+    if (mini) "--mathjax"
   )
 }
 
 mini_template <- function(template = "default", mini = TRUE) {
   if (mini && identical(template, "default")) {
-    return(path_mini_document('default.html'))
+    return(path_mini_document("default.html"))
   }
   template
 }
@@ -47,7 +50,7 @@ mini_includes <- function(includes = list(), mini = TRUE) {
   if (mini) {
     includes$in_header <- c(
       includes$in_header,
-      path_mini_document('math.html')
+      path_mini_document("math.html")
     )
   }
   includes

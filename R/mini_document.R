@@ -33,7 +33,7 @@ mini_document <- function(
     includes = mini_includes(includes, mini),
     toc = toc,
     toc_float = !mini && toc_float,
-    code_folding = 'none', # As minidown offers different approach
+    code_folding = "none", # As minidown offers different approach
     ...
   )
 

@@ -15,7 +15,7 @@ hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
   function(options) {
     .class <- c(options[[class_type]], paste0("chunk-", type), details)
     .attr <- options[[attr_type]]
-    if ((code_folding == "show") && any(grepl('(^| )\\.?hide( |$)', .class))) {
+    if ((code_folding == "show") && any(grepl("(^| )\\.?hide( |$)", .class))) {
       .class <- .class[.class != "show"]
     }
     if ("details" %in% .class) {

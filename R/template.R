@@ -9,7 +9,7 @@ remove_math <- function(template) {
     stop("template has been changed about $math$")
   }
   math_position <- seq(math_start, math_start + 2L)
-  if (!identical(template[math_position[-1L]], c('  $math$', '$endif$'))) {
+  if (!identical(template[math_position[-1L]], c("  $math$", "$endif$"))) {
     stop("template has been changed about $math$")
   }
   template <- template[-math_position]
@@ -25,7 +25,7 @@ update_template <- function(dev = TRUE) {
   path <- if (dev) {
     "./inst/rmarkdown/templates/mini_document/default.html"
   } else {
-    path_mini_document('default.html')
+    path_mini_document("default.html")
   }
   system(paste(
     shQuote(rmarkdown::pandoc_exec()),
@@ -43,4 +43,3 @@ update_template <- function(dev = TRUE) {
 
   path
 }
-
