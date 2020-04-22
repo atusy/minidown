@@ -1,6 +1,6 @@
 Package: minidown
 Type: Package
-Title: HTML Document with the 'mini.css' Framework
+Title: Create simple yet powerful html documents with the mini.css framework
 Version: 0.1.0
 Author: Atsushi Yasumoto
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
