@@ -138,7 +138,7 @@ To put the summary on right instead of left, add the following chunk in your doc
 `r ''````
 ````
 
-The features below are available only if the `theme` is `"math"`
+The features below are available only if the `theme` is `"mini"`
 
 # Accordion menu {.collapse}
 
