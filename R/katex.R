@@ -1,3 +1,5 @@
+#' Download KaTeX
+#' @noRd
 download_katex <- function(dev = TRUE) {
   base <- if (dev) {
     './inst/resource/katex'

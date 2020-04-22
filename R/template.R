@@ -1,3 +1,8 @@
+#' Update template based on the version of system's Pandoc
+#'
+#' @noRd
+#' @param template Contents of the template file
+#' @param dev Running as a developer? (default: `TRUE`)
 remove_math <- function(template) {
   math_start <- which(template == "$if(math)$")
   if (length(math_start) != 1L) {

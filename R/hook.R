@@ -1,3 +1,8 @@
+#' Knitr's hooks
+#'
+#' @noRd
+#' @param type One of source, output, message, warning, error
+#' @inheritParams rmarkdown::html_document
 hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
   force(type)
   details <- list(

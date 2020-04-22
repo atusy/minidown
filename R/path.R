@@ -1,3 +1,7 @@
+#' Helper functions that return paths
+#' @noRd
+#' @inheritParams system.file
+NULL
 path_pkg <- function(...) system.file(..., package = "minidown")
 
 path_mini_document <- function(...) {

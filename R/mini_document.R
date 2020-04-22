@@ -1,62 +1,15 @@
-mini_depends <- function(extra_dependencies = NULL,
-                         mini = TRUE,
-                         toc_float = FALSE) {
-  if (!mini) return(extra_dependencies)
-  c(
-    list(
-      htmltools::htmlDependency(
-        "minicss", "3.0.1",
-        path_minicss(), stylesheet = "mini-default.min.css",
-        meta = list(viewport = "width=device-width, initial-scale=1")
-      ),
-      htmltools::htmlDependency(
-        "minidown", packageVersion("minidown"),
-        path_mini_document("css"),
-        stylesheet = c("style.css", if (toc_float) "toc-float.css")
-      )
-    ),
-    extra_dependencies
-  )
-}
-
-mini_pandoc_args <- function(pandoc_args = NULL, mini) {
-  lua <- dir(path_mini_document("lua"), pattern = "\\.lua$", full.names = TRUE)
-  c(
-    pandoc_args,
-    c(rbind(rep_len("--lua", length(lua)), lua)),
-    if (mini) '--mathjax'
-  )
-}
-
-mini_template <- function(template, mini) {
-  if (mini && identical(template, "default")) {
-    return(path_mini_document('default.html'))
-  }
-  template
-}
-
-mini_includes <- function(includes, mini) {
-  if (mini) {
-    includes$in_header <- c(
-      includes$in_header,
-      path_mini_document('math.html')
-    )
-  }
-  includes
-}
-
-mini_post_processor <- function(post) {
-  force(post)
-  function(metadata, input_file, output_file, clean, verbose) {
-    output <- readLines(output_file)
-    math <- readLines(path_mini_document('katex.html'))
-    position <- which(grepl(" *<!--math placeholder-->", output))[1L]
-    writeLines(append(output, math, position)[-position], output_file)
-    post(metadata, input_file, output_file, clean, verbose)
-  }
-}
-
 #' Convert to an HTML document powered by the 'mini.css' framework.
+#' @param code_folding Setup code folding by a string or a named list.
+#'   A choice for the string are `"none"` to disable,
+#'   `"show"` to enable and show all by default), and
+#'   `"hide"` to enable and hide all by default.
+#'   If a named list, each element may have one of the above strings.
+#'   Names are some of "source", "output", "message", "warning", and "error".
+#'   If the list does not have some of the element with the above name,
+#'   they are treated as `"none"`.
+#' @param theme A theme of the document. Default is `"mini"`. Themes of
+#'   `rmarkdown::html_document` are also available.
+#'
 #' @param ... Arguments passed to `rmarkdown::html_document`
 #' @inheritParams rmarkdown::html_document
 #' @export
@@ -80,13 +33,14 @@ mini_document <- function(
     includes = mini_includes(includes, mini),
     toc = toc,
     toc_float = !mini && toc_float,
+    code_folding = 'none', # As minidown offers different approach
     ...
   )
 
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
   fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
 
-  fmt$post_processor <- mini_post_processor(fmt$post_processor)
+  fmt$post_processor <- mini_post_processor(fmt$post_processor, mini)
 
   fmt
 }

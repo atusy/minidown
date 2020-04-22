@@ -1,3 +1,7 @@
+#' Default values
+#' @noRd
+NULL
+
 default_summary <- c(
   "source" = "Source", "output" = "Output",
   "message" = "Message", "warning" = "Warning", "error" = "Error"
