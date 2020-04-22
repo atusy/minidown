@@ -22,7 +22,6 @@ mini_document <- function(
                           template = "default",
                           toc = FALSE,
                           toc_float = FALSE,
-                          math = c("katex", "mathjax"),
                           ...) {
   mini <- identical(theme, "mini")
 
@@ -41,8 +40,7 @@ mini_document <- function(
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
   fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
 
-  fmt$post_processor <-
-    mini_post_processor(fmt$post_processor, mini, match.arg(math))
+  fmt$post_processor <- mini_post_processor(fmt$post_processor, mini)
 
   fmt
 }
