@@ -1,0 +1,227 @@
+---
+title: "Minidown's features"
+author: "Atsushi Yasumoto"
+date: "`r Sys.Date()`"
+output:
+  minidown::mini_document:
+    theme: default
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: show
+    self_contained: false
+    toc: true
+    toc_float: true
+    keep_md: false
+---
+
+This article introduces rich features of `minidown::mini_document` with live examples.
+These are powered by R Markdown, Pandoc, mini.css and KaTeX.
+
+If you haven't installed the `minidown` package on R, install it by
+
+```r
+remotes::install_github('atusy/minidown')
+```
+
+# Code folding
+
+Code folding can be controlled by the YAML frontmatter like:
+
+```
+output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: show
+```
+
+The above results in
+
+```{r, error=TRUE}
+f <- function() {
+  print(1)
+  message('message')
+  warning('warning')
+  stop('error')
+}
+f()
+```
+
+If the code folding is specified for some of them,
+then the code folding of the others will be `none`.
+
+Like `rmarkdown::html_document`,
+`code_folding: show` indicates source is `show` and others are `none`.
+
+By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `source.class='details'`).
+
+## Show/hide exceptions
+
+When `source: show`, all the sources are shown.
+In case you need exceptions, add the `hide` class to the source.
+If you want to hide all with exceptions, add the `show` class to the exceptions.
+Of course, this feature is not limited to the source.
+
+````
+---
+output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+---
+
+`r ''````{r}
+'This is shown'
+`r ''````
+
+
+`r ''````{r, source.class='hide'}
+'This is hidden'
+`r ''````
+````
+
+and `hide` classes.
+
+## Change summary
+
+The content of summary can be controlled via `summary.*` chunk options.
+This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.
+
+```{r, summary.source='iris.R', summary.output='Answer', class.output='hide'}
+# summary.source='iris.R', summary.output='Answer', class.output='hide'
+head(iris)
+```
+
+## Fold only some
+
+Even if `none` is specified in YAML, code folding can be enabled for selected chunks by adding the `details` class.
+
+````
+---
+output:
+  minidown::mini_document:
+    code_folding: none
+---
+
+`r ''````{r}
+'This is shown'
+`r ''````
+
+
+`r ''````{r, source.class='details hide'}
+'This is hidden'
+`r ''````
+
+````
+
+## Prefer `rmarkdown::html_document`
+
+If you prefer `rmarkdown::html_document` except for the code foliding,
+specify the `theme` other than `"mini"`.
+
+```yaml
+output:
+  minidown::mini_document:
+    theme: default
+    code_folding: show
+```
+
+To put the summary on right instead of left, add the following chunk in your document.
+
+````
+`r ''````{css, echo=FALSE}
+.chunk-summary {text-align: right;}
+`r ''````
+````
+
+The features below are available only if the `theme` is `"math"`
+
+# Accordion menu {.collapse}
+
+You can use accordion.
+The `minidown` package plans to support tabsets, but not yet.
+
+::: {menu='How' .show}
+
+Add the collapse class to a heading.
+Under the heading, separate blocks with Pandoc's Divs
+with `menu=title` attribute.
+If you add `show` class, menu is open by default.
+
+```md
+# Accordion {.collapse}
+
+::: {menu='How' .show}
+
+This is shown.
+
+:::
+
+::: {menu='Hidden'}
+
+This is hidden.
+
+:::
+```
+
+:::
+
+::: {menu='Hidden'}
+
+This is hidden by default because of the missing 'show' class.
+
+:::
+
+
+# Tooltips
+
+[[]{.icon-info}tooltips]{tooltip='Here is a tooltip'} are available.
+
+```md
+[text]{tooltip='tooltip'}
+```
+
+# Icons
+
+Visit https://feathericons.com/ for available icons.
+
+[]{.icon-alert}
+[]{.icon-bookmark}
+[]{.icon-calendar}
+[]{.icon-cart}
+[]{.icon-credit}
+
+```md
+[]{.icon-alert}
+[]{.icon-bookmark}
+[]{.icon-calendar}
+[]{.icon-cart}
+[]{.icon-credit}
+```
+
+
+# Math with KaTeX
+
+`$\sum_{i=1}^{10}{\alpha_i}$` becomes $\sum_{i=1}^{10}{\alpha_i}$ and
+
+```md
+$$
+\sum_{i=1}^{10}{\alpha_i}
+$$
+```
+
+becomes
+
+$$
+\sum_{i=1}^{10}{\alpha_i}
+$$
+
+# Others
+
+Visit <https://minicss.org/docs> for other features available via the `mini.css` framework.
