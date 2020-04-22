@@ -11,15 +11,10 @@ mini_depends <- function(extra_dependencies = NULL,
       ),
       htmltools::htmlDependency(
         "minidown", packageVersion("minidown"),
-        path_mini_document(), stylesheet = "style.css"
+        path_mini_document(),
+        stylesheet = c("style.css", if (toc_float) "toc-float.css")
       )
     ),
-    if (toc_float) {
-      list(htmltools::htmlDependency(
-        "minidown", packageVersion("minidown"),
-        path_mini_document(), stylesheet = "toc-float.css"
-      ))
-    },
     extra_dependencies
   )
 }
@@ -46,6 +41,17 @@ mini_includes <- function(includes, mini) {
   includes
 }
 
+mini_post_processor <- function(post) {
+  force(post)
+  function(metadata, input_file, output_file, clean, verbose) {
+    output <- readLines(output_file)
+    math <- readLines(path_mini_document('katex.html'))
+    position <- which(grepl(" *<!--math placeholder-->", output))[1L]
+    writeLines(append(output, math, position)[-position], output_file)
+    post(metadata, input_file, output_file, clean, verbose)
+  }
+}
+
 #' Convert to an HTML document powered by the 'mini.css' framework.
 #' @param ... Arguments passed to `rmarkdown::html_document`
 #' @inheritParams rmarkdown::html_document
@@ -53,7 +59,6 @@ mini_includes <- function(includes, mini) {
 mini_document <- function(
                           code_folding = c("none", "show", "hide"),
                           pandoc_args = NULL,
-                          keep_md = FALSE,
                           extra_dependencies = NULL,
                           theme = "mini",
                           includes = list(),
@@ -63,35 +68,20 @@ mini_document <- function(
                           ...) {
   mini <- identical(theme, "mini")
 
-  fmt <- rmarkdown::output_format(
-    knitr = rmarkdown::knitr_options(
-      opts_chunk = default_opts_chunk,
-      opts_hooks = mini_opts_hooks(code_folding)
-    ),
-    pandoc = NULL,
-    keep_md = keep_md,
-    base_format = rmarkdown::html_document(
-      theme = if (mini) NULL else theme,
-      pandoc_args = mini_pandoc_args(pandoc_args),
-      extra_dependencies =
-        mini_depends(extra_dependencies, mini, toc_float),
-      template = mini_template(template, mini),
-      includes = mini_includes(includes, mini),
-      toc = toc,
-      toc_float = if (mini) FALSE else toc_float,
-      ...
-    )
+  fmt <- rmarkdown::html_document(
+    theme = if (mini) NULL else theme,
+    pandoc_args = mini_pandoc_args(pandoc_args),
+    extra_dependencies = mini_depends(extra_dependencies, mini, toc_float),
+    template = mini_template(template, mini),
+    includes = mini_includes(includes, mini),
+    toc = toc,
+    toc_float = if (mini) FALSE else toc_float,
+    ...
   )
 
-  post <- fmt$post_processor
-  fmt$post_processor <-
-    function(metadata, input_file, output_file, clean, verbose) {
-      output <- readLines(output_file)
-      math <- readLines(path_mini_document('katex.html'))
-      position <- which(grepl(" *<!--math placeholder-->", output))[1L]
-      writeLines(append(output, math, position)[-position], output_file)
-      post(metadata, input_file, output_file, clean, verbose)
-    }
+  fmt$opts_hooks <- mini_opts_hooks(code_folding)
+
+  fmt$post_processor <- mini_post_processor(fmt$post_processor)
 
   fmt
 }
