@@ -31,7 +31,12 @@ mini_depends <- function(extra_dependencies = NULL,
 }
 
 mini_pandoc_args <- function(pandoc_args = NULL, mini = TRUE) {
-  lua <- dir(path_mini_document("lua"), pattern = "\\.lua$", full.names = TRUE)
+  lua <- if (mini) {
+    dir(path_mini_document("lua"), pattern = "\\.lua$", full.names = TRUE)
+  } else {
+    path_mini_document("lua", "code-folding.lua")
+  }
+
   c(
     pandoc_args,
     c(rbind(rep_len("--lua", length(lua)), lua)),
