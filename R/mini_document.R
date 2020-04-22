@@ -1,5 +1,6 @@
 mini_depends <- function(extra_dependencies = NULL,
-                         mini = TRUE) {
+                         mini = TRUE,
+                         toc_float = FALSE) {
   if (!mini) return(extra_dependencies)
   c(
     list(
@@ -11,9 +12,15 @@ mini_depends <- function(extra_dependencies = NULL,
       htmltools::htmlDependency(
         "minidown", packageVersion("minidown"),
         path_mini_document(), stylesheet = "style.css"
-      ),
-      extra_dependencies
-    )
+      )
+    ),
+    if (toc_float) {
+      list(htmltools::htmlDependency(
+        "minidown", packageVersion("minidown"),
+        path_mini_document(), stylesheet = "toc-float.css"
+      ))
+    },
+    extra_dependencies
   )
 }
 
@@ -24,8 +31,7 @@ mini_pandoc_args <- function(pandoc_args = NULL) {
 
 mini_template <- function(template, mini) {
   if (mini && identical(template, "default")) {
-    #return(path_mini_document('default.html'))
-    return(NULL)
+    return(path_mini_document('default.html'))
   }
   template
 }
@@ -52,6 +58,8 @@ mini_document <- function(
                           theme = "mini",
                           includes = list(),
                           template = "default",
+                          toc = FALSE,
+                          toc_float = FALSE,
                           ...) {
   mini <- identical(theme, "mini")
 
@@ -66,10 +74,11 @@ mini_document <- function(
       theme = if (mini) NULL else theme,
       pandoc_args = mini_pandoc_args(pandoc_args),
       extra_dependencies =
-        mini_depends(extra_dependencies, mini),
+        mini_depends(extra_dependencies, mini, toc_float),
       template = mini_template(template, mini),
       includes = mini_includes(includes, mini),
-      mathjax = if (mini) NULL else mathjax,
+      toc = toc,
+      toc_float = if (mini) FALSE else toc_float,
       ...
     )
   )

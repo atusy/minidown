@@ -6,10 +6,6 @@ pre.sourceCode {
   margin: var(--universal-margin);
 }
 
-.math.display {
-  text-align: center;
-}
-
 .chunk-summary {text-align: right}
 .chunk-output,
 .chunk-message,
@@ -19,4 +15,21 @@ pre.sourceCode {
 }
 pre code {
   background-color: transparent;
+}
+
+nav > ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  padding: 0;
+}
+nav ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
