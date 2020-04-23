@@ -40,6 +40,8 @@ mini_document <- function(
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
   fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
 
+  fmt$pandoc$to <- "html5"
+
   fmt$post_processor <- mini_post_processor(fmt$post_processor, mini)
 
   fmt
