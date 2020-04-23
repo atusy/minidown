@@ -4,7 +4,6 @@ author: "Atsushi Yasumoto"
 date: "`r Sys.Date()`"
 output:
   minidown::mini_document:
-    theme: mini
     code_folding:
       source: show
       output: show
