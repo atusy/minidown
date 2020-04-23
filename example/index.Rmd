@@ -143,6 +143,19 @@ To put the summary on right instead of left, add the following chunk in your doc
 
 The features below are available only if the `theme` is `"mini"`
 
+# Floating TOC
+
+Table of contents can be floated on the left of the page by specifying `toc_float: true`.
+The layout is responsive to the windows size.
+Thus, floating TOC is available when the viewport has the enough width.
+See what happens by shrinking the width of your browser.
+
+```yaml
+output:
+  minidown::mini_document:
+    toc_float: true
+```
+
 # Accordion menu {.collapse}
 
 You can use accordion.
