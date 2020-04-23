@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2020-04-23" />
+  <meta name="dcterms.date" content="2020-04-24" />
   <title>Minidown’s features</title>
   <style>
       code{white-space: pre-wrap;}
@@ -129,6 +129,16 @@ margin-bottom: 0;
 padding-top: 0;
 padding-bottom: 0;
 }
+article > .collapse {
+margin: 0;
+width: auto;
+}
+article > .collapse > label,
+article > .collapse > label + div,
+article > .collapse > :checked + label + div {
+margin: 0 calc(2*var(--universal-margin));
+width: calc(100%-4*var(--universal-margin));
+}
 </style>
   <style type="text/css">@media screen and (min-width: 900px) {
 body {
@@ -173,7 +183,7 @@ border-radius: var(--universal-border-radius);
 <header id="title-block-header">
 <h1 class="title">Minidown’s features</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2020-04-23</p>
+<p class="date">2020-04-24</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -183,6 +193,7 @@ border-radius: var(--universal-border-radius);
 <li><a href="#fold-only-some">Fold only some</a></li>
 <li><a href="#prefer-rmarkdownhtml_document">Prefer <code>rmarkdown::html_document</code></a></li>
 </ul></li>
+<li><a href="#floating-toc">Floating TOC</a></li>
 <li><a href="#accordion-menu">Accordion menu</a></li>
 <li><a href="#tooltips">Tooltips</a></li>
 <li><a href="#icons">Icons</a></li>
@@ -191,10 +202,13 @@ border-radius: var(--universal-border-radius);
 </ul>
 </nav>
 <article>
+<div style="text-align: right">
+<p><a href="index.Rmd" class="button" download="minidown.Rmd">Download Rmd</a></p>
+</div>
 <p>This article introduces rich features of <code>minidown::mini_document</code> with live examples. These are powered by R Markdown, Pandoc, mini.css and KaTeX.</p>
 <p>If you haven’t installed the <code>minidown</code> package on R, install it by</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
-<div id="code-folding" class="section level1">
+<section id="code-folding" class="level1">
 <h1>Code folding</h1>
 <p>Code folding can be controlled by the YAML frontmatter like:</p>
 <pre><code>output:
@@ -207,7 +221,7 @@ border-radius: var(--universal-border-radius);
       error: show</code></pre>
 <p>The above results in</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb3" summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<div class="sourceCode" id="cb3" data-summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
@@ -216,21 +230,21 @@ border-radius: var(--universal-border-radius);
 <span id="cb3-7"><a href="#cb3-7"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
-<pre class="chunk-output details show" summary="Output"><code>## [1] 1</code></pre>
+<pre class="chunk-output details show" data-summary="Output"><code>## [1] 1</code></pre>
 </details>
 <details class="chunk-details"><summary class="chunk-summary">Message</summary>
-<pre class="chunk-message details" summary="Message"><code>## message</code></pre>
+<pre class="chunk-message details" data-summary="Message"><code>## message</code></pre>
 </details>
 <details class="chunk-details"><summary class="chunk-summary">Warning</summary>
-<pre class="chunk-warning details" summary="Warning"><code>## Warning in f(): warning</code></pre>
+<pre class="chunk-warning details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
 </details>
 <details class="chunk-details" open><summary class="chunk-summary">Error</summary>
-<pre class="chunk-error details show" summary="Error"><code>## Error in f(): error</code></pre>
+<pre class="chunk-error details show" data-summary="Error"><code>## Error in f(): error</code></pre>
 </details>
 <p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
 <p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
 <p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>source.class=&#39;details&#39;</code>).</p>
-<div id="showhide-exceptions" class="section level2">
+<section id="showhide-exceptions" class="level2">
 <h2>Show/hide exceptions</h2>
 <p>When <code>source: show</code>, all the sources are shown. In case you need exceptions, add the <code>hide</code> class to the source. If you want to hide all with exceptions, add the <code>show</code> class to the exceptions. Of course, this feature is not limited to the source.</p>
 <pre><code>---
@@ -249,16 +263,16 @@ output:
 &#39;This is hidden&#39;
 ```</code></pre>
 <p>and <code>hide</code> classes.</p>
-</div>
-<div id="change-summary" class="section level2">
+</section>
+<section id="change-summary" class="level2">
 <h2>Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
-<div class="sourceCode" id="cb9" summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<div class="sourceCode" id="cb9" data-summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
 <details class="chunk-details"><summary class="chunk-summary">Answer</summary>
-<pre class="hide chunk-output details" summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+<pre class="hide chunk-output details" data-summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
 ## 3          4.7         3.2          1.3         0.2  setosa
@@ -266,8 +280,8 @@ output:
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 </details>
-</div>
-<div id="fold-only-some" class="section level2">
+</section>
+<section id="fold-only-some" class="level2">
 <h2>Fold only some</h2>
 <p>Even if <code>none</code> is specified in YAML, code folding can be enabled for selected chunks by adding the <code>details</code> class.</p>
 <pre><code>---
@@ -285,8 +299,8 @@ output:
 &#39;This is hidden&#39;
 ```
 </code></pre>
-</div>
-<div id="prefer-rmarkdownhtml_document" class="section level2">
+</section>
+<section id="prefer-rmarkdownhtml_document" class="level2">
 <h2>Prefer <code>rmarkdown::html_document</code></h2>
 <p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>theme</code> other than <code>&quot;mini&quot;</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">output</span><span class="kw">:</span></span>
@@ -298,63 +312,70 @@ output:
 .chunk-summary {text-align: right;}
 ```</code></pre>
 <p>The features below are available only if the <code>theme</code> is <code>&quot;mini&quot;</code></p>
-</div>
-</div>
-<div id="accordion-menu" class="section level1 collapse">
+</section>
+</section>
+<section id="floating-toc" class="level1">
+<h1>Floating TOC</h1>
+<p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+</section>
+<section id="accordion-menu" class="level1 collapse">
 <h1>Accordion menu</h1>
 <p>You can use accordion. The <code>minidown</code> package plans to support tabsets, but not yet.</p>
 <input type="checkbox" id="How-menu" checked aria-hidden="true"><label for="How-menu" aria-hidden="true">How</label>
-<div class="show" menu="How">
+<div class="show" data-menu="How">
 <p>Add the collapse class to a heading. Under the heading, separate blocks with Pandoc’s Divs with <code>menu=title</code> attribute. If you add <code>show</code> class, menu is open by default.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu"># Accordion {.collapse}</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>::: {menu=&#39;How&#39; .show}</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a>This is shown.</span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a>:::</span>
-<span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a>::: {menu=&#39;Hidden&#39;}</span>
-<span id="cb14-10"><a href="#cb14-10"></a></span>
-<span id="cb14-11"><a href="#cb14-11"></a>This is hidden.</span>
-<span id="cb14-12"><a href="#cb14-12"></a></span>
-<span id="cb14-13"><a href="#cb14-13"></a>:::</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu"># Accordion {.collapse}</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a>::: {menu=&#39;How&#39; .show}</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>This is shown.</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>:::</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a>::: {menu=&#39;Hidden&#39;}</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a>This is hidden.</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a>:::</span></code></pre></div>
 </div>
 <input type="checkbox" id="Hidden-menu" aria-hidden="true"><label for="Hidden-menu" aria-hidden="true">Hidden</label>
-<div menu="Hidden">
+<div data-menu="Hidden">
 <p>This is hidden by default because of the missing ‘show’ class.</p>
 </div>
-</div>
-<div id="tooltips" class="section level1">
+</section>
+<section id="tooltips" class="level1">
 <h1>Tooltips</h1>
-<p><span class="tooltip" tooltip="Here is a tooltip" aria-label="Here is a tooltip"><span class="icon-info"></span>tooltips</span> are available.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
-</div>
-<div id="icons" class="section level1">
+<p><span class="tooltip" data-tooltip="Here is a tooltip" data-aria-label="Here is a tooltip"><span class="icon-info"></span>tooltips</span> are available.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+</section>
+<section id="icons" class="level1">
 <h1>Icons</h1>
 <p>Visit <a href="https://minicss.org/docs#icons" class="uri">https://minicss.org/docs#icons</a> for available icons.</p>
 <p><span class="icon-alert"></span> <span class="icon-bookmark"></span> <span class="icon-calendar"></span> <span class="icon-cart"></span> <span class="icon-credit"></span></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a>[]{.icon-alert}</span>
-<span id="cb16-2"><a href="#cb16-2"></a>[]{.icon-bookmark}</span>
-<span id="cb16-3"><a href="#cb16-3"></a>[]{.icon-calendar}</span>
-<span id="cb16-4"><a href="#cb16-4"></a>[]{.icon-cart}</span>
-<span id="cb16-5"><a href="#cb16-5"></a>[]{.icon-credit}</span></code></pre></div>
-</div>
-<div id="math-with-katex" class="section level1">
+<div class="sourceCode" id="cb17"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a>[]{.icon-alert}</span>
+<span id="cb17-2"><a href="#cb17-2"></a>[]{.icon-bookmark}</span>
+<span id="cb17-3"><a href="#cb17-3"></a>[]{.icon-calendar}</span>
+<span id="cb17-4"><a href="#cb17-4"></a>[]{.icon-cart}</span>
+<span id="cb17-5"><a href="#cb17-5"></a>[]{.icon-credit}</span></code></pre></div>
+</section>
+<section id="math-with-katex" class="level1">
 <h1>Math with KaTeX</h1>
 <p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a>$$</span>
-<span id="cb17-2"><a href="#cb17-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
-<span id="cb17-3"><a href="#cb17-3"></a>$$</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1"></a>$$</span>
+<span id="cb18-2"><a href="#cb18-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb18-3"><a href="#cb18-3"></a>$$</span></code></pre></div>
 <p>becomes</p>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
 \]</span></p>
-</div>
-<div id="others" class="section level1">
+</section>
+<section id="others" class="level1">
 <h1>Others</h1>
 <p>Visit <a href="https://minicss.org/docs" class="uri">https://minicss.org/docs</a> for other features available via the <code>mini.css</code> framework.</p>
-</div>
+</section>
 </article>
 </body>
 </html>
