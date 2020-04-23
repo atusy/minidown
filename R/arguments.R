@@ -21,7 +21,7 @@ mini_depends <- function(extra_dependencies = NULL,
         meta = list(viewport = "width=device-width, initial-scale=1")
       ),
       htmltools::htmlDependency(
-        "minidown", packageVersion("minidown"),
+        "minidown", utils::packageVersion("minidown"),
         path_mini_document("css"),
         stylesheet = c("style.css", if (toc_float) "toc-float.css")
       )
