@@ -14,6 +14,10 @@ output:
     toc_float: true
 ---
 
+::: {style='text-align: right'}
+[Download Rmd](index.Rmd){download=minidown.Rmd .button}
+:::
+
 This article introduces rich features of `minidown::mini_document` with live examples.
 These are powered by R Markdown, Pandoc, mini.css and KaTeX.
 
