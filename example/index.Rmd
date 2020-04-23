@@ -187,7 +187,7 @@ This is hidden by default because of the missing 'show' class.
 
 # Icons
 
-Visit https://feathericons.com/ for available icons.
+Visit https://minicss.org/docs#icons for available icons.
 
 []{.icon-alert}
 []{.icon-bookmark}
