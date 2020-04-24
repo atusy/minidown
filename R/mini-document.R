@@ -1,4 +1,5 @@
 #' Convert to an HTML document powered by the 'mini.css' framework.
+#'
 #' @param code_folding Setup code folding by a string or a named list.
 #'   A choice for the string are `"none"` to disable,
 #'   `"show"` to enable and show all by default), and
