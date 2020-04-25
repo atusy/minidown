@@ -12,6 +12,7 @@ output:
       error: show
     toc: true
     toc_float: true
+    keep_md: true
 ---
 
 ::: {style='text-align: right'}
@@ -44,7 +45,7 @@ output:
 
 The above results in
 
-```{r, error=TRUE}
+```{r, error=TRUE, class.source="numberLines"}
 f <- function() {
   print(1)
   message('message')
@@ -156,42 +157,33 @@ output:
     toc_float: true
 ```
 
-# Accordion menu {.collapse}
+# Accordion menu 
 
-You can use accordion.
-The `minidown` package plans to support tabsets, but not yet.
+:::::: {.collapse}
 
-::: {menu='How' .show}
+::::: {menu='How' .show}
 
 Add the collapse class to a heading.
 Under the heading, separate blocks with Pandoc's Divs
 with `menu=title` attribute.
 If you add `show` class, menu is open by default.
 
-```md
-# Accordion {.collapse}
+::: {}
 
-::: {menu='How' .show}
-
-This is shown.
+foo
 
 :::
 
-::: {menu='Hidden'}
 
-This is hidden.
+:::::
 
-:::
-```
-
-:::
-
-::: {menu='Hidden'}
+::::: {menu='Hidden'}
 
 This is hidden by default because of the missing 'show' class.
 
-:::
+:::::
 
+::::::
 
 # Tooltips
 
@@ -239,3 +231,130 @@ $$
 # Others
 
 Visit <https://minicss.org/docs> for other features available via the `mini.css` framework.
+
+# H1
+
+## H2
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+# Block quotations
+
+> Single
+
+> Nesting
+>
+>> another
+
+# Code blocks
+
+```
+Code block
+```
+
+```{css}
+pre.numberSource code {white-space: pre-wrap}
+pre code {white-space: pre}
+
+div.sourceCode {
+  overflow: visible !important;
+  width: 100%;
+}
+
+pre.numberSource code > span {
+  left: 8px;
+  text-indent: -4.6em;
+}
+```
+
+
+text
+
+```{.numberLines startFrom=100}
+f <- function() {
+  print(1)
+  message('message')
+  warning('warning')
+  stop('error')
+}
+f()
+```
+
+
+# Lists
+
+## Bullet lists
+
+Tight
+
+* Tight 1
+* Tight 2
+  * Tight 2-1
+  * Tight 2-2
+
+Loose
+
+* Loose 1
+
+* Loose 2
+
+* Loose 3
+
+## Ordered lists
+
+1.  one
+2.  two
+3.  three
+
+## Task lists
+
+- [ ] an unchecked task list item
+- [x] checked item
+
+## Definition lists
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+# Horizontal rule
+
+___
+
+# Table
+
+```{r, echo=FALSE}
+knitr::kable(head(iris))
+```
+
+
+# Inline formatting
+
+- *Emphasis*
+- **Strong emphasis**
+- ~~Strikeout~~
+- super^script^
+- sub~script~
+- `Verbatim`
+- [Small caps]{.smallcaps}
+
+# Link
+
+[Atusy's Twitter](https://twitter.com/Atsushi776)
+
+# Image
+
+![Atusy's avator](https://avatars2.githubusercontent.com/u/30277794?s=400&u=04af2c7daa8d62aa104be62896021983644b1658&v=4){width=50%}
+
+# Footnote
+
+See^[footnote]

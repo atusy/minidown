@@ -2,60 +2,66 @@
 #'
 #' @noRd
 #'
-#' @param mini Using 'mini.css' (`TRUE` or `FALSE`)?
+#' @param html5 Using HTML5 (`TRUE` or `FALSE`)?
 #' @inheritParams rmarkdown::html_document
 NULL
 
-mini_depends <- function(extra_dependencies = NULL,
-                         mini = TRUE,
-                         toc_float = FALSE) {
-  if (!mini) {
+spec_dependencies <- function(extra_dependencies = NULL,
+                              toc_float = FALSE,
+                              html5 = TRUE,
+                              framework = "water",
+                              theme = "default"
+                              ) {
+  if (!html5) {
     return(extra_dependencies)
   }
+
   c(
     list(
+      html_dependency_framework(framework, theme),
       htmltools::htmlDependency(
-        "minicss", "3.0.1",
-        path_minicss(),
-        stylesheet = "mini-default.min.css",
-        meta = list(viewport = "width=device-width, initial-scale=1")
-      ),
-      htmltools::htmlDependency(
-        "minidown", utils::packageVersion("minidown"),
-        path_mini_document("css"),
-        stylesheet = c("style.css", if (toc_float) "toc-float.css")
+        name = pkg,
+        version = utils::packageVersion(pkg),
+        src = path_mini_resources("css"),
+        stylesheet =
+          c(paste0(framework, ".css"), if (toc_float) "toc-float.css"),
+        all_files = FALSE
       )
     ),
     extra_dependencies
   )
 }
 
-mini_pandoc_args <- function(pandoc_args = NULL, mini = TRUE) {
-  lua <- if (mini) {
-    dir(path_mini_document("lua"), pattern = "\\.lua$", full.names = TRUE)
+spec_pandoc_args <- function(pandoc_args = NULL,
+                             html5 = TRUE) {
+  lua <- if (html5) {
+    dir(path_mini_resources("lua"), pattern = "\\.lua$", full.names = TRUE)
   } else {
-    path_mini_document("lua", "code-folding.lua")
+    path_mini_resources("lua", "code-folding.lua")
   }
 
   c(
     pandoc_args,
     c(rbind(rep_len("--lua", length(lua)), lua)),
-    if (mini) "--mathjax"
+    if (html5) "--mathjax"
   )
 }
 
-mini_template <- function(template = "default", mini = TRUE) {
-  if (mini && identical(template, "default")) {
-    return(path_mini_document("default.html"))
+spec_template <- function(template = "default",
+                          html5 = TRUE) {
+  if (html5 && identical(template, "default")) {
+    return(path_mini_resources("default.html"))
   }
   template
 }
 
-mini_includes <- function(includes = list(), mini = TRUE) {
-  if (mini) {
+#' cdn, framework, and theme are currently ignored
+spec_includes <- function(includes = list(),
+                          html5 = TRUE) {
+  if (html5) {
     includes$in_header <- c(
       includes$in_header,
-      path_mini_document("math.html")
+      path_mini_resources("html", "math.html")
     )
   }
   includes

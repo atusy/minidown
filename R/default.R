@@ -19,3 +19,5 @@ default_opts_chunk <- list(
   class.source = "", class.output = "",
   class.message = "", class.warning = "", class.error = ""
 )
+
+pkg <- "minidown"

@@ -25,9 +25,9 @@ body_as_article <- function(template) {
 
 update_template <- function(dev = TRUE) {
   path <- if (dev) {
-    "./inst/rmarkdown/templates/mini_document/default.html"
+    "./inst/rmarkdown/templates/mini_document/resources/default.html"
   } else {
-    path_mini_document("default.html")
+    path_mini_resources("default.html")
   }
   system(paste(
     shQuote(rmarkdown::pandoc_exec()),

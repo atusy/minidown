@@ -18,32 +18,36 @@ mini_document <- function(
                           code_folding = c("none", "show", "hide"),
                           pandoc_args = NULL,
                           extra_dependencies = NULL,
-                          theme = "mini",
+                          framework = "water",
+                          theme = "default",
                           includes = list(),
                           template = "default",
                           toc = FALSE,
                           toc_float = FALSE,
+                          mathjax = "default",
                           ...) {
-  mini <- identical(theme, "mini")
+  html5 <- !identical(theme, "bootstrap")
 
   fmt <- rmarkdown::html_document(
-    theme = if (mini) NULL else theme,
-    pandoc_args = mini_pandoc_args(pandoc_args, mini),
-    extra_dependencies = mini_depends(extra_dependencies, mini, toc_float),
-    template = mini_template(template, mini),
-    includes = mini_includes(includes, mini),
+    theme = if (html5) NULL else theme,
+    pandoc_args = spec_pandoc_args(pandoc_args, html5),
+    extra_dependencies =
+      spec_dependencies(extra_dependencies, toc_float, html5, framework),
+    template = spec_template(template, html5),
+    includes = spec_includes(includes, html5),
     toc = toc,
-    toc_float = !mini && toc_float,
-    code_folding = "none", # As minidown offers different approach
+    toc_float = !html5 && toc_float,
+    code_folding = "none", # As lgihtdoc offers different approach
+    mathjax = if (html5) NULL else mathjax,
     ...
   )
 
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
-  fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
+  fmt$knitr$opts_hooks <- spec_opts_hooks(code_folding)
 
   fmt$pandoc$to <- "html5"
 
-  fmt$post_processor <- mini_post_processor(fmt$post_processor, mini)
+  fmt$post_processor <- spec_post_processor(fmt$post_processor, html5)
 
   fmt
 }

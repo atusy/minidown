@@ -36,7 +36,7 @@ hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
   }
 }
 
-mini_opts_hooks <- function(code_folding) {
+spec_opts_hooks <- function(code_folding) {
   folding <- fold(code_folding)
   list(
     class.source = hook_code_class("source", folding["source"]),

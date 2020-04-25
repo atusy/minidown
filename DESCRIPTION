@@ -1,11 +1,11 @@
 Package: minidown
 Type: Package
-Title: Create simple yet powerful html documents with the mini.css framework
+Title: Create simple yet powerful html documents with light weight CSS frameworks
 Version: 0.1.0
 Author: Atsushi Yasumoto
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: Create minimal, responsive, style-agnostic html document base on the
-    'rmarkdown' package and the 'mini.css' framework.
+    'rmarkdown' package and lightweight CSS frameworks.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
