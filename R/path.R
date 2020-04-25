@@ -11,3 +11,7 @@ path_mini_document <- function(...) {
 path_minicss <- function(...) {
   path_pkg("resource", "minicss", ...)
 }
+
+path_resource <- function(...) {
+  path_pkg("resource", ...)
+}
