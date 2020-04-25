@@ -1,0 +1,50 @@
+div.sourceCode {
+  margin: 0;
+}
+
+pre {
+  background-color: #efefef;
+}
+
+pre, .sourceCode pre {
+  overflow-x: auto;
+}
+
+nav code {
+  background-color: transparent;
+}
+
+.chunk-summary {
+  text-align: right;
+}
+.chunk-output,
+.chunk-message,
+.chunk-warning,
+.chunk-error {
+  background-color: white;
+}
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+header {
+  height: auto;
+}
+
+nav > ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  padding: 0;
+}
+nav ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}

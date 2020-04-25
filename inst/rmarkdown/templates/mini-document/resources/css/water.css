@@ -1,0 +1,52 @@
+pre {
+  background-color: #efefef;
+  border: solid #aaa 1px;
+  padding: 8px;
+}
+
+pre.numberSource {
+  margin: 0;
+  padding-left: 0;
+}
+
+code {
+  padding: 2px;
+  border-radius: unset;
+}
+
+nav code {
+  background-color: transparent;
+}
+
+.chunk-summary {
+  text-align: right;
+  margin-right: var(--universal-margin);
+}
+.chunk-output,
+.chunk-message,
+.chunk-warning,
+.chunk-error {
+  background-color: white;
+}
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+
+nav > ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  padding: 0;
+}
+nav ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
