@@ -26,7 +26,7 @@ mini_document <- function(
                           toc_float = FALSE,
                           mathjax = "default",
                           ...) {
-  html5 <- !identical(theme, "bootstrap")
+  html5 <- !identical(framework, "bootstrap")
 
   fmt <- rmarkdown::html_document(
     theme = if (html5) NULL else theme,

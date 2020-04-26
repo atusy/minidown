@@ -7,6 +7,13 @@ frameworks <- list(
     stylesheet = c(default = "mini-default.min.css"),
     meta = list(viewport = "width=device-width, initial-scale=1")
   ),
+  sakura = list(
+    name = "sakura",
+    version = "1.1.0",
+    stylesheet = c(
+      default = "sakura.css"
+    )
+  ),
   water = list(
     name = "water",
     version = "1.4.0",
