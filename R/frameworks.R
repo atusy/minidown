@@ -30,5 +30,8 @@ html_dependency_framework <- function(framework, theme = "default") {
   arguments$stylesheet <-
     arguments$stylesheet[[if (theme == "default") 1L else theme]]
   arguments$all_files <- FALSE
-  do.call(htmltools::htmlDependency, arguments)
+  do.call(
+    htmltools::htmlDependency,
+    arguments[names(arguments) %in% names(formals(htmltools::htmlDependency))]
+  )
 }
