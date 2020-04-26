@@ -47,7 +47,5 @@ mini_document <- function(
 
   fmt$pandoc$to <- "html5"
 
-  fmt$post_processor <- spec_post_processor(fmt$post_processor, html5)
-
   fmt
 }

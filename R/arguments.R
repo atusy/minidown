@@ -61,7 +61,7 @@ spec_includes <- function(includes = list(),
   if (html5) {
     includes$in_header <- c(
       includes$in_header,
-      path_mini_resources("html", "math.html")
+      path_mini_resources("html", "math-katex.html")
     )
   }
   includes
