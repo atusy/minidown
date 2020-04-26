@@ -1,10 +1,10 @@
 ---
 title: "Minidown's features"
 author: "Atsushi Yasumoto"
-date: "`r Sys.Date()`"
+date: "2020-04-26"
 output:
   minidown::mini_document:
-    framework: sakura
+    framework: water
     code_folding:
       source: show
       output: show
@@ -13,6 +13,7 @@ output:
       error: show
     toc: true
     toc_float: true
+    keep_md: true
     number_sections: true
 ---
 
@@ -50,7 +51,8 @@ output:
 
 The above results in
 
-```{r, error=TRUE, class.source="numberLines"}
+
+```{.r .numberLines .chunk-source .details .show summary='Source'}
 f <- function() {
   print(1)
   message('message')
@@ -58,6 +60,22 @@ f <- function() {
   stop('error')
 }
 f()
+```
+
+```{.chunk-output .details .show summary='Output'}
+## [1] 1
+```
+
+```{.chunk-message .details summary='Message'}
+## message
+```
+
+```{.chunk-warning .details summary='Warning'}
+## Warning in f(): warning
+```
+
+```{.chunk-error .details .show summary='Error'}
+## Error in f(): error
 ```
 
 If the code folding is specified for some of them,
@@ -83,14 +101,14 @@ output:
       source: show
 ---
 
-`r ''````{r}
+```{r}
 'This is shown'
-`r ''````
+```
 
 
-`r ''````{r, source.class='hide'}
+```{r, source.class='hide'}
 'This is hidden'
-`r ''````
+```
 ````
 
 and `hide` classes.
@@ -100,9 +118,20 @@ and `hide` classes.
 The content of summary can be controlled via `summary.*` chunk options.
 This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.
 
-```{r, summary.source='iris.R', summary.output='Answer', class.output='hide'}
+
+```{.r .chunk-source .details .show summary='iris.R'}
 # summary.source='iris.R', summary.output='Answer', class.output='hide'
 head(iris)
+```
+
+```{.hide .chunk-output .details summary='Answer'}
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
 ```
 
 ## Fold only some
@@ -116,14 +145,14 @@ output:
     code_folding: none
 ---
 
-`r ''````{r}
+```{r}
 'This is shown'
-`r ''````
+```
 
 
-`r ''````{r, source.class='details hide'}
+```{r, source.class='details hide'}
 'This is hidden'
-`r ''````
+```
 
 ````
 
@@ -142,9 +171,9 @@ output:
 To put the summary on right instead of left, add the following chunk in your document.
 
 ````
-`r ''````{css, echo=FALSE}
+```{css, echo=FALSE}
 .chunk-summary {text-align: right;}
-`r ''````
+```
 ````
 
 The features below are available only if the `theme` is `"mini"`
@@ -237,9 +266,9 @@ $$
 
 Visit <https://minicss.org/docs> for other features available via the `mini.css` framework.
 
-# Appendix: markdown results
+# H1
 
-## Headings (H2)
+## H2
 
 ### H3
 
@@ -249,7 +278,7 @@ Visit <https://minicss.org/docs> for other features available via the `mini.css`
 
 ###### H6
 
-## Block quotations
+# Block quotations
 
 > Single
 
@@ -257,17 +286,13 @@ Visit <https://minicss.org/docs> for other features available via the `mini.css`
 >
 >> another
 
-## Code blocks
-
-A code block without line numbers.
+# Code blocks
 
 ```
 Code block
 ```
 
-A code block with line numbers.
-
-```{.r .numberLines startFrom=10}
+```{.r .numberLines startFrom=100}
 f <- function() {
   print(1)
   message('message')
@@ -277,31 +302,51 @@ f <- function() {
 f()
 ```
 
-### Code blocks with long lines
 
-#### Without specifiying language
+```{.css .chunk-source .details .show summary='Source'}
+.chunk-summary+pre,
+.chunk-summary+div.sourceCode {
+  margin-top: 2px;
+}
+```
+
+
+<style type="text/css">
+.chunk-summary+pre,
+.chunk-summary+div.sourceCode {
+  margin-top: 2px;
+}
+</style>
+
+## Code blocks with long lines
+
+### Class-less
 
 ```
 long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
 ```
 
-#### With specifying language
+### Classed
 
-##### Without line numbers
+#### Without line numbers
 
 ```{.r}
 long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
 ```
 
-##### With line numbers
+#### With line numbers
 
 ```{.r .numberLines}
 long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
 ```
 
-## Lists
 
-### Bullet lists
+
+
+
+# Lists
+
+## Bullet lists
 
 Tight
 
@@ -318,18 +363,18 @@ Loose
 
 * Loose 3
 
-### Ordered lists
+## Ordered lists
 
 1.  one
 2.  two
 3.  three
 
-### Task lists
+## Task lists
 
 - [ ] an unchecked task list item
 - [x] checked item
 
-### Definition lists
+## Definition lists
 
 Term 1
   ~ Definition 1
@@ -338,18 +383,24 @@ Term 2
   ~ Definition 2a
   ~ Definition 2b
 
-## Horizontal rule
+# Horizontal rule
 
 ___
 
-## Table
-
-```{r, echo=FALSE}
-knitr::kable(head(iris))
-```
+# Table
 
 
-## Inline formatting
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
+-------------  ------------  -------------  ------------  --------
+          5.1           3.5            1.4           0.2  setosa  
+          4.9           3.0            1.4           0.2  setosa  
+          4.7           3.2            1.3           0.2  setosa  
+          4.6           3.1            1.5           0.2  setosa  
+          5.0           3.6            1.4           0.2  setosa  
+          5.4           3.9            1.7           0.4  setosa  
+
+
+# Inline formatting
 
 - *Emphasis*
 - **Strong emphasis**
@@ -359,14 +410,14 @@ knitr::kable(head(iris))
 - `Verbatim`
 - [Small caps]{.smallcaps}
 
-## Link
+# Link
 
 [Atusy's Twitter](https://twitter.com/Atsushi776)
 
-## Image
+# Image
 
 ![Atusy's avator](https://avatars2.githubusercontent.com/u/30277794?s=400&u=04af2c7daa8d62aa104be62896021983644b1658&v=4){width=50%}
 
-## Footnote
+# Footnote
 
 See^[footnote]

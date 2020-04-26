@@ -18,7 +18,7 @@ mini_document <- function(
                           code_folding = c("none", "show", "hide"),
                           pandoc_args = NULL,
                           extra_dependencies = NULL,
-                          framework = "water",
+                          framework = "sakura",
                           theme = "default",
                           includes = list(),
                           template = "default",
