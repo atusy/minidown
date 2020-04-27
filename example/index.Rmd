@@ -14,7 +14,8 @@ output:
     toc: true
     toc_float: true
     number_sections: true
-    self_contained: true
+    self_contained: false
+    lib_dir: resources
 ---
 
 ::: {style='text-align: right'}
