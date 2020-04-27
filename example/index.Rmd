@@ -1,10 +1,11 @@
 ---
-title: "Minidown's features"
+title: "minidown::mini_document"
 author: "Atsushi Yasumoto"
 date: "`r Sys.Date()`"
 output:
   minidown::mini_document:
     framework: sakura
+    theme: default
     code_folding:
       source: show
       output: show
@@ -18,12 +19,13 @@ output:
     lib_dir: resources
 ---
 
+
 ::: {style='text-align: right'}
 [Download Rmd](index.Rmd){download=minidown.Rmd .button}
 :::
 
 This article introduces rich features of `minidown::mini_document` with live examples.
-These are powered by R Markdown, Pandoc, KaTeX and **light weight CSS framewroks** such as water, mini, and so on.
+This format is powered by R Markdown, Pandoc, KaTeX and **light weight CSS framewroks** such as sakura (default), Water.css, mini.css, and so on.
 
 If you haven't installed the `minidown` package on R, install it by
 
@@ -31,8 +33,26 @@ If you haven't installed the `minidown` package on R, install it by
 remotes::install_github('atusy/minidown')
 ```
 
+Documentation is ready at [here](pkgdown/index.html).
+
 # Frameworks and themes
 
+Default framework and its theme are `"sakura"` and `"default"`.
+Followings are the list of available ones.
+Live examples are available via links.
+
+```{r, include=FALSE}
+themes <- lapply(minidown::frameworks,
+                 function(x) knitr::combine_words(names(x$stylesheet))
+                 )
+```
+
+
+Frameworks | Themes
+--|--
+[sakura](index.html) | `r themes$sakura`
+[water](water.html) | `r themes$water`
+[mini](mini.html) | `r themes$mini`
 
 
 # Code folding
@@ -194,30 +214,11 @@ This is hidden by default because of the missing 'show' class.
 
 # Tooltips
 
-[[]{.icon-info}tooltips]{tooltip='Here is a tooltip'} are available.
+**[[]{.icon-info}Tooltips]{tooltip='Here is a tooltip'}** are available.
 
 ```md
 [text]{tooltip='tooltip'}
 ```
-
-# Icons
-
-Visit https://minicss.org/docs#icons for available icons.
-
-[]{.icon-alert}
-[]{.icon-bookmark}
-[]{.icon-calendar}
-[]{.icon-cart}
-[]{.icon-credit}
-
-```md
-[]{.icon-alert}
-[]{.icon-bookmark}
-[]{.icon-calendar}
-[]{.icon-cart}
-[]{.icon-credit}
-```
-
 
 # Math with KaTeX
 
