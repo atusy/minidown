@@ -19,7 +19,7 @@ pre, pre.sourceCode {
 pre>code {
   white-space: pre;
   overflow: visible;
-  background-color: transparent;
+  background-color: unset;
   padding: 0;
 }
 
@@ -27,7 +27,7 @@ pre.sourceCode.numberSource {
   overflow-x: visible;
 }
 pre.sourceCode.numberSource>code {
-  white-space: pre-wrap
+  white-space: pre-wrap;
 }
 pre.sourceCode.numberSource>code>span {
   left: 8px;
@@ -36,13 +36,7 @@ pre.sourceCode.numberSource>code>span {
 
 /* code folding */
 .chunk-summary {
-  text-align: right
-}
-.chunk-output,
-.chunk-message,
-.chunk-warning,
-.chunk-error {
-  background-color: white;
+  text-align: right;
 }
 .chunk-summary+pre,
 .chunk-summary+div.sourceCode {

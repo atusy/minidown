@@ -1,8 +1,8 @@
 /* Code blocks */
 
 pre {
-  background-color: #efefef;
   border: solid #aaa 1px;
+  border-left: .25rem solid var(--pre-color);
   padding: 8px;
 }
 
@@ -25,7 +25,7 @@ pre.sourceCode {
 pre>code {
   white-space: pre;
   overflow: visible;
-  background-color: transparent;
+  background-color: unset;
   padding: 0;
 }
 
@@ -43,14 +43,8 @@ pre.sourceCode.numberSource>code>span {
 
 /* code folding */
 .chunk-summary {
-  text-align: right
+  text-align: right;
   margin-right: var(--universal-margin);
-}
-.chunk-output,
-.chunk-message,
-.chunk-warning,
-.chunk-error {
-  background-color: white;
 }
 .chunk-summary+pre,
 .chunk-summary+div.sourceCode {
