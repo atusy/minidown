@@ -1,24 +1,40 @@
-#' Frameworks
-#' @noRd
+#' Lightweight CSS frameworks meta data
+#'
+#' To see the names of the frameworks, run `names(frameworks)`.
+#' To see the names of themes of a framework, say `"mini"`, run
+#' `names(frameworks$mini$stylesheet)`
+#'
+#' @docType data
+#' @format A list
+#' @export
 frameworks <- list(
   mini = list(
     name = "mini",
     version = "3.0.1",
-    stylesheet = c(default = "mini-default.min.css"),
+    stylesheet = c(
+      default = "mini-default.min.css",
+      nord = "mini-nord.min.css",
+      dark = "mini-dark.min.css"
+    ),
     meta = list(viewport = "width=device-width, initial-scale=1")
   ),
   sakura = list(
     name = "sakura",
     version = "1.1.0",
     stylesheet = c(
-      default = "sakura.css"
+      default = "sakura.css",
+      dark_solarized = "sakura-dark-solarized.css",
+      dark = "sakura-dark.css",
+      earthly = "sakura-earthly.css",
+      vader = "sakura-vader.css"
     )
   ),
   water = list(
     name = "water",
     version = "1.4.0",
     stylesheet = c(
-      light = "light.min.css"
+      light = "light.min.css",
+      dark = "dark.min.css"
     )
   )
 )

@@ -23,8 +23,11 @@ spec_dependencies <- function(extra_dependencies = NULL,
         name = pkg,
         version = utils::packageVersion(pkg),
         src = path_mini_resources("css"),
-        stylesheet =
-          c(paste0(framework, ".css"), if (toc_float) "toc-float.css"),
+        stylesheet = c(
+          paste0(framework, ".css"),
+          if (framework != "mini") c("feat-tooltip.css", "feat-accordion.css"),
+          if (toc_float) "feat-toc-float.css"
+        ),
         all_files = FALSE
       )
     ),
@@ -33,7 +36,8 @@ spec_dependencies <- function(extra_dependencies = NULL,
 }
 
 spec_pandoc_args <- function(pandoc_args = NULL,
-                             html5 = TRUE) {
+                             html5 = TRUE,
+                             katex = TRUE) {
   lua <- if (html5) {
     dir(path_mini_resources("lua"), pattern = "\\.lua$", full.names = TRUE)
   } else {
@@ -43,7 +47,7 @@ spec_pandoc_args <- function(pandoc_args = NULL,
   c(
     pandoc_args,
     c(rbind(rep_len("--lua", length(lua)), lua)),
-    if (html5) "--mathjax"
+    if (katex) "--mathjax"
   )
 }
 
@@ -57,8 +61,8 @@ spec_template <- function(template = "default",
 
 #' cdn, framework, and theme are currently ignored
 spec_includes <- function(includes = list(),
-                          html5 = TRUE) {
-  if (html5) {
+                          katex = TRUE) {
+  if (katex) {
     includes$in_header <- c(
       includes$in_header,
       path_mini_resources("html", "math-katex.html")
