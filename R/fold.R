@@ -1,6 +1,6 @@
 #' Resolve code folding conditions
 #' @noRd
-#' @inheritParams rmarkdown::html_document
+#' @inheritParams mini_document
 fold <- function(code_folding = c("none", "show", "hide")) {
   folding <- default_folding
   .names <- names(code_folding)

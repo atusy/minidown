@@ -1,13 +1,11 @@
 #' Helper functions that return paths
 #' @noRd
-#' @inheritParams system.file
-NULL
-path_pkg <- function(...) system.file(..., package = "minidown")
-
-path_mini_document <- function(...) {
-  path_pkg("rmarkdown", "templates", "mini_document", ...)
-}
-
-path_minicss <- function(...) {
-  path_pkg("resource", "minicss", ...)
+#' @inheritParams file.path
+path_mini_resources <- function(...) {
+  file.path(
+    system.file(
+      "rmarkdown", "templates", "mini-document", "resources", package = pkg
+    ),
+    ...
+  )
 }

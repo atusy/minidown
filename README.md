@@ -4,22 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-Create simple yet powerful html documents with the mini.css framework.
-
-* mini.css
-    * Much smaller and JavaScript-free compared to Bootstrap which is employed by `rmarkdown::html_document`
-* Features
-    * Code folding
-      * for source, output, message, warning, and error
-    * Accordions
-    * Tooltip
-    * Floating TOC
-    * Math with KaTeX
-    * and more!
-* HTML5
-  * The Pandoc's HTML5 template is minimally modified by
-    * removing math section to support KaTeX CDN even if self contained
-    * wrapping body paragraphs by the `<article>` tag.
+Create simple yet powerful html documents with lightweight CSS frameworks.
 
 ## Installation
 
@@ -27,4 +12,33 @@ Create simple yet powerful html documents with the mini.css framework.
 remotes::install_github("atusy/minidown")
 ```
 
+## Features
+
+* Light weight CSS frameworks
+    * [mini](https://minicss.org/) (Archived)
+    * [sakura](https://oxal.org/projects/sakura/)
+    * [water](https://kognise.github.io/water.css/)
+    * and more in the future based on the list in
+      [Awesome CSS Frameworks](https://github.com/troxler/awesome-css-frameworks)
+* Code folding
+  * for source, output, message, warning, and error
+* Accordions
+* Tooltip
+* Floating TOC
+* Math with KaTeX
+* HTML5
+  * The Pandoc's HTML5 template is minimally modified by
+    * removing math section to support KaTeX CDN even if self contained
+    * wrapping body paragraphs by the `<article>` tag.
+  * Output format is HTML4 as an exception if `framework = "bootstrap"`.
+
+## Philosophy
+
+In the order of priority.
+
+1. Simple and extensible developments
+    * Use less external dependencies such as JavaScript.
+    * Let Pandoc do things as much as possible
+        * Not to reinvent the wheel
+2. Light weight output results
 

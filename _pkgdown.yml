@@ -1,0 +1,23 @@
+destination: docs/pkgdown
+url: https://minidown.atusy.net/pkgdown
+navbar:
+  structure:
+    left:
+    - home
+    - demo
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    demo:
+      text: Demo
+      href: ../index.html
+    reference:
+      text: Reference
+      href: reference/index.html

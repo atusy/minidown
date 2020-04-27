@@ -1,4 +1,14 @@
-#' Convert to an HTML document powered by the 'mini.css' framework.
+#' Convert to an HTML document powered by the lightweight CSS framework.
+#'
+#' The output format is HTML5 in general. When `framework = "bootstrap"` is
+#' given, the output format becomes nearly equivalent to `rmarkdown::html_document`
+#' except for the behavior of the `code_folding` option.
+#'
+#' @param framework,theme A string to specify the name of a framework
+#'   (default: `"sakura"`) and its theme (default: `"default"`).
+#'   Note that `theme = "default"` is a special keyword which selects a theme
+#'   defined as default internally. See `frameworks` for available light weight
+#'   CSS frameworks and their themes.
 #' @param code_folding Setup code folding by a string or a named list.
 #'   A choice for the string are `"none"` to disable,
 #'   `"show"` to enable and show all by default), and
@@ -9,40 +19,57 @@
 #'   they are treated as `"none"`.
 #' @param theme A theme of the document. Default is `"mini"`. Themes of
 #'   `rmarkdown::html_document` are also available.
-#'
-#' @param ... Arguments passed to `rmarkdown::html_document`
+#' @param math A string to specify math rendering engine (default: `"katex"`).
+#'  If the value is other than `"katex"`, the result depends on the `framework`
+#'  option. When the given `framework` is `"bootstrap"`, the `math` option is
+#'  passed to the `mathjax` option of `rmarkdown::html_document`. Otherwise,
+#'  Pandoc's built-in feature renders math expressions to unicode characters.
+#' @toc_float TRUE to float the table of contents to the left of the main
+#'  document content.
 #' @inheritParams rmarkdown::html_document
+#' @param ... Arguments passed to `rmarkdown::html_document`
+#'
+#' @examples
+#' \dontrun{
+#' library(rmarkdown)
+#' library(minidown)
+#' render("input.Rmd", mini_document)
+#' }
 #' @export
 mini_document <- function(
                           code_folding = c("none", "show", "hide"),
                           pandoc_args = NULL,
                           extra_dependencies = NULL,
-                          theme = "mini",
+                          framework = "sakura",
+                          theme = "default",
                           includes = list(),
                           template = "default",
                           toc = FALSE,
                           toc_float = FALSE,
+                          math = "katex",
                           ...) {
-  mini <- identical(theme, "mini")
+  framework <- match.arg(framework, c("bootstrap", names(frameworks)))
+  html5 <- framework != "bootstrap"
+  katex <- identical(math, "katex")
 
   fmt <- rmarkdown::html_document(
-    theme = if (mini) NULL else theme,
-    pandoc_args = mini_pandoc_args(pandoc_args, mini),
-    extra_dependencies = mini_depends(extra_dependencies, mini, toc_float),
-    template = mini_template(template, mini),
-    includes = mini_includes(includes, mini),
+    theme = if (html5) NULL else theme,
+    pandoc_args = spec_pandoc_args(pandoc_args, html5, katex),
+    extra_dependencies =
+      spec_dependencies(extra_dependencies, toc_float, html5, framework, theme),
+    template = spec_template(template, html5),
+    includes = spec_includes(includes, katex),
     toc = toc,
-    toc_float = !mini && toc_float,
+    toc_float = !html5 && toc_float,
     code_folding = "none", # As minidown offers different approach
+    mathjax = if (katex) NULL else math,
     ...
   )
 
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
-  fmt$knitr$opts_hooks <- mini_opts_hooks(code_folding)
+  fmt$knitr$opts_hooks <- spec_opts_hooks(code_folding)
 
-  fmt$pandoc$to <- "html5"
-
-  fmt$post_processor <- mini_post_processor(fmt$post_processor, mini)
+  if (html5) fmt$pandoc$to <- "html5"
 
   fmt
 }
