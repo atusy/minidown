@@ -195,13 +195,6 @@ Under the heading, separate blocks with Pandoc's Divs
 with `menu=title` attribute.
 If you add `show` class, menu is open by default.
 
-::: {}
-
-foo
-
-:::
-
-
 :::::
 
 ::::: {menu='Hidden'}
