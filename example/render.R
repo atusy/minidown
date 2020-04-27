@@ -3,7 +3,7 @@ defaults <- list(
     source = "show", output = "show", message = "hide", warning = "hide"
   ),
   toc = TRUE, toc_float = TRUE,
-  self_contained = FALSE, lib_dir = "../docs/resources"
+  self_contained = TRUE, lib_dir = "../docs/resources"
 )
 
 framework = c(
