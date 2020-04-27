@@ -26,7 +26,8 @@ mini_document <- function(
                           toc_float = FALSE,
                           mathjax = "default",
                           ...) {
-  html5 <- !identical(framework, "bootstrap")
+  framework <- match.arg(framework, c("bootstrap", names(frameworks)))
+  html5 <- framework != "bootstrap"
 
   fmt <- rmarkdown::html_document(
     theme = if (html5) NULL else theme,
@@ -45,7 +46,7 @@ mini_document <- function(
   fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
   fmt$knitr$opts_hooks <- spec_opts_hooks(code_folding)
 
-  fmt$pandoc$to <- "html5"
+  if (html5) fmt$pandoc$to <- "html5"
 
   fmt
 }
