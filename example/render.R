@@ -1,9 +1,9 @@
 defaults <- list(
   code_folding = list(
-    source = "show", output = "show", message = "hide", warning = "hide",
-    toc = TRUE, toc_float = TRUE,
-    self_contained = FALSE, lib_dir = "resources"
-  )
+    source = "show", output = "show", message = "hide", warning = "hide"
+  ),
+  toc = TRUE, toc_float = TRUE,
+  self_contained = FALSE, lib_dir = "../docs/resources"
 )
 
 framework = c(
@@ -18,7 +18,7 @@ Map(
       "example/index.Rmd",
       do.call(
         minidown::mini_document,
-        c(defaults, list(framework = framework))
+        dplyr::glimpse(c(defaults, list(framework = framework)))
       ),
       output_file = file.path("../docs", output_file)
     )
