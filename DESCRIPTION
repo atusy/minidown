@@ -1,7 +1,7 @@
 Package: minidown
 Type: Package
 Title: Create simple yet powerful html documents with light weight CSS frameworks
-Version: 0.1.0
+Version: 0.0.1
 Author: Atsushi Yasumoto
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: Create minimal, responsive, style-agnostic html document base on the
