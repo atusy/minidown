@@ -2,15 +2,39 @@ Package: minidown
 Type: Package
 Title: Create simple yet powerful html documents with light weight CSS frameworks
 Version: 0.0.1
-Author: Atsushi Yasumoto
+Author: Atsushi Yasumoto [aut, cph, cre]
+    (<https://orcid.org/0000-0002-8335-495X>)
+Authors@R: c(
+    person(given = "Atsushi",
+           family = "Yasumoto",
+           role = c("aut", "cph", "cre"),
+           email = "atusy.rpkg@gmail.com",
+           comment = c(ORCID = "0000-0002-8335-495X")),
+    person(given = "Angelos",
+           family = "Chalaris",
+           role = "aut",
+           comment = "mini.css"),
+    person(given = "Mitesh",
+           family = "Shah",
+           role = "aut",
+           comment = "sakura"),
+    person(given = "Kognise",
+           family = "",
+           role = "aut",
+           comment = "Water.css")
+    )
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: Create minimal, responsive, style-agnostic html document base on the
     'rmarkdown' package and lightweight CSS frameworks.
+URL: https://minidown.atusy.net, https://gotjib.com/atusy/minidown
+BugReports: https://github.com/atusy/minidown/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
 Imports:
   rmarkdown,
   htmltools
+SystemRequirements: pandoc (>= 2.7.2) - http://pandoc.org
