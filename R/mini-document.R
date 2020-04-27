@@ -1,5 +1,6 @@
-#' Convert to an HTML document powered by the 'mini.css' framework.
+#' Convert to an HTML document powered by the lightweight CSS framework.
 #'
+#' @param frameworks A string to specify the CSS framework.
 #' @param code_folding Setup code folding by a string or a named list.
 #'   A choice for the string are `"none"` to disable,
 #'   `"show"` to enable and show all by default), and
@@ -38,7 +39,7 @@ mini_document <- function(
     includes = spec_includes(includes, html5),
     toc = toc,
     toc_float = !html5 && toc_float,
-    code_folding = "none", # As lgihtdoc offers different approach
+    code_folding = "none", # As minidown offers different approach
     mathjax = if (html5) NULL else mathjax,
     ...
   )
