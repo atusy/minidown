@@ -2,17 +2,19 @@
 % Please edit documentation in R/mini-document.R
 \name{mini_document}
 \alias{mini_document}
-\title{Convert to an HTML document powered by the 'mini.css' framework.}
+\title{Convert to an HTML document powered by the lightweight CSS framework.}
 \usage{
 mini_document(
   code_folding = c("none", "show", "hide"),
   pandoc_args = NULL,
   extra_dependencies = NULL,
-  theme = "mini",
+  framework = "sakura",
+  theme = "default",
   includes = list(),
   template = "default",
   toc = FALSE,
   toc_float = FALSE,
+  math = "katex",
   ...
 )
 }
@@ -30,6 +32,12 @@ they are treated as \code{"none"}.}
 
 \item{extra_dependencies}{Additional function arguments to pass to the
 base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}}}
+
+\item{framework, theme}{A string to specify the name of a framework
+(default: \code{"sakura"}) and its theme (default: \code{"default"}).
+Note that \code{theme = "default"} is a special keyword which selects a theme
+defined as default internally. See \code{frameworks} for available light weight
+CSS frameworks and their themes.}
 
 \item{theme}{A theme of the document. Default is \code{"mini"}. Themes of
 \code{rmarkdown::html_document} are also available.}
@@ -51,8 +59,23 @@ main document content. Rather than \code{TRUE} you may also pass a list of
 options that control the behavior of the floating table of contents. See the
 \emph{Floating Table of Contents} section below for details.}
 
+\item{math}{A string to specify math rendering engine (default: \code{"katex"}).
+If the value is other than \code{"katex"}, the result depends on the \code{framework}
+option. When the given \code{framework} is \code{"bootstrap"}, the \code{math} option is
+passed to the \code{mathjax} option of \code{rmarkdown::html_document}. Otherwise,
+Pandoc's built-in feature renders math expressions to unicode characters.}
+
 \item{...}{Arguments passed to \code{rmarkdown::html_document}}
 }
 \description{
-Convert to an HTML document powered by the 'mini.css' framework.
+The output format is HTML5 in general. When \code{framework = "bootstrap"} is
+given, the output format becomes nearly equivalent to \code{rmarkdown::html_document}
+except for the behavior of the \code{code_folding} option.
+}
+\examples{
+\dontrun{
+library(rmarkdown)
+library(minidown)
+render("input.Rmd", mini_document)
+}
 }
