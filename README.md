@@ -15,9 +15,9 @@ remotes::install_github("atusy/minidown")
 ## Features
 
 * Light weight CSS frameworks
-    * [mini](https://minicss.org/) (Archived)
-    * [sakura](https://oxal.org/projects/sakura/)
+    * [sakura](https://oxal.org/projects/sakura/) (default)
     * [water](https://kognise.github.io/water.css/)
+    * [mini](https://minicss.org/) (archived)
     * and more in the future based on the list in
       [Awesome CSS Frameworks](https://github.com/troxler/awesome-css-frameworks)
 * Code folding
