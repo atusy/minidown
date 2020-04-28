@@ -2,6 +2,7 @@
 # minidown
 
 <!-- badges: start -->
+[![R build status](https://github.com/atusy/minidown/workflows/R-CMD-check/badge.svg)](https://github.com/atusy/minidown/actions)
 <!-- badges: end -->
 
 Create simple yet powerful html documents with lightweight CSS frameworks.
