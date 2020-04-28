@@ -1,4 +1,5 @@
 #' Specify pandoc_args
+#' @noRd
 spec_pandoc_args <- function(pandoc_args = NULL,
                              html5 = TRUE,
                              katex = TRUE) {

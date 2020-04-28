@@ -36,8 +36,8 @@
 
 
 <meta property="og:title" content="Convert to an HTML document powered by the lightweight CSS framework. — mini_document" />
-<meta property="og:description" content="The output format is HTML5 in general. When framework = &quot;bootstrap&quot; is
-given, the output format becomes nearly equivalent to rmarkdown::html_document
+<meta property="og:description" content="The output format is HTML5 except. When framework = &quot;bootstrap&quot; is
+given, the output format is HTML4 and comparable to rmarkdown::html_document
 except for the behavior of the code_folding option." />
 <meta name="twitter:card" content="summary" />
 
@@ -91,7 +91,12 @@ except for the behavior of the code_folding option." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/atusy/minidown">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -106,33 +111,51 @@ except for the behavior of the code_folding option." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert to an HTML document powered by the lightweight CSS framework.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/atusy/minidown/blob/master/R/mini-document.R'><code>R/mini-document.R</code></a></small>
     <div class="hidden name"><code>mini_document.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The output format is HTML5 in general. When <code>framework = "bootstrap"</code> is
-given, the output format becomes nearly equivalent to <code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document.html'>rmarkdown::html_document</a></code>
+    <p>The output format is HTML5 except. When <code>framework = "bootstrap"</code> is
+given, the output format is HTML4 and comparable to <code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document.html'>rmarkdown::html_document</a></code>
 except for the behavior of the <code>code_folding</code> option.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mini_document</span>(
-  <span class='kw'>code_folding</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"show"</span>, <span class='st'>"hide"</span>),
-  <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extra_dependencies</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>framework</span> <span class='kw'>=</span> <span class='st'>"sakura"</span>,
   <span class='kw'>theme</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
-  <span class='kw'>includes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>template</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
   <span class='kw'>toc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>toc_float</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>code_folding</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"show"</span>, <span class='st'>"hide"</span>),
+  <span class='kw'>code_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>math</span> <span class='kw'>=</span> <span class='st'>"katex"</span>,
+  <span class='kw'>extra_dependencies</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>includes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>template</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
+  <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>framework, theme</th>
+      <td><p>A string to specify the name of a framework
+(default: <code>"sakura"</code>) and its theme (default: <code>"default"</code>).
+Note that <code>theme = "default"</code> is a special keyword which selects a theme
+defined as default internally. See <code>frameworks</code> for available light weight
+CSS frameworks and their themes.</p></td>
+    </tr>
+    <tr>
+      <th>toc</th>
+      <td><p><code>TRUE</code> to include a table of contents in the output</p></td>
+    </tr>
+    <tr>
+      <th>toc_float</th>
+      <td><p>TRUE to float the table of contents to the left of the main
+document content.</p></td>
+    </tr>
     <tr>
       <th>code_folding</th>
       <td><p>Setup code folding by a string or a named list.
@@ -145,51 +168,9 @@ If the list does not have some of the element with the above name,
 they are treated as <code>"none"</code>.</p></td>
     </tr>
     <tr>
-      <th>pandoc_args</th>
-      <td><p>Additional command line options to pass to pandoc</p></td>
-    </tr>
-    <tr>
-      <th>extra_dependencies</th>
-      <td><p>Additional function arguments to pass to the
-base R Markdown HTML output formatter <code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document_base.html'>html_document_base</a></code></p></td>
-    </tr>
-    <tr>
-      <th>framework, theme</th>
-      <td><p>A string to specify the name of a framework
-(default: <code>"sakura"</code>) and its theme (default: <code>"default"</code>).
-Note that <code>theme = "default"</code> is a special keyword which selects a theme
-defined as default internally. See <code>frameworks</code> for available light weight
-CSS frameworks and their themes.</p></td>
-    </tr>
-    <tr>
-      <th>theme</th>
-      <td><p>A theme of the document. Default is <code>"mini"</code>. Themes of
-<code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document.html'>rmarkdown::html_document</a></code> are also available.</p></td>
-    </tr>
-    <tr>
-      <th>includes</th>
-      <td><p>Named list of additional content to include within the
-document (typically created using the <code><a href='https://rdrr.io/pkg/rmarkdown/man/includes.html'>includes</a></code> function).</p></td>
-    </tr>
-    <tr>
-      <th>template</th>
-      <td><p>Pandoc template to use for rendering. Pass "default" to use
-the rmarkdown package default template; pass <code>NULL</code> to use pandoc's
-built-in template; pass a path to use a custom template that you've created.
-Note that if you don't use the "default" template then some features of
-<code>html_document</code> won't be available (see the Templates section below for
-more details).</p></td>
-    </tr>
-    <tr>
-      <th>toc</th>
-      <td><p><code>TRUE</code> to include a table of contents in the output</p></td>
-    </tr>
-    <tr>
-      <th>toc_float</th>
-      <td><p><code>TRUE</code> to float the table of contents to the left of the
-main document content. Rather than <code>TRUE</code> you may also pass a list of
-options that control the behavior of the floating table of contents. See the
-<em>Floating Table of Contents</em> section below for details.</p></td>
+      <th>code_download</th>
+      <td><p>If <code>TRUE</code> and <code>framework = "bootstrap"</code>, the output
+includes Rmd file itself and supplies download button of it.</p></td>
     </tr>
     <tr>
       <th>math</th>
@@ -198,6 +179,26 @@ If the value is other than <code>"katex"</code>, the result depends on the <code
 option. When the given <code>framework</code> is <code>"bootstrap"</code>, the <code>math</code> option is
 passed to the <code>mathjax</code> option of <code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document.html'>rmarkdown::html_document</a></code>. Otherwise,
 Pandoc's built-in feature renders math expressions to unicode characters.</p></td>
+    </tr>
+    <tr>
+      <th>extra_dependencies</th>
+      <td><p>Additional function arguments to pass to the
+base R Markdown HTML output formatter <code><a href='https://rdrr.io/pkg/rmarkdown/man/html_document_base.html'>html_document_base</a></code></p></td>
+    </tr>
+    <tr>
+      <th>includes</th>
+      <td><p>Named list of additional content to include within the
+document (typically created using the <code><a href='https://rdrr.io/pkg/rmarkdown/man/includes.html'>includes</a></code> function).</p></td>
+    </tr>
+    <tr>
+      <th>template</th>
+      <td><p>Pandoc template. If "default", the package's internal template
+is used. If a path, user's original template is used. If <code>NULL</code>, Pandoc's
+internal template is used.</p></td>
+    </tr>
+    <tr>
+      <th>pandoc_args</th>
+      <td><p>Additional command line options to pass to pandoc</p></td>
     </tr>
     <tr>
       <th>...</th>
