@@ -5,20 +5,32 @@
 \title{Convert to an HTML document powered by the lightweight CSS framework.}
 \usage{
 mini_document(
-  code_folding = c("none", "show", "hide"),
-  pandoc_args = NULL,
-  extra_dependencies = NULL,
   framework = "sakura",
   theme = "default",
-  includes = list(),
-  template = "default",
   toc = FALSE,
   toc_float = FALSE,
+  code_folding = c("none", "show", "hide"),
+  code_download = FALSE,
   math = "katex",
+  extra_dependencies = NULL,
+  includes = NULL,
+  template = "default",
+  pandoc_args = NULL,
   ...
 )
 }
 \arguments{
+\item{framework, theme}{A string to specify the name of a framework
+(default: \code{"sakura"}) and its theme (default: \code{"default"}).
+Note that \code{theme = "default"} is a special keyword which selects a theme
+defined as default internally. See \code{frameworks} for available light weight
+CSS frameworks and their themes.}
+
+\item{toc}{\code{TRUE} to include a table of contents in the output}
+
+\item{toc_float}{TRUE to float the table of contents to the left of the main
+document content.}
+
 \item{code_folding}{Setup code folding by a string or a named list.
 A choice for the string are \code{"none"} to disable,
 \code{"show"} to enable and show all by default), and
@@ -28,36 +40,8 @@ Names are some of "source", "output", "message", "warning", and "error".
 If the list does not have some of the element with the above name,
 they are treated as \code{"none"}.}
 
-\item{pandoc_args}{Additional command line options to pass to pandoc}
-
-\item{extra_dependencies}{Additional function arguments to pass to the
-base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}}}
-
-\item{framework, theme}{A string to specify the name of a framework
-(default: \code{"sakura"}) and its theme (default: \code{"default"}).
-Note that \code{theme = "default"} is a special keyword which selects a theme
-defined as default internally. See \code{frameworks} for available light weight
-CSS frameworks and their themes.}
-
-\item{theme}{A theme of the document. Default is \code{"mini"}. Themes of
-\code{rmarkdown::html_document} are also available.}
-
-\item{includes}{Named list of additional content to include within the
-document (typically created using the \code{\link[rmarkdown]{includes}} function).}
-
-\item{template}{Pandoc template to use for rendering. Pass "default" to use
-the rmarkdown package default template; pass \code{NULL} to use pandoc's
-built-in template; pass a path to use a custom template that you've created.
-Note that if you don't use the "default" template then some features of
-\code{html_document} won't be available (see the Templates section below for
-more details).}
-
-\item{toc}{\code{TRUE} to include a table of contents in the output}
-
-\item{toc_float}{\code{TRUE} to float the table of contents to the left of the
-main document content. Rather than \code{TRUE} you may also pass a list of
-options that control the behavior of the floating table of contents. See the
-\emph{Floating Table of Contents} section below for details.}
+\item{code_download}{If \code{TRUE} and \code{framework = "bootstrap"}, the output
+includes Rmd file itself and supplies download button of it.}
 
 \item{math}{A string to specify math rendering engine (default: \code{"katex"}).
 If the value is other than \code{"katex"}, the result depends on the \code{framework}
@@ -65,11 +49,23 @@ option. When the given \code{framework} is \code{"bootstrap"}, the \code{math} o
 passed to the \code{mathjax} option of \code{rmarkdown::html_document}. Otherwise,
 Pandoc's built-in feature renders math expressions to unicode characters.}
 
+\item{extra_dependencies}{Additional function arguments to pass to the
+base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}}}
+
+\item{includes}{Named list of additional content to include within the
+document (typically created using the \code{\link[rmarkdown]{includes}} function).}
+
+\item{template}{Pandoc template. If "default", the package's internal template
+is used. If a path, user's original template is used. If \code{NULL}, Pandoc's
+internal template is used.}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
+
 \item{...}{Arguments passed to \code{rmarkdown::html_document}}
 }
 \description{
-The output format is HTML5 in general. When \code{framework = "bootstrap"} is
-given, the output format becomes nearly equivalent to \code{rmarkdown::html_document}
+The output format is HTML5 except. When \code{framework = "bootstrap"} is
+given, the output format is HTML4 and comparable to \code{rmarkdown::html_document}
 except for the behavior of the \code{code_folding} option.
 }
 \examples{

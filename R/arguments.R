@@ -59,7 +59,6 @@ spec_template <- function(template = "default",
   template
 }
 
-#' cdn, framework, and theme are currently ignored
 spec_includes <- function(includes = list(),
                           katex = TRUE) {
   if (katex) {
