@@ -42,7 +42,7 @@ frameworks <- list(
 html_dependency_framework <- function(framework, theme = "default") {
   arguments <- frameworks[[framework]]
   theme <- match.arg(theme, c("default", names(arguments$stylesheet)))
-  arguments$src <- path_mini_resources("frameworks", framework)
+  arguments$src <- path_mini_frameworks(framework)
   arguments$stylesheet <-
     arguments$stylesheet[[if (theme == "default") 1L else theme]]
   arguments$all_files <- FALSE
