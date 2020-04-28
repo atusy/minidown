@@ -11,7 +11,7 @@ spec_pandoc_args <- function(pandoc_args = NULL,
 
   c(
     pandoc_args,
-    c(rbind(rep_len("--lua", length(lua)), lua)),
+    c(rbind(rep_len("--lua-filter", length(lua)), lua)),
     if (katex) "--mathjax"
   )
 }
