@@ -51,9 +51,6 @@ args_template <- list(
 purrr::pmap(
   frameworks,
   function(framework, theme, output_file) {
-    print(framework)
-    print(theme)
-    print(output_file)
     rmarkdown::render(
       "index.Rmd",
       do.call(
