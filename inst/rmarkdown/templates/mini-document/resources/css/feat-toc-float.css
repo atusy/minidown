@@ -1,15 +1,15 @@
 @media screen and (min-width: 900px) {
   body {
     min-width: 900px;
-    width: 75%;
+    max-width: 62.5%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: auto auto;
   }
   header, article {
-    min-width: calc(600px - 3rem);
-    width: calc(75% - 300px - 3rem);
+    min-width: calc(600px - 4rem);
+    max-width: calc(100% - 4rem);
     padding: 0 0 0 4rem;
   }
   nav {
