@@ -10,8 +10,7 @@ spec_dependencies <- function(extra_dependencies = NULL,
                               toc_float = FALSE,
                               html5 = TRUE,
                               framework = "water",
-                              theme = "default"
-                              ) {
+                              theme = "default") {
   if (!html5) {
     return(extra_dependencies)
   }
