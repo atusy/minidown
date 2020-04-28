@@ -5,30 +5,30 @@
 #' except for the behavior of the `code_folding` option.
 #'
 #' @param framework,theme A string to specify the name of a framework
-#'   (default: `"sakura"`) and its theme (default: `"default"`).
-#'   Note that `theme = "default"` is a special keyword which selects a theme
-#'   defined as default internally. See `frameworks` for available light weight
-#'   CSS frameworks and their themes.
+#'  (default: `"sakura"`) and its theme (default: `"default"`).
+#'  Note that `theme = "default"` is a special keyword which selects a theme
+#'  defined as default internally. See `frameworks` for available light weight
+#'  CSS frameworks and their themes.
 #' @param toc_float TRUE to float the table of contents to the left of the main
 #'  document content.
 #' @param code_folding Setup code folding by a string or a named list.
-#'   A choice for the string are `"none"` to disable,
-#'   `"show"` to enable and show all by default), and
-#'   `"hide"` to enable and hide all by default.
-#'   If a named list, each element may have one of the above strings.
-#'   Names are some of "source", "output", "message", "warning", and "error".
-#'   If the list does not have some of the element with the above name,
-#'   they are treated as `"none"`.
+#'  A choice for the string are `"none"` to disable,
+#'  `"show"` to enable and show all by default), and
+#'  `"hide"` to enable and hide all by default.
+#'  If a named list, each element may have one of the above strings.
+#'  Names are some of "source", "output", "message", "warning", and "error".
+#'  If the list does not have some of the element with the above name,
+#'  they are treated as `"none"`.
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
-#' includes Rmd file itself and supplies download button of it.
+#'  includes Rmd file itself and supplies download button of it.
 #' @param math A string to specify math rendering engine (default: `"katex"`).
 #'  If the value is other than `"katex"`, the result depends on the `framework`
 #'  option. When the given `framework` is `"bootstrap"`, the `math` option is
 #'  passed to the `mathjax` option of `rmarkdown::html_document`. Otherwise,
 #'  Pandoc's built-in feature renders math expressions to unicode characters.
 #' @param template Pandoc template. If "default", the package's internal template
-#' is used. If a path, user's original template is used. If `NULL`, Pandoc's
-#' internal template is used.
+#'  is used. If a path, user's original template is used. If `NULL`, Pandoc's
+#'  internal template is used.
 #' @inheritParams rmarkdown::html_document
 #' @param ... Arguments passed to `rmarkdown::html_document`
 #'
@@ -47,7 +47,7 @@ mini_document <- function(framework = "sakura",
                           code_download = FALSE,
                           math = "katex",
                           extra_dependencies = NULL,
-                          includes = NULL,
+                          includes = list(),
                           template = "default",
                           pandoc_args = NULL,
                           ...) {

@@ -39,7 +39,7 @@ frameworks <- list(
   )
 )
 
-html_dependency_framework <- function(framework, theme = "default") {
+html_dependency_framework <- function(framework = "sakura", theme = "default") {
   arguments <- frameworks[[framework]]
   theme <- match.arg(theme, c("default", names(arguments$stylesheet)))
   arguments$src <- path_mini_frameworks(framework)
