@@ -37,4 +37,6 @@ RoxygenNote: 7.0.2
 Imports:
   rmarkdown,
   htmltools
+Suggests:
+  testthat
 SystemRequirements: pandoc (>= 2.7.2) - http://pandoc.org
