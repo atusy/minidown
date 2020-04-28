@@ -14,7 +14,3 @@ spec_pandoc_args <- function(pandoc_args = NULL,
     if (katex) "--mathjax"
   )
 }
-
-
-
-
