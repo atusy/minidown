@@ -13,7 +13,7 @@ mini_document(
   code_download = FALSE,
   math = "katex",
   extra_dependencies = NULL,
-  includes = NULL,
+  includes = list(),
   template = "default",
   pandoc_args = NULL,
   ...
