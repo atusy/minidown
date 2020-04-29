@@ -47,7 +47,7 @@ includes Rmd file itself and supplies download button of it.}
 If the value is other than \code{"katex"}, the result depends on the \code{framework}
 option. When the given \code{framework} is \code{"bootstrap"}, the \code{math} option is
 passed to the \code{mathjax} option of \code{rmarkdown::html_document}. Otherwise,
-Pandoc's built-in feature renders math expressions to unicode characters.}
+pandoc's built-in feature renders math expressions to unicode characters.}
 
 \item{extra_dependencies}{Additional function arguments to pass to the
 base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}}}
@@ -56,7 +56,7 @@ base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}
 document (typically created using the \code{\link[rmarkdown]{includes}} function).}
 
 \item{template}{Pandoc template. If "default", the package's internal template
-is used. If a path, user's original template is used. If \code{NULL}, Pandoc's
+is used. If a path, user's original template is used. If \code{NULL}, pandoc's
 internal template is used.}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}

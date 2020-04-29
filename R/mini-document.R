@@ -25,9 +25,9 @@
 #'  If the value is other than `"katex"`, the result depends on the `framework`
 #'  option. When the given `framework` is `"bootstrap"`, the `math` option is
 #'  passed to the `mathjax` option of `rmarkdown::html_document`. Otherwise,
-#'  Pandoc's built-in feature renders math expressions to unicode characters.
+#'  pandoc's built-in feature renders math expressions to unicode characters.
 #' @param template Pandoc template. If "default", the package's internal template
-#'  is used. If a path, user's original template is used. If `NULL`, Pandoc's
+#'  is used. If a path, user's original template is used. If `NULL`, pandoc's
 #'  internal template is used.
 #' @inheritParams rmarkdown::html_document
 #' @param ... Arguments passed to `rmarkdown::html_document`
