@@ -10,5 +10,5 @@ test_that("fold returns a character vector", {
 
 test_that("Raise error", {
   expect_error(fold("foo"))
-  expect_error(default_folding)
+  expect_error(fold(default_folding))
 })
