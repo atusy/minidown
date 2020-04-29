@@ -3,7 +3,10 @@ Type: Package
 Title: Create Simple Yet Powerful HTML Documents With Light Weight CSS Frameworks
 Version: 0.0.1
 Author: Atsushi Yasumoto [aut, cph, cre]
-    (<https://orcid.org/0000-0002-8335-495X>)
+    (<https://orcid.org/0000-0002-8335-495X>),
+    Angelos Chalaris [aut] (mini.css),
+    Mitesh Shah [aut] (sakura),
+    Kognise [aut] (Water.css)
 Authors@R: c(
     person(given = "Atsushi",
            family = "Yasumoto",
