@@ -1,7 +1,7 @@
 #' Convert to an HTML document powered by the lightweight CSS framework.
 #'
-#' The output format is HTML5 except. When `framework = "bootstrap"` is
-#' given, the output format is HTML4 and comparable to `rmarkdown::html_document`
+#' The output format is HTML5 in general. If `framework = "bootstrap"` is given,
+#' the output format becomes HTML4 and comparable to `rmarkdown::html_document`
 #' except for the behavior of the `code_folding` option.
 #'
 #' @param framework,theme A string to specify the name of a framework

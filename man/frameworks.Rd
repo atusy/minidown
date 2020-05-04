@@ -4,7 +4,9 @@
 \name{frameworks}
 \alias{frameworks}
 \title{Lightweight CSS frameworks meta data}
-\format{A list}
+\format{
+A list
+}
 \usage{
 frameworks
 }

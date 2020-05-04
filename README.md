@@ -2,6 +2,7 @@
 # minidown
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/minidown)](https://CRAN.R-project.org/package=minidown)
 [![R build status](https://github.com/atusy/minidown/workflows/R-CMD-check/badge.svg)](https://github.com/atusy/minidown/actions)
 <!-- badges: end -->
 

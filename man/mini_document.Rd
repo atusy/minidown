@@ -64,8 +64,8 @@ internal template is used.}
 \item{...}{Arguments passed to \code{rmarkdown::html_document}}
 }
 \description{
-The output format is HTML5 except. When \code{framework = "bootstrap"} is
-given, the output format is HTML4 and comparable to \code{rmarkdown::html_document}
+The output format is HTML5 in general. If \code{framework = "bootstrap"} is given,
+the output format becomes HTML4 and comparable to \code{rmarkdown::html_document}
 except for the behavior of the \code{code_folding} option.
 }
 \examples{
