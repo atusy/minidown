@@ -26,10 +26,3 @@
     top: 5px;
   }
 }
-
-
-@media screen and (max-width: 900px) {
-  header, nav, article {
-    padding: 0 3rem;
-  }
-}
