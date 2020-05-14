@@ -28,9 +28,31 @@ remove_math <- function(template) {
 
 body_as_article <- function(template) {
   body <- template == "$body$"
-  if (sum(body) != 0) stop("Unexpected template about $body$")
+  if (sum(body) != 1L) stop("Unexpected template about $body$")
   template[body] <- "<article>\n$body$\n</article>"
   template
+}
+
+#' Let nav, header, and article be main element
+#' @noRd
+set_main <- function(template) {
+  # Start main
+  include_before <- which(template == "$for(include-before)$")
+  if (
+    length(include_before) != 1L ||
+    template[include_before + 1L] != "$include-before$" ||
+    template[include_before + 2L] != "$endfor$"
+  ) {
+    stop("Unexpected template about $include-before$")
+  }
+  template[include_before + 2L] <- "$endfor$\n<main>"
+
+  # End main
+  include_after <- template == "$for(include-after)$"
+  if (sum(include_after) != 1L) stop("Unexpected template about $include-after$")
+  template[include_after] <- "</main>\n$for(include-after)$"
+
+  return(template)
 }
 
 update_template <- function(dev = TRUE) {
@@ -50,6 +72,8 @@ update_template <- function(dev = TRUE) {
   template <- remove_math(template)
 
   template <- body_as_article(template)
+
+  template <- set_main(template)
 
   writeLines(template, path)
 

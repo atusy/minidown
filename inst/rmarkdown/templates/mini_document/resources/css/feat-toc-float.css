@@ -3,6 +3,8 @@
     min-width: 900px;
     max-width: 62.5%;
     margin: 0 auto;
+  }
+  main {
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: auto auto;
