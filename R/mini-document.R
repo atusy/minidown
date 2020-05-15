@@ -45,10 +45,12 @@ mini_document <- function(framework = "sakura",
                           toc_float = FALSE,
                           code_folding = c("none", "show", "hide"),
                           code_download = FALSE,
+                          self_contained = TRUE,
                           math = "katex",
+                          template = "default",
                           extra_dependencies = NULL,
                           includes = list(),
-                          template = "default",
+                          keep_md = FALSE,
                           pandoc_args = NULL,
                           ...) {
   framework <- match.arg(framework, c("bootstrap", names(frameworks)))
@@ -70,10 +72,19 @@ mini_document <- function(framework = "sakura",
     ...
   )
 
-  fmt$knitr$opts_chunk[names(default_opts_chunk)] <- default_opts_chunk
-  fmt$knitr$opts_hooks <- spec_opts_hooks(code_folding)
+  code_download_html <- if (code_download && html5) tempfile(fileext = ".html")
 
-  if (html5) fmt$pandoc$to <- "html5"
-
-  fmt
+  rmarkdown::output_format(
+    knitr = list(
+      opts_chunk = default_opts_chunk,
+      opts_hooks = spec_opts_hooks(code_folding)
+    ),
+    pandoc = list(to = "html5"),
+    keep_md = keep_md,
+    clean_supporting = self_contained,
+    pre_knit = spec_pre_knit(code_download_html),
+    pre_processor = spec_pre_processor(code_download_html),
+    base_format = fmt
+  )
 }
+

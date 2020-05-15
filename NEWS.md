@@ -1,5 +1,7 @@
 # minidown 0.0.1.2
 
+* New features
+  * Implement `code_download`
 * Template
   * Elements aftter `include-before` and `include-after` are wrapped by `<main>`
     element.
