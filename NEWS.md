@@ -1,4 +1,4 @@
-# minidown 0.0.1.2
+# minidown 0.0.1.3
 
 * New features
   * Implement `code_download`
