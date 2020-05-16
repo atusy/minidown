@@ -79,7 +79,7 @@ mini_document <- function(framework = "sakura",
       opts_chunk = default_opts_chunk,
       opts_hooks = spec_opts_hooks(code_folding)
     ),
-    pandoc = list(to = "html5"),
+    pandoc = if (html5) list(to = "html5"),
     keep_md = keep_md,
     clean_supporting = self_contained,
     pre_knit = spec_pre_knit(code_download_html),
