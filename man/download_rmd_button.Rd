@@ -35,7 +35,10 @@ One of \code{xfun::embed_file}, \code{xfun::embed_files}, or \code{xfun::embed_d
 The button can self-contain the input data by base64 encoding.
 }
 \examples{
+set.seed(1L)
+
 input <- tempfile()
+writeLines("", input)
 download_rmd_button(input)
 
 input <- tempdir()
