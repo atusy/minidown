@@ -40,8 +40,8 @@ set_main <- function(template) {
   include_before <- which(template == "$for(include-before)$")
   if (
     length(include_before) != 1L ||
-    template[include_before + 1L] != "$include-before$" ||
-    template[include_before + 2L] != "$endfor$"
+      template[include_before + 1L] != "$include-before$" ||
+      template[include_before + 2L] != "$endfor$"
   ) {
     stop("Unexpected template about $include-before$")
   }

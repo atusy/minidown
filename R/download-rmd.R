@@ -25,7 +25,6 @@
 #'
 #' input <- tempdir()
 #' download_rmd_button(input, embed = xfun::embed_dir)
-#'
 #' @export
 download_rmd_button <- function(input = NULL,
                                 text = "Download Rmd",
@@ -33,8 +32,7 @@ download_rmd_button <- function(input = NULL,
                                 class = "button",
                                 align = "right",
                                 aside = TRUE,
-                                embed = xfun::embed_file
-) {
+                                embed = xfun::embed_file) {
   if (is.null(input)) {
     input <- knitr::current_input()
     if (is.null(input)) stop("Auto detection of the input file failed.")
@@ -42,7 +40,9 @@ download_rmd_button <- function(input = NULL,
 
   button <- embed(input, text = text, class = class, ...)
 
-  if (!aside) return(button)
+  if (!aside) {
+    return(button)
+  }
 
   htmltools::tags$aside(button, style = paste0("text-align:", align))
 }

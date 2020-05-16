@@ -87,4 +87,3 @@ mini_document <- function(framework = "sakura",
     base_format = fmt
   )
 }
-
