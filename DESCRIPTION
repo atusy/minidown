@@ -41,8 +41,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports:
-    rmarkdown,
     htmltools,
+    knitr,
+    rmarkdown,
     xfun
 Suggests:
     testthat (>= 2.1.0)
