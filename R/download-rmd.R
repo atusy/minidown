@@ -14,7 +14,10 @@
 #' @return `shiny.tag` class object.
 #'
 #' @examples
+#' set.seed(1L)
+#'
 #' input <- tempfile()
+#' writeLines("", input)
 #' download_rmd_button(input)
 #'
 #' input <- tempdir()
