@@ -16,14 +16,8 @@ output:
     toc_float: true
     number_sections: true
     self_contained: true
-    code_download: true
+    code_download: false
 ---
-
-```{=html}
-<form method="get" action="index.Rmd">
-   <button type="submit">Download!</button>
-</form>
-```
 
 ```{r setup, include=FALSE}
 `%>%` <- magrittr::`%>%`

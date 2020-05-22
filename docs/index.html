@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2020-05-15" />
+  <meta name="dcterms.date" content="2020-05-23" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -468,56 +468,50 @@ top: 5px;
   </script>
 </head>
 <body>
-<aside>
-  <a href="data:text/x-markdown;base64,LS0tCnRpdGxlOiAibWluaWRvd246Om1pbmlfZG9jdW1lbnQiCmF1dGhvcjogIkF0c3VzaGkgWWFzdW1vdG8iCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIG1pbmlkb3duOjptaW5pX2RvY3VtZW50OgogICAgZnJhbWV3b3JrOiBzYWt1cmEKICAgIHRoZW1lOiBkZWZhdWx0CiAgICBjb2RlX2ZvbGRpbmc6CiAgICAgIHNvdXJjZTogc2hvdwogICAgICBvdXRwdXQ6IHNob3cKICAgICAgbWVzc2FnZTogaGlkZQogICAgICB3YXJuaW5nOiBoaWRlCiAgICAgIGVycm9yOiBzaG93CiAgICB0b2M6IHRydWUKICAgIHRvY19mbG9hdDogdHJ1ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlCiAgICBzZWxmX2NvbnRhaW5lZDogdHJ1ZQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQotLS0KCmBgYHs9aHRtbH0KPGZvcm0gbWV0aG9kPSJnZXQiIGFjdGlvbj0iaW5kZXguUm1kIj4KICAgPGJ1dHRvbiB0eXBlPSJzdWJtaXQiPkRvd25sb2FkITwvYnV0dG9uPgo8L2Zvcm0+CmBgYAoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmAlPiVgIDwtIG1hZ3JpdHRyOjpgJT4lYApmcmFtZXdvcmtzIDwtIGxhcHBseSgKICBtaW5pZG93bjo6ZnJhbWV3b3JrcywKICBmdW5jdGlvbih4KSBuYW1lcyh4JHN0eWxlc2hlZXQpCikgJT4lCiAgdGliYmxlOjplbmZyYW1lKCkgJT4lCiAgdGlkeXI6OnVuY2hvcCh2YWx1ZSkgJT4lCiAgcHVycnI6OnNldF9uYW1lcyhjKCJmcmFtZXdvcmsiLCAidGhlbWUiKSkgJT4lCiAgZHBseXI6Om11dGF0ZShvdXRwdXRfZmlsZSA9IHBhc3RlMChmcmFtZXdvcmssICctJywgdGhlbWUsICcuaHRtbCcpKSAlPiUKICBkcGx5cjo6bXV0YXRlKAogICAgb3V0cHV0X2ZpbGUgPSBpZmVsc2UoCiAgICAgIG91dHB1dF9maWxlID09ICJzYWt1cmEtZGVmYXVsdC5odG1sIiwKICAgICAgImluZGV4Lmh0bWwiLCAuZGF0YSRvdXRwdXRfZmlsZQogICAgKSwKICApCmZyYW1ld29ya3MKYGBgCgoKYGBge3IsIGV2YWw9RkFMU0UsIGluY2x1ZGU9RkFMU0V9CiMgT3V0cHV0IGFsbCBmcmFtZXdvcmtzIGFuZCB0aGVtZXMKCmFyZ3NfdGVtcGxhdGUgPC0gbGlzdCgKICBjb2RlX2ZvbGRpbmcgPSBsaXN0KAogICAgc291cmNlID0gInNob3ciLCBvdXRwdXQgPSAic2hvdyIsIG1lc3NhZ2UgPSAiaGlkZSIsIHdhcm5pbmcgPSAiaGlkZSIKICApLAogIHRvYyA9IFRSVUUsIHRvY19mbG9hdCA9IFRSVUUsCiAgc2VsZl9jb250YWluZWQgPSBUUlVFLCBsaWJfZGlyID0gInJlc291cmNlcyIKKQoKcHVycnI6OnBtYXAoCiAgZnJhbWV3b3JrcywKICBmdW5jdGlvbihmcmFtZXdvcmssIHRoZW1lLCBvdXRwdXRfZmlsZSkgewogICAgcm1hcmtkb3duOjpyZW5kZXIoCiAgICAgICJpbmRleC5SbWQiLAogICAgICBkby5jYWxsKAogICAgICAgIG1pbmlkb3duOjptaW5pX2RvY3VtZW50LAogICAgICAgIGMoYXJnc190ZW1wbGF0ZSwgbGlzdChmcmFtZXdvcmsgPSBmcmFtZXdvcmssIHRoZW1lID0gdGhlbWUpKQogICAgICApLAogICAgICBvdXRwdXRfZmlsZSA9IGZpbGUucGF0aChvdXRwdXRfZmlsZSkKICAgICkKICB9CikKCmlmIChpbnRlcmFjdGl2ZSgpKSBicm93c2VVUkwoImluZGV4Lmh0bWwiKQpgYGAKCgo6Ojoge3N0eWxlPSd0ZXh0LWFsaWduOiByaWdodCd9CltEb3dubG9hZCBSbWRdKGluZGV4LlJtZCl7ZG93bmxvYWQ9bWluaWRvd24uUm1kIC5idXR0b259Cjo6OgoKVGhpcyBhcnRpY2xlIGludHJvZHVjZXMgcmljaCBmZWF0dXJlcyBvZiBgbWluaWRvd246Om1pbmlfZG9jdW1lbnRgIHdpdGggbGl2ZSBleGFtcGxlcy4KVGhpcyBmb3JtYXQgaXMgcG93ZXJlZCBieSBSIE1hcmtkb3duLCBQYW5kb2MsIEthVGVYIGFuZCAqKmxpZ2h0IHdlaWdodCBDU1MgZnJhbWV3cm9rcyoqIHN1Y2ggYXMgc2FrdXJhIChkZWZhdWx0KSwgV2F0ZXIuY3NzLCBtaW5pLmNzcywgYW5kIHNvIG9uLgoKSWYgeW91IGhhdmVuJ3QgaW5zdGFsbGVkIHRoZSBgbWluaWRvd25gIHBhY2thZ2Ugb24gUiwgaW5zdGFsbCBpdCBieQoKYGBgcgpyZW1vdGVzOjppbnN0YWxsX2dpdGh1YignYXR1c3kvbWluaWRvd24nKQpgYGAKCkRvY3VtZW50YXRpb24gaXMgcmVhZHkgYXQgW2hlcmVdKHBrZ2Rvd24vaW5kZXguaHRtbCkuCgojIEZyYW1ld29ya3MgYW5kIHRoZW1lcwoKRGVmYXVsdCBmcmFtZXdvcmsgYW5kIGl0cyB0aGVtZSBhcmUgYCJzYWt1cmEiYCBhbmQgYCJkZWZhdWx0ImAuCkZvbGxvd2luZ3MgYXJlIHRoZSBsaXN0IG9mIGF2YWlsYWJsZSBvbmVzLgpMaXZlIGV4YW1wbGVzIGFyZSBhdmFpbGFibGUgdmlhIGxpbmtzLgoKYGBge3IsIGVjaG89RkFMU0V9CmZyYW1ld29ya3MgJT4lCiAgZHBseXI6Om11dGF0ZSgKICAgIHRoZW1lID0gc3ByaW50ZignWyVzXSglcyknLCB0aGVtZSwgb3V0cHV0X2ZpbGUpLAogICAgZnJhbWV3b3JrID0gZnJhbWV3b3JrICU+JQogICAgICBmb3JjYXRzOjpmY3RfcmVsZXZlbCgKICAgICAgICBjKCJzYWt1cmEiLAogICAgICAgICAgZnJhbWV3b3JrICU+JSB1bmlxdWUoKSAlPiUgc2V0ZGlmZihjKCJzYWt1cmEiLCAibWluaSIpKSwKICAgICAgICAgICJtaW5pIikKICAgICAgKQogICkgJT4lCiAgZHBseXI6Omdyb3VwX2J5KGZyYW1ld29yaykgJT4lCiAgZHBseXI6OnN1bW1hcmlzZSh0aGVtZSA9IHBhc3RlKHRoZW1lLCBjb2xsYXBzZSA9ICcsICcpKSAlPiUKICBrbml0cjo6a2FibGUoZXNjYXBlPUZBTFNFKQpgYGAKCiMgQ29kZSBmb2xkaW5nCgpDb2RlIGZvbGRpbmcgY2FuIGJlIGNvbnRyb2xsZWQgYnkgdGhlIFlBTUwgZnJvbnRtYXR0ZXIgbGlrZToKCmBgYApvdXRwdXQ6CiAgbWluaWRvd246Om1pbmlfZG9jdW1lbnQ6CiAgICBjb2RlX2ZvbGRpbmc6CiAgICAgIHNvdXJjZTogc2hvdwogICAgICBvdXRwdXQ6IHNob3cKICAgICAgbWVzc2FnZTogaGlkZQogICAgICB3YXJuaW5nOiBoaWRlCiAgICAgIGVycm9yOiBzaG93CmBgYAoKVGhlIGFib3ZlIHJlc3VsdHMgaW4KCmBgYHtyLCBlcnJvcj1UUlVFLCBjbGFzcy5zb3VyY2U9Im51bWJlckxpbmVzIn0KZiA8LSBmdW5jdGlvbigpIHsKICBwcmludCgxKQogIG1lc3NhZ2UoJ21lc3NhZ2UnKQogIHdhcm5pbmcoJ3dhcm5pbmcnKQogIHN0b3AoJ2Vycm9yJykKfQpmKCkKYGBgCgpJZiB0aGUgY29kZSBmb2xkaW5nIGlzIHNwZWNpZmllZCBmb3Igc29tZSBvZiB0aGVtLAp0aGVuIHRoZSBjb2RlIGZvbGRpbmcgb2YgdGhlIG90aGVycyB3aWxsIGJlIGBub25lYC4KCkxpa2UgYHJtYXJrZG93bjo6aHRtbF9kb2N1bWVudGAsCmBjb2RlX2ZvbGRpbmc6IHNob3dgIGluZGljYXRlcyBzb3VyY2UgaXMgYHNob3dgIGFuZCBvdGhlcnMgYXJlIGBub25lYC4KCkJ5IGRlZmF1bHQgYGNvZGVfZm9sZGluZ2AgaXMgYG5vbmVgLCBob3dldmVyLCB5b3UgY2FuIHNlbGVjdCBzb21lIGNodW5rcyBiZSBmb2xkZWQgYnkgZ2l2aW5nIHRoZSBgZGV0YWlsc2AgY2xhc3MgKGUuZy4sIGBzb3VyY2UuY2xhc3M9J2RldGFpbHMnYCkuCgojIyBTaG93L2hpZGUgZXhjZXB0aW9ucwoKV2hlbiBgc291cmNlOiBzaG93YCwgYWxsIHRoZSBzb3VyY2VzIGFyZSBzaG93bi4KSW4gY2FzZSB5b3UgbmVlZCBleGNlcHRpb25zLCBhZGQgdGhlIGBoaWRlYCBjbGFzcyB0byB0aGUgc291cmNlLgpJZiB5b3Ugd2FudCB0byBoaWRlIGFsbCB3aXRoIGV4Y2VwdGlvbnMsIGFkZCB0aGUgYHNob3dgIGNsYXNzIHRvIHRoZSBleGNlcHRpb25zLgpPZiBjb3Vyc2UsIHRoaXMgZmVhdHVyZSBpcyBub3QgbGltaXRlZCB0byB0aGUgc291cmNlLgoKYGBgYAotLS0Kb3V0cHV0OgogIG1pbmlkb3duOjptaW5pX2RvY3VtZW50OgogICAgY29kZV9mb2xkaW5nOgogICAgICBzb3VyY2U6IHNob3cKLS0tCgpgciAnJ2BgYGB7cn0KJ1RoaXMgaXMgc2hvd24nCmByICcnYGBgYAoKCmByICcnYGBgYHtyLCBzb3VyY2UuY2xhc3M9J2hpZGUnfQonVGhpcyBpcyBoaWRkZW4nCmByICcnYGBgYApgYGBgCgphbmQgYGhpZGVgIGNsYXNzZXMuCgojIyBDaGFuZ2Ugc3VtbWFyeQoKVGhlIGNvbnRlbnQgb2Ygc3VtbWFyeSBjYW4gYmUgY29udHJvbGxlZCB2aWEgYHN1bW1hcnkuKmAgY2h1bmsgb3B0aW9ucy4KVGhpcyBmZWF0dXJlIGlzIHVzZWZ1bCB3aGVuIHlvdSB3YW50IHRvIHNob3cgdGhlIHRpdGxlIG9mIHRoZSBzb3VyY2UsIHRvIHRyZWF0IHRoZSBvdXRwdXQgYXMgYSBoaWRkZW4gYW5zd2VyLCBhbmQgc28gb24uCgpgYGB7ciwgc3VtbWFyeS5zb3VyY2U9J2lyaXMuUicsIHN1bW1hcnkub3V0cHV0PSdBbnN3ZXInLCBjbGFzcy5vdXRwdXQ9J2hpZGUnfQojIHN1bW1hcnkuc291cmNlPSdpcmlzLlInLCBzdW1tYXJ5Lm91dHB1dD0nQW5zd2VyJywgY2xhc3Mub3V0cHV0PSdoaWRlJwpoZWFkKGlyaXMpCmBgYAoKIyMgRm9sZCBvbmx5IHNvbWUKCkV2ZW4gaWYgYG5vbmVgIGlzIHNwZWNpZmllZCBpbiBZQU1MLCBjb2RlIGZvbGRpbmcgY2FuIGJlIGVuYWJsZWQgZm9yIHNlbGVjdGVkIGNodW5rcyBieSBhZGRpbmcgdGhlIGBkZXRhaWxzYCBjbGFzcy4KCmBgYGAKLS0tCm91dHB1dDoKICBtaW5pZG93bjo6bWluaV9kb2N1bWVudDoKICAgIGNvZGVfZm9sZGluZzogbm9uZQotLS0KCmByICcnYGBgYHtyfQonVGhpcyBpcyBzaG93bicKYHIgJydgYGBgCgoKYHIgJydgYGBge3IsIHNvdXJjZS5jbGFzcz0nZGV0YWlscyBoaWRlJ30KJ1RoaXMgaXMgaGlkZGVuJwpgciAnJ2BgYGAKCmBgYGAKCiMjIFByZWZlciBgcm1hcmtkb3duOjpodG1sX2RvY3VtZW50YAoKSWYgeW91IHByZWZlciBgcm1hcmtkb3duOjpodG1sX2RvY3VtZW50YCBleGNlcHQgZm9yIHRoZSBjb2RlIGZvbGlkaW5nLApzcGVjaWZ5IHRoZSBgdGhlbWVgIG90aGVyIHRoYW4gYCJtaW5pImAuCgpgYGB5YW1sCm91dHB1dDoKICBtaW5pZG93bjo6bWluaV9kb2N1bWVudDoKICAgIHRoZW1lOiBkZWZhdWx0CiAgICBjb2RlX2ZvbGRpbmc6IHNob3cKYGBgCgpUbyBwdXQgdGhlIHN1bW1hcnkgb24gcmlnaHQgaW5zdGVhZCBvZiBsZWZ0LCBhZGQgdGhlIGZvbGxvd2luZyBjaHVuayBpbiB5b3VyIGRvY3VtZW50LgoKYGBgYApgciAnJ2BgYGB7Y3NzLCBlY2hvPUZBTFNFfQouY2h1bmstc3VtbWFyeSB7dGV4dC1hbGlnbjogcmlnaHQ7fQpgciAnJ2BgYGAKYGBgYAoKVGhlIGZlYXR1cmVzIGJlbG93IGFyZSBhdmFpbGFibGUgb25seSBpZiB0aGUgYHRoZW1lYCBpcyBgIm1pbmkiYAoKIyBGbG9hdGluZyBUT0MKClRhYmxlIG9mIGNvbnRlbnRzIGNhbiBiZSBmbG9hdGVkIG9uIHRoZSBsZWZ0IG9mIHRoZSBwYWdlIGJ5IHNwZWNpZnlpbmcgYHRvY19mbG9hdDogdHJ1ZWAuClRoZSBsYXlvdXQgaXMgcmVzcG9uc2l2ZSB0byB0aGUgd2luZG93cyBzaXplLgpUaHVzLCBmbG9hdGluZyBUT0MgaXMgYXZhaWxhYmxlIHdoZW4gdGhlIHZpZXdwb3J0IGhhcyB0aGUgZW5vdWdoIHdpZHRoLgpTZWUgd2hhdCBoYXBwZW5zIGJ5IHNocmlua2luZyB0aGUgd2lkdGggb2YgeW91ciBicm93c2VyLgoKYGBgeWFtbApvdXRwdXQ6CiAgbWluaWRvd246Om1pbmlfZG9jdW1lbnQ6CiAgICB0b2NfZmxvYXQ6IHRydWUKYGBgCgojIEFjY29yZGlvbiBtZW51IAoKOjo6Ojo6IHsuY29sbGFwc2V9Cgo6Ojo6OiB7bWVudT0nSG93JyAuc2hvd30KCkFkZCB0aGUgY29sbGFwc2UgY2xhc3MgdG8gYSBoZWFkaW5nLgpVbmRlciB0aGUgaGVhZGluZywgc2VwYXJhdGUgYmxvY2tzIHdpdGggUGFuZG9jJ3MgRGl2cwp3aXRoIGBtZW51PXRpdGxlYCBhdHRyaWJ1dGUuCklmIHlvdSBhZGQgYHNob3dgIGNsYXNzLCBtZW51IGlzIG9wZW4gYnkgZGVmYXVsdC4KCjo6Ojo6Cgo6Ojo6OiB7bWVudT0nSGlkZGVuJ30KClRoaXMgaXMgaGlkZGVuIGJ5IGRlZmF1bHQgYmVjYXVzZSBvZiB0aGUgbWlzc2luZyAnc2hvdycgY2xhc3MuCgo6Ojo6OgoKOjo6Ojo6CgojIFRvb2x0aXBzCgoqKltbXXsuaWNvbi1pbmZvfVRvb2x0aXBzXXt0b29sdGlwPSdIZXJlIGlzIGEgdG9vbHRpcCd9KiogYXJlIGF2YWlsYWJsZS4KCmBgYG1kClt0ZXh0XXt0b29sdGlwPSd0b29sdGlwJ30KYGBgCgojIE1hdGggd2l0aCBLYVRlWAoKYCRcc3VtX3tpPTF9XnsxMH17XGFscGhhX2l9JGAgYmVjb21lcyAkXHN1bV97aT0xfV57MTB9e1xhbHBoYV9pfSQgYW5kCgpgYGBtZAokJApcc3VtX3tpPTF9XnsxMH17XGFscGhhX2l9CiQkCmBgYAoKYmVjb21lcwoKJCQKXHN1bV97aT0xfV57MTB9e1xhbHBoYV9pfQokJAoKIyBPdGhlcnMKClZpc2l0IDxodHRwczovL21pbmljc3Mub3JnL2RvY3M+IGZvciBvdGhlciBmZWF0dXJlcyBhdmFpbGFibGUgdmlhIHRoZSBgbWluaS5jc3NgIGZyYW1ld29yay4KCiMgQXBwZW5kaXg6IG1hcmtkb3duIHJlc3VsdHMKCiMjIEhlYWRpbmdzIChIMikKCiMjIyBIMwoKIyMjIyBINAoKIyMjIyMgSDUKCiMjIyMjIyBINgoKIyMgQmxvY2sgcXVvdGF0aW9ucwoKPiBTaW5nbGUKCj4gTmVzdGluZwo+Cj4+IGFub3RoZXIKCiMjIENvZGUgYmxvY2tzCgpBIGNvZGUgYmxvY2sgd2l0aG91dCBsaW5lIG51bWJlcnMuCgpgYGAKQ29kZSBibG9jawpgYGAKCkEgY29kZSBibG9jayB3aXRoIGxpbmUgbnVtYmVycy4KCmBgYHsuciAubnVtYmVyTGluZXMgc3RhcnRGcm9tPTEwfQpmIDwtIGZ1bmN0aW9uKCkgewogIHByaW50KDEpCiAgbWVzc2FnZSgnbWVzc2FnZScpCiAgd2FybmluZygnd2FybmluZycpCiAgc3RvcCgnZXJyb3InKQp9CmYoKQpgYGAKCiMjIyBDb2RlIGJsb2NrcyB3aXRoIGxvbmcgbGluZXMKCiMjIyMgV2l0aG91dCBzcGVjaWZpeWluZyBsYW5ndWFnZQoKYGBgCmxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyAKYGBgCgojIyMjIFdpdGggc3BlY2lmeWluZyBsYW5ndWFnZQoKIyMjIyMgV2l0aG91dCBsaW5lIG51bWJlcnMKCmBgYHsucn0KbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIApgYGAKCiMjIyMjIFdpdGggbGluZSBudW1iZXJzCgpgYGB7LnIgLm51bWJlckxpbmVzfQpsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgbG9uZyBsb25nIGxvbmcgCmBgYAoKIyMgTGlzdHMKCiMjIyBCdWxsZXQgbGlzdHMKClRpZ2h0CgoqIFRpZ2h0IDEKKiBUaWdodCAyCiAgKiBUaWdodCAyLTEKICAqIFRpZ2h0IDItMgoKTG9vc2UKCiogTG9vc2UgMQoKKiBMb29zZSAyCgoqIExvb3NlIDMKCiMjIyBPcmRlcmVkIGxpc3RzCgoxLiAgb25lCjIuICB0d28KMy4gIHRocmVlCgojIyMgVGFzayBsaXN0cwoKLSBbIF0gYW4gdW5jaGVja2VkIHRhc2sgbGlzdCBpdGVtCi0gW3hdIGNoZWNrZWQgaXRlbQoKIyMjIERlZmluaXRpb24gbGlzdHMKClRlcm0gMQogIH4gRGVmaW5pdGlvbiAxCgpUZXJtIDIKICB+IERlZmluaXRpb24gMmEKICB+IERlZmluaXRpb24gMmIKCiMjIEhvcml6b250YWwgcnVsZQoKX19fCgojIyBUYWJsZQoKYGBge3IsIGVjaG89RkFMU0V9CmtuaXRyOjprYWJsZShoZWFkKGlyaXMpKQpgYGAKCgojIyBJbmxpbmUgZm9ybWF0dGluZwoKLSAqRW1waGFzaXMqCi0gKipTdHJvbmcgZW1waGFzaXMqKgotIH5+U3RyaWtlb3V0fn4KLSBzdXBlcl5zY3JpcHReCi0gc3VifnNjcmlwdH4KLSBgVmVyYmF0aW1gCi0gW1NtYWxsIGNhcHNdey5zbWFsbGNhcHN9CgojIyBMaW5rCgpbQXR1c3kncyBUd2l0dGVyXShodHRwczovL3R3aXR0ZXIuY29tL0F0c3VzaGk3NzYpCgojIyBJbWFnZQoKIVtBdHVzeSdzIGF2YXRvcl0oYXZhdG9yLmpwZWcpe2RhdGEtZXh0ZXJuYWw9IjEifQoKIyMgRm9vdG5vdGUKClNlZV5bZm9vdG5vdGVdCg==" download="index.Rmd" class="button">Download Rmd</a>
-</aside>
 <main>
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2020-05-15</p>
+<p class="date">2020-05-23</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#frameworks-and-themes"><span class="toc-section-number">1</span> Frameworks and themes</a></li>
-<li><a href="#code-folding"><span class="toc-section-number">2</span> Code folding</a><ul>
-<li><a href="#showhide-exceptions"><span class="toc-section-number">2.1</span> Show/hide exceptions</a></li>
-<li><a href="#change-summary"><span class="toc-section-number">2.2</span> Change summary</a></li>
-<li><a href="#fold-only-some"><span class="toc-section-number">2.3</span> Fold only some</a></li>
-<li><a href="#prefer-rmarkdownhtml_document"><span class="toc-section-number">2.4</span> Prefer <code>rmarkdown::html_document</code></a></li>
+<li><a href="#frameworks-and-themes">Frameworks and themes</a></li>
+<li><a href="#code-folding">Code folding</a><ul>
+<li><a href="#showhide-exceptions">Show/hide exceptions</a></li>
+<li><a href="#change-summary">Change summary</a></li>
+<li><a href="#fold-only-some">Fold only some</a></li>
+<li><a href="#prefer-rmarkdownhtml_document">Prefer <code>rmarkdown::html_document</code></a></li>
 </ul></li>
-<li><a href="#floating-toc"><span class="toc-section-number">3</span> Floating TOC</a></li>
-<li><a href="#accordion-menu"><span class="toc-section-number">4</span> Accordion menu</a></li>
-<li><a href="#tooltips"><span class="toc-section-number">5</span> Tooltips</a></li>
-<li><a href="#math-with-katex"><span class="toc-section-number">6</span> Math with KaTeX</a></li>
-<li><a href="#others"><span class="toc-section-number">7</span> Others</a></li>
-<li><a href="#appendix-markdown-results"><span class="toc-section-number">8</span> Appendix: markdown results</a><ul>
-<li><a href="#headings-h2"><span class="toc-section-number">8.1</span> Headings (H2)</a><ul>
-<li><a href="#h3"><span class="toc-section-number">8.1.1</span> H3</a></li>
+<li><a href="#floating-toc">Floating TOC</a></li>
+<li><a href="#accordion-menu">Accordion menu</a></li>
+<li><a href="#tooltips">Tooltips</a></li>
+<li><a href="#math-with-katex">Math with KaTeX</a></li>
+<li><a href="#others">Others</a></li>
+<li><a href="#appendix-markdown-results">Appendix: markdown results</a><ul>
+<li><a href="#headings-h2">Headings (H2)</a><ul>
+<li><a href="#h3">H3</a></li>
 </ul></li>
-<li><a href="#block-quotations"><span class="toc-section-number">8.2</span> Block quotations</a></li>
-<li><a href="#code-blocks"><span class="toc-section-number">8.3</span> Code blocks</a><ul>
-<li><a href="#code-blocks-with-long-lines"><span class="toc-section-number">8.3.1</span> Code blocks with long lines</a></li>
+<li><a href="#block-quotations">Block quotations</a></li>
+<li><a href="#code-blocks">Code blocks</a><ul>
+<li><a href="#code-blocks-with-long-lines">Code blocks with long lines</a></li>
 </ul></li>
-<li><a href="#lists"><span class="toc-section-number">8.4</span> Lists</a><ul>
-<li><a href="#bullet-lists"><span class="toc-section-number">8.4.1</span> Bullet lists</a></li>
-<li><a href="#ordered-lists"><span class="toc-section-number">8.4.2</span> Ordered lists</a></li>
-<li><a href="#task-lists"><span class="toc-section-number">8.4.3</span> Task lists</a></li>
-<li><a href="#definition-lists"><span class="toc-section-number">8.4.4</span> Definition lists</a></li>
+<li><a href="#lists">Lists</a><ul>
+<li><a href="#bullet-lists">Bullet lists</a></li>
+<li><a href="#ordered-lists">Ordered lists</a></li>
+<li><a href="#task-lists">Task lists</a></li>
+<li><a href="#definition-lists">Definition lists</a></li>
 </ul></li>
-<li><a href="#horizontal-rule"><span class="toc-section-number">8.5</span> Horizontal rule</a></li>
-<li><a href="#table"><span class="toc-section-number">8.6</span> Table</a></li>
-<li><a href="#inline-formatting"><span class="toc-section-number">8.7</span> Inline formatting</a></li>
-<li><a href="#link"><span class="toc-section-number">8.8</span> Link</a></li>
-<li><a href="#image"><span class="toc-section-number">8.9</span> Image</a></li>
-<li><a href="#footnote"><span class="toc-section-number">8.10</span> Footnote</a></li>
+<li><a href="#horizontal-rule">Horizontal rule</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#inline-formatting">Inline formatting</a></li>
+<li><a href="#link">Link</a></li>
+<li><a href="#image">Image</a></li>
+<li><a href="#footnote">Footnote</a></li>
 </ul></li>
 </ul>
 </nav>
 <article>
-<form method="get" action="index.Rmd">
-   <button type="submit">Download!</button>
-</form>
 <div style="text-align: right">
 <p><a href="index.Rmd" class="button" download="minidown.Rmd">Download Rmd</a></p>
 </div>
@@ -526,7 +520,7 @@ top: 5px;
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
 <p>Documentation is ready at <a href="pkgdown/index.html">here</a>.</p>
 <section id="frameworks-and-themes" class="level1">
-<h1><span class="header-section-number">1</span> Frameworks and themes</h1>
+<h1>Frameworks and themes</h1>
 <p>Default framework and its theme are <code>&quot;sakura&quot;</code> and <code>&quot;default&quot;</code>. Followings are the list of available ones. Live examples are available via links.</p>
 <table>
 <thead>
@@ -552,7 +546,7 @@ top: 5px;
 </table>
 </section>
 <section id="code-folding" class="level1">
-<h1><span class="header-section-number">2</span> Code folding</h1>
+<h1>Code folding</h1>
 <p>Code folding can be controlled by the YAML frontmatter like:</p>
 <pre><code>output:
   minidown::mini_document:
@@ -581,14 +575,12 @@ top: 5px;
 <details class="chunk-details"><summary class="chunk-summary">Warning</summary>
 <pre class="chunk-warning details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
 </details>
-<details class="chunk-details" open><summary class="chunk-summary">Error</summary>
-<pre class="chunk-error details show" data-summary="Error"><code>## Error in f(): error</code></pre>
-</details>
+<pre class="chunk-error"><code>## Error in f(): error</code></pre>
 <p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
 <p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
 <p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>source.class=&#39;details&#39;</code>).</p>
 <section id="showhide-exceptions" class="level2">
-<h2><span class="header-section-number">2.1</span> Show/hide exceptions</h2>
+<h2>Show/hide exceptions</h2>
 <p>When <code>source: show</code>, all the sources are shown. In case you need exceptions, add the <code>hide</code> class to the source. If you want to hide all with exceptions, add the <code>show</code> class to the exceptions. Of course, this feature is not limited to the source.</p>
 <pre><code>---
 output:
@@ -608,24 +600,15 @@ output:
 <p>and <code>hide</code> classes.</p>
 </section>
 <section id="change-summary" class="level2">
-<h2><span class="header-section-number">2.2</span> Change summary</h2>
+<h2>Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
 <div class="sourceCode" id="cb9" data-summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
-<details class="chunk-details"><summary class="chunk-summary">Answer</summary>
-<pre class="hide chunk-output details" data-summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-</details>
 </section>
 <section id="fold-only-some" class="level2">
-<h2><span class="header-section-number">2.3</span> Fold only some</h2>
+<h2>Fold only some</h2>
 <p>Even if <code>none</code> is specified in YAML, code folding can be enabled for selected chunks by adding the <code>details</code> class.</p>
 <pre><code>---
 output:
@@ -644,12 +627,12 @@ output:
 </code></pre>
 </section>
 <section id="prefer-rmarkdownhtml_document" class="level2">
-<h2><span class="header-section-number">2.4</span> Prefer <code>rmarkdown::html_document</code></h2>
+<h2>Prefer <code>rmarkdown::html_document</code></h2>
 <p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>theme</code> other than <code>&quot;mini&quot;</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
 <p>To put the summary on right instead of left, add the following chunk in your document.</p>
 <pre><code>```{css, echo=FALSE}
 .chunk-summary {text-align: right;}
@@ -658,14 +641,14 @@ output:
 </section>
 </section>
 <section id="floating-toc" class="level1">
-<h1><span class="header-section-number">3</span> Floating TOC</h1>
+<h1>Floating TOC</h1>
 <p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 </section>
 <section id="accordion-menu" class="level1">
-<h1><span class="header-section-number">4</span> Accordion menu</h1>
+<h1>Accordion menu</h1>
 <div class="collapse">
 <input type="checkbox" id="accordion-menu-1" checked aria-hidden="true"><label for="accordion-menu-1" aria-hidden="true">How</label>
 <div class="show" data-menu="How">
@@ -678,44 +661,44 @@ output:
 </div>
 </section>
 <section id="tooltips" class="level1">
-<h1><span class="header-section-number">5</span> Tooltips</h1>
+<h1>Tooltips</h1>
 <p><strong><span class="tooltip" aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
 </section>
 <section id="math-with-katex" class="level1">
-<h1><span class="header-section-number">6</span> Math with KaTeX</h1>
+<h1>Math with KaTeX</h1>
 <p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a>$$</span>
-<span id="cb16-2"><a href="#cb16-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
-<span id="cb16-3"><a href="#cb16-3"></a>$$</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>$$</span>
+<span id="cb15-2"><a href="#cb15-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb15-3"><a href="#cb15-3"></a>$$</span></code></pre></div>
 <p>becomes</p>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
 \]</span></p>
 </section>
 <section id="others" class="level1">
-<h1><span class="header-section-number">7</span> Others</h1>
+<h1>Others</h1>
 <p>Visit <a href="https://minicss.org/docs" class="uri">https://minicss.org/docs</a> for other features available via the <code>mini.css</code> framework.</p>
 </section>
 <section id="appendix-markdown-results" class="level1">
-<h1><span class="header-section-number">8</span> Appendix: markdown results</h1>
+<h1>Appendix: markdown results</h1>
 <section id="headings-h2" class="level2">
-<h2><span class="header-section-number">8.1</span> Headings (H2)</h2>
+<h2>Headings (H2)</h2>
 <section id="h3" class="level3">
-<h3><span class="header-section-number">8.1.1</span> H3</h3>
+<h3>H3</h3>
 <section id="h4" class="level4">
-<h4><span class="header-section-number">8.1.1.1</span> H4</h4>
+<h4>H4</h4>
 <section id="h5" class="level5">
-<h5><span class="header-section-number">8.1.1.1.1</span> H5</h5>
+<h5>H5</h5>
 <section id="h6" class="level6">
-<h6><span class="header-section-number">8.1.1.1.1.1</span> H6</h6>
+<h6>H6</h6>
 </section>
 </section>
 </section>
 </section>
 </section>
 <section id="block-quotations" class="level2">
-<h2><span class="header-section-number">8.2</span> Block quotations</h2>
+<h2>Block quotations</h2>
 <blockquote>
 <p>Single</p>
 </blockquote>
@@ -727,40 +710,40 @@ output:
 </blockquote>
 </section>
 <section id="code-blocks" class="level2">
-<h2><span class="header-section-number">8.3</span> Code blocks</h2>
+<h2>Code blocks</h2>
 <p>A code block without line numbers.</p>
 <pre><code>Code block</code></pre>
 <p>A code block with line numbers.</p>
-<div class="sourceCode" id="cb18" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb18-10"><a href="#cb18-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb18-11"><a href="#cb18-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb18-12"><a href="#cb18-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb18-13"><a href="#cb18-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb18-14"><a href="#cb18-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
-<span id="cb18-15"><a href="#cb18-15"></a>}</span>
-<span id="cb18-16"><a href="#cb18-16"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb17-10"><a href="#cb17-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb17-12"><a href="#cb17-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb17-15"><a href="#cb17-15"></a>}</span>
+<span id="cb17-16"><a href="#cb17-16"></a><span class="kw">f</span>()</span></code></pre></div>
 <section id="code-blocks-with-long-lines" class="level3">
-<h3><span class="header-section-number">8.3.1</span> Code blocks with long lines</h3>
+<h3>Code blocks with long lines</h3>
 <section id="without-specifiying-language" class="level4">
-<h4><span class="header-section-number">8.3.1.1</span> Without specifiying language</h4>
+<h4>Without specifiying language</h4>
 <pre><code>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </code></pre>
 </section>
 <section id="with-specifying-language" class="level4">
-<h4><span class="header-section-number">8.3.1.2</span> With specifying language</h4>
+<h4>With specifying language</h4>
 <section id="without-line-numbers" class="level5">
-<h5><span class="header-section-number">8.3.1.2.1</span> Without line numbers</h5>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<h5>Without line numbers</h5>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 <section id="with-line-numbers" class="level5">
-<h5><span class="header-section-number">8.3.1.2.2</span> With line numbers</h5>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<h5>With line numbers</h5>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 </section>
 </section>
 </section>
 <section id="lists" class="level2">
-<h2><span class="header-section-number">8.4</span> Lists</h2>
+<h2>Lists</h2>
 <section id="bullet-lists" class="level3">
-<h3><span class="header-section-number">8.4.1</span> Bullet lists</h3>
+<h3>Bullet lists</h3>
 <p>Tight</p>
 <ul>
 <li>Tight 1</li>
@@ -778,7 +761,7 @@ output:
 </ul>
 </section>
 <section id="ordered-lists" class="level3">
-<h3><span class="header-section-number">8.4.2</span> Ordered lists</h3>
+<h3>Ordered lists</h3>
 <ol type="1">
 <li>one</li>
 <li>two</li>
@@ -786,7 +769,7 @@ output:
 </ol>
 </section>
 <section id="task-lists" class="level3">
-<h3><span class="header-section-number">8.4.3</span> Task lists</h3>
+<h3>Task lists</h3>
 <ul>
 <li><input type="checkbox" disabled></input>
 an unchecked task list item</li>
@@ -795,7 +778,7 @@ checked item</li>
 </ul>
 </section>
 <section id="definition-lists" class="level3">
-<h3><span class="header-section-number">8.4.4</span> Definition lists</h3>
+<h3>Definition lists</h3>
 <dl>
 <dt>Term 1</dt>
 <dd>Definition 1
@@ -809,11 +792,11 @@ checked item</li>
 </section>
 </section>
 <section id="horizontal-rule" class="level2">
-<h2><span class="header-section-number">8.5</span> Horizontal rule</h2>
+<h2>Horizontal rule</h2>
 <hr />
 </section>
 <section id="table" class="level2">
-<h2><span class="header-section-number">8.6</span> Table</h2>
+<h2>Table</h2>
 <table>
 <thead>
 <tr class="header">
@@ -871,7 +854,7 @@ checked item</li>
 </table>
 </section>
 <section id="inline-formatting" class="level2">
-<h2><span class="header-section-number">8.7</span> Inline formatting</h2>
+<h2>Inline formatting</h2>
 <ul>
 <li><em>Emphasis</em></li>
 <li><strong>Strong emphasis</strong></li>
@@ -883,17 +866,17 @@ checked item</li>
 </ul>
 </section>
 <section id="link" class="level2">
-<h2><span class="header-section-number">8.8</span> Link</h2>
+<h2>Link</h2>
 <p><a href="https://twitter.com/Atsushi776">Atusy’s Twitter</a></p>
 </section>
 <section id="image" class="level2">
-<h2><span class="header-section-number">8.9</span> Image</h2>
+<h2>Image</h2>
 <figure>
 <img src="avator.jpeg" data-external="1" alt /><figcaption>Atusy’s avator</figcaption>
 </figure>
 </section>
 <section id="footnote" class="level2">
-<h2><span class="header-section-number">8.10</span> Footnote</h2>
+<h2>Footnote</h2>
 <p>See<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 </section>
