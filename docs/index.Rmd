@@ -160,7 +160,7 @@ output:
 `r ''````
 
 
-`r ''````{r, source.class='hide'}
+`r ''````{r, class.source='hide'}
 'This is hidden'
 `r ''````
 ````
@@ -193,7 +193,7 @@ output:
 `r ''````
 
 
-`r ''````{r, source.class='details hide'}
+`r ''````{r, class.source='details hide'}
 'This is hidden'
 `r ''````
 
