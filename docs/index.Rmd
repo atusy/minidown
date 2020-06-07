@@ -138,7 +138,7 @@ then the code folding of the others will be `none`.
 Like `rmarkdown::html_document`,
 `code_folding: show` indicates source is `show` and others are `none`.
 
-By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `source.class='details'`).
+By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `class.source='details'`).
 
 ## Show/hide exceptions
 
