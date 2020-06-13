@@ -1,9 +1,9 @@
-spec_knit_hooks <- function(base_format = list(), result_folding = c("none", "show", "hide")) {
-  result_folding = match.arg(result_folding)
-  if (result_folding == "none") return(NULL)
+spec_knit_hooks <- function(base_format = list(), results_folding = c("none", "show", "hide")) {
+  results_folding = match.arg(results_folding)
+  if (results_folding == "none") return(NULL)
 
   list(
-    source = hook_start_result_folding(base_format),
-    result.folding = hook_end_result_folding()
+    source = hook_start_results_folding(base_format),
+    results.folding = hook_end_results_folding()
   )
 }

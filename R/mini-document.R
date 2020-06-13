@@ -19,6 +19,9 @@
 #'  Names are some of "source", "output", "message", "warning", and "error".
 #'  If the list does not have some of the element with the above name,
 #'  they are treated as `"none"`.
+#' @param results_folding Setup results folding by a string, `"none"`, `"show"`,
+#'  or `"hide"`. This feature will fold entire results, including side effects
+#'  such as figures and tables.
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
 #'  includes Rmd file itself and supplies download button of it.
 #' @param math A string to specify math rendering engine (default: `"katex"`).
@@ -44,7 +47,7 @@ mini_document <- function(framework = "sakura",
                           toc = FALSE,
                           toc_float = FALSE,
                           code_folding = c("none", "show", "hide"),
-                          result_folding = c("none", "show", "hide"),
+                          results_folding = c("none", "show", "hide"),
                           code_download = FALSE,
                           self_contained = TRUE,
                           math = "katex",
@@ -77,10 +80,10 @@ mini_document <- function(framework = "sakura",
 
   rmarkdown::output_format(
     knitr = rmarkdown::knitr_options(
-      opts_chunk = spec_opts_chunk(result_folding),
+      opts_chunk = spec_opts_chunk(results_folding),
       opts_hooks = spec_opts_hooks(code_folding),
       knit_hooks =
-        spec_knit_hooks(base_format = fmt, result_folding = result_folding)
+        spec_knit_hooks(base_format = fmt, results_folding = results_folding)
     ),
     pandoc = if (html5) list(to = "html5"),
     keep_md = keep_md,

@@ -36,8 +36,9 @@ hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
   }
 }
 
+minidown_meta <- new.env()
 
-hook_start_result_folding <- function(base_format = list()) {
+hook_start_results_folding <- function(base_format = list()) {
   base_hook <- if (is.null(base_format$knitr$knit_hooks$source)) {
     knitr::render_markdown()
     knitr::knit_hooks$get("source")
@@ -46,34 +47,44 @@ hook_start_result_folding <- function(base_format = list()) {
   }
 
   function(x, options) {
-    # knit_hooks$set(source = start_result_folding(result_folding))
-    if (is.null(options$result.folding)) {
-      return(x)
+    # knit_hooks$set(source = start_results_folding(results_folding))
+    base_source <- base_hook(x, options)
+    if (is.null(options$results.folding)) {
+      return(base_source)
     }
 
     opening <- c(
         show = " open", hide = ""
-      )[match.arg(options$result.folding, c("show", "hide"))]
-    summary <- if (is.null(options$result.summary)) {
+      )[match.arg(options$results.folding, c("show", "hide"))]
+    summary <- if (is.null(options$summary.results)) {
         "Results"
       } else {
-        options$result.summary
+        options$results.summary
       }
 
-    paste0(
-      base_hook(x, options),
+    result <- paste0(
+      if (identical(minidown_meta$chunk_label, options$label)) {
+        "`</details>`{=html}\n\n"
+      } else {
+        ""
+      },
+      base_source,
       sprintf(
-        "\n\n`<details%s class='chunk-results'><summary>%s</summary>`{=html}",
+        "\n\n`<details%s class='chunk-results'><summary>%s</summary>`{=html}\n\n",
         opening,
         summary
       )
     )
+
+    minidown_meta$chunk_label <- options$label
+
+    result
   }
 }
 
-hook_end_result_folding <- function() function(options, before) {
-  # knit_hooks$set(result.folding = end_result_folding(result_folding))
-  if ((options$result.folding != "none") && !before) {
-    return("`</details>`{=html}")
+hook_end_results_folding <- function() function(options, before) {
+  # knit_hooks$set(results_folding = end_results_folding(results_folding))
+  if (!before) {
+    return("\n\n`</details>`{=html}\n\n")
   }
 }
