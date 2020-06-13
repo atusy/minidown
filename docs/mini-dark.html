@@ -5,7 +5,11 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
+<<<<<<< HEAD
   <meta name="dcterms.date" content="2020-06-14" />
+=======
+  <meta name="dcterms.date" content="2020-06-08" />
+>>>>>>> master
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -209,11 +213,17 @@ top: 5px;
 </style>
   <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
 // v0.0.1
+<<<<<<< HEAD
 // Written by JooYoung Seo (jooyoung@psu.edu) on June 1st, 2020.
 
 
 document.addEventListener('DOMContentLoaded', function() {
 //$(document).ready(function(){
+=======
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+>>>>>>> master
   const codeList = document.getElementsByClassName("sourceCode");
 
   for(var i in codeList) {
@@ -246,7 +256,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
+<<<<<<< HEAD
 <p class="date">2020-06-14</p>
+=======
+<p class="date">2020-06-08</p>
+>>>>>>> master
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -367,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p></details></p>
 <p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
 <p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
-<p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>source.class=&#39;details&#39;</code>).</p>
+<p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>class.source=&#39;details&#39;</code>).</p>
 <section id="showhide-exceptions" class="level2">
 <h2>Show/hide exceptions</h2>
 <p>When <code>source: show</code>, all the sources are shown. In case you need exceptions, add the <code>hide</code> class to the source. If you want to hide all with exceptions, add the <code>show</code> class to the exceptions. Of course, this feature is not limited to the source.</p>
@@ -383,7 +397,7 @@ output:
 ```
 
 
-```{r, source.class=&#39;hide&#39;}
+```{r, class.source=&#39;hide&#39;}
 &#39;This is hidden&#39;
 ```</code></pre>
 <p>and <code>hide</code> classes.</p>
@@ -412,7 +426,7 @@ output:
 ```
 
 
-```{r, source.class=&#39;details hide&#39;}
+```{r, class.source=&#39;details hide&#39;}
 &#39;This is hidden&#39;
 ```
 </code></pre>
@@ -601,10 +615,16 @@ knitr::opts_knit$set(results.folding=NULL)
 <section id="floating-toc" class="level1">
 <h1>Floating TOC</h1>
 <p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb23"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+=======
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+>>>>>>> master
 </section>
 <section id="accordion-menu" class="level1">
 <h1>Accordion menu</h1>
@@ -622,14 +642,24 @@ knitr::opts_knit$set(results.folding=NULL)
 <section id="tooltips" class="level1">
 <h1>Tooltips</h1>
 <p><strong><span class="tooltip" aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb24"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+>>>>>>> master
 </section>
 <section id="math-with-katex" class="level1">
 <h1>Math with KaTeX</h1>
 <p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a>$$</span>
 <span id="cb25-2"><a href="#cb25-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
 <span id="cb25-3"><a href="#cb25-3"></a>$$</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb16"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a>$$</span>
+<span id="cb16-2"><a href="#cb16-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb16-3"><a href="#cb16-3"></a>$$</span></code></pre></div>
+>>>>>>> master
 <p>becomes</p>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
@@ -673,6 +703,7 @@ knitr::opts_knit$set(results.folding=NULL)
 <p>A code block without line numbers.</p>
 <pre><code>Code block</code></pre>
 <p>A code block with line numbers.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb27" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb27-10"><a href="#cb27-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb27-11"><a href="#cb27-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
 <span id="cb27-12"><a href="#cb27-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
@@ -680,6 +711,15 @@ knitr::opts_knit$set(results.folding=NULL)
 <span id="cb27-14"><a href="#cb27-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
 <span id="cb27-15"><a href="#cb27-15"></a>}</span>
 <span id="cb27-16"><a href="#cb27-16"></a><span class="kw">f</span>()</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb18" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb18-10"><a href="#cb18-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb18-12"><a href="#cb18-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb18-14"><a href="#cb18-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb18-15"><a href="#cb18-15"></a>}</span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="kw">f</span>()</span></code></pre></div>
+>>>>>>> master
 <section id="code-blocks-with-long-lines" class="level3">
 <h3>Code blocks with long lines</h3>
 <section id="without-specifiying-language" class="level4">
@@ -690,11 +730,19 @@ knitr::opts_knit$set(results.folding=NULL)
 <h4>With specifying language</h4>
 <section id="without-line-numbers" class="level5">
 <h5>Without line numbers</h5>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 <section id="with-line-numbers" class="level5">
 <h5>With line numbers</h5>
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+=======
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+</section>
+<section id="with-line-numbers" class="level5">
+<h5>With line numbers</h5>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+>>>>>>> master
 </section>
 </section>
 </section>

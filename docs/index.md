@@ -1,7 +1,7 @@
 ---
 title: "minidown::mini_document"
 author: "Atsushi Yasumoto"
-date: "`r Sys.Date()`"
+date: "2020-06-14"
 output:
   minidown::mini_document:
     framework: sakura
@@ -21,56 +21,10 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(result.folding = NULL)
-`%>%` <- magrittr::`%>%`
-frameworks <- lapply(
-  minidown::frameworks,
-  function(x) names(x$stylesheet)
-) %>%
-  tibble::enframe() %>%
-  tidyr::unchop(value) %>%
-  purrr::set_names(c("framework", "theme")) %>%
-  dplyr::mutate(output_file = paste0(framework, '-', theme, '.html')) %>%
-  dplyr::mutate(
-    output_file = ifelse(
-      output_file == "sakura-default.html",
-      "index.html", .data$output_file
-    ),
-  )
-frameworks
-```
 
 
-```{r preview-all-the-frameworks-and-themes, eval=FALSE, include=FALSE}
-# Output all frameworks and themes
 
-args_template <- list(
-  code_folding = list(
-    source = "show", output = "show", message = "hide", warning = "hide"
-  ),
-  results_folding = "show",
-  toc = TRUE, toc_float = TRUE,
-  self_contained = TRUE, lib_dir = "resources",
-  keep_md = FALSE
-)
 
-purrr::pmap(
-  frameworks,
-  function(framework, theme, output_file) {
-    rmarkdown::render(
-      "index.Rmd",
-      do.call(
-        minidown::mini_document,
-        c(args_template, list(framework = framework, theme = theme))
-      ),
-      output_file = file.path(output_file)
-    )
-  }
-)
-
-if (interactive()) browseURL("index.html")
-```
 
 
 ::: {style='text-align: right'}
@@ -94,21 +48,22 @@ Default framework and its theme are `"sakura"` and `"default"`.
 Followings are the list of available ones.
 Live examples are available via links.
 
-```{r, echo=FALSE}
-frameworks %>%
-  dplyr::mutate(
-    theme = sprintf('[%s](%s)', theme, output_file),
-    framework = framework %>%
-      forcats::fct_relevel(
-        c("sakura",
-          framework %>% unique() %>% setdiff(c("sakura", "mini")),
-          "mini")
-      )
-  ) %>%
-  dplyr::group_by(framework) %>%
-  dplyr::summarise(theme = paste(theme, collapse = ', ')) %>%
-  knitr::kable(escape=FALSE)
+
+```{.chunk-message .details summary='Message'}
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
+
+
+
+framework   theme                                                                                                                                                     
+----------  ----------------------------------------------------------------------------------------------------------------------------------------------------------
+sakura      [default](index.html), [dark_solarized](sakura-dark_solarized.html), [dark](sakura-dark.html), [earthly](sakura-earthly.html), [vader](sakura-vader.html) 
+water       [light](water-light.html), [dark](water-dark.html)                                                                                                        
+mini        [default](mini-default.html), [nord](mini-nord.html), [dark](mini-dark.html)                                                                              
+
+
+
+`</details>`{=html}
 
 # Code folding
 
@@ -127,7 +82,8 @@ output:
 
 The above results in
 
-```{r, error=TRUE, class.source="numberLines"}
+
+```{.r .numberLines .chunk-source .details .show summary='Source'}
 f <- function() {
   print(1)
   message('message')
@@ -137,13 +93,37 @@ f <- function() {
 f()
 ```
 
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+```{.chunk-output .details .show summary='Output'}
+## [1] 1
+```
+
+```{.chunk-message .details summary='Message'}
+## message
+```
+
+```{.chunk-warning .details summary='Warning'}
+## Warning in f(): warning
+```
+
+```{.chunk-error .details .show summary='Error'}
+## Error in f(): error
+```
+
+
+
+`</details>`{=html}
+
 If the code folding is specified for some of them,
 then the code folding of the others will be `none`.
 
 Like `rmarkdown::html_document`,
 `code_folding: show` indicates source is `show` and others are `none`.
 
-By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `class.source='details'`).
+By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `source.class='details'`).
 
 ## Show/hide exceptions
 
@@ -160,14 +140,14 @@ output:
       source: show
 ---
 
-`r ''````{r}
+```{r}
 'This is shown'
-`r ''````
+```
 
 
-`r ''````{r, class.source='hide'}
+```{r, source.class='hide'}
 'This is hidden'
-`r ''````
+```
 ````
 
 and `hide` classes.
@@ -177,10 +157,29 @@ and `hide` classes.
 The content of summary can be controlled via `summary.*` chunk options.
 This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.
 
-```{r, summary.source='iris.R', summary.output='Answer', class.output='hide'}
+
+```{.r .chunk-source .details .show summary='iris.R'}
 # summary.source='iris.R', summary.output='Answer', class.output='hide'
 head(iris)
 ```
+
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+```{.hide .chunk-output .details summary='Answer'}
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+```
+
+
+
+`</details>`{=html}
 
 ## Fold only some
 
@@ -193,14 +192,14 @@ output:
     code_folding: none
 ---
 
-`r ''````{r}
+```{r}
 'This is shown'
-`r ''````
+```
 
 
-`r ''````{r, class.source='details hide'}
+```{r, source.class='details hide'}
 'This is hidden'
-`r ''````
+```
 
 ````
 
@@ -219,9 +218,9 @@ output:
 To put the summary on right instead of left, add the following chunk in your document.
 
 ````
-`r ''````{css, echo=FALSE}
+```{css, echo=FALSE}
 .chunk-summary {text-align: right;}
-`r ''````
+```
 ````
 
 The features below are available only if the `theme` is `"mini"`
@@ -239,9 +238,25 @@ output:
 This is a good option when you have side effects such as drawing figures and tables.
 Result button is placed on the left so that you can distinguish from code_folding buttons.
 
-```{r, results.folding='hide'}
+
+```{.r .chunk-source .details .show summary='Source'}
 knitr::kable(iris[1:2, ])
 ```
+
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
+-------------  ------------  -------------  ------------  --------
+          5.1           3.5            1.4           0.2  setosa  
+          4.9           3.0            1.4           0.2  setosa  
+
+
+
+`</details>`{=html}
 
 
 ## Change summary text
@@ -260,22 +275,57 @@ you have three options.
 
 with `results='hold'` and/or `fig.show='hold'`.
 
-```{r, results.folding='hide', results='hold'}
+
+```{.r .chunk-source .details .show summary='Source'}
 'foo'
 knitr::kable(iris[1:2, ])
 ```
+
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+```{.chunk-output .details .show summary='Output'}
+## [1] "foo"
+```
+
+
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
+-------------  ------------  -------------  ------------  --------
+          5.1           3.5            1.4           0.2  setosa  
+          4.9           3.0            1.4           0.2  setosa  
+
+
+
+`</details>`{=html}
 
 ### Iterate with `for` or `lapply`
 
 or their friends.
 
-```{r, results.folding='hide'}
+
+```{.r .chunk-source .details .show summary='Source'}
 for (i in 1:2) print(i)
 ```
 
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+```{.chunk-output .details .show summary='Output'}
+## [1] 1
+## [1] 2
+```
+
+
+
+`</details>`{=html}
+
 ### Define a function with side effects
 
-```{r, results.folding='hide'}
+
+```{.r .chunk-source .details .show summary='Source'}
 f <- function() {
   print('foo')
   knitr::knit_print(knitr::kable(iris[1:2, ]))
@@ -284,7 +334,26 @@ f <- function() {
 f()
 ```
 
-## Exceptionally show/hide some results
+
+
+`<details class='chunk-results'><summary>Results</summary>`{=html}
+
+```{.chunk-output .details .show summary='Output'}
+## [1] "foo"
+```
+
+
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
+-------------  ------------  -------------  ------------  --------
+          5.1           3.5            1.4           0.2  setosa  
+          4.9           3.0            1.4           0.2  setosa  
+
+
+
+`</details>`{=html}
+
+## Make some exeptions
 
 To disable folding for some chunks, specify `results.folding=NULL` as a chunk option.
 When `results_folding: show` and you want to hide for some, then specify `results.folding='hide'` as a chunk option.
@@ -486,9 +555,19 @@ ___
 
 ## Table
 
-```{r, echo=FALSE}
-knitr::kable(head(iris))
-```
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
+-------------  ------------  -------------  ------------  --------
+          5.1           3.5            1.4           0.2  setosa  
+          4.9           3.0            1.4           0.2  setosa  
+          4.7           3.2            1.3           0.2  setosa  
+          4.6           3.1            1.5           0.2  setosa  
+          5.0           3.6            1.4           0.2  setosa  
+          5.4           3.9            1.7           0.4  setosa  
+
+
+
+`</details>`{=html}
 
 
 ## Inline formatting
