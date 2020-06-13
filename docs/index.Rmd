@@ -12,14 +12,17 @@ output:
       message: hide
       warning: hide
       error: show
+    results_folding: hide
     toc: true
     toc_float: true
     number_sections: true
     self_contained: true
     code_download: false
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(result.folding = NULL)
 `%>%` <- magrittr::`%>%`
 frameworks <- lapply(
   minidown::frameworks,
@@ -39,15 +42,17 @@ frameworks
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r preview-all-the-frameworks-and-themes, eval=FALSE, include=FALSE}
 # Output all frameworks and themes
 
 args_template <- list(
   code_folding = list(
     source = "show", output = "show", message = "hide", warning = "hide"
   ),
+  results_folding = "show",
   toc = TRUE, toc_float = TRUE,
-  self_contained = TRUE, lib_dir = "resources"
+  self_contained = TRUE, lib_dir = "resources",
+  keep_md = FALSE
 )
 
 purrr::pmap(
@@ -221,6 +226,96 @@ To put the summary on right instead of left, add the following chunk in your doc
 
 The features below are available only if the `theme` is `"mini"`
 
+# Results folding
+
+By specifying `result_folding: show` or `hide`, you can fold entire results.
+
+```yaml
+output:
+  minidown::mini_document:
+    results_folding: show # hide or none
+```
+
+This is a good option when you have side effects such as drawing figures and tables.
+Result button is placed on the left so that you can distinguish from code_folding buttons.
+
+```{r, results.folding='hide'}
+knitr::kable(iris[1:2, ])
+```
+
+
+## Change summary text
+
+By default, summary text is "Results".
+You can change this by a chunk option, `summary.results`.
+Just like `summary.*` in code folding.
+
+## Multiple results per chunk
+
+If you have multiple results per chunk and combine them to a single folding,
+you have three options.
+
+
+### Set chunk options
+
+with `results='hold'` and/or `fig.show='hold'`.
+
+```{r, results.folding='hide', results='hold'}
+'foo'
+knitr::kable(iris[1:2, ])
+```
+
+### Iterate with `for` or `lapply`
+
+or their friends.
+
+```{r, results.folding='hide'}
+for (i in 1:2) print(i)
+```
+
+### Define a function with side effects
+
+```{r, results.folding='hide'}
+f <- function() {
+  print('foo')
+  knitr::knit_print(knitr::kable(iris[1:2, ]))
+}
+
+f()
+```
+
+## Exceptionally show/hide some results
+
+To disable folding for some chunks, specify `results.folding=NULL` as a chunk option.
+When `results_folding: show` and you want to hide for some, then specify `results.folding='hide'` as a chunk option.
+Similarly, you make exeptions for `results_folding: hide` as well.
+
+To disable folding by default, but enable it for some chunks,
+then specify `results_folding: show # or hide` as a YAML front matter,
+and run `knitr::opts_chunk$set(results.folding=NULL)` at the beggining of your document.
+Then, you can enable the feature for selected chunks by specifying `'show'` or `'hide'` to the `results.folding` chunk option.
+
+~~~
+---
+output:
+  minidown::mini_document:
+    result_folding: show
+---
+
+`r''````{r, include=FALSE}
+knitr::opts_knit$set(results.folding=NULL)
+`r''````
+
+`r''````{r}
+'This chunk does not fold results'
+`r''````
+
+
+`r''````{r, result.folding='hide'}
+'This chunk hides not fold results'
+`r''````
+~~~
+
 # Floating TOC
 
 Table of contents can be floated on the left of the page by specifying `toc_float: true`.
@@ -231,6 +326,7 @@ See what happens by shrinking the width of your browser.
 ```yaml
 output:
   minidown::mini_document:
+    toc: true
     toc_float: true
 ```
 

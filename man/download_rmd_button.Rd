@@ -48,5 +48,4 @@ download_rmd_button(input)
 
 input <- tempdir()
 download_rmd_button(input, embed = xfun::embed_dir)
-
 }
