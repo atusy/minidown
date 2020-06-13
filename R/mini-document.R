@@ -44,6 +44,7 @@ mini_document <- function(framework = "sakura",
                           toc = FALSE,
                           toc_float = FALSE,
                           code_folding = c("none", "show", "hide"),
+                          result_folding = c("none", "show", "hide"),
                           code_download = FALSE,
                           self_contained = TRUE,
                           math = "katex",
@@ -75,9 +76,11 @@ mini_document <- function(framework = "sakura",
   code_download_html <- if (code_download && html5) tempfile(fileext = ".html")
 
   rmarkdown::output_format(
-    knitr = list(
-      opts_chunk = default_opts_chunk,
-      opts_hooks = spec_opts_hooks(code_folding)
+    knitr = rmarkdown::knitr_options(
+      opts_chunk = spec_opts_chunk(result_folding),
+      opts_hooks = spec_opts_hooks(code_folding),
+      knit_hooks =
+        spec_knit_hooks(base_format = fmt, result_folding = result_folding)
     ),
     pandoc = if (html5) list(to = "html5"),
     keep_md = keep_md,

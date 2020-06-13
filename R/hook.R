@@ -35,3 +35,45 @@ hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
     options
   }
 }
+
+
+hook_start_result_folding <- function(base_format = list()) {
+  base_hook <- if (is.null(base_format$knitr$knit_hooks$source)) {
+    knitr::render_markdown()
+    knitr::knit_hooks$get("source")
+  } else {
+    base_format$knitr$knit_hooks$source
+  }
+
+  function(x, options) {
+    # knit_hooks$set(source = start_result_folding(result_folding))
+    if (is.null(options$result.folding)) {
+      return(x)
+    }
+
+    opening <- c(
+        show = " open", hide = ""
+      )[match.arg(options$result.folding, c("show", "hide"))]
+    summary <- if (is.null(options$result.summary)) {
+        "Results"
+      } else {
+        options$result.summary
+      }
+
+    paste0(
+      base_hook(x, options),
+      sprintf(
+        "\n\n`<details%s class='chunk-results'><summary>%s</summary>`{=html}",
+        opening,
+        summary
+      )
+    )
+  }
+}
+
+hook_end_result_folding <- function() function(options, before) {
+  # knit_hooks$set(result.folding = end_result_folding(result_folding))
+  if ((options$result.folding != "none") && !before) {
+    return("`</details>`{=html}")
+  }
+}
