@@ -133,6 +133,7 @@ except for the behavior of the <code>code_folding</code> option.</p>
   <span class='kw'>toc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>toc_float</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>code_folding</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"show"</span>, <span class='st'>"hide"</span>),
+  <span class='kw'>results_folding</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"show"</span>, <span class='st'>"hide"</span>),
   <span class='kw'>code_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>math</span> <span class='kw'>=</span> <span class='st'>"katex"</span>,
@@ -174,6 +175,12 @@ If a named list, each element may have one of the above strings.
 Names are some of "source", "output", "message", "warning", and "error".
 If the list does not have some of the element with the above name,
 they are treated as <code>"none"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>results_folding</th>
+      <td><p>Setup results folding by a string, <code>"none"</code>, <code>"show"</code>,
+or <code>"hide"</code>. This feature will fold entire results, including side effects
+such as figures and tables.</p></td>
     </tr>
     <tr>
       <th>code_download</th>

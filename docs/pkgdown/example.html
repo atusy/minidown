@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • minidown</title>
+<title>NA • minidown</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script>
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="NA" />
 
 
 
@@ -58,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,7 +70,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minidown</a>
+        <a class="navbar-link" href="index.html">minidown</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
       </span>
     </div>
@@ -78,19 +78,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../../index.html">Demo</a>
+  <a href="../index.html">Demo</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -111,53 +111,34 @@
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/atusy/minidown/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <h1>NA</h1>
     </div>
 
-    <div id="minidown-0015" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.5">
-<a href="#minidown-0015" class="anchor"></a>minidown 0.0.1.5<small> Unreleased </small>
-</h1>
-<ul>
-<li>New features
-<ul>
-<li>Implement <code>results_folding</code> option to fold entire results including figures and tables.</li>
-<li>Implement <code>code_download</code> option for <code><a href="../reference/mini_document.html">mini_document()</a></code>
-</li>
-<li>Add <code><a href="../reference/download_rmd_button.html">download_rmd_button()</a></code> so that users can place a download button anywhere in the document.</li>
-</ul>
-</li>
-<li>Template
-<ul>
-<li>Elements aftter <code>include-before</code> and <code>include-after</code> are wrapped by <code>&lt;main&gt;</code> element.</li>
-</ul>
-</li>
-<li>Layout
-<ul>
-<li>CSS Grid layout for floating TOC is applied to <code>&lt;main&gt;</code> instead of <code>&lt;body&gt;</code> so that <code>include-before</code> and <code>include-after</code> works safely.</li>
-<li>For the consistency with <code>code_folding = TRUE</code>, the max-width of body become 900px when <code>code_folding = FALSE</code>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-    <div id="minidown-001" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1">
-<a href="#minidown-001" class="anchor"></a>minidown 0.0.1<small> 2020-05-04 </small>
-</h1>
-<ul>
-<li>Initial release with the support of following frameworks:
-<ul>
-<li>mini.css</li>
-<li>sakura</li>
-<li>Water.css</li>
-</ul>
-</li>
-</ul>
-</div>
+
+<hr>
+<p>title: title output: minidown::mini_document: results_folding: show code_folding: source: show output: show keep_md: true —</p>
+<p><code>{.r .chunk-source .details .show summary='Source'} 'a'</code></p>
+<p><code>&lt;details class='chunk-results'&gt;&lt;summary&gt;Results&lt;/summary&gt;</code>{=html}</p>
+<p><code>{.chunk-output .details .show summary='Output'} ## [1] "a"</code></p>
+<p><code>&lt;/details&gt;</code>{=html}</p>
+<p><code>{.r .chunk-source .details .show summary='Source'} plot(iris)</code></p>
+<p><code>&lt;details class='chunk-results'&gt;&lt;summary&gt;Results&lt;/summary&gt;</code>{=html}</p>
+<p><img src="example_files/figure-html5/unnamed-chunk-1-1.png" width="672"><code>&lt;/details&gt;</code>{=html}</p>
+<p><code>{.r .chunk-source .details .show summary='Source'} 'b'</code></p>
+<p><code>&lt;details class='chunk-results'&gt;&lt;summary&gt;Results&lt;/summary&gt;</code>{=html}</p>
+<p><code>{.chunk-output .details .show summary='Output'} ## [1] "b"</code></p>
+<p>`</p>
+
+<p>`{=html}</p>
+<p><code>{.r .chunk-source .details .show summary='Source'} for(i in 1:10) plot(i)</code></p>
+<p><code>&lt;details open class='chunk-results'&gt;&lt;summary&gt;Results&lt;/summary&gt;</code>{=html}</p>
+<p><img src="example_files/figure-html5/unnamed-chunk-2-1.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-2.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-3.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-4.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-5.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-6.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-7.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-8.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-9.png" width="672"><img src="example_files/figure-html5/unnamed-chunk-2-10.png" width="672">`</p>
+
+<p>`{=html}</p>
+
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -167,6 +148,7 @@
   </div>
 
 </div>
+
 
 
       <footer>
