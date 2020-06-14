@@ -10,6 +10,7 @@ mini_document(
   toc = FALSE,
   toc_float = FALSE,
   code_folding = c("none", "show", "hide"),
+  results_folding = c("none", "show", "hide"),
   code_download = FALSE,
   self_contained = TRUE,
   math = "katex",
@@ -41,6 +42,10 @@ If a named list, each element may have one of the above strings.
 Names are some of "source", "output", "message", "warning", and "error".
 If the list does not have some of the element with the above name,
 they are treated as \code{"none"}.}
+
+\item{results_folding}{Setup results folding by a string, \code{"none"}, \code{"show"},
+or \code{"hide"}. This feature will fold entire results, including side effects
+such as figures and tables.}
 
 \item{code_download}{If \code{TRUE} and \code{framework = "bootstrap"}, the output
 includes Rmd file itself and supplies download button of it.}

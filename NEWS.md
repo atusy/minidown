@@ -1,6 +1,7 @@
-# minidown 0.0.1.4
+# minidown 0.0.1.5
 
 * New features
+  * Implement `results_folding` option to fold entire results including figures and tables.
   * Implement `code_download` option for `mini_document()`
   * Add `download_rmd_button()` so that users can place a download button anywhere
     in the document.
