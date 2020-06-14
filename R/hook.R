@@ -38,12 +38,12 @@ hook_code_class <- function(type, code_folding = c("none", "show", "hide")) {
 
 minidown_meta <- new.env()
 
-hook_start_results_folding <- function(base_format = list()) {
-  base_hook <- if (is.null(base_format$knitr$knit_hooks$source)) {
+hook_start_results_folding <- function(knit_hook_source = NULL) {
+  base_hook <- if (is.null(knit_hook_source)) {
     knitr::render_markdown()
     knitr::knit_hooks$get("source")
   } else {
-    base_format$knitr$knit_hooks$source
+    knit_hook_source
   }
 
   function(x, options) {

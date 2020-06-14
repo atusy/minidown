@@ -82,8 +82,10 @@ mini_document <- function(framework = "sakura",
     knitr = rmarkdown::knitr_options(
       opts_chunk = spec_opts_chunk(results_folding),
       opts_hooks = spec_opts_hooks(code_folding),
-      knit_hooks =
-        spec_knit_hooks(base_format = fmt, results_folding = results_folding)
+      knit_hooks = spec_knit_hooks(
+          knit_hook_source = fmt$knitr$knit_hooks$source,
+          results_folding = results_folding
+        )
     ),
     pandoc = if (html5) list(to = "html5"),
     keep_md = keep_md,
