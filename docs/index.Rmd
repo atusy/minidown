@@ -94,7 +94,7 @@ Default framework and its theme are `"sakura"` and `"default"`.
 Followings are the list of available ones.
 Live examples are available via links.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 frameworks %>%
   dplyr::mutate(
     theme = sprintf('[%s](%s)', theme, output_file),
