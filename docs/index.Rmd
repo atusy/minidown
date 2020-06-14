@@ -22,7 +22,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(result.folding = NULL)
+knitr::opts_chunk$set(results.folding = NULL)
 `%>%` <- magrittr::`%>%`
 frameworks <- lapply(
   minidown::frameworks,
