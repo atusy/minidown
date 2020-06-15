@@ -15,6 +15,7 @@
     the max-width of body become 900px when `code_folding = FALSE`
 * Bug fix
   * fix `self_contained: false` not working properly
+  * exclude `toc_float`-related CSS if the `toc` option is `FALSE` (#15).
     
 
 # minidown 0.0.1

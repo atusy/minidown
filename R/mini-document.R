@@ -64,8 +64,9 @@ mini_document <- function(framework = "sakura",
   fmt <- rmarkdown::html_document(
     theme = if (html5) NULL else theme,
     pandoc_args = spec_pandoc_args(pandoc_args, html5, katex),
-    extra_dependencies =
-      spec_dependencies(extra_dependencies, toc_float, html5, framework, theme),
+    extra_dependencies = spec_dependencies(
+        extra_dependencies, toc && toc_float, html5, framework, theme
+      ),
     template = spec_template(template, html5),
     includes = spec_includes(includes, katex),
     toc = toc,
