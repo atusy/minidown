@@ -73,6 +73,8 @@ mini_document <- function(framework = "sakura",
     code_folding = "none", # As minidown offers different approach
     code_download = code_download && !html5,
     mathjax = if (katex) NULL else math,
+    self_contained = self_contained,
+    keep_md = keep_md,
     ...
   )
 

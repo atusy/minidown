@@ -1,4 +1,4 @@
-# minidown 0.0.1.5
+# minidown 0.0.1.7
 
 * New features
   * Implement `results_folding` option to fold entire results including figures and tables.
@@ -13,6 +13,9 @@
     so that `include-before` and `include-after` works safely.
   * For the consistency with `code_folding = TRUE`,
     the max-width of body become 900px when `code_folding = FALSE`
+* Bug fix
+  * fix `self_contained: false` not working properly
+    
 
 # minidown 0.0.1
 
