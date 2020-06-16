@@ -1,10 +1,11 @@
-# minidown 0.0.1.5
+# minidown 0.0.1.8
 
 * New features
   * Implement `results_folding` option to fold entire results including figures and tables.
   * Implement `code_download` option for `mini_document()`
   * Add `download_rmd_button()` so that users can place a download button anywhere
     in the document.
+  * Add `set_results_folding()`. This function adds results folding feature to any R Markdown output formats that creates HTML.
 * Template
   * Elements aftter `include-before` and `include-after` are wrapped by `<main>`
     element.
