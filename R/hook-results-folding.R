@@ -57,8 +57,8 @@ hook_end_results_folding <- function() function(options, before) {
 
 #' Folding chunk results in R Markdown documents
 #'
-#' This feature will fold entire results, including side effects
-#' such as figures and tables.
+#' The folding covers entire results including figures and tables. Note that
+#' this feature only works with HTML outputs.
 #'
 #' @param results_folding Setup results folding by a string, `"none"`, `"show"`,
 #'  or `"hide"`. If `"none"`, the feature appears to be disabled, however,
