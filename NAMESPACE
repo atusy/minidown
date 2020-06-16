@@ -3,3 +3,4 @@
 export(download_rmd_button)
 export(frameworks)
 export(mini_document)
+export(set_results_folding)
