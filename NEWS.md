@@ -1,4 +1,4 @@
-# minidown 0.0.1.9
+# minidown 0.0.2
 
 * New features
   * `mini_document()` adds `results_folding` option to fold entire results including figures and tables.

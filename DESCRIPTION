@@ -1,7 +1,7 @@
 Package: minidown
 Type: Package
 Title: Create Simple Yet Powerful HTML Documents with Light Weight CSS Frameworks
-Version: 0.0.1
+Version: 0.0.2
 Author: Atsushi Yasumoto [aut, cph, cre]
     (<https://orcid.org/0000-0002-8335-495X>),
     Angelos Chalaris [aut] (mini.css),
