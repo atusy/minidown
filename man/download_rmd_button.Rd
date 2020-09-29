@@ -46,6 +46,9 @@ input <- tempfile()
 writeLines("", input)
 download_rmd_button(input)
 
-input <- tempdir()
-download_rmd_button(input, embed = xfun::embed_dir)
+# Requires zip command
+if (interactive()) {
+  input <- tempdir()
+  download_rmd_button(input, embed = xfun::embed_dir)
+}
 }
