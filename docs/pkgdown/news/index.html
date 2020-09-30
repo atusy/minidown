@@ -117,29 +117,34 @@
       <small>Source: <a href='https://github.com/atusy/minidown/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="minidown-0015" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.5">
-<a href="#minidown-0015" class="anchor"></a>minidown 0.0.1.5<small> Unreleased </small>
+    <div id="minidown-0019" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.1.9">
+<a href="#minidown-0019" class="anchor"></a>minidown 0.0.1.9<small> Unreleased </small>
 </h1>
 <ul>
 <li>New features
 <ul>
-<li>Implement <code>results_folding</code> option to fold entire results including figures and tables.</li>
-<li>Implement <code>code_download</code> option for <code><a href="../reference/mini_document.html">mini_document()</a></code>
-</li>
+<li>
+<code><a href="../reference/mini_document.html">mini_document()</a></code> adds <code>results_folding</code> option to fold entire results including figures and tables.</li>
+<li>
+<code><a href="../reference/mini_document.html">mini_document()</a></code> adds <code>code_download</code> option</li>
 <li>Add <code><a href="../reference/download_rmd_button.html">download_rmd_button()</a></code> so that users can place a download button anywhere in the document.</li>
+<li>Add <code><a href="../reference/set_results_folding.html">set_results_folding()</a></code>. This function adds results folding feature to any R Markdown output formats that creates HTML.</li>
+<li>
+<code><a href="../reference/mini_document.html">mini_document()</a></code> warns if Pandoc is older than expected. Especially, if Pandoc &lt; 2.0, <code>--lua-filters</code> pandoc argument is omitted.</li>
 </ul>
 </li>
-<li>Template
+<li>Template and layouts
 <ul>
-<li>Elements aftter <code>include-before</code> and <code>include-after</code> are wrapped by <code>&lt;main&gt;</code> element.</li>
+<li>On template, Elements after <code>include-before</code> and <code>include-after</code> are wrapped by <code>&lt;main&gt;</code> element. Accordingly, <code><a href="../reference/mini_document.html">mini_document(toc_float = TRUE)</a></code> applies CSS Grid Layout on <code>&lt;main&gt;</code> element and its contents. In this way, users can safely include additional contents.</li>
+<li>For the consistency with <code><a href="../reference/mini_document.html">mini_document(code_folding = TRUE)</a></code>, the max-width of body become 900px when <code>code_folding = FALSE</code>
+</li>
 </ul>
 </li>
-<li>Layout
+<li>Bug fix
 <ul>
-<li>CSS Grid layout for floating TOC is applied to <code>&lt;main&gt;</code> instead of <code>&lt;body&gt;</code> so that <code>include-before</code> and <code>include-after</code> works safely.</li>
-<li>For the consistency with <code>code_folding = TRUE</code>, the max-width of body become 900px when <code>code_folding = FALSE</code>
-</li>
+<li>fix <code>self_contained: false</code> not working properly</li>
+<li>exclude <code>toc_float</code>-related CSS if the <code>toc</code> option is <code>FALSE</code> (<a href='https://github.com/atusy/minidown/issues/15'>#15</a>).</li>
 </ul>
 </li>
 </ul>

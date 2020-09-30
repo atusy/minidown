@@ -75,7 +75,7 @@ hook_end_results_folding <- function() function(options, before) {
 #' # New hooks
 #' knitr::knit_hooks$get()[c("source", "results.folding")]
 #'
-#' @export
+#' @noRd
 set_results_folding <- function(
   results_folding = c("none", "show", "hide"),
   knit_hook_source = knitr::knit_hooks$get("source")
