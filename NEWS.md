@@ -1,3 +1,8 @@
+# minidown 0.0.2.1
+
+* Bug fix
+  * Internal `check_pandoc_version()` warned even if systems have Pandoc >= 2.7.2 (thanks, eddelbuettel, #19).
+
 # minidown 0.0.2
 
 * New features
