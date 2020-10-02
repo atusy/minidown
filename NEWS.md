@@ -1,7 +1,9 @@
-# minidown 0.0.2.1
+# minidown 0.0.2.2
 
+* Layouts
+  * Fixed css jitter by `a.button:hover` on the sakura framework (thanks, @jmbuhr, #20)
 * Bug fix
-  * Internal `check_pandoc_version()` warned even if systems have Pandoc >= 2.7.2 (thanks, eddelbuettel, #19).
+  * Internal `check_pandoc_version()` warned even if systems have Pandoc >= 2.7.2 (thanks, @eddelbuettel, #19).
 
 # minidown 0.0.2
 
