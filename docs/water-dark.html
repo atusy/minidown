@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2020-06-14" />
+  <meta name="dcterms.date" content="2020-10-02" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -331,17 +331,14 @@ top: 5px;
 </style>
   <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
 // v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) on June 1st, 2020.
-
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
 
 document.addEventListener('DOMContentLoaded', function() {
-//$(document).ready(function(){
   const codeList = document.getElementsByClassName("sourceCode");
-
-  for(var i in codeList) {
+  for (var i = 0; i < codeList.length; i++) {
     var linkList = codeList[i].getElementsByTagName('a');
-    for(var j in linkList) {
-      if(linkList[j].innerHTML === "") {
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
         linkList[j].setAttribute('aria-hidden', 'true');
       }
     }
@@ -356,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
         delimiters: [
           {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$$", display: false}
+          {left: "$", right: "$", display: false}
         ],
         displayMode: true
       });
@@ -368,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2020-06-14</p>
+<p class="date">2020-10-02</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -449,6 +446,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </tr>
 </tbody>
 </table>
+<p>Here’s an example YAML frontmatter specifying a framework and a theme.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
 </section>
 <section id="code-folding" class="level1">
 <h1>Code folding</h1>
@@ -463,13 +465,13 @@ document.addEventListener('DOMContentLoaded', function() {
       error: show</code></pre>
 <p>The above results in</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb3" data-summary="Source"><pre class="sourceCode numberSource r numberLines chunk-source details show"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines chunk-source details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="chunk-output details show" data-summary="Output"><code>## [1] 1</code></pre>
@@ -508,8 +510,8 @@ output:
 <h2>Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
-<div class="sourceCode" id="cb9" data-summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
 </section>
 <section id="fold-only-some" class="level2">
@@ -533,15 +535,12 @@ output:
 </section>
 <section id="prefer-rmarkdownhtml_document" class="level2">
 <h2>Prefer <code>rmarkdown::html_document</code></h2>
-<p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>theme</code> other than <code>&quot;mini&quot;</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
-<p>To put the summary on right instead of left, add the following chunk in your document.</p>
-<pre><code>```{css, echo=FALSE}
-.chunk-summary {text-align: right;}
-```</code></pre>
+<p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>framework: bootstrap</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
+<hr />
 <p>The features below are available only if the <code>theme</code> is <code>&quot;mini&quot;</code></p>
 </section>
 </section>

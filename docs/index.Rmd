@@ -110,6 +110,15 @@ frameworks %>%
   knitr::kable(escape=FALSE)
 ```
 
+Here's an example YAML frontmatter specifying a framework and a theme.
+
+```yaml
+output:
+  minidown::mini_document:
+    framework: sakura
+    theme: default
+```
+
 # Code folding
 
 Code folding can be controlled by the YAML frontmatter like:
@@ -207,22 +216,15 @@ output:
 ## Prefer `rmarkdown::html_document`
 
 If you prefer `rmarkdown::html_document` except for the code foliding,
-specify the `theme` other than `"mini"`.
+specify the `framework: bootstrap`.
 
 ```yaml
 output:
   minidown::mini_document:
-    theme: default
+    framework: bootstrap
     code_folding: show
 ```
-
-To put the summary on right instead of left, add the following chunk in your document.
-
-````
-`r ''````{css, echo=FALSE}
-.chunk-summary {text-align: right;}
-`r ''````
-````
+_____
 
 The features below are available only if the `theme` is `"mini"`
 
