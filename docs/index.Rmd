@@ -224,9 +224,6 @@ output:
     framework: bootstrap
     code_folding: show
 ```
-_____
-
-The features below are available only if the `theme` is `"mini"`
 
 # Results folding
 
@@ -333,6 +330,8 @@ output:
 ```
 
 # Accordion menu 
+
+The features below are available only if the `theme` is `"mini"`
 
 :::::: {.collapse}
 
