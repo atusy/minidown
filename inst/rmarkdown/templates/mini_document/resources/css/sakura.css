@@ -67,3 +67,7 @@ nav code {
   background-color: unset;
   color: unset;
 }
+
+a.button:hover{
+  border-width: 1px;
+}
