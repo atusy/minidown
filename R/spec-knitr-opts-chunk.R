@@ -1,9 +1,10 @@
 spec_opts_chunk <- function(results_folding = c("none", "show", "hide")) {
-  opts <- default_opts_chunk
+  options = list()
 
   results_folding <- match.arg(results_folding)
-  if (results_folding == "none") return(opts)
+  if (results_folding != "none") {
+    options$results.folding <- results_folding
+  }
 
-  opts$results.folding = results_folding
-  opts
+  options
 }
