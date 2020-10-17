@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2020-10-02" />
+  <meta name="dcterms.date" content="2020-10-17" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -475,6 +475,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+  <style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+.hasAnchor:hover a.anchor-section::before {visibility: visible; content: '#';}
+</style>
+  <script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
@@ -495,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2020-10-02</p>
+<p class="date">2020-10-17</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -595,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
       error: show</code></pre>
 <p>The above results in</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines chunk-source details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
@@ -604,15 +637,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
-<pre class="chunk-output details show" data-summary="Output"><code>## [1] 1</code></pre>
+<pre class="details show" data-summary="Output"><code>## [1] 1</code></pre>
 </details>
 <details class="chunk-details"><summary class="chunk-summary">Message</summary>
-<pre class="chunk-message details" data-summary="Message"><code>## message</code></pre>
+<pre class="details" data-summary="Message"><code>## message</code></pre>
 </details>
 <details class="chunk-details"><summary class="chunk-summary">Warning</summary>
-<pre class="chunk-warning details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
+<pre class="details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
 </details>
-<pre class="chunk-error"><code>## Error in f(): error</code></pre>
+<pre><code>## Error in f(): error</code></pre>
 <p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
 <p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
 <p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>class.source=&#39;details&#39;</code>).</p>
@@ -640,7 +673,7 @@ output:
 <h2>Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
-<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
 </section>
@@ -680,7 +713,7 @@ output:
 <span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
 <p>This is a good option when you have side effects such as drawing figures and tables. Result button is placed on the left so that you can distinguish from code_folding buttons.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb14" data-summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb14" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <table>
@@ -722,12 +755,12 @@ output:
 <h3>Set chunk options</h3>
 <p>with <code>results=&#39;hold&#39;</code> and/or <code>fig.show=&#39;hold&#39;</code>.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="st">&#39;foo&#39;</span></span>
+<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="st">&#39;foo&#39;</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
-<pre class="chunk-output details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
+<pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
 <table>
 <thead>
@@ -762,11 +795,11 @@ output:
 <h3>Iterate with <code>for</code> or <code>lapply</code></h3>
 <p>or their friends.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb17" data-summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb17" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
-<pre class="chunk-output details show" data-summary="Output"><code>## [1] 1
+<pre class="details show" data-summary="Output"><code>## [1] 1
 ## [1] 2</code></pre>
 </details>
 <p></details></p>
@@ -774,7 +807,7 @@ output:
 <section id="define-a-function-with-side-effects" class="level3">
 <h3>Define a function with side effects</h3>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb19" data-summary="Source"><pre class="sourceCode r chunk-source details show"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<div class="sourceCode" id="cb19" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
 <span id="cb19-3"><a href="#cb19-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
 <span id="cb19-4"><a href="#cb19-4"></a>}</span>
@@ -783,7 +816,7 @@ output:
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
-<pre class="chunk-output details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
+<pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
 <table>
 <thead>
