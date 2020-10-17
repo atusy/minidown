@@ -9,6 +9,11 @@ gen_hook_code_folding <- function(code_folding) {
   summaries <- ifelse(code_folding == "none", list(NULL), default_summary)
 
   function(options) {
+    if (isTRUE(options$collapse)) {
+      opts_class <- opts_class[1L]
+      opts_attr <- opts_attr[1L]
+      opts_summary <- opts_summary[1L]
+    }
     options[opts_class] <- Map(code_folding_class, options[opts_class], details)
     options[opts_attr] <- Map(
       code_folding_attr, options[opts_attr], summaries, options[opts_summary])

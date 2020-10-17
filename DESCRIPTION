@@ -42,9 +42,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
     htmltools,
-    knitr,
+    knitr (>= 1.31),
     rmarkdown,
     xfun
+Remotes:
+    yihui/knitr
 Suggests:
     testthat (>= 2.1.0)
 SystemRequirements: pandoc (>= 2.7.2) - http://pandoc.org
