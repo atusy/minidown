@@ -42,7 +42,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
     htmltools,
-    knitr (>= 1.31),
+    knitr,
     rmarkdown,
     xfun
 Remotes:
