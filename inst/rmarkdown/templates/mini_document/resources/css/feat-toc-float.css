@@ -26,5 +26,6 @@
     max-height: 85vh;
     overflow-y: auto;
     top: 5px;
+    border: none;
   }
 }
