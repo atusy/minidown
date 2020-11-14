@@ -35,6 +35,16 @@ remotes::install_github("atusy/minidown")
     * wrapping body paragraphs by the `<article>` tag.
   * Output format is HTML4 as an exception if `framework = "bootstrap"`.
 
+## Live Examples
+
+- Package vignettes from
+    - [digest](https://cran.r-project.org/package=digest),
+      [littler](https://cran.r-project.org/package=littler),
+      [spdlog](https://cran.r-project.org/package=RcppSpdlog),
+      and
+      [tidyCpp](https://cran.r-project.org/package=tidyCpp)
+      by \@eddelbuettel
+
 ## Philosophy
 
 In the order of priority.
