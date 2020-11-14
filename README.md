@@ -26,7 +26,6 @@ remotes::install_github("atusy/minidown")
       [Awesome CSS Frameworks](https://github.com/troxler/awesome-css-frameworks)
 * Code folding
   * for source, output, message, warning, and error
-* Accordions
 * Tooltip
 * Floating TOC
 * Math with KaTeX
