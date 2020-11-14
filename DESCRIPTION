@@ -45,8 +45,6 @@ Imports:
     knitr,
     rmarkdown,
     xfun
-Remotes:
-    yihui/knitr
 Suggests:
     testthat (>= 2.1.0)
 SystemRequirements: pandoc (>= 2.7.2) - http://pandoc.org
