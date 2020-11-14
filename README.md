@@ -43,7 +43,7 @@ remotes::install_github("atusy/minidown")
       [spdlog](https://cran.r-project.org/package=RcppSpdlog),
       and
       [tidyCpp](https://cran.r-project.org/package=tidyCpp)
-      by \@eddelbuettel
+      by [\@eddelbuettel](https://github.com/eddelbuettel)
 
 ## Philosophy
 
