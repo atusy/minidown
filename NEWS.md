@@ -1,4 +1,4 @@
-# minidown 0.0.2.4
+# minidown 0.0.3
 
 * The code folding feature is re-implemented. The previous implementation used five hooks on the chunk options: "class.source", "class.output", "class.message", "class.warning", "class.error". The new implementation uses a single hook on the "engine" chunk option. This allows the "class.*" chunk options be `NULL` as their default values, which is consistent with `rmarkdown::html_document()`. The previous implementation required the default values be blank string "" in order to trigger the hooks.
 * The `collapse` option gains priority to the code folding feature for outputs, messages, warnings, and errors. In the future, the internal tricks will be removed by reflecting the upcoming knitr 1.31 (#22, #24).
