@@ -3,10 +3,9 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/minidown)](https://CRAN.R-project.org/package=minidown)
-[![R build status](https://github.com/atusy/minidown/workflows/R-CMD-check/badge.svg)](https://github.com/atusy/minidown/actions)
+[![R-CMD-check](https://github.com/atusy/minidown/workflows/R-CMD-check/badge.svg)](https://github.com/atusy/minidown/actions)
 ![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/minidown)
 ![Monthly downloads](https://cranlogs.r-pkg.org/badges/minidown)
-[![R-CMD-check](https://github.com/atusy/minidown/workflows/R-CMD-check/badge.svg)](https://github.com/atusy/minidown/actions)
 <!-- badges: end -->
 
 Create simple yet powerful html documents with lightweight CSS frameworks.
