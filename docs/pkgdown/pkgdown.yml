@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-09-30T11:20Z
+articles: {}
+last_built: 2020-12-19T13:08Z
 urls:
   reference: https://minidown.atusy.net/pkgdown/reference
   article: https://minidown.atusy.net/pkgdown/articles
