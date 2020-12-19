@@ -35,10 +35,14 @@ download_rmd_button <- function(input = NULL,
                                 class = "button",
                                 align = "right",
                                 aside = TRUE,
-                                embed = xfun::embed_file) {
+                                embed = NULL) {
   if (is.null(input)) {
     input <- knitr::current_input()
     if (is.null(input)) stop("Auto detection of the input file failed.")
+  }
+
+  if (is.null(embed)) {
+    embed <- xfun::embed_file
   }
 
   button <- embed(input, text = text, class = class, ...)
