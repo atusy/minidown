@@ -11,7 +11,7 @@ download_rmd_button(
   class = "button",
   align = "right",
   aside = TRUE,
-  embed = xfun::embed_file
+  embed = NULL
 )
 }
 \arguments{
