@@ -7,7 +7,7 @@ path_mini_pkg <- function() {
 
 path_mini_resources <- function(...) {
   file.path(
-    path_mini_pkg(), "rmarkdown", "templates", "mini_document", "resources", ...
+    path_mini_pkg(), "rmarkdown", ...
   )
 }
 

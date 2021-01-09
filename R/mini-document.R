@@ -11,6 +11,8 @@
 #'  CSS frameworks and their themes.
 #' @param toc_float TRUE to float the table of contents to the left of the main
 #'  document content.
+#' @param toc_highlight `TRUE` highlights the table of contents according to
+#'   the browser's viewport.
 #' @param code_folding Setup code folding by a string or a named list.
 #'  A choice for the string are `"none"` to disable,
 #'  `"show"` to enable and show all by default), and
@@ -46,6 +48,7 @@ mini_document <- function(framework = "sakura",
                           theme = "default",
                           toc = FALSE,
                           toc_float = FALSE,
+                          toc_highlight = FALSE,
                           code_folding = c("none", "show", "hide"),
                           results_folding = c("none", "show", "hide"),
                           code_download = FALSE,
@@ -65,8 +68,13 @@ mini_document <- function(framework = "sakura",
     theme = if (html5) NULL else theme,
     pandoc_args = spec_pandoc_args(pandoc_args, html5, katex),
     extra_dependencies = spec_dependencies(
-        extra_dependencies, toc && toc_float, html5, framework, theme
-      ),
+        extra_dependencies,
+        html5 = html5,
+        framework = framework,
+        theme = theme,
+        toc_float = toc && toc_float,
+        toc_highlight = toc_highlight
+    ),
     template = spec_template(template, html5),
     includes = spec_includes(includes, katex),
     toc = toc,
