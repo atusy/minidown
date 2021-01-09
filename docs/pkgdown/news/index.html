@@ -89,6 +89,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/vignettes-with-minidown.html">Write vignettes with minidown</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -117,9 +129,19 @@
       <small>Source: <a href='https://github.com/atusy/minidown/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="minidown-004" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.4">
+<a href="#minidown-004" class="anchor"></a>minidown 0.0.4<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code>mini_document</code> experimentally gains <code>toc_highlight</code>, which highlights the <strong>floating</strong> table of contents according to the browser’s viewport. This feature requires <code>toc = TRUE</code> and <code>toc_float = TRUE</code> (<a href='https://github.com/atusy/minidown/issues/26'>#26</a>).</li>
+<li>Internal file structures have refactored (<a href='https://github.com/atusy/minidown/issues/26'>#26</a>).</li>
+</ul>
+</div>
     <div id="minidown-003" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.3">
-<a href="#minidown-003" class="anchor"></a>minidown 0.0.3<small> Unreleased </small>
+<a href="#minidown-003" class="anchor"></a>minidown 0.0.3<small> 2021-01-06 </small>
 </h1>
 <ul>
 <li>The code folding feature is re-implemented. The previous implementation used five hooks on the chunk options: “class.source”, “class.output”, “class.message”, “class.warning”, “class.error”. The new implementation uses a single hook on the “engine” chunk option. This allows the "class.*" chunk options be <code>NULL</code> as their default values, which is consistent with <code><a href="https://rdrr.io/pkg/rmarkdown/man/html_document.html">rmarkdown::html_document()</a></code>. The previous implementation required the default values be blank string "" in order to trigger the hooks.</li>
@@ -200,7 +222,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

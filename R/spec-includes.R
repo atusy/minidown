@@ -9,7 +9,7 @@ spec_includes <- function(includes = list(),
   if (katex) {
     includes$in_header <- c(
       includes$in_header,
-      path_mini_resources("html", "math-katex.html")
+      path_mini_resources("html", "katex", "partial.html")
     )
   }
   includes

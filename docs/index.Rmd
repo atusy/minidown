@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output:
   minidown::mini_document:
     framework: sakura
-    theme: default
+    theme: dark
     code_folding:
       source: show
       output: show
@@ -15,7 +15,9 @@ output:
     results_folding: hide
     toc: true
     toc_float: true
+    toc_highlight: true
     number_sections: true
+    anchor_sections: false
     self_contained: true
     code_download: false
     keep_md: true
@@ -50,7 +52,7 @@ args_template <- list(
     source = "show", output = "show", message = "hide", warning = "hide"
   ),
   results_folding = "show",
-  toc = TRUE, toc_float = TRUE,
+  toc = TRUE, toc_float = TRUE, toc_highlight = TRUE,
   self_contained = TRUE, lib_dir = "resources",
   keep_md = FALSE
 )
