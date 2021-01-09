@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const callback = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const target = "#" + entry.target.id;
-        if (previous !== null) {toc[previous].remove("highlight")}
-        toc[target].add("highlight");
+        const target = toc["#" + entry.target.id];
+        if (previous !== null) {previous.remove("highlight")}
+        target.add("highlight");
         previous = target;
       }
     });
