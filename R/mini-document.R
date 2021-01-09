@@ -11,8 +11,8 @@
 #'  CSS frameworks and their themes.
 #' @param toc_float TRUE to float the table of contents to the left of the main
 #'  document content.
-#' @param toc_highlight `TRUE` highlights the table of contents according to
-#'   the browser's viewport.
+#' @param toc_highlight This is an experimental feature. `TRUE` highlights the
+#'  table of contents according to the browser's viewport.
 #' @param code_folding Setup code folding by a string or a named list.
 #'  A choice for the string are `"none"` to disable,
 #'  `"show"` to enable and show all by default), and
