@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let highlighted = 0;
 
   function highlight() {
-    const closest = argMin(Array.from(sections).map(
+    const closest = argMin(sections.map(
       section => Math.pow(section.getBoundingClientRect().top, 2)
     ));
     if (highlighted != closest) {
