@@ -21,7 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
     callback, {root: null, rootMargin: "0px", threshold: 0}
   );
 
-  Object.keys(toc).
-    map(x => document.querySelector(x)).
-    map(x => observer.observe(x));
+  Object.keys(toc).map(x => observer.observe(document.querySelector(x)));
 });
