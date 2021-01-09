@@ -1,7 +1,7 @@
 # minidown 0.0.4
 
-* `mini_document` experimentally gains `toc_highlight`, which highlights the **floating** table of contents according to the browser's viewport. This feature requires `toc = TRUE` and `toc_float = TRUE`.
-* Internal file structures have refactored.
+* `mini_document` experimentally gains `toc_highlight`, which highlights the **floating** table of contents according to the browser's viewport. This feature requires `toc = TRUE` and `toc_float = TRUE` (#26).
+* Internal file structures have refactored (#26).
 
 # minidown 0.0.3
 
