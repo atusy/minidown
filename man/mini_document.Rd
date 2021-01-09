@@ -9,6 +9,7 @@ mini_document(
   theme = "default",
   toc = FALSE,
   toc_float = FALSE,
+  toc_highlight = FALSE,
   code_folding = c("none", "show", "hide"),
   results_folding = c("none", "show", "hide"),
   code_download = FALSE,
@@ -33,6 +34,9 @@ CSS frameworks and their themes.}
 
 \item{toc_float}{TRUE to float the table of contents to the left of the main
 document content.}
+
+\item{toc_highlight}{This is an experimental feature. \code{TRUE} highlights the
+table of contents according to the browser's viewport.}
 
 \item{code_folding}{Setup code folding by a string or a named list.
 A choice for the string are \code{"none"} to disable,

@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2020-10-18" />
+  <meta name="dcterms.date" content="2021-01-09" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -423,9 +423,6 @@ header, nav, article {
 padding: 0 3rem;
 }
 }
-summary:focus {
-outline: none;
-}
 </style>
   <style type="text/css">@media screen and (min-width: 900px) {
 body {
@@ -459,6 +456,47 @@ border: none;
 }
 }
 </style>
+  <script>document.addEventListener('DOMContentLoaded', function() {
+  function getBGColor(el) {
+    const b = window.getComputedStyle(el).backgroundColor;
+    return (b !== "transparent" &&
+            b !== "rgba(0, 0, 0, 0)" &&
+            b !== "rgba(255,255,255,0)") ? b
+         : (el.parentNode === null)      ? "white"
+                                         : getBGColor(el.parentNode);
+  }
+
+  function argMin(x) {
+    return x.indexOf(Math.min(...x));
+  }
+
+  function updateStyle(style, hash) {
+    Object.keys(hash).forEach(key => style[key] = hash[key]);
+  }
+
+  const anchors = document.querySelectorAll('#TOC li>a');
+  const sections = Array.from(anchors).map(x => document.querySelector(x.hash));
+  const hiStyle = {display: "inline-block", width: "100%",
+                   color: getBGColor(anchors[0]),
+                   backgroundColor: window.getComputedStyle(anchors[0]).color};
+  const noStyle = {display: "", width: "", color: "", backgroundColor: ""};
+  let highlighted = 0;
+
+  function highlight() {
+    const closest = argMin(Array.from(sections).map(
+      section => Math.pow(section.getBoundingClientRect().top, 2)
+    ));
+    if (highlighted != closest) {
+      updateStyle(anchors[highlighted].style, noStyle);
+    }
+    updateStyle(anchors[closest].style, hiStyle);
+    highlighted = closest;
+  }
+
+  highlight();
+  document.addEventListener('scroll', highlight, {passive: true});
+});
+</script>
   <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
 // v0.0.1
 // Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
@@ -477,10 +515,17 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
   <style type="text/css">
 a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
-.hasAnchor:hover a.anchor-section::before {visibility: visible; content: '#';}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+ul > li > .anchor-section {display: none;}
 </style>
   <script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
 document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
   const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
   // Do nothing if sections are already anchored
@@ -497,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add anchors
   h.forEach(function(x) {
     const id = x.id || section_id(x.parentElement);
-    if (id === '') {
+    if (id === '' || x.matches(':empty')) {
       return null;
     }
     let anchor = document.createElement('a');
@@ -528,7 +573,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2020-10-18</p>
+<p class="date">2021-01-09</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
