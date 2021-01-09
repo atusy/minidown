@@ -1,24 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const anchors = document.querySelectorAll('#TOC li>a');
-  const sections = Array.from(anchors).map(x => document.querySelector(x.hash));
-  let highlighted = 0;
+  const toc = Array.from(document.querySelectorAll('#TOC li>a')).reduce(
+    (hash, elem) => {
+      hash[elem.hash] = elem.parentNode.classList;
+      return hash;
+    }, {});
+  let previous = null;
 
-  function argMin(x) {
-    return x.indexOf(Math.min(...x));
-  }
+  const callback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = "#" + entry.target.id;
+        if (previous !== null) {toc[previous].remove("highlight")}
+        toc[target].add("highlight");
+        previous = target;
+      }
+    });
+  };
 
-  function highlight() {
-    const y = window.scrollY;
-    const closest = argMin(Array.from(sections).map(
-      section => Math.pow(section.getBoundingClientRect().top - y, 2)
-    ));
-    if (highlighted != closest) {
-      anchors[highlighted].parentNode.classList.remove("highlight");
-    }
-    anchors[closest].parentNode.classList.add("highlight");
-    highlighted = closest;
-  }
+  const observer = new IntersectionObserver(
+    callback, {root: null, rootMargin: "0px", threshold: 0}
+  );
 
-  highlight();
-  document.addEventListener('scroll', highlight, {passive: true});
+  Object.keys(toc).
+    map(x => document.querySelector(x)).
+    map(x => observer.observe(x));
 });
