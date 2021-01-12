@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   Array.from(document.querySelectorAll("section.tabset")).forEach(section => {
     const tabs = section.querySelectorAll(":scope>section");
     const tabIds = Array.from(tabs).map(tab => {
-      tab.style.display = tab.children[0].style.dsiplay = "none";
+      tab.style.display = tab.children[0].style.display = "none";
       return tab.id;
     });
     let shown = tabs[0];
