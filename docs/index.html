@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-01-09" />
+  <meta name="dcterms.date" content="2021-01-13" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -14,19 +14,19 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <style>
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -46,7 +46,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -81,478 +81,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <style type="text/css">
-
-html {
-font-size: 62.5%;
-font-family: serif; }
-body {
-font-size: 1.8rem;
-line-height: 1.618;
-max-width: 38em;
-margin: auto;
-color: #4a4a4a;
-background-color: #f9f9f9;
-padding: 13px; }
-@media (max-width: 684px) {
-body {
-font-size: 1.53rem; } }
-@media (max-width: 382px) {
-body {
-font-size: 1.35rem; } }
-h1, h2, h3, h4, h5, h6 {
-line-height: 1.1;
-font-family: Verdana, Geneva, sans-serif;
-font-weight: 700;
-overflow-wrap: break-word;
-word-wrap: break-word;
--ms-word-break: break-all;
-word-break: break-word;
--ms-hyphens: auto;
--moz-hyphens: auto;
--webkit-hyphens: auto;
-hyphens: auto; }
-h1 {
-font-size: 2.35em; }
-h2 {
-font-size: 2em; }
-h3 {
-font-size: 1.75em; }
-h4 {
-font-size: 1.5em; }
-h5 {
-font-size: 1.25em; }
-h6 {
-font-size: 1em; }
-small, sub, sup {
-font-size: 75%; }
-hr {
-border-color: #2c8898; }
-a {
-text-decoration: none;
-color: #2c8898; }
-a:hover {
-color: #982c61;
-border-bottom: 2px solid #4a4a4a; }
-ul {
-padding-left: 1.4em; }
-li {
-margin-bottom: 0.4em; }
-blockquote {
-font-style: italic;
-margin-left: 1.5em;
-padding-left: 1em;
-border-left: 3px solid #2c8898; }
-img {
-max-width: 100%; }
-
-pre {
-background-color: #f1f1f1;
-display: block;
-padding: 1em;
-overflow-x: auto; }
-code {
-font-size: 0.9em;
-padding: 0 0.5em;
-background-color: #f1f1f1;
-white-space: pre-wrap; }
-pre > code {
-padding: 0;
-background-color: transparent;
-white-space: pre; }
-
-table {
-text-align: justify;
-width: 100%;
-border-collapse: collapse; }
-td, th {
-padding: 0.5em;
-border-bottom: 1px solid #f1f1f1; }
-
-input, textarea {
-border: 1px solid #4a4a4a; }
-input:focus, textarea:focus {
-border: 1px solid #2c8898; }
-textarea {
-width: 100%; }
-.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
-display: inline-block;
-padding: 5px 10px;
-text-align: center;
-text-decoration: none;
-white-space: nowrap;
-background-color: #2c8898;
-color: #f9f9f9;
-border-radius: 1px;
-border: 1px solid #2c8898;
-cursor: pointer;
-box-sizing: border-box; }
-.button[disabled], button[disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="button"][disabled] {
-cursor: default;
-opacity: .5; }
-.button:focus, .button:hover, button:focus, button:hover, input[type="submit"]:focus, input[type="submit"]:hover, input[type="reset"]:focus, input[type="reset"]:hover, input[type="button"]:focus, input[type="button"]:hover {
-background-color: #982c61;
-border-color: #982c61;
-color: #f9f9f9;
-outline: 0; }
-textarea, select, input[type] {
-color: #4a4a4a;
-padding: 6px 10px;
-
-margin-bottom: 10px;
-background-color: #f1f1f1;
-border: 1px solid #f1f1f1;
-border-radius: 4px;
-box-shadow: none;
-box-sizing: border-box; }
-textarea:focus, select:focus, input[type]:focus {
-border: 1px solid #2c8898;
-outline: 0; }
-label, legend, fieldset {
-display: block;
-margin-bottom: .5rem;
-font-weight: 600; }
-</style>
-  <style type="text/css">
-pre {
-border: solid #aaa 1px;
-padding: 8px;
-}
-pre.numberSource {
-margin: 0;
-padding-left: 0;
-}
-div.sourceCode {
-overflow: visible;
-}
-pre, pre.sourceCode {
-overflow-x: auto;
-}
-pre>code {
-white-space: pre;
-overflow: visible;
-background-color: unset;
-padding: 0;
-}
-pre.sourceCode.numberSource {
-overflow-x: visible;
-}
-pre.sourceCode.numberSource>code {
-white-space: pre-wrap;
-}
-pre.sourceCode.numberSource>code>span {
-left: 8px;
-text-indent: -4.6em;
-}
-
-.chunk-summary {
-text-align: right;
-}
-.chunk-summary+pre,
-.chunk-summary+div.sourceCode {
-margin-top: 2px;
-}
-
-nav > ul {
-border: .0625rem solid #444;
-border-radius: 4px;
-margin: 5px;
-padding: 5px;
-}
-nav ul {
-list-style-type: none;
-padding-inline-start: 1rem;
-}
-nav ul li {
-padding: 0;
-}
-nav ul ul {
-margin-top: 0;
-margin-bottom: 0;
-padding-top: 0;
-padding-bottom: 0;
-}
-nav code {
-background-color: unset;
-color: unset;
-}
-a.button:hover{
-border-width: 1px;
-}
-</style>
-  <style type="text/css">.tooltip {
-position: relative;
-display: inline-block;
-}
-.tooltip:before, .tooltip:after {
-position: absolute;
-opacity: 0;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-transition: all 0.3s;
-z-index: 1010;
-left: 50%;
-}
-.tooltip:not(.bottom):before, .tooltip:not(.bottom):after {
-bottom: 75%;
-}
-.tooltip.bottom:before, .tooltip.bottom:after {
-top: 75%;
-}
-.tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after {
-opacity: 1;
-clip: auto;
--webkit-clip-path: inset(0%);
-clip-path: inset(0%);
-}
-.tooltip:before {
-content: '';
-background: transparent;
-border: 0.5rem solid transparent;
-left: calc(50% - 0.5rem);
-}
-.tooltip:not(.bottom):before {
-border-top-color: #212121;
-}
-.tooltip.bottom:before {
-border-bottom-color: #212121;
-}
-.tooltip:after {
-content: attr(aria-label);
-color: #fafafa;
-background: #212121;
-border-radius: 0.125rem;
-padding: 0.5rem;
-white-space: nowrap;
-transform: translateX(-50%);
-}
-.tooltip:not(.bottom):after {
-margin-bottom: 1rem;
-}
-.tooltip.bottom:after {
-margin-top: 1rem;
-}
-</style>
-  <style type="text/css">
-.collapse {
-width: calc(100% - 1rem);
-opacity: 1;
-display: flex;
-flex-direction: column;
-margin: 0.5rem;
-border-radius: 0.125rem;
-}
-.collapse > [type="radio"], .collapse > [type="checkbox"] {
-height: 1px;
-width: 1px;
-margin: -1px;
-overflow: hidden;
-position: absolute;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-}
-.collapse > label {
-flex-grow: 1;
-display: inline-block;
-height: 1.5rem;
-cursor: pointer;
-transition: background 0.3s;
-color: #212121;
-background: #e8e8e8;
-border: 0.0625rem solid #ddd;
-padding: 0.75rem;
-}
-.collapse > label:hover, .collapse > label:focus {
-background: #f0f0f0;
-}
-.collapse > label + div {
-flex-basis: auto;
-height: 1px;
-width: 1px;
-margin: -1px;
-overflow: hidden;
-position: absolute;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-transition: max-height 0.3s;
-max-height: 1px;
-}
-.collapse > :checked + label {
-background: #ececec;
-border-bottom-color: #ececec;
-}
-.collapse > :checked + label + div {
-box-sizing: border-box;
-position: relative;
-width: 100%;
-height: auto;
-overflow: auto;
-margin: 0;
-border: 0.0625rem solid #ddd;
-border-top: 0;
-padding: 0.5rem;
-clip: auto;
--webkit-clip-path: inset(0%);
-clip-path: inset(0%);
-max-height: 400px;
-}
-.collapse > label:not(:first-of-type) {
-border-top: 0;
-}
-.collapse > label:first-of-type {
-border-radius: 0.125rem 0.125rem 0 0;
-}
-.collapse > label:last-of-type:not(:first-of-type) {
-border-radius: 0 0 0.125rem 0.125rem;
-}
-.collapse > label:last-of-type:first-of-type {
-border-radius: 0.125rem;
-}
-.collapse > :checked:last-of-type:not(:first-of-type) + label {
-border-radius: 0;
-}
-.collapse > :checked:last-of-type + label + div {
-border-radius: 0 0 0.125rem 0.125rem;
-}
-</style>
-  <style type="text/css">@media screen and (max-width: 900px) {
-header, nav, article {
-padding: 0 3rem;
-}
-}
-</style>
-  <style type="text/css">@media screen and (min-width: 900px) {
-body {
-min-width: 900px;
-max-width: 62.5%;
-margin: 0 auto;
-}
-main {
-display: grid;
-grid-template-columns: 300px 1fr;
-grid-template-rows: auto auto;
-}
-header, article {
-min-width: calc(600px - 4rem);
-max-width: calc(100% - 4rem);
-padding: 0 0 0 4rem;
-}
-nav {
-grid-row: 1 / -1;
-grid-columns: 1 / 2;
-border: none;
-margin: 0;
-width: 300px;
-}
-nav > ul {
-position: sticky;
-max-height: 85vh;
-overflow-y: auto;
-top: 5px;
-border: none;
-}
-}
-</style>
-  <script>document.addEventListener('DOMContentLoaded', function() {
-  function getBGColor(el) {
-    const b = window.getComputedStyle(el).backgroundColor;
-    return (b !== "transparent" &&
-            b !== "rgba(0, 0, 0, 0)" &&
-            b !== "rgba(255,255,255,0)") ? b
-         : (el.parentNode === null)      ? "white"
-                                         : getBGColor(el.parentNode);
-  }
-
-  function argMin(x) {
-    return x.indexOf(Math.min(...x));
-  }
-
-  function updateStyle(style, hash) {
-    Object.keys(hash).forEach(key => style[key] = hash[key]);
-  }
-
-  const anchors = document.querySelectorAll('#TOC li>a');
-  const sections = Array.from(anchors).map(x => document.querySelector(x.hash));
-  const hiStyle = {display: "inline-block", width: "100%",
-                   color: getBGColor(anchors[0]),
-                   backgroundColor: window.getComputedStyle(anchors[0]).color};
-  const noStyle = {display: "", width: "", color: "", backgroundColor: ""};
-  let highlighted = 0;
-
-  function highlight() {
-    const closest = argMin(Array.from(sections).map(
-      section => Math.pow(section.getBoundingClientRect().top, 2)
-    ));
-    if (highlighted != closest) {
-      updateStyle(anchors[highlighted].style, noStyle);
-    }
-    updateStyle(anchors[closest].style, hiStyle);
-    highlighted = closest;
-  }
-
-  highlight();
-  document.addEventListener('scroll', highlight, {passive: true});
-});
-</script>
-  <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
-  <style type="text/css">
-a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
-a.anchor-section::before {content: '#';}
-.hasAnchor:hover a.anchor-section {visibility: visible;}
-ul > li > .anchor-section {display: none;}
-</style>
-  <script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
-document.addEventListener('DOMContentLoaded', function() {
-  // Do nothing if AnchorJS is used
-  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
-    return;
-  }
-
-  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-
-  // Do nothing if sections are already anchored
-  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
-    return null;
-  }
-
-  // Use section id when pandoc runs with --section-divs
-  const section_id = function(x) {
-    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
-            ? x.id : '');
-  };
-
-  // Add anchors
-  h.forEach(function(x) {
-    const id = x.id || section_id(x.parentElement);
-    if (id === '' || x.matches(':empty')) {
-      return null;
-    }
-    let anchor = document.createElement('a');
-    anchor.href = '#' + id;
-    anchor.classList = ['anchor-section'];
-    x.classList.add('hasAnchor');
-    x.appendChild(anchor);
-  });
-});
-</script>
+  <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+  <link href="data:text/css,%0A%0Ahtml%20%7B%0Afont%2Dsize%3A%2062%2E5%25%3B%0Afont%2Dfamily%3A%20serif%3B%20%7D%0Abody%20%7B%0Afont%2Dsize%3A%201%2E8rem%3B%0Aline%2Dheight%3A%201%2E618%3B%0Amax%2Dwidth%3A%2038em%3B%0Amargin%3A%20auto%3B%0Acolor%3A%20%234a4a4a%3B%0Abackground%2Dcolor%3A%20%23f9f9f9%3B%0Apadding%3A%2013px%3B%20%7D%0A%40media%20%28max%2Dwidth%3A%20684px%29%20%7B%0Abody%20%7B%0Afont%2Dsize%3A%201%2E53rem%3B%20%7D%20%7D%0A%40media%20%28max%2Dwidth%3A%20382px%29%20%7B%0Abody%20%7B%0Afont%2Dsize%3A%201%2E35rem%3B%20%7D%20%7D%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0Afont%2Dfamily%3A%20Verdana%2C%20Geneva%2C%20sans%2Dserif%3B%0Afont%2Dweight%3A%20700%3B%0Aoverflow%2Dwrap%3A%20break%2Dword%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%2Dms%2Dword%2Dbreak%3A%20break%2Dall%3B%0Aword%2Dbreak%3A%20break%2Dword%3B%0A%2Dms%2Dhyphens%3A%20auto%3B%0A%2Dmoz%2Dhyphens%3A%20auto%3B%0A%2Dwebkit%2Dhyphens%3A%20auto%3B%0Ahyphens%3A%20auto%3B%20%7D%0Ah1%20%7B%0Afont%2Dsize%3A%202%2E35em%3B%20%7D%0Ah2%20%7B%0Afont%2Dsize%3A%202em%3B%20%7D%0Ah3%20%7B%0Afont%2Dsize%3A%201%2E75em%3B%20%7D%0Ah4%20%7B%0Afont%2Dsize%3A%201%2E5em%3B%20%7D%0Ah5%20%7B%0Afont%2Dsize%3A%201%2E25em%3B%20%7D%0Ah6%20%7B%0Afont%2Dsize%3A%201em%3B%20%7D%0Asmall%2C%20sub%2C%20sup%20%7B%0Afont%2Dsize%3A%2075%25%3B%20%7D%0Ahr%20%7B%0Aborder%2Dcolor%3A%20%232c8898%3B%20%7D%0Aa%20%7B%0Atext%2Ddecoration%3A%20none%3B%0Acolor%3A%20%232c8898%3B%20%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%23982c61%3B%0Aborder%2Dbottom%3A%202px%20solid%20%234a4a4a%3B%20%7D%0Aul%20%7B%0Apadding%2Dleft%3A%201%2E4em%3B%20%7D%0Ali%20%7B%0Amargin%2Dbottom%3A%200%2E4em%3B%20%7D%0Ablockquote%20%7B%0Afont%2Dstyle%3A%20italic%3B%0Amargin%2Dleft%3A%201%2E5em%3B%0Apadding%2Dleft%3A%201em%3B%0Aborder%2Dleft%3A%203px%20solid%20%232c8898%3B%20%7D%0Aimg%20%7B%0Amax%2Dwidth%3A%20100%25%3B%20%7D%0A%0Apre%20%7B%0Abackground%2Dcolor%3A%20%23f1f1f1%3B%0Adisplay%3A%20block%3B%0Apadding%3A%201em%3B%0Aoverflow%2Dx%3A%20auto%3B%20%7D%0Acode%20%7B%0Afont%2Dsize%3A%200%2E9em%3B%0Apadding%3A%200%200%2E5em%3B%0Abackground%2Dcolor%3A%20%23f1f1f1%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%7D%0Apre%20%3E%20code%20%7B%0Apadding%3A%200%3B%0Abackground%2Dcolor%3A%20transparent%3B%0Awhite%2Dspace%3A%20pre%3B%20%7D%0A%0Atable%20%7B%0Atext%2Dalign%3A%20justify%3B%0Awidth%3A%20100%25%3B%0Aborder%2Dcollapse%3A%20collapse%3B%20%7D%0Atd%2C%20th%20%7B%0Apadding%3A%200%2E5em%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23f1f1f1%3B%20%7D%0A%0Ainput%2C%20textarea%20%7B%0Aborder%3A%201px%20solid%20%234a4a4a%3B%20%7D%0Ainput%3Afocus%2C%20textarea%3Afocus%20%7B%0Aborder%3A%201px%20solid%20%232c8898%3B%20%7D%0Atextarea%20%7B%0Awidth%3A%20100%25%3B%20%7D%0A%2Ebutton%2C%20button%2C%20input%5Btype%3D%22submit%22%5D%2C%20input%5Btype%3D%22reset%22%5D%2C%20input%5Btype%3D%22button%22%5D%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%205px%2010px%3B%0Atext%2Dalign%3A%20center%3B%0Atext%2Ddecoration%3A%20none%3B%0Awhite%2Dspace%3A%20nowrap%3B%0Abackground%2Dcolor%3A%20%232c8898%3B%0Acolor%3A%20%23f9f9f9%3B%0Aborder%2Dradius%3A%201px%3B%0Aborder%3A%201px%20solid%20%232c8898%3B%0Acursor%3A%20pointer%3B%0Abox%2Dsizing%3A%20border%2Dbox%3B%20%7D%0A%2Ebutton%5Bdisabled%5D%2C%20button%5Bdisabled%5D%2C%20input%5Btype%3D%22submit%22%5D%5Bdisabled%5D%2C%20input%5Btype%3D%22reset%22%5D%5Bdisabled%5D%2C%20input%5Btype%3D%22button%22%5D%5Bdisabled%5D%20%7B%0Acursor%3A%20default%3B%0Aopacity%3A%20%2E5%3B%20%7D%0A%2Ebutton%3Afocus%2C%20%2Ebutton%3Ahover%2C%20button%3Afocus%2C%20button%3Ahover%2C%20input%5Btype%3D%22submit%22%5D%3Afocus%2C%20input%5Btype%3D%22submit%22%5D%3Ahover%2C%20input%5Btype%3D%22reset%22%5D%3Afocus%2C%20input%5Btype%3D%22reset%22%5D%3Ahover%2C%20input%5Btype%3D%22button%22%5D%3Afocus%2C%20input%5Btype%3D%22button%22%5D%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%23982c61%3B%0Aborder%2Dcolor%3A%20%23982c61%3B%0Acolor%3A%20%23f9f9f9%3B%0Aoutline%3A%200%3B%20%7D%0Atextarea%2C%20select%2C%20input%5Btype%5D%20%7B%0Acolor%3A%20%234a4a4a%3B%0Apadding%3A%206px%2010px%3B%0A%0Amargin%2Dbottom%3A%2010px%3B%0Abackground%2Dcolor%3A%20%23f1f1f1%3B%0Aborder%3A%201px%20solid%20%23f1f1f1%3B%0Aborder%2Dradius%3A%204px%3B%0Abox%2Dshadow%3A%20none%3B%0Abox%2Dsizing%3A%20border%2Dbox%3B%20%7D%0Atextarea%3Afocus%2C%20select%3Afocus%2C%20input%5Btype%5D%3Afocus%20%7B%0Aborder%3A%201px%20solid%20%232c8898%3B%0Aoutline%3A%200%3B%20%7D%0Alabel%2C%20legend%2C%20fieldset%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dbottom%3A%20%2E5rem%3B%0Afont%2Dweight%3A%20600%3B%20%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%0Apre%20%7B%0Aborder%3A%20solid%20%23aaa%201px%3B%0Apadding%3A%208px%3B%0A%7D%0Apre%2EnumberSource%20%7B%0Amargin%3A%200%3B%0Apadding%2Dleft%3A%200%3B%0A%7D%0Adiv%2EsourceCode%20%7B%0Aoverflow%3A%20visible%3B%0A%7D%0Apre%2C%20pre%2EsourceCode%20%7B%0Aoverflow%2Dx%3A%20auto%3B%0A%7D%0Apre%3Ecode%20%7B%0Awhite%2Dspace%3A%20pre%3B%0Aoverflow%3A%20visible%3B%0Abackground%2Dcolor%3A%20unset%3B%0Apadding%3A%200%3B%0A%7D%0Apre%2EsourceCode%2EnumberSource%20%7B%0Aoverflow%2Dx%3A%20visible%3B%0A%7D%0Apre%2EsourceCode%2EnumberSource%3Ecode%20%7B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%0A%7D%0Apre%2EsourceCode%2EnumberSource%3Ecode%3Espan%20%7B%0Aleft%3A%208px%3B%0Atext%2Dindent%3A%20%2D4%2E6em%3B%0A%7D%0A%0A%2Echunk%2Dsummary%20%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0A%2Echunk%2Dsummary%2Bpre%2C%0A%2Echunk%2Dsummary%2Bdiv%2EsourceCode%20%7B%0Amargin%2Dtop%3A%202px%3B%0A%7D%0A%0Anav%20%3E%20ul%20%7B%0Aborder%3A%20%2E0625rem%20solid%20%23444%3B%0Aborder%2Dradius%3A%204px%3B%0Amargin%3A%205px%3B%0Apadding%3A%205px%3B%0A%7D%0Anav%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0Apadding%2Dinline%2Dstart%3A%201rem%3B%0A%7D%0Anav%20ul%20li%20%7B%0Apadding%3A%200%3B%0A%7D%0Anav%20ul%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Apadding%2Dtop%3A%200%3B%0Apadding%2Dbottom%3A%200%3B%0A%7D%0Anav%20code%20%7B%0Abackground%2Dcolor%3A%20unset%3B%0Acolor%3A%20unset%3B%0A%7D%0Aa%2Ebutton%3Ahover%7B%0Aborder%2Dwidth%3A%201px%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%2Etooltip%20%7B%0Aposition%3A%20relative%3B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0A%2Etooltip%3Abefore%2C%20%2Etooltip%3Aafter%20%7B%0Aposition%3A%20absolute%3B%0Aopacity%3A%200%3B%0Aclip%3A%20rect%280%200%200%200%29%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%28100%25%29%3B%0Aclip%2Dpath%3A%20inset%28100%25%29%3B%0Atransition%3A%20all%200%2E3s%3B%0Az%2Dindex%3A%201010%3B%0Aleft%3A%2050%25%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Abefore%2C%20%2Etooltip%3Anot%28%2Ebottom%29%3Aafter%20%7B%0Abottom%3A%2075%25%3B%0A%7D%0A%2Etooltip%2Ebottom%3Abefore%2C%20%2Etooltip%2Ebottom%3Aafter%20%7B%0Atop%3A%2075%25%3B%0A%7D%0A%2Etooltip%3Ahover%3Abefore%2C%20%2Etooltip%3Ahover%3Aafter%2C%20%2Etooltip%3Afocus%3Abefore%2C%20%2Etooltip%3Afocus%3Aafter%20%7B%0Aopacity%3A%201%3B%0Aclip%3A%20auto%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%280%25%29%3B%0Aclip%2Dpath%3A%20inset%280%25%29%3B%0A%7D%0A%2Etooltip%3Abefore%20%7B%0Acontent%3A%20%27%27%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%2E5rem%20solid%20transparent%3B%0Aleft%3A%20calc%2850%25%20%2D%200%2E5rem%29%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Abefore%20%7B%0Aborder%2Dtop%2Dcolor%3A%20%23212121%3B%0A%7D%0A%2Etooltip%2Ebottom%3Abefore%20%7B%0Aborder%2Dbottom%2Dcolor%3A%20%23212121%3B%0A%7D%0A%2Etooltip%3Aafter%20%7B%0Acontent%3A%20attr%28aria%2Dlabel%29%3B%0Acolor%3A%20%23fafafa%3B%0Abackground%3A%20%23212121%3B%0Aborder%2Dradius%3A%200%2E125rem%3B%0Apadding%3A%200%2E5rem%3B%0Awhite%2Dspace%3A%20nowrap%3B%0Atransform%3A%20translateX%28%2D50%25%29%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Aafter%20%7B%0Amargin%2Dbottom%3A%201rem%3B%0A%7D%0A%2Etooltip%2Ebottom%3Aafter%20%7B%0Amargin%2Dtop%3A%201rem%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%0A%2Ecollapse%20%7B%0Awidth%3A%20calc%28100%25%20%2D%201rem%29%3B%0Aopacity%3A%201%3B%0Adisplay%3A%20flex%3B%0Aflex%2Ddirection%3A%20column%3B%0Amargin%3A%200%2E5rem%3B%0Aborder%2Dradius%3A%200%2E125rem%3B%0A%7D%0A%2Ecollapse%20%3E%20%5Btype%3D%22radio%22%5D%2C%20%2Ecollapse%20%3E%20%5Btype%3D%22checkbox%22%5D%20%7B%0Aheight%3A%201px%3B%0Awidth%3A%201px%3B%0Amargin%3A%20%2D1px%3B%0Aoverflow%3A%20hidden%3B%0Aposition%3A%20absolute%3B%0Aclip%3A%20rect%280%200%200%200%29%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%28100%25%29%3B%0Aclip%2Dpath%3A%20inset%28100%25%29%3B%0A%7D%0A%2Ecollapse%20%3E%20label%20%7B%0Aflex%2Dgrow%3A%201%3B%0Adisplay%3A%20inline%2Dblock%3B%0Aheight%3A%201%2E5rem%3B%0Acursor%3A%20pointer%3B%0Atransition%3A%20background%200%2E3s%3B%0Acolor%3A%20%23212121%3B%0Abackground%3A%20%23e8e8e8%3B%0Aborder%3A%200%2E0625rem%20solid%20%23ddd%3B%0Apadding%3A%200%2E75rem%3B%0A%7D%0A%2Ecollapse%20%3E%20label%3Ahover%2C%20%2Ecollapse%20%3E%20label%3Afocus%20%7B%0Abackground%3A%20%23f0f0f0%3B%0A%7D%0A%2Ecollapse%20%3E%20label%20%2B%20div%20%7B%0Aflex%2Dbasis%3A%20auto%3B%0Aheight%3A%201px%3B%0Awidth%3A%201px%3B%0Amargin%3A%20%2D1px%3B%0Aoverflow%3A%20hidden%3B%0Aposition%3A%20absolute%3B%0Aclip%3A%20rect%280%200%200%200%29%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%28100%25%29%3B%0Aclip%2Dpath%3A%20inset%28100%25%29%3B%0Atransition%3A%20max%2Dheight%200%2E3s%3B%0Amax%2Dheight%3A%201px%3B%0A%7D%0A%2Ecollapse%20%3E%20%3Achecked%20%2B%20label%20%7B%0Abackground%3A%20%23ececec%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23ececec%3B%0A%7D%0A%2Ecollapse%20%3E%20%3Achecked%20%2B%20label%20%2B%20div%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Aposition%3A%20relative%3B%0Awidth%3A%20100%25%3B%0Aheight%3A%20auto%3B%0Aoverflow%3A%20auto%3B%0Amargin%3A%200%3B%0Aborder%3A%200%2E0625rem%20solid%20%23ddd%3B%0Aborder%2Dtop%3A%200%3B%0Apadding%3A%200%2E5rem%3B%0Aclip%3A%20auto%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%280%25%29%3B%0Aclip%2Dpath%3A%20inset%280%25%29%3B%0Amax%2Dheight%3A%20400px%3B%0A%7D%0A%2Ecollapse%20%3E%20label%3Anot%28%3Afirst%2Dof%2Dtype%29%20%7B%0Aborder%2Dtop%3A%200%3B%0A%7D%0A%2Ecollapse%20%3E%20label%3Afirst%2Dof%2Dtype%20%7B%0Aborder%2Dradius%3A%200%2E125rem%200%2E125rem%200%200%3B%0A%7D%0A%2Ecollapse%20%3E%20label%3Alast%2Dof%2Dtype%3Anot%28%3Afirst%2Dof%2Dtype%29%20%7B%0Aborder%2Dradius%3A%200%200%200%2E125rem%200%2E125rem%3B%0A%7D%0A%2Ecollapse%20%3E%20label%3Alast%2Dof%2Dtype%3Afirst%2Dof%2Dtype%20%7B%0Aborder%2Dradius%3A%200%2E125rem%3B%0A%7D%0A%2Ecollapse%20%3E%20%3Achecked%3Alast%2Dof%2Dtype%3Anot%28%3Afirst%2Dof%2Dtype%29%20%2B%20label%20%7B%0Aborder%2Dradius%3A%200%3B%0A%7D%0A%2Ecollapse%20%3E%20%3Achecked%3Alast%2Dof%2Dtype%20%2B%20label%20%2B%20div%20%7B%0Aborder%2Dradius%3A%200%200%200%2E125rem%200%2E125rem%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%40media%20screen%20and%20%28max%2Dwidth%3A%20900px%29%20%7B%0Aheader%2C%20nav%2C%20article%20%7B%0Apadding%3A%200%203rem%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%40media%20screen%20and%20%28min%2Dwidth%3A%20900px%29%20%7B%0Abody%20%7B%0Amin%2Dwidth%3A%20900px%3B%0Amax%2Dwidth%3A%2062%2E5%25%3B%0Amargin%3A%200%20auto%3B%0A%7D%0Amain%20%7B%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20300px%201fr%3B%0Agrid%2Dtemplate%2Drows%3A%20auto%20auto%3B%0A%7D%0Aheader%2C%20article%20%7B%0Amin%2Dwidth%3A%20calc%28600px%20%2D%204rem%29%3B%0Amax%2Dwidth%3A%20calc%28100%25%20%2D%204rem%29%3B%0Apadding%3A%200%200%200%204rem%3B%0A%7D%0Anav%20%7B%0Agrid%2Drow%3A%201%20%2F%20%2D1%3B%0Agrid%2Dcolumns%3A%201%20%2F%202%3B%0Aborder%3A%20none%3B%0Amargin%3A%200%3B%0Awidth%3A%20300px%3B%0A%7D%0Anav%20%3E%20ul%20%7B%0Aposition%3A%20sticky%3B%0Amax%2Dheight%3A%2085vh%3B%0Aoverflow%2Dy%3A%20auto%3B%0Atop%3A%205px%3B%0Aborder%3A%20none%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%2Etabset%3E%2Etab%20%7B%0Adisplay%3A%20none%3B%0Aborder%3A%20solid%201px%20black%3B%0Apadding%3A%205px%3B%20%7D%0A%2Etabset%3E%2Etab%2Eactive%20%7B%0Adisplay%3A%20block%3B%20%7D%0A%2Etabset%3E%2Etab%3E%3Afirst%2Dchild%20%7B%0Adisplay%3A%20none%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%7B%0Amargin%2Dbottom%3A%200%3B%0Apadding%3A%200%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20li%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Amargin%3A%200%202px%200%200%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20button%20%7B%0Atext%2Ddecoration%3A%20none%3B%0Afont%2Dweight%3A%20normal%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%2Eactive%20button%20%7B%0Atext%2Ddecoration%3A%20solid%20underline%3B%0Afont%2Dweight%3A%20bold%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%2Eactive%20button%3Abefore%20%7B%0Acontent%3A%20%22%3E%20%22%3B%20%7D%0A" rel="stylesheet" />
+  <script src="data:application/javascript;base64,ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKCkgewogIGxldCB0YWJIYXNoZXMgPSBbXTsKCiAgZnVuY3Rpb24gdG9nZ2xlKGVsZW0sIGZyb20gPSAwLCB0byA9IDApIHsKICAgIGVsZW1bZnJvbV0uY2xhc3NMaXN0LnJlbW92ZSgiYWN0aXZlIik7CiAgICBlbGVtW3RvXS5jbGFzc0xpc3QuYWRkKCJhY3RpdmUiKTsKICB9CgogIC8vIEltcGxlbWVudAogIEFycmF5LmZyb20oZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgic2VjdGlvbi50YWJzZXQiKSkuZm9yRWFjaChzZWN0aW9uID0+IHsKICAgIGNvbnN0IHRhYnMgPSBzZWN0aW9uLnF1ZXJ5U2VsZWN0b3JBbGwoIjpzY29wZT5zZWN0aW9uIik7CiAgICBjb25zdCB0YWJJZHMgPSBBcnJheS5mcm9tKHRhYnMpLm1hcCh0YWIgPT4gewogICAgICB0YWIuY2xhc3NMaXN0LmFkZCgidGFiIik7CiAgICAgIHJldHVybiB0YWIuaWQ7CiAgICB9KTsKICAgIHRhYkhhc2hlcy5wdXNoKC4uLnRhYklkcy5tYXAoaWQgPT4gIiMiICsgaWQpKTsKICAgIGxldCBhY3RpdmUgPSAwOwogICAgdG9nZ2xlKHRhYnMpOwoKICAgIGNvbnN0IHVsID0gc2VjdGlvbi5pbnNlcnRCZWZvcmUoZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgidWwiKSwgdGFic1swXSk7CiAgICB1bC5jbGFzc0xpc3QuYWRkKCJ0YWJtZW51Iik7CiAgICB0YWJJZHMuZm9yRWFjaCh0YWJJZCA9PiB7CiAgICAgIGNvbnN0IGN1cnJlbnQgPSB0YWJJZHMuaW5kZXhPZih0YWJJZCk7CiAgICAgIHRhYnNbY3VycmVudF0ucmVtb3ZlQXR0cmlidXRlKCJpZCIpOwogICAgICBjb25zdCBidXR0b24gPSB1bC5hcHBlbmRDaGlsZChkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaSIpKS4KICAgICAgICBhcHBlbmRDaGlsZChkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJidXR0b24iKSk7CiAgICAgIGJ1dHRvbi5pZCA9IHRhYklkOwogICAgICBidXR0b24udGV4dENvbnRlbnQgPSB0YWJzW2N1cnJlbnRdLmNoaWxkcmVuWzBdLnRleHRDb250ZW50OwogICAgICBidXR0b24uYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCBmdW5jdGlvbigpIHsKICAgICAgICB0b2dnbGUodGFicywgYWN0aXZlLCBjdXJyZW50KTsKICAgICAgICB0b2dnbGUodWwuY2hpbGRyZW4sIGFjdGl2ZSwgY3VycmVudCk7CiAgICAgICAgYWN0aXZlID0gY3VycmVudDsKICAgICAgfSk7CiAgICB9KTsKICAgIHRvZ2dsZSh1bC5jaGlsZHJlbik7CiAgfSk7CgogIC8vIE5hdmlnYXRpb24KICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcigiaGFzaGNoYW5nZSIsIGZ1bmN0aW9uKCkgewogICAgaWYgKHRhYkhhc2hlcy5pbmRleE9mKGxvY2F0aW9uLmhhc2gpID49IDApIHsKICAgICAgZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihsb2NhdGlvbi5oYXNoKS5jbGljaygpOwogICAgfQogIH0pOwp9KTsK"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
@@ -573,20 +110,23 @@ document.addEventListener('DOMContentLoaded', function() {
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-01-09</p>
+<p class="date">2021-01-13</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#frameworks-and-themes">Frameworks and themes</a></li>
-<li><a href="#code-folding">Code folding</a><ul>
+<li><a href="#code-folding">Code folding</a>
+<ul>
 <li><a href="#showhide-exceptions">Show/hide exceptions</a></li>
 <li><a href="#change-summary">Change summary</a></li>
 <li><a href="#fold-only-some">Fold only some</a></li>
 <li><a href="#prefer-rmarkdownhtml_document">Prefer <code>rmarkdown::html_document</code></a></li>
 </ul></li>
-<li><a href="#results-folding">Results folding</a><ul>
+<li><a href="#results-folding">Results folding</a>
+<ul>
 <li><a href="#change-summary-text">Change summary text</a></li>
-<li><a href="#multiple-results-per-chunk">Multiple results per chunk</a><ul>
+<li><a href="#multiple-results-per-chunk">Multiple results per chunk</a>
+<ul>
 <li><a href="#set-chunk-options">Set chunk options</a></li>
 <li><a href="#iterate-with-for-or-lapply">Iterate with <code>for</code> or <code>lapply</code></a></li>
 <li><a href="#define-a-function-with-side-effects">Define a function with side effects</a></li>
@@ -594,19 +134,31 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><a href="#exceptionally-showhide-some-results">Exceptionally show/hide some results</a></li>
 </ul></li>
 <li><a href="#floating-toc">Floating TOC</a></li>
-<li><a href="#accordion-menu">Accordion menu</a></li>
+<li><a href="#tabset">Tabset</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#example-rmd">Example Rmd</a></li>
+<li><a href="#example-output">Example Output</a>
+<ul>
+<li><a href="#tabset-1">Tabset</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#tooltips">Tooltips</a></li>
 <li><a href="#math-with-katex">Math with KaTeX</a></li>
 <li><a href="#others">Others</a></li>
-<li><a href="#appendix-markdown-results">Appendix: markdown results</a><ul>
-<li><a href="#headings-h2">Headings (H2)</a><ul>
+<li><a href="#appendix-markdown-results">Appendix: markdown results</a>
+<ul>
+<li><a href="#headings-h2">Headings (H2)</a>
+<ul>
 <li><a href="#h3">H3</a></li>
 </ul></li>
 <li><a href="#block-quotations">Block quotations</a></li>
-<li><a href="#code-blocks">Code blocks</a><ul>
+<li><a href="#code-blocks">Code blocks</a>
+<ul>
 <li><a href="#code-blocks-with-long-lines">Code blocks with long lines</a></li>
 </ul></li>
-<li><a href="#lists">Lists</a><ul>
+<li><a href="#lists">Lists</a>
+<ul>
 <li><a href="#bullet-lists">Bullet lists</a></li>
 <li><a href="#ordered-lists">Ordered lists</a></li>
 <li><a href="#task-lists">Task lists</a></li>
@@ -627,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <p>This article introduces rich features of <code>minidown::mini_document</code> with live examples. This format is powered by R Markdown, Pandoc, KaTeX and <strong>light weight CSS framewroks</strong> such as sakura (default), Water.css, mini.css, and so on.</p>
 <p>If you haven’t installed the <code>minidown</code> package on R, install it by</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
 <p>Documentation is ready at <a href="pkgdown/index.html">here</a>.</p>
 <section id="frameworks-and-themes" class="level1">
 <h1>Frameworks and themes</h1>
@@ -655,10 +207,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </tbody>
 </table>
 <p>Here’s an example YAML frontmatter specifying a framework and a theme.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
 </section>
 <section id="code-folding" class="level1">
 <h1>Code folding</h1>
@@ -673,13 +225,13 @@ document.addEventListener('DOMContentLoaded', function() {
       error: show</code></pre>
 <p>The above results in</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">print</span>(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
 <span id="cb4-6"><a href="#cb4-6"></a>}</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="fu">f</span>()</span></code></pre></div>
 </details>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] 1</code></pre>
@@ -718,8 +270,8 @@ output:
 <h2>Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
-<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 </details>
 </section>
 <section id="fold-only-some" class="level2">
@@ -744,21 +296,21 @@ output:
 <section id="prefer-rmarkdownhtml_document" class="level2">
 <h2>Prefer <code>rmarkdown::html_document</code></h2>
 <p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>framework: bootstrap</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
 </section>
 </section>
 <section id="results-folding" class="level1">
 <h1>Results folding</h1>
 <p>By specifying <code>result_folding: show</code> or <code>hide</code>, you can fold entire results.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
 <p>This is a good option when you have side effects such as drawing figures and tables. Result button is placed on the left so that you can distinguish from code_folding buttons.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb14" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb14" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <table>
@@ -800,8 +352,8 @@ output:
 <h3>Set chunk options</h3>
 <p>with <code>results=&#39;hold&#39;</code> and/or <code>fig.show=&#39;hold&#39;</code>.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="st">&#39;foo&#39;</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;foo&#39;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
@@ -840,7 +392,7 @@ output:
 <h3>Iterate with <code>for</code> or <code>lapply</code></h3>
 <p>or their friends.</p>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb17" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb17" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="fu">print</span>(i)</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
@@ -852,12 +404,12 @@ output:
 <section id="define-a-function-with-side-effects" class="level3">
 <h3>Define a function with side effects</h3>
 <details class="chunk-details" open><summary class="chunk-summary">Source</summary>
-<div class="sourceCode" id="cb19" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
-<span id="cb19-3"><a href="#cb19-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
-<span id="cb19-4"><a href="#cb19-4"></a>}</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">knit_print</span>(knitr<span class="sc">::</span><span class="fu">kable</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
 </details>
 <p><details class="chunk-results"><summary>Results</summary></p>
 <details class="chunk-details" open><summary class="chunk-summary">Output</summary>
@@ -920,36 +472,66 @@ knitr::opts_knit$set(results.folding=NULL)
 <section id="floating-toc" class="level1">
 <h1>Floating TOC</h1>
 <p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 </section>
-<section id="accordion-menu" class="level1">
-<h1>Accordion menu</h1>
-<p>The features below are available only if the <code>theme</code> is <code>&quot;mini&quot;</code></p>
-<div class="collapse">
-<input type="checkbox" id="accordion-menu-1" checked aria-hidden="true"><label for="accordion-menu-1" aria-hidden="true">How</label>
-<div class="show" data-menu="How">
-<p>Add the collapse class to a heading. Under the heading, separate blocks with Pandoc’s Divs with <code>menu=title</code> attribute. If you add <code>show</code> class, menu is open by default.</p>
-</div>
-<input type="checkbox" id="accordion-menu-2" aria-hidden="true"><label for="accordion-menu-2" aria-hidden="true">Hidden</label>
-<div data-menu="Hidden">
-<p>This is hidden by default because of the missing ‘show’ class.</p>
-</div>
-</div>
+<section id="tabset" class="level1 tabset">
+<h1 class="tabset">Tabset</h1>
+<section id="introduction" class="level2">
+<h2>Introduction</h2>
+<p>Sections become tabs when they belong to the <code>tabset</code>-class section, and <code>minidown::mini_document(tabset = TRUE)</code>. This feature is similar to the one in <code>rmarkdown::html_document</code>. Two major difference are</p>
+<ul>
+<li>The table of contents can navigate to a specific tab.</li>
+<li>Each tabs have unique URLs which can be shared with others.</li>
+</ul>
+</section>
+<section id="example-rmd" class="level2">
+<h2>Example Rmd</h2>
+<pre class="rmd"><code>---
+title: tabset
+output:
+  minidown::mini_document:
+    tabset: true
+---
+
+### Tabset {.tabset}
+
+#### Tab 1
+
+This is the first tab.
+
+#### Tab 2
+
+This is the second tab.</code></pre>
+</section>
+<section id="example-output" class="level2">
+<h2>Example Output</h2>
+<section id="tabset-1" class="level3 tabset">
+<h3 class="tabset">Tabset</h3>
+<section id="tab-1" class="level4">
+<h4>Tab 1</h4>
+<p>This is the first tab.</p>
+</section>
+<section id="tab-2" class="level4">
+<h4>Tab 2</h4>
+<p>This is the second tab.</p>
+</section>
+</section>
+</section>
 </section>
 <section id="tooltips" class="level1">
 <h1>Tooltips</h1>
 <p><strong><span class="tooltip" aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">text</span><span class="co">]</span>{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
 </section>
 <section id="math-with-katex" class="level1">
 <h1>Math with KaTeX</h1>
 <p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a>$$</span>
-<span id="cb24-2"><a href="#cb24-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
-<span id="cb24-3"><a href="#cb24-3"></a>$$</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
 <p>becomes</p>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
@@ -993,13 +575,13 @@ knitr::opts_knit$set(results.folding=NULL)
 <p>A code block without line numbers.</p>
 <pre><code>Code block</code></pre>
 <p>A code block with line numbers.</p>
-<div class="sourceCode" id="cb26" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb26-10"><a href="#cb26-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb26-11"><a href="#cb26-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb26-12"><a href="#cb26-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb26-13"><a href="#cb26-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb26-14"><a href="#cb26-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
-<span id="cb26-15"><a href="#cb26-15"></a>}</span>
-<span id="cb26-16"><a href="#cb26-16"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb27" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb27-10"><a href="#cb27-10"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb27-11"><a href="#cb27-11"></a>  <span class="fu">print</span>(<span class="dv">1</span>)</span>
+<span id="cb27-12"><a href="#cb27-12"></a>  <span class="fu">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb27-13"><a href="#cb27-13"></a>  <span class="fu">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb27-14"><a href="#cb27-14"></a>  <span class="fu">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb27-15"><a href="#cb27-15"></a>}</span>
+<span id="cb27-16"><a href="#cb27-16"></a><span class="fu">f</span>()</span></code></pre></div>
 <section id="code-blocks-with-long-lines" class="level3">
 <h3>Code blocks with long lines</h3>
 <section id="without-specifiying-language" class="level4">
@@ -1010,11 +592,11 @@ knitr::opts_knit$set(results.folding=NULL)
 <h4>With specifying language</h4>
 <section id="without-line-numbers" class="level5">
 <h5>Without line numbers</h5>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 <section id="with-line-numbers" class="level5">
 <h5>With line numbers</h5>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 </section>
 </section>
@@ -1049,7 +631,7 @@ knitr::opts_knit$set(results.folding=NULL)
 </section>
 <section id="task-lists" class="level3">
 <h3>Task lists</h3>
-<ul>
+<ul class="task-list">
 <li><input type="checkbox" disabled></input>
 an unchecked task list item</li>
 <li><input type="checkbox" disabled checked></input>
@@ -1151,7 +733,7 @@ checked item</li>
 <section id="image" class="level2">
 <h2>Image</h2>
 <figure>
-<img src="avator.jpeg" data-external="1" alt /><figcaption>Atusy’s avator</figcaption>
+<img src="avator.jpeg" data-external="1" alt="Atusy’s avator" /><figcaption aria-hidden="true">Atusy’s avator</figcaption>
 </figure>
 </section>
 <section id="footnote" class="level2">
