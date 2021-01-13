@@ -15,10 +15,11 @@ output:
     results_folding: hide
     toc: true
     toc_float: true
-    toc_highlight: true
+    toc_highlight: false
+    tabset: true
     number_sections: true
     anchor_sections: false
-    self_contained: true
+    self_contained: false
     code_download: false
     keep_md: true
 ---
@@ -52,7 +53,8 @@ args_template <- list(
     source = "show", output = "show", message = "hide", warning = "hide"
   ),
   results_folding = "show",
-  toc = TRUE, toc_float = TRUE, toc_highlight = TRUE,
+  toc = TRUE, toc_float = TRUE, toc_highlight = FALSE,
+  tabset = TRUE,
   self_contained = TRUE, lib_dir = "resources",
   keep_md = FALSE
 )
@@ -331,28 +333,51 @@ output:
     toc_float: true
 ```
 
-# Accordion menu 
+# Tabset {.tabset}
 
-The features below are available only if the `theme` is `"mini"`
+## Introduction
 
-:::::: {.collapse}
+Sections become tabs when they belong to the `tabset`-class section, and
+`minidown::mini_document(tabset = TRUE)`.
+This feature is similar to the one in  `rmarkdown::html_document`.
+Two major difference are
 
-::::: {menu='How' .show}
+- The table of contents can navigate to a specific tab.
+- Each tabs have unique URLs which can be shared with others.
 
-Add the collapse class to a heading.
-Under the heading, separate blocks with Pandoc's Divs
-with `menu=title` attribute.
-If you add `show` class, menu is open by default.
+## Example Rmd
 
-:::::
+````rmd
+---
+title: tabset
+output:
+  minidown::mini_document:
+    tabset: true
+---
 
-::::: {menu='Hidden'}
+### Tabset {.tabset}
 
-This is hidden by default because of the missing 'show' class.
+#### Tab 1
 
-:::::
+This is the first tab.
 
-::::::
+#### Tab 2
+
+This is the second tab.
+````
+
+## Example Output
+
+### Tabset {.tabset}
+
+#### Tab 1
+
+This is the first tab.
+
+#### Tab 2
+
+This is the second tab.
+
 
 # Tooltips
 

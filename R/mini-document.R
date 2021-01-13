@@ -24,6 +24,13 @@
 #' @param results_folding Setup results folding by a string, `"none"`, `"show"`,
 #'  or `"hide"`. This feature will fold entire results, including side effects
 #'  such as figures and tables.
+#' @param tabset `TRUE` converts sections to tabs if they belong to the
+#'  `tabset`-class section. The tabs inherit names from the corresponding
+#'  sections. Unlike `rmarkdown::html_document`, the tabs can be navigated by
+#'  table of contents, and can be shared by unique URLs. Note that
+#'  `framework = "bootstrap"` falls back to the native feature of
+#'  `rmarkdown::html_document`.
+#'  falls back to
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
 #'  includes Rmd file itself and supplies download button of it.
 #' @param math A string to specify math rendering engine (default: `"katex"`).
@@ -51,6 +58,7 @@ mini_document <- function(framework = "sakura",
                           toc_highlight = FALSE,
                           code_folding = c("none", "show", "hide"),
                           results_folding = c("none", "show", "hide"),
+                          tabset = FALSE,
                           code_download = FALSE,
                           self_contained = TRUE,
                           math = "katex",
@@ -72,6 +80,7 @@ mini_document <- function(framework = "sakura",
         html5 = html5,
         framework = framework,
         theme = theme,
+        tabset = tabset && html5,
         toc_float = toc && toc_float,
         toc_highlight = toc_highlight
     ),
