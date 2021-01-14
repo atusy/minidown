@@ -15,7 +15,7 @@ output:
     results_folding: hide
     toc: true
     toc_float: true
-    toc_highlight: false
+    toc_highlight: true
     tabset: true
     number_sections: true
     anchor_sections: false
@@ -53,7 +53,7 @@ args_template <- list(
     source = "show", output = "show", message = "hide", warning = "hide"
   ),
   results_folding = "show",
-  toc = TRUE, toc_float = TRUE, toc_highlight = FALSE,
+  toc = TRUE, toc_float = TRUE, toc_highlight = TRUE,
   tabset = TRUE,
   self_contained = TRUE, lib_dir = "resources",
   keep_md = FALSE
@@ -319,18 +319,20 @@ knitr::opts_knit$set(results.folding=NULL)
 `r''````
 ~~~
 
-# Floating TOC
+# Floating TOC {#floating-toc}
 
 Table of contents can be floated on the left of the page by specifying `toc_float: true`.
 The layout is responsive to the windows size.
 Thus, floating TOC is available when the viewport has the enough width.
 See what happens by shrinking the width of your browser.
+Also, the floating ToC can also be highlighted according to the browsing section by specifying `toc_highlight: true`
 
 ```yaml
 output:
   minidown::mini_document:
     toc: true
     toc_float: true
+    toc_highlight: true
 ```
 
 # Tabset {.tabset}
@@ -345,6 +347,11 @@ Two major difference are
 - The table of contents can navigate to a specific tab.
 - Each tabs have unique URLs which can be shared with others.
 
+Note that a tabset can nest tabsets with two limitations:
+
+- A conflict with the `toc_highlight` option (cf. [Floating TOC]{#floating-toc}).
+- A conflict with the navigation to tabs from URL or ToC.
+
 ## Example Rmd
 
 ````rmd
@@ -355,29 +362,16 @@ output:
     tabset: true
 ---
 
-### Tabset {.tabset}
+# Tabset {.tabset}
 
-#### Tab 1
+## Tab 1
 
 This is the first tab.
 
-#### Tab 2
+## Tab 2
 
 This is the second tab.
 ````
-
-## Example Output
-
-### Tabset {.tabset}
-
-#### Tab 1
-
-This is the first tab.
-
-#### Tab 2
-
-This is the second tab.
-
 
 # Tooltips
 
@@ -402,10 +396,6 @@ becomes
 $$
 \sum_{i=1}^{10}{\alpha_i}
 $$
-
-# Others
-
-Visit <https://minicss.org/docs> for other features available via the `mini.css` framework.
 
 # Appendix: markdown results
 
