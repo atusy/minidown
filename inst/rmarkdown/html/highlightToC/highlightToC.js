@@ -16,17 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(hash).forEach(key => style[key] = hash[key]);
   }
 
-  const anchors = document.querySelectorAll('#TOC li>a');
-  const sections = Array.from(anchors).map(x => document.querySelector(x.hash));
+  const anchors = Array.from(document.querySelectorAll('#TOC li>a'));
   const hiStyle = {display: "inline-block", width: "100%",
                    color: getBGColor(anchors[0]),
                    backgroundColor: window.getComputedStyle(anchors[0]).color};
   const noStyle = {display: "", width: "", color: "", backgroundColor: ""};
   let highlighted = 0;
 
+  function getElementByHash(hash) {
+    return document.getElementById(hash.substring(1));
+  }
+
   function highlight() {
-    const closest = argMin(sections.map(
-      section => Math.pow(section.getBoundingClientRect().top, 2)
+    const closest = argMin(anchors.map(
+      x => Math.pow(getElementByHash(x.hash).getBoundingClientRect().top, 2)
     ));
     if (highlighted != closest) {
       updateStyle(anchors[highlighted].style, noStyle);
