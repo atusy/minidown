@@ -12,29 +12,22 @@ document.addEventListener('DOMContentLoaded', function() {
     return x.indexOf(Math.min(...x));
   }
 
-  function updateStyle(style, hash) {
-    Object.keys(hash).forEach(key => style[key] = hash[key]);
-  }
-
-  const anchors = Array.from(document.querySelectorAll('#TOC li>a'));
-  const hiStyle = {display: "inline-block", width: "100%",
-                   color: getBGColor(anchors[0]),
-                   backgroundColor: window.getComputedStyle(anchors[0]).color};
-  const noStyle = {display: "", width: "", color: "", backgroundColor: ""};
+  const anchors = document.querySelectorAll('#TOC li>a');
+  const headerIDs = Array.from(anchors).map(x => x.hash.substring(1));
   let highlighted = 0;
 
-  function getElementByHash(hash) {
-    return document.getElementById(hash.substring(1));
-  }
+  window.document.styleSheets[0].insertRule(
+    `#TOC a.highlight{display:inline-block;width:100%;color:${getBGColor(anchors[0])};background-color:${window.getComputedStyle(anchors[0]).color}`
+  )
 
   function highlight() {
-    const closest = argMin(anchors.map(
-      x => Math.pow(getElementByHash(x.hash).getBoundingClientRect().top, 2)
+    const closest = argMin(headerIDs.map(
+      x => Math.pow(document.getElementById(x).getBoundingClientRect().top, 2)
     ));
     if (highlighted != closest) {
-      updateStyle(anchors[highlighted].style, noStyle);
+      anchors[highlighted].classList.remove("highlight");
     }
-    updateStyle(anchors[closest].style, hiStyle);
+    anchors[closest].classList.add("highlight");
     highlighted = closest;
   }
 
