@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-01-13" />
+  <meta name="dcterms.date" content="2021-01-14" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -89,6 +89,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <link href="data:text/css,%40media%20screen%20and%20%28min%2Dwidth%3A%20900px%29%20%7B%0Abody%20%7B%0Amin%2Dwidth%3A%20900px%3B%0Amax%2Dwidth%3A%2062%2E5%25%3B%0Amargin%3A%200%20auto%3B%0A%7D%0Amain%20%7B%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20300px%201fr%3B%0Agrid%2Dtemplate%2Drows%3A%20auto%20auto%3B%0A%7D%0Aheader%2C%20article%20%7B%0Amin%2Dwidth%3A%20calc%28600px%20%2D%204rem%29%3B%0Amax%2Dwidth%3A%20calc%28100%25%20%2D%204rem%29%3B%0Apadding%3A%200%200%200%204rem%3B%0A%7D%0Anav%20%7B%0Agrid%2Drow%3A%201%20%2F%20%2D1%3B%0Agrid%2Dcolumns%3A%201%20%2F%202%3B%0Aborder%3A%20none%3B%0Amargin%3A%200%3B%0Awidth%3A%20300px%3B%0A%7D%0Anav%20%3E%20ul%20%7B%0Aposition%3A%20sticky%3B%0Amax%2Dheight%3A%2085vh%3B%0Aoverflow%2Dy%3A%20auto%3B%0Atop%3A%205px%3B%0Aborder%3A%20none%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
   <link href="data:text/css,%2Etabset%3E%2Etab%20%7B%0Adisplay%3A%20none%3B%0Aborder%3A%20solid%201px%20black%3B%0Apadding%3A%205px%3B%20%7D%0A%2Etabset%3E%2Etab%2Eactive%20%7B%0Adisplay%3A%20block%3B%20%7D%0A%2Etabset%3E%2Etab%3E%3Afirst%2Dchild%20%7B%0Adisplay%3A%20none%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%7B%0Amargin%2Dbottom%3A%200%3B%0Apadding%3A%200%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20li%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Amargin%3A%200%202px%200%200%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20button%20%7B%0Atext%2Ddecoration%3A%20none%3B%0Afont%2Dweight%3A%20normal%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%2Eactive%20button%20%7B%0Atext%2Ddecoration%3A%20solid%20underline%3B%0Afont%2Dweight%3A%20bold%3B%20%7D%0A%2Etabset%3E%2Etabmenu%20%2Eactive%20button%3Abefore%20%7B%0Acontent%3A%20%22%3E%20%22%3B%20%7D%0A" rel="stylesheet" />
   <script src="data:application/javascript;base64,ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKCkgewogIGxldCB0YWJIYXNoZXMgPSBbXTsKCiAgZnVuY3Rpb24gdG9nZ2xlKGVsZW0sIGZyb20gPSAwLCB0byA9IDApIHsKICAgIGVsZW1bZnJvbV0uY2xhc3NMaXN0LnJlbW92ZSgiYWN0aXZlIik7CiAgICBlbGVtW3RvXS5jbGFzc0xpc3QuYWRkKCJhY3RpdmUiKTsKICB9CgogIC8vIEltcGxlbWVudAogIEFycmF5LmZyb20oZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgic2VjdGlvbi50YWJzZXQiKSkuZm9yRWFjaChzZWN0aW9uID0+IHsKICAgIGNvbnN0IHRhYnMgPSBzZWN0aW9uLnF1ZXJ5U2VsZWN0b3JBbGwoIjpzY29wZT5zZWN0aW9uIik7CiAgICBjb25zdCB0YWJJZHMgPSBBcnJheS5mcm9tKHRhYnMpLm1hcCh0YWIgPT4gewogICAgICB0YWIuY2xhc3NMaXN0LmFkZCgidGFiIik7CiAgICAgIHJldHVybiB0YWIuaWQ7CiAgICB9KTsKICAgIHRhYkhhc2hlcy5wdXNoKC4uLnRhYklkcy5tYXAoaWQgPT4gIiMiICsgaWQpKTsKICAgIGxldCBhY3RpdmUgPSAwOwogICAgdG9nZ2xlKHRhYnMpOwoKICAgIGNvbnN0IHVsID0gc2VjdGlvbi5pbnNlcnRCZWZvcmUoZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgidWwiKSwgdGFic1swXSk7CiAgICB1bC5jbGFzc0xpc3QuYWRkKCJ0YWJtZW51Iik7CiAgICB0YWJJZHMuZm9yRWFjaCh0YWJJZCA9PiB7CiAgICAgIGNvbnN0IGN1cnJlbnQgPSB0YWJJZHMuaW5kZXhPZih0YWJJZCk7CiAgICAgIHRhYnNbY3VycmVudF0ucmVtb3ZlQXR0cmlidXRlKCJpZCIpOwogICAgICBjb25zdCBidXR0b24gPSB1bC5hcHBlbmRDaGlsZChkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaSIpKS4KICAgICAgICBhcHBlbmRDaGlsZChkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJidXR0b24iKSk7CiAgICAgIGJ1dHRvbi5pZCA9IHRhYklkOwogICAgICBidXR0b24udGV4dENvbnRlbnQgPSB0YWJzW2N1cnJlbnRdLmNoaWxkcmVuWzBdLnRleHRDb250ZW50OwogICAgICBidXR0b24uYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCBmdW5jdGlvbigpIHsKICAgICAgICB0b2dnbGUodGFicywgYWN0aXZlLCBjdXJyZW50KTsKICAgICAgICB0b2dnbGUodWwuY2hpbGRyZW4sIGFjdGl2ZSwgY3VycmVudCk7CiAgICAgICAgYWN0aXZlID0gY3VycmVudDsKICAgICAgfSk7CiAgICB9KTsKICAgIHRvZ2dsZSh1bC5jaGlsZHJlbik7CiAgfSk7CgogIC8vIE5hdmlnYXRpb24KICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcigiaGFzaGNoYW5nZSIsIGZ1bmN0aW9uKCkgewogICAgaWYgKHRhYkhhc2hlcy5pbmRleE9mKGxvY2F0aW9uLmhhc2gpID49IDApIHsKICAgICAgZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihsb2NhdGlvbi5oYXNoKS5jbGljaygpOwogICAgfQogIH0pOwp9KTsK"></script>
+  <script src="data:application/javascript;base64,ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKCkgewogIGZ1bmN0aW9uIGdldEJHQ29sb3IoZWwpIHsKICAgIGNvbnN0IGIgPSB3aW5kb3cuZ2V0Q29tcHV0ZWRTdHlsZShlbCkuYmFja2dyb3VuZENvbG9yOwogICAgcmV0dXJuIChiICE9PSAidHJhbnNwYXJlbnQiICYmCiAgICAgICAgICAgIGIgIT09ICJyZ2JhKDAsIDAsIDAsIDApIiAmJgogICAgICAgICAgICBiICE9PSAicmdiYSgyNTUsMjU1LDI1NSwwKSIpID8gYgogICAgICAgICA6IChlbC5wYXJlbnROb2RlID09PSBudWxsKSAgICAgID8gIndoaXRlIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDogZ2V0QkdDb2xvcihlbC5wYXJlbnROb2RlKTsKICB9CgogIGZ1bmN0aW9uIGFyZ01pbih4KSB7CiAgICByZXR1cm4geC5pbmRleE9mKE1hdGgubWluKC4uLngpKTsKICB9CgogIGNvbnN0IGFuY2hvcnMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcjVE9DIGxpPmEnKTsKICBjb25zdCBoZWFkZXJJRHMgPSBBcnJheS5mcm9tKGFuY2hvcnMpLm1hcCh4ID0+IHguaGFzaC5zdWJzdHJpbmcoMSkpOwogIGxldCBoaWdobGlnaHRlZCA9IDA7CgogIHdpbmRvdy5kb2N1bWVudC5zdHlsZVNoZWV0c1swXS5pbnNlcnRSdWxlKAogICAgYCNUT0MgYS5oaWdobGlnaHR7ZGlzcGxheTppbmxpbmUtYmxvY2s7d2lkdGg6MTAwJTtjb2xvcjoke2dldEJHQ29sb3IoYW5jaG9yc1swXSl9O2JhY2tncm91bmQtY29sb3I6JHt3aW5kb3cuZ2V0Q29tcHV0ZWRTdHlsZShhbmNob3JzWzBdKS5jb2xvcn1gCiAgKQoKICBmdW5jdGlvbiBoaWdobGlnaHQoKSB7CiAgICBjb25zdCBjbG9zZXN0ID0gYXJnTWluKGhlYWRlcklEcy5tYXAoCiAgICAgIHggPT4gTWF0aC5wb3coZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoeCkuZ2V0Qm91bmRpbmdDbGllbnRSZWN0KCkudG9wLCAyKQogICAgKSk7CiAgICBpZiAoaGlnaGxpZ2h0ZWQgIT0gY2xvc2VzdCkgewogICAgICBhbmNob3JzW2hpZ2hsaWdodGVkXS5jbGFzc0xpc3QucmVtb3ZlKCJoaWdobGlnaHQiKTsKICAgIH0KICAgIGFuY2hvcnNbY2xvc2VzdF0uY2xhc3NMaXN0LmFkZCgiaGlnaGxpZ2h0Iik7CiAgICBoaWdobGlnaHRlZCA9IGNsb3Nlc3Q7CiAgfQoKICBoaWdobGlnaHQoKTsKICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdzY3JvbGwnLCBoaWdobGlnaHQsIHtwYXNzaXZlOiB0cnVlfSk7Cn0pOwo="></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
@@ -109,7 +110,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-01-13</p>
+<p class="date">2021-01-14</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -137,14 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#example-rmd">Example Rmd</a></li>
-<li><a href="#example-output">Example Output</a>
-<ul>
-<li><a href="#tabset-1">Tabset</a></li>
-</ul></li>
 </ul></li>
 <li><a href="#tooltips">Tooltips</a></li>
 <li><a href="#math-with-katex">Math with KaTeX</a></li>
-<li><a href="#others">Others</a></li>
 <li><a href="#appendix-markdown-results">Appendix: markdown results</a>
 <ul>
 <li><a href="#headings-h2">Headings (H2)</a>
@@ -470,11 +466,12 @@ knitr::opts_knit$set(results.folding=NULL)
 </section>
 <section id="floating-toc" class="level1">
 <h1>Floating TOC</h1>
-<p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser.</p>
+<p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser. Also, the floating ToC can also be highlighted according to the browsing section by specifying <code>toc_highlight: true</code></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_highlight</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 </section>
 <section id="tabset" class="level1 tabset">
 <h1 class="tabset">Tabset</h1>
@@ -484,6 +481,11 @@ knitr::opts_knit$set(results.folding=NULL)
 <ul>
 <li>The table of contents can navigate to a specific tab.</li>
 <li>Each tabs have unique URLs which can be shared with others.</li>
+</ul>
+<p>Note that a tabset can nest tabsets with two limitations:</p>
+<ul>
+<li>A conflict with the <code>toc_highlight</code> option (cf. <span id="floating-toc">Floating TOC</span>).</li>
+<li>A conflict with the navigation to tabs from URL or ToC.</li>
 </ul>
 </section>
 <section id="example-rmd" class="level2">
@@ -495,29 +497,15 @@ output:
     tabset: true
 ---
 
-### Tabset {.tabset}
+# Tabset {.tabset}
 
-#### Tab 1
+## Tab 1
 
 This is the first tab.
 
-#### Tab 2
+## Tab 2
 
 This is the second tab.</code></pre>
-</section>
-<section id="example-output" class="level2">
-<h2>Example Output</h2>
-<section id="tabset-1" class="level3 tabset">
-<h3 class="tabset">Tabset</h3>
-<section id="tab-1" class="level4">
-<h4>Tab 1</h4>
-<p>This is the first tab.</p>
-</section>
-<section id="tab-2" class="level4">
-<h4>Tab 2</h4>
-<p>This is the second tab.</p>
-</section>
-</section>
 </section>
 </section>
 <section id="tooltips" class="level1">
@@ -535,10 +523,6 @@ This is the second tab.</code></pre>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
 \]</span></p>
-</section>
-<section id="others" class="level1">
-<h1>Others</h1>
-<p>Visit <a href="https://minicss.org/docs" class="uri">https://minicss.org/docs</a> for other features available via the <code>mini.css</code> framework.</p>
 </section>
 <section id="appendix-markdown-results" class="level1">
 <h1>Appendix: markdown results</h1>
