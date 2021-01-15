@@ -49,7 +49,7 @@ jobs:
 
       - name: Deploy examples
         run: |
-          Rscript -e 'install.packages(c("dplyr", "magrittr", "purrr", "tibble", "tidyr"))'
+          Rscript -e 'install.packages(c("dplyr", "forcats", "magrittr", "purrr", "tibble", "tidyr"))'
           Rscript -e 'rmarkdown::render("docs/index.Rmd")'
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
