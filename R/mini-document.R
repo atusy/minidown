@@ -29,8 +29,7 @@
 #'  sections. Unlike `rmarkdown::html_document`, the tabs can be navigated by
 #'  table of contents, and can be shared by unique URLs. Note that
 #'  `framework = "bootstrap"` falls back to the native feature of
-#'  `rmarkdown::html_document`.
-#'  falls back to
+#'  `rmarkdown::html_document`. This feature also requires `section_divs = TRUE`.
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
 #'  includes Rmd file itself and supplies download button of it.
 #' @param math A string to specify math rendering engine (default: `"katex"`).
@@ -56,6 +55,7 @@ mini_document <- function(framework = "sakura",
                           toc = FALSE,
                           toc_float = FALSE,
                           toc_highlight = FALSE,
+                          section_divs = TRUE,
                           code_folding = c("none", "show", "hide"),
                           results_folding = c("none", "show", "hide"),
                           tabset = FALSE,
@@ -80,7 +80,7 @@ mini_document <- function(framework = "sakura",
         html5 = html5,
         framework = framework,
         theme = theme,
-        tabset = tabset && html5,
+        tabset = tabset && html5 && section_divs,
         toc_float = toc && toc_float,
         toc_highlight = toc_highlight
     ),
