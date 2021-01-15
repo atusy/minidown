@@ -1,5 +1,5 @@
 [[redirects]]
-	from = "/pkgdown"
-	to = "https://minidown-pkgdown.netlify.app"
+	from = "/pkgdown/*"
+	to = "https://minidown-pkgdown.netlify.app/:splat"
 	status = 200
 	force = true
