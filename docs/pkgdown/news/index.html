@@ -129,6 +129,7 @@
 <code>mini_document</code> experimentally gains the <code>tabset</code> argument with default value <code>FALSE</code>, which converts the sections to tabs if they belong to the <code>tabset</code>-class section just like <code><a href="https://rdrr.io/pkg/rmarkdown/man/html_document.html">rmarkdown::html_document</a></code>. The major difference from <code><a href="https://rdrr.io/pkg/rmarkdown/man/html_document.html">rmarkdown::html_document</a></code> is that the names of tabs appear in table of contents, and are accessible by URL. (<a href='https://github.com/atusy/minidown/issues/27'>#27</a>).</li>
 <li>Fixed a conflict among the <code>toc_highlight</code> and <code>tabset</code> arguments of <code>mini_document</code> (<a href='https://github.com/atusy/minidown/issues/28'>#28</a>).</li>
 <li>Add the <code>section_divs</code> argument to the <code>mini_document</code> function. The default value is <code>TRUE</code>. It must be <code>TRUE</code> when enabling the tabset feature (<a href='https://github.com/atusy/minidown/issues/29'>#29</a>).</li>
+<li>When switching tabs in <code>mini_document</code>’s tabset, browser’s URL is updated so that users can easily share the URL of the tab with others (<a href='https://github.com/atusy/minidown/issues/30'>#30</a>).</li>
 </ul>
 </div>
     <div id="minidown-003" class="section level1">
