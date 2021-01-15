@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.id = tabId;
       button.textContent = tabs[current].children[0].textContent;
       button.addEventListener("click", function() {
+        history.pushState(null, null, "#" + tabId);
         toggle(tabs, active, current);
         toggle(ul.children, active, current);
         active = current;
