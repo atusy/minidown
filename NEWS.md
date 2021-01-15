@@ -5,6 +5,7 @@
 * `mini_document` experimentally gains the `tabset` argument with default value `FALSE`, which converts the sections to tabs if they belong to the `tabset`-class section just like `rmarkdown::html_document`. The major difference from `rmarkdown::html_document` is that the names of tabs appear in table of contents, and are accessible by URL. (#27).
 * Fixed a conflict among the `toc_highlight` and `tabset` arguments of `mini_document` (#28).
 * Add the `section_divs` argument to the `mini_document` function. The default value is `TRUE`. It must be `TRUE` when enabling the tabset feature (#29).
+* When switching tabs in `mini_document`'s tabset, browser's URL is updated so that users can easily share the URL of the tab with others (#30).
 
 # minidown 0.0.3
 
