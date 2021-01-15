@@ -1,5 +1,11 @@
 # minidown 0.0.4
 
+## Breaking changes
+
+* Removed accordion menu feature from `mini_document` in favor of the new tabset feature (#31).
+
+## Major changes
+
 * `mini_document` experimentally gains the `toc_highlight` argument with default value `FALSE`, which highlights the **floating** table of contents according to the browser's viewport. This feature requires `toc = TRUE` and `toc_float = TRUE` (#26).
 * Internal file structures have refactored (#26).
 * `mini_document` experimentally gains the `tabset` argument with default value `FALSE`, which converts the sections to tabs if they belong to the `tabset`-class section just like `rmarkdown::html_document`. The major difference from `rmarkdown::html_document` is that the names of tabs appear in table of contents, and are accessible by URL. (#27).
