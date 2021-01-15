@@ -22,8 +22,8 @@ spec_dependencies <- function(extra_dependencies = NULL,
         src = path_mini_resources("html", "styles"),
         stylesheet = c(
           paste0(framework, ".css"),
-          if (framework != "mini") c("feat-tooltip.css", "feat-accordion.css"),
           "common.css",
+          if (framework != "mini") "feat-tooltip.css",
           if (toc_float) "feat-toc-float.css"
         ),
         all_files = FALSE
