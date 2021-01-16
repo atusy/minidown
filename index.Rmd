@@ -1,0 +1,598 @@
+---
+title: "minidown::mini_document"
+author: "Atsushi Yasumoto"
+date: "`r Sys.Date()`"
+output:
+  minidown::mini_document:
+    framework: all
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: show
+    results_folding: hide
+    toc: true
+    toc_float: true
+    toc_highlight: true
+    tabset: true
+    number_sections: true
+    anchor_sections: false
+    self_contained: false
+    code_download: false
+    keep_md: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results.folding = NULL)
+`%>%` <- magrittr::`%>%`
+frameworks <- lapply(
+  minidown::frameworks,
+  function(x) names(x$stylesheet)
+) %>%
+  tibble::enframe() %>%
+  tidyr::unchop(value) %>%
+  purrr::set_names(c("framework", "theme")) %>%
+  dplyr::mutate(output_file = paste0(framework, '-', theme, '.html')) %>%
+  dplyr::mutate(
+    output_file = ifelse(
+      output_file == "sakura-default.html",
+      "index.html", .data$output_file
+    ),
+  )
+frameworks
+```
+
+::: {style='text-align: right'}
+[Download Rmd](index.Rmd){download=minidown.Rmd .button}
+:::
+
+This article introduces rich features of `minidown::mini_document` with live examples.
+This format is powered by R Markdown, Pandoc, KaTeX and **light weight CSS framewroks** such as sakura (default), Water.css, mini.css, and so on.
+
+If you haven't installed the `minidown` package on R, install it by
+
+```r
+remotes::install_github('atusy/minidown')
+```
+
+Documentation is ready at [here](pkgdown/index.html).
+
+# Frameworks and themes
+
+Default framework and its theme are `"sakura"` and `"default"`.
+Followings are the list of available ones.
+To preview them, use AI at the top of this page.
+
+```{r, echo=FALSE, message=FALSE}
+frameworks %>%
+  dplyr::mutate(
+    framework = framework %>%
+      forcats::fct_relevel(
+        c("sakura",
+          framework %>% unique() %>% setdiff(c("sakura", "mini")),
+          "mini")
+      )
+  ) %>%
+  dplyr::group_by(framework) %>%
+  dplyr::summarise(theme = paste(theme, collapse = ', ')) %>%
+  knitr::kable(escape=FALSE)
+```
+
+Here's an example YAML frontmatter specifying a framework and a theme.
+
+```yaml
+output:
+  minidown::mini_document:
+    framework: sakura
+    theme: default
+```
+
+# Code folding
+
+Code folding can be controlled by the YAML frontmatter like:
+
+```
+output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: show
+```
+
+The above results in
+
+```{r, error=TRUE, class.source="numberLines"}
+f <- function() {
+  print(1)
+  message('message')
+  warning('warning')
+  stop('error')
+}
+f()
+```
+
+If the code folding is specified for some of them,
+then the code folding of the others will be `none`.
+
+Like `rmarkdown::html_document`,
+`code_folding: show` indicates source is `show` and others are `none`.
+
+By default `code_folding` is `none`, however, you can select some chunks be folded by giving the `details` class (e.g., `class.source='details'`).
+
+## Show/hide exceptions
+
+When `source: show`, all the sources are shown.
+In case you need exceptions, add the `hide` class to the source.
+If you want to hide all with exceptions, add the `show` class to the exceptions.
+Of course, this feature is not limited to the source.
+
+````
+---
+output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+---
+
+`r ''````{r}
+'This is shown'
+`r ''````
+
+
+`r ''````{r, class.source='hide'}
+'This is hidden'
+`r ''````
+````
+
+and `hide` classes.
+
+## Change summary
+
+The content of summary can be controlled via `summary.*` chunk options.
+This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.
+
+```{r, summary.source='iris.R', summary.output='Answer', class.output='hide'}
+# summary.source='iris.R', summary.output='Answer', class.output='hide'
+head(iris)
+```
+
+## Fold only some
+
+Even if `none` is specified in YAML, code folding can be enabled for selected chunks by adding the `details` class.
+
+````
+---
+output:
+  minidown::mini_document:
+    code_folding: none
+---
+
+`r ''````{r}
+'This is shown'
+`r ''````
+
+
+`r ''````{r, class.source='details hide'}
+'This is hidden'
+`r ''````
+
+````
+
+## Prefer `rmarkdown::html_document`
+
+If you prefer `rmarkdown::html_document` except for the code foliding,
+specify the `framework: bootstrap`.
+
+```yaml
+output:
+  minidown::mini_document:
+    framework: bootstrap
+    code_folding: show
+```
+
+# Results folding
+
+By specifying `result_folding: show` or `hide`, you can fold entire results.
+
+```yaml
+output:
+  minidown::mini_document:
+    results_folding: show # hide or none
+```
+
+This is a good option when you have side effects such as drawing figures and tables.
+Result button is placed on the left so that you can distinguish from code_folding buttons.
+
+```{r, results.folding='hide'}
+knitr::kable(iris[1:2, ])
+```
+
+
+## Change summary text
+
+By default, summary text is "Results".
+You can change this by a chunk option, `summary.results`.
+Just like `summary.*` in code folding.
+
+## Multiple results per chunk
+
+If you have multiple results per chunk and combine them to a single folding,
+you have three options.
+
+
+### Set chunk options
+
+with `results='hold'` and/or `fig.show='hold'`.
+
+```{r, results.folding='hide', results='hold'}
+'foo'
+knitr::kable(iris[1:2, ])
+```
+
+### Iterate with `for` or `lapply`
+
+or their friends.
+
+```{r, results.folding='hide'}
+for (i in 1:2) print(i)
+```
+
+### Define a function with side effects
+
+```{r, results.folding='hide'}
+f <- function() {
+  print('foo')
+  knitr::knit_print(knitr::kable(iris[1:2, ]))
+}
+
+f()
+```
+
+## Exceptionally show/hide some results
+
+To disable folding for some chunks, specify `results.folding=NULL` as a chunk option.
+When `results_folding: show` and you want to hide for some, then specify `results.folding='hide'` as a chunk option.
+Similarly, you make exeptions for `results_folding: hide` as well.
+
+To disable folding by default, but enable it for some chunks,
+then specify `results_folding: show # or hide` as a YAML front matter,
+and run `knitr::opts_chunk$set(results.folding=NULL)` at the beggining of your document.
+Then, you can enable the feature for selected chunks by specifying `'show'` or `'hide'` to the `results.folding` chunk option.
+
+~~~
+---
+output:
+  minidown::mini_document:
+    result_folding: show
+---
+
+`r''````{r, include=FALSE}
+knitr::opts_knit$set(results.folding=NULL)
+`r''````
+
+`r''````{r}
+'This chunk does not fold results'
+`r''````
+
+
+`r''````{r, result.folding='hide'}
+'This chunk hides not fold results'
+`r''````
+~~~
+
+# Floating TOC {#floating-toc}
+
+Table of contents can be floated on the left of the page by specifying `toc_float: true`.
+The layout is responsive to the windows size.
+Thus, floating TOC is available when the viewport has the enough width.
+See what happens by shrinking the width of your browser.
+Also, the floating ToC can also be highlighted according to the browsing section by specifying `toc_highlight: true`
+
+```yaml
+output:
+  minidown::mini_document:
+    toc: true
+    toc_float: true
+    toc_highlight: true
+```
+
+# Tabset {.tabset}
+
+## Introduction
+
+Sections become tabs when they belong to the `tabset`-class section, and
+`minidown::mini_document(tabset = TRUE)`.
+This feature is similar to the one in  `rmarkdown::html_document`.
+Two major difference are
+
+- The table of contents can navigate to a specific tab.
+- Each tabs have unique URLs which can be shared with others.
+
+Note that a tabset can nest tabsets with two limitations:
+
+- A conflict with the `toc_highlight` option (cf. [Floating TOC]{#floating-toc}).
+- A conflict with the navigation to tabs from URL or ToC.
+
+## Example Rmd
+
+````rmd
+---
+title: tabset
+output:
+  minidown::mini_document:
+    tabset: true
+---
+
+# Tabset {.tabset}
+
+## Tab 1
+
+This is the first tab.
+
+## Tab 2
+
+This is the second tab.
+````
+
+# Tooltips
+
+**[[]{.icon-info}Tooltips]{tooltip='Here is a tooltip'}** are available.
+
+```md
+[text]{tooltip='tooltip'}
+```
+
+# Math with KaTeX
+
+`$\sum_{i=1}^{10}{\alpha_i}$` becomes $\sum_{i=1}^{10}{\alpha_i}$ and
+
+```md
+$$
+\sum_{i=1}^{10}{\alpha_i}
+$$
+```
+
+becomes
+
+$$
+\sum_{i=1}^{10}{\alpha_i}
+$$
+
+# Appendix: markdown results
+
+## Headings (H2)
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+## Block quotations
+
+> Single
+
+> Nesting
+>
+>> another
+
+## Code blocks
+
+A code block without line numbers.
+
+```
+Code block
+```
+
+A code block with line numbers.
+
+```{.r .numberLines startFrom=10}
+f <- function() {
+  print(1)
+  message('message')
+  warning('warning')
+  stop('error')
+}
+f()
+```
+
+### Code blocks with long lines
+
+#### Without specifiying language
+
+```
+long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
+```
+
+#### With specifying language
+
+##### Without line numbers
+
+```{.r}
+long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
+```
+
+##### With line numbers
+
+```{.r .numberLines}
+long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long 
+```
+
+## Lists
+
+### Bullet lists
+
+Tight
+
+* Tight 1
+* Tight 2
+  * Tight 2-1
+  * Tight 2-2
+
+Loose
+
+* Loose 1
+
+* Loose 2
+
+* Loose 3
+
+### Ordered lists
+
+1.  one
+2.  two
+3.  three
+
+### Task lists
+
+- [ ] an unchecked task list item
+- [x] checked item
+
+### Definition lists
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+## Horizontal rule
+
+___
+
+## Table
+
+```{r, echo=FALSE}
+knitr::kable(head(iris))
+```
+
+
+## Inline formatting
+
+- *Emphasis*
+- **Strong emphasis**
+- ~~Strikeout~~
+- super^script^
+- sub~script~
+- `Verbatim`
+- [Small caps]{.smallcaps}
+
+## Link
+
+[Atusy's Twitter](https://twitter.com/Atsushi776)
+
+## Image
+
+![Atusy's avator](avator.jpeg){data-external="1"}
+
+## Footnote
+
+See^[footnote]
+
+<!-- Theme changer -->
+
+```{r, echo=FALSE}
+htmltools::tags$aside(htmltools::tags$p(
+  htmltools::tags$label("framework: ", "for" = "select-framework"),
+  htmltools::tags$select(
+    purrr::imap(minidown:::frameworks, function(framework, nm) {
+      htmltools::tags$option(
+        nm, value = nm, "data-version" = framework$version
+      )
+    }),
+    id = "select-framework"
+  ),
+  htmltools::tags$label("theme: ", id = "label-select-theme"),
+  purrr::imap(minidown:::frameworks, function(framework, nm) {
+    htmltools::tags$select(
+      purrr::imap(framework$stylesheet, function(path, nm) {
+        htmltools::tags$option(nm, value = path)
+      }),
+      id = paste0("select-theme-", nm)
+    )
+  }),
+  htmltools::tags$button("Go", id = "button-go")
+), id = "aside-select-framework")
+```
+
+```{css, echo=FALSE}
+#aside-select-framework {
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 100;
+  padding: 1em 0;
+}
+#aside-select-framework .inactive {
+  display: none
+}
+#aside-select-framework label,
+#aside-select-framework select {
+  display: inline-block;
+}
+#aside-select-framework select {
+  margin-right: 1em;
+}
+#aside-select-framework p {
+  margin: 0;
+  text-align: right;
+}
+```
+
+
+```{js, echo=FALSE, eval=TRUE}
+document.addEventListener("DOMContentLoaded", function() {
+  const main = document.getElementsByTagName("main")[0];
+  const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
+  const style = document.head.appendChild(document.createElement("style"));
+  style.innerText = `@media screen and (min-width: 900px) { nav > ul {top: ${aside.offsetHeight}px} }`;
+  
+  const selectors = Array.from(aside.querySelectorAll("select"));
+
+  const themeSelectors = selectors.slice(1).reduce(
+    function(x, y) {
+      x[y.id.replace(/^select-theme-/, "")] = y;
+      return x
+    },
+    {}
+  );
+  selectors.slice(2).forEach(function(selector) {
+    return selector.classList.add("inactive");
+  });
+
+  const frameworkSelector = selectors[0];
+  const label = document.getElementById("label-select-theme");
+  label.setAttribute("for", themeSelectors[framework.value].id);
+  let framework = frameworkSelector.selectedOptions[0];
+  frameworkSelector.addEventListener("change", function() {
+    themeSelectors[framework.value].classList.add("inactive");
+    framework = frameworkSelector.selectedOptions[0];
+    themeSelectors[framework.value].classList.remove("inactive");
+    label.setAttribute("for", themeSelectors[framework.value].id);
+  });
+
+  const minidown = document.querySelector("meta[name='minidown-version']").content
+  function path_css0() {
+    const theme = themeSelectors[framework.value].selectedOptions[0].value
+    return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`
+  }
+  function path_css1() {
+    return `index_files/minidown-${minidown}/${framework.value}.css`
+  }
+  const link0 = document.querySelector("link[href='" + path_css0() + "']");
+  const link1 = document.querySelector("link[href='" + path_css1() + "']");
+
+  document.getElementById("button-go").addEventListener("click", function() {
+    link0.href = path_css0();
+    link1.href = path_css1();
+  })
+});
+```
+
