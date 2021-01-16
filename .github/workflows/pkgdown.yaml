@@ -52,6 +52,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git remote set-branches origin examples
           git fetch origin examples
           git checkout origin/examples
           git checkout -b examples
