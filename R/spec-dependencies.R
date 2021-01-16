@@ -25,6 +25,9 @@ spec_dependencies <- function(extra_dependencies = NULL,
           if (framework != "mini") "feat-tooltip.css",
           if (toc_float) "feat-toc-float.css"
         ),
+        meta = if (all_frameworks) {
+          c("minidown-version" = utils::packageVersion("minidown"))
+        },
         all_files = all_frameworks
     )),
     if (tabset) {list(htmltools::htmlDependency(
