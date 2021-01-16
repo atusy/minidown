@@ -23,6 +23,7 @@ jobs:
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+          install.packages(c("dplyr", "forcats", "magrittr", "purrr", "tibble", "tidyr"))
         shell: Rscript {0}
 
       - name: Cache R packages
@@ -49,13 +50,19 @@ jobs:
 
       - name: Deploy examples
         run: |
-          Rscript -e 'install.packages(c("dplyr", "forcats", "magrittr", "purrr", "tibble", "tidyr"))'
-          Rscript -e 'rmarkdown::render("docs/index.Rmd")'
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git switch examples
-          ls | grep -v -E "^docs" | xargs rm -rf
-          mv docs/* .
+          git fetch
+          git checkout master
+          git checkout examples
+          git checkout master docs
+          ls -a | grep -v -E "^(docs|\\.git|\\.+)$" | xargs rm -rf
+          cp -rf docs/* .
           rm -rf docs
-          git add .
-          git commit -m "built examples"
+          Rscript -e 'rmarkdown::render("index.Rmd")'
+          diffname=`git diff --name-only`
+          if [[ $diffname -ne "" ]]; then
+            git add .
+            git commit -m "build examples"
+            git push origin examples
+          fi
