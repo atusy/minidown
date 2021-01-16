@@ -4,8 +4,7 @@ author: "Atsushi Yasumoto"
 date: "`r Sys.Date()`"
 output:
   minidown::mini_document:
-    framework: sakura
-    theme: dark
+    framework: all
     code_folding:
       source: show
       output: show
@@ -21,7 +20,7 @@ output:
     anchor_sections: false
     self_contained: false
     code_download: false
-    keep_md: true
+    keep_md: false
 ---
 
 ```{r setup, include=FALSE}
@@ -44,39 +43,6 @@ frameworks <- lapply(
 frameworks
 ```
 
-
-```{r preview-all-the-frameworks-and-themes, eval=FALSE, include=FALSE}
-# Output all frameworks and themes
-
-args_template <- list(
-  code_folding = list(
-    source = "show", output = "show", message = "hide", warning = "hide"
-  ),
-  results_folding = "show",
-  toc = TRUE, toc_float = TRUE, toc_highlight = TRUE,
-  tabset = TRUE,
-  self_contained = TRUE, lib_dir = "resources",
-  keep_md = FALSE
-)
-
-purrr::pmap(
-  frameworks,
-  function(framework, theme, output_file) {
-    rmarkdown::render(
-      "index.Rmd",
-      do.call(
-        minidown::mini_document,
-        c(args_template, list(framework = framework, theme = theme))
-      ),
-      output_file = file.path(output_file)
-    )
-  }
-)
-
-if (interactive()) browseURL("index.html")
-```
-
-
 ::: {style='text-align: right'}
 [Download Rmd](index.Rmd){download=minidown.Rmd .button}
 :::
@@ -96,12 +62,11 @@ Documentation is ready at [here](pkgdown/index.html).
 
 Default framework and its theme are `"sakura"` and `"default"`.
 Followings are the list of available ones.
-Live examples are available via links.
+To preview them, use AI at the top of this page.
 
 ```{r, echo=FALSE, message=FALSE}
 frameworks %>%
   dplyr::mutate(
-    theme = sprintf('[%s](%s)', theme, output_file),
     framework = framework %>%
       forcats::fct_relevel(
         c("sakura",
@@ -530,3 +495,104 @@ knitr::kable(head(iris))
 ## Footnote
 
 See^[footnote]
+
+<!-- Theme changer -->
+
+```{r, echo=FALSE}
+htmltools::tags$aside(htmltools::tags$p(
+  htmltools::tags$label("framework: ", "for" = "select-framework"),
+  htmltools::tags$select(
+    purrr::imap(minidown:::frameworks, function(framework, nm) {
+      htmltools::tags$option(
+        nm, value = nm, "data-version" = framework$version
+      )
+    }),
+    id = "select-framework"
+  ),
+  htmltools::tags$label("theme: ", id = "label-select-theme"),
+  purrr::imap(minidown:::frameworks, function(framework, nm) {
+    htmltools::tags$select(
+      purrr::imap(framework$stylesheet, function(path, nm) {
+        htmltools::tags$option(nm, value = path)
+      }),
+      id = paste0("select-theme-", nm)
+    )
+  }),
+  htmltools::tags$button("Go", id = "button-go")
+), id = "aside-select-framework")
+```
+
+```{css, echo=FALSE}
+#aside-select-framework {
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 100;
+  padding: 1em 0;
+}
+#aside-select-framework .inactive {
+  display: none
+}
+#aside-select-framework label,
+#aside-select-framework select {
+  display: inline-block;
+}
+#aside-select-framework select {
+  margin-right: 1em;
+}
+#aside-select-framework p {
+  margin: 0;
+  text-align: right;
+}
+```
+
+
+```{js, echo=FALSE, eval=TRUE}
+document.addEventListener("DOMContentLoaded", function() {
+  const main = document.getElementsByTagName("main")[0];
+  const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
+  const style = document.head.appendChild(document.createElement("style"));
+  style.innerText = `@media screen and (min-width: 900px) { nav > ul {top: ${aside.offsetHeight}px} }`;
+  
+  const selectors = Array.from(aside.querySelectorAll("select"));
+
+  const themeSelectors = selectors.slice(1).reduce(
+    function(x, y) {
+      x[y.id.replace(/^select-theme-/, "")] = y;
+      return x
+    },
+    {}
+  );
+  selectors.slice(2).forEach(function(selector) {
+    return selector.classList.add("inactive");
+  });
+
+  const frameworkSelector = selectors[0];
+  const label = document.getElementById("label-select-theme");
+  label.setAttribute("for", themeSelectors[framework.value].id);
+  let framework = frameworkSelector.selectedOptions[0];
+  frameworkSelector.addEventListener("change", function() {
+    themeSelectors[framework.value].classList.add("inactive");
+    framework = frameworkSelector.selectedOptions[0];
+    themeSelectors[framework.value].classList.remove("inactive");
+    label.setAttribute("for", themeSelectors[framework.value].id);
+  });
+
+  const minidown = document.querySelector("meta[name='minidown-version']").content
+  function path_css0() {
+    const theme = themeSelectors[framework.value].selectedOptions[0].value
+    return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`
+  }
+  function path_css1() {
+    return `index_files/minidown-${minidown}/${framework.value}.css`
+  }
+  const link0 = document.querySelector("link[href='" + path_css0() + "']");
+  const link1 = document.querySelector("link[href='" + path_css1() + "']");
+
+  document.getElementById("button-go").addEventListener("click", function() {
+    link0.href = path_css0();
+    link1.href = path_css1();
+  })
+});
+```
+

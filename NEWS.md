@@ -12,6 +12,7 @@
 * Fixed a conflict among the `toc_highlight` and `tabset` arguments of `mini_document` (#28).
 * Add the `section_divs` argument to the `mini_document` function. The default value is `TRUE`. It must be `TRUE` when enabling the tabset feature (#29).
 * When switching tabs in `mini_document`'s tabset, browser's URL is updated so that users can easily share the URL of the tab with others (#30).
+* On <https://minidown.atusy.net>, available themes can be previewed without jumping pages. This is made possible by adding `mini_document(framework = "all")` as a choice. Note that this option is intended for internal use only. By setting this and `self_contained = FALSE`, the document adds all the stylesheets as its dependencies. Also, a `meta` element will be inserted to header, which tells the version of **minidown** package that builds the document (#35).
 
 # minidown 0.0.3
 

@@ -12,23 +12,24 @@ spec_dependencies <- function(extra_dependencies = NULL,
   }
 
   version = utils::packageVersion(pkg)
+  all_frameworks = framework == "all"
 
-  c(
-    list(
-      html_dependency_framework(framework, theme),
-      htmltools::htmlDependency(
+  c(html_dependency_framework(framework, theme),
+    list(htmltools::htmlDependency(
         name = pkg,
         version = version,
         src = path_mini_resources("html", "styles"),
         stylesheet = c(
-          paste0(framework, ".css"),
+          paste0(`if`(all_frameworks, default_framework, framework), ".css"),
           "common.css",
           if (framework != "mini") "feat-tooltip.css",
           if (toc_float) "feat-toc-float.css"
         ),
-        all_files = FALSE
-      )
-    ),
+        meta = if (all_frameworks) {
+          c("minidown-version" = utils::packageVersion("minidown"))
+        },
+        all_files = all_frameworks
+    )),
     if (tabset) {list(htmltools::htmlDependency(
       name = "tabset",
       version = version,
