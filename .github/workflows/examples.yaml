@@ -47,14 +47,13 @@ jobs:
           git config --local user.name "GitHub Actions"
           git fetch
           git checkout examples
-          git rm -rf *
-          git commit -m "build examples"
           git checkout master docs
-          mv docs/* .
+          ls | grep -v -E "^docs$" | xargs rm -rf
+          cp -rf docs/* .
           rm -rf docs
           Rscript -e 'rmarkdown::render("index.Rmd")'
           echo "add"
           git add .
           echo "commit"
-          git commit --amend --no-edit
+          git commit -m "build examples"
           git push origin examples
