@@ -53,8 +53,9 @@ jobs:
           cp -rf docs/* .
           rm -rf docs
           Rscript -e 'rmarkdown::render("index.Rmd")'
-          echo "add"
-          git add .
-          echo "commit"
-          git commit -m "build examples"
-          git push origin examples
+          diffname=`git diff --name-only`
+          if [[ $diffname -ne "" ]]; then
+            git add .
+            git commit -m "build examples"
+            git push origin examples
+          fi
