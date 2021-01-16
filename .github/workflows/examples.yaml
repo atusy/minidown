@@ -47,7 +47,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git fetch
           git checkout examples
-          git rm -rf .
+          git rm -rf *
           git commit -m "build examples"
           git checkout master docs
           mv docs/* .
