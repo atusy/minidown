@@ -22,7 +22,7 @@ jobs:
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-          Rscript -e 'install.pcakges(c("dplyr", "magrittr", "purrr", "tibble", "tidyr"))'
+          install.pcakges(c("dplyr", "magrittr", "purrr", "tibble", "tidyr"))
         shell: Rscript {0}
 
       - name: Cache R packages
