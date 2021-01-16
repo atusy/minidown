@@ -800,9 +800,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const frameworkSelector = selectors[0];
+  let framework = frameworkSelector.selectedOptions[0];
   const label = document.getElementById("label-select-theme");
   label.setAttribute("for", themeSelectors[framework.value].id);
-  let framework = frameworkSelector.selectedOptions[0];
   frameworkSelector.addEventListener("change", function() {
     themeSelectors[framework.value].classList.add("inactive");
     framework = frameworkSelector.selectedOptions[0];
