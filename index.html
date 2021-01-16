@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Atsushi Yasumoto" />
+  <meta name="dcterms.date" content="2021-01-16" />
+  <title>minidown::mini_document</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link href="index_files/sakura-1.1.0/sakura-dark.css" rel="stylesheet" />
+  <link href="index_files/minidown-0.0.3/sakura.css" rel="stylesheet" />
+  <link href="index_files/minidown-0.0.3/common.css" rel="stylesheet" />
+  <link href="index_files/minidown-0.0.3/feat-tooltip.css" rel="stylesheet" />
+  <link href="index_files/minidown-0.0.3/feat-toc-float.css" rel="stylesheet" />
+  <link href="index_files/tabset-0.0.3/tabset.css" rel="stylesheet" />
+  <script src="index_files/tabset-0.0.3/tabset.js"></script>
+  <script src="index_files/highlightToC-0.0.3/highlightToC.js"></script>
+  <script src="index_files/accessible-code-block-0.0.1/empty-anchor.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        displayMode: true
+      });
+    });
+  </script>
+</head>
+<body>
+<main>
+<header id="title-block-header">
+<h1 class="title">minidown::mini_document</h1>
+<p class="author">Atsushi Yasumoto</p>
+<p class="date">2021-01-16</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#frameworks-and-themes"><span class="toc-section-number">1</span> Frameworks and themes</a></li>
+<li><a href="#code-folding"><span class="toc-section-number">2</span> Code folding</a><ul>
+<li><a href="#showhide-exceptions"><span class="toc-section-number">2.1</span> Show/hide exceptions</a></li>
+<li><a href="#change-summary"><span class="toc-section-number">2.2</span> Change summary</a></li>
+<li><a href="#fold-only-some"><span class="toc-section-number">2.3</span> Fold only some</a></li>
+<li><a href="#prefer-rmarkdownhtml_document"><span class="toc-section-number">2.4</span> Prefer <code>rmarkdown::html_document</code></a></li>
+</ul></li>
+<li><a href="#results-folding"><span class="toc-section-number">3</span> Results folding</a><ul>
+<li><a href="#change-summary-text"><span class="toc-section-number">3.1</span> Change summary text</a></li>
+<li><a href="#multiple-results-per-chunk"><span class="toc-section-number">3.2</span> Multiple results per chunk</a><ul>
+<li><a href="#set-chunk-options"><span class="toc-section-number">3.2.1</span> Set chunk options</a></li>
+<li><a href="#iterate-with-for-or-lapply"><span class="toc-section-number">3.2.2</span> Iterate with <code>for</code> or <code>lapply</code></a></li>
+<li><a href="#define-a-function-with-side-effects"><span class="toc-section-number">3.2.3</span> Define a function with side effects</a></li>
+</ul></li>
+<li><a href="#exceptionally-showhide-some-results"><span class="toc-section-number">3.3</span> Exceptionally show/hide some results</a></li>
+</ul></li>
+<li><a href="#floating-toc"><span class="toc-section-number">4</span> Floating TOC</a></li>
+<li><a href="#tabset"><span class="toc-section-number">5</span> Tabset</a><ul>
+<li><a href="#introduction"><span class="toc-section-number">5.1</span> Introduction</a></li>
+<li><a href="#example-rmd"><span class="toc-section-number">5.2</span> Example Rmd</a></li>
+</ul></li>
+<li><a href="#tooltips"><span class="toc-section-number">6</span> Tooltips</a></li>
+<li><a href="#math-with-katex"><span class="toc-section-number">7</span> Math with KaTeX</a></li>
+<li><a href="#appendix-markdown-results"><span class="toc-section-number">8</span> Appendix: markdown results</a><ul>
+<li><a href="#headings-h2"><span class="toc-section-number">8.1</span> Headings (H2)</a><ul>
+<li><a href="#h3"><span class="toc-section-number">8.1.1</span> H3</a></li>
+</ul></li>
+<li><a href="#block-quotations"><span class="toc-section-number">8.2</span> Block quotations</a></li>
+<li><a href="#code-blocks"><span class="toc-section-number">8.3</span> Code blocks</a><ul>
+<li><a href="#code-blocks-with-long-lines"><span class="toc-section-number">8.3.1</span> Code blocks with long lines</a></li>
+</ul></li>
+<li><a href="#lists"><span class="toc-section-number">8.4</span> Lists</a><ul>
+<li><a href="#bullet-lists"><span class="toc-section-number">8.4.1</span> Bullet lists</a></li>
+<li><a href="#ordered-lists"><span class="toc-section-number">8.4.2</span> Ordered lists</a></li>
+<li><a href="#task-lists"><span class="toc-section-number">8.4.3</span> Task lists</a></li>
+<li><a href="#definition-lists"><span class="toc-section-number">8.4.4</span> Definition lists</a></li>
+</ul></li>
+<li><a href="#horizontal-rule"><span class="toc-section-number">8.5</span> Horizontal rule</a></li>
+<li><a href="#table"><span class="toc-section-number">8.6</span> Table</a></li>
+<li><a href="#inline-formatting"><span class="toc-section-number">8.7</span> Inline formatting</a></li>
+<li><a href="#link"><span class="toc-section-number">8.8</span> Link</a></li>
+<li><a href="#image"><span class="toc-section-number">8.9</span> Image</a></li>
+<li><a href="#footnote"><span class="toc-section-number">8.10</span> Footnote</a></li>
+</ul></li>
+</ul>
+</nav>
+<article>
+<div style="text-align: right">
+<p><a href="index.Rmd" class="button" download="minidown.Rmd">Download Rmd</a></p>
+</div>
+<p>This article introduces rich features of <code>minidown::mini_document</code> with live examples. This format is powered by R Markdown, Pandoc, KaTeX and <strong>light weight CSS framewroks</strong> such as sakura (default), Water.css, mini.css, and so on.</p>
+<p>If you haven’t installed the <code>minidown</code> package on R, install it by</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
+<p>Documentation is ready at <a href="pkgdown/index.html">here</a>.</p>
+<section id="frameworks-and-themes" class="level1">
+<h1><span class="header-section-number">1</span> Frameworks and themes</h1>
+<p>Default framework and its theme are <code>"sakura"</code> and <code>"default"</code>. Followings are the list of available ones. Live examples are available via links.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">framework</th>
+<th style="text-align: left;">theme</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">sakura</td>
+<td style="text-align: left;"><a href="index.html">default</a>, <a href="sakura-dark_solarized.html">dark_solarized</a>, <a href="sakura-dark.html">dark</a>, <a href="sakura-earthly.html">earthly</a>, <a href="sakura-vader.html">vader</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">water</td>
+<td style="text-align: left;"><a href="water-light.html">light</a>, <a href="water-dark.html">dark</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mini</td>
+<td style="text-align: left;"><a href="mini-default.html">default</a>, <a href="mini-nord.html">nord</a>, <a href="mini-dark.html">dark</a></td>
+</tr>
+</tbody>
+</table>
+<p>Here’s an example YAML frontmatter specifying a framework and a theme.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
+</section>
+<section id="code-folding" class="level1">
+<h1><span class="header-section-number">2</span> Code folding</h1>
+<p>Code folding can be controlled by the YAML frontmatter like:</p>
+<pre><code>output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: show</code></pre>
+<p>The above results in</p>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<pre class="details show" data-summary="Output"><code>## [1] 1</code></pre>
+</details>
+<details class=chunk-details><summary class=chunk-summary>Message</summary>
+<pre class="details" data-summary="Message"><code>## message</code></pre>
+</details>
+<details class=chunk-details><summary class=chunk-summary>Warning</summary>
+<pre class="details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
+</details>
+<details class=chunk-details open><summary class=chunk-summary>Error</summary>
+<pre class="details show" data-summary="Error"><code>## Error in f(): error</code></pre>
+</details>
+<p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
+<p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
+<p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>class.source='details'</code>).</p>
+<section id="showhide-exceptions" class="level2">
+<h2><span class="header-section-number">2.1</span> Show/hide exceptions</h2>
+<p>When <code>source: show</code>, all the sources are shown. In case you need exceptions, add the <code>hide</code> class to the source. If you want to hide all with exceptions, add the <code>show</code> class to the exceptions. Of course, this feature is not limited to the source.</p>
+<pre><code>---
+output:
+  minidown::mini_document:
+    code_folding:
+      source: show
+---
+
+```{r}
+&#39;This is shown&#39;
+```
+
+
+```{r, class.source=&#39;hide&#39;}
+&#39;This is hidden&#39;
+```</code></pre>
+<p>and <code>hide</code> classes.</p>
+</section>
+<section id="change-summary" class="level2">
+<h2><span class="header-section-number">2.2</span> Change summary</h2>
+<p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
+<details class=chunk-details open><summary class=chunk-summary>iris.R</summary>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+</details>
+<details class=chunk-details><summary class=chunk-summary>Answer</summary>
+<pre class="hide details" data-summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</details>
+</section>
+<section id="fold-only-some" class="level2">
+<h2><span class="header-section-number">2.3</span> Fold only some</h2>
+<p>Even if <code>none</code> is specified in YAML, code folding can be enabled for selected chunks by adding the <code>details</code> class.</p>
+<pre><code>---
+output:
+  minidown::mini_document:
+    code_folding: none
+---
+
+```{r}
+&#39;This is shown&#39;
+```
+
+
+```{r, class.source=&#39;details hide&#39;}
+&#39;This is hidden&#39;
+```
+</code></pre>
+</section>
+<section id="prefer-rmarkdownhtml_document" class="level2">
+<h2><span class="header-section-number">2.4</span> Prefer <code>rmarkdown::html_document</code></h2>
+<p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>framework: bootstrap</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
+</section>
+</section>
+<section id="results-folding" class="level1">
+<h1><span class="header-section-number">3</span> Results folding</h1>
+<p>By specifying <code>result_folding: show</code> or <code>hide</code>, you can fold entire results.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
+<p>This is a good option when you have side effects such as drawing figures and tables. Result button is placed on the left so that you can distinguish from code_folding buttons.</p>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+</details>
+<p><details class='chunk-results'><summary>Results</summary></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<section id="change-summary-text" class="level2">
+<h2><span class="header-section-number">3.1</span> Change summary text</h2>
+<p>By default, summary text is “Results”. You can change this by a chunk option, <code>summary.results</code>. Just like <code>summary.*</code> in code folding.</p>
+</section>
+<section id="multiple-results-per-chunk" class="level2">
+<h2><span class="header-section-number">3.2</span> Multiple results per chunk</h2>
+<p>If you have multiple results per chunk and combine them to a single folding, you have three options.</p>
+<section id="set-chunk-options" class="level3">
+<h3><span class="header-section-number">3.2.1</span> Set chunk options</h3>
+<p>with <code>results='hold'</code> and/or <code>fig.show='hold'</code>.</p>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">&#39;foo&#39;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+</details>
+<p><details class='chunk-results'><summary>Results</summary></p>
+<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+</section>
+<section id="iterate-with-for-or-lapply" class="level3">
+<h3><span class="header-section-number">3.2.2</span> Iterate with <code>for</code> or <code>lapply</code></h3>
+<p>or their friends.</p>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb18" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
+</details>
+<p><details class='chunk-results'><summary>Results</summary></p>
+<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<pre class="details show" data-summary="Output"><code>## [1] 1
+## [1] 2</code></pre>
+</details>
+<p></details></p>
+</section>
+<section id="define-a-function-with-side-effects" class="level3">
+<h3><span class="header-section-number">3.2.3</span> Define a function with side effects</h3>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb20" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
+<span id="cb20-4"><a href="#cb20-4"></a>}</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">f</span>()</span></code></pre></div>
+</details>
+<p><details class='chunk-results'><summary>Results</summary></p>
+<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+</section>
+</section>
+<section id="exceptionally-showhide-some-results" class="level2">
+<h2><span class="header-section-number">3.3</span> Exceptionally show/hide some results</h2>
+<p>To disable folding for some chunks, specify <code>results.folding=NULL</code> as a chunk option. When <code>results_folding: show</code> and you want to hide for some, then specify <code>results.folding='hide'</code> as a chunk option. Similarly, you make exeptions for <code>results_folding: hide</code> as well.</p>
+<p>To disable folding by default, but enable it for some chunks, then specify <code>results_folding: show # or hide</code> as a YAML front matter, and run <code>knitr::opts_chunk$set(results.folding=NULL)</code> at the beggining of your document. Then, you can enable the feature for selected chunks by specifying <code>'show'</code> or <code>'hide'</code> to the <code>results.folding</code> chunk option.</p>
+<pre><code>---
+output:
+  minidown::mini_document:
+    result_folding: show
+---
+
+`r&#39;&#39;````{r, include=FALSE}
+knitr::opts_knit$set(results.folding=NULL)
+`r&#39;&#39;````
+
+`r&#39;&#39;````{r}
+&#39;This chunk does not fold results&#39;
+`r&#39;&#39;````
+
+
+`r&#39;&#39;````{r, result.folding=&#39;hide&#39;}
+&#39;This chunk hides not fold results&#39;
+`r&#39;&#39;````</code></pre>
+</section>
+</section>
+<section id="floating-toc" class="level1">
+<h1><span class="header-section-number">4</span> Floating TOC</h1>
+<p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser. Also, the floating ToC can also be highlighted according to the browsing section by specifying <code>toc_highlight: true</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="at">    </span><span class="fu">toc_highlight</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+</section>
+<section id="tabset" class="level1 tabset">
+<h1><span class="header-section-number">5</span> Tabset</h1>
+<section id="introduction" class="level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Sections become tabs when they belong to the <code>tabset</code>-class section, and <code>minidown::mini_document(tabset = TRUE)</code>. This feature is similar to the one in <code>rmarkdown::html_document</code>. Two major difference are</p>
+<ul>
+<li>The table of contents can navigate to a specific tab.</li>
+<li>Each tabs have unique URLs which can be shared with others.</li>
+</ul>
+<p>Note that a tabset can nest tabsets with two limitations:</p>
+<ul>
+<li>A conflict with the <code>toc_highlight</code> option (cf. <span id="floating-toc">Floating TOC</span>).</li>
+<li>A conflict with the navigation to tabs from URL or ToC.</li>
+</ul>
+</section>
+<section id="example-rmd" class="level2">
+<h2><span class="header-section-number">5.2</span> Example Rmd</h2>
+<pre class="rmd"><code>---
+title: tabset
+output:
+  minidown::mini_document:
+    tabset: true
+---
+
+# Tabset {.tabset}
+
+## Tab 1
+
+This is the first tab.
+
+## Tab 2
+
+This is the second tab.</code></pre>
+</section>
+</section>
+<section id="tooltips" class="level1">
+<h1><span class="header-section-number">6</span> Tooltips</h1>
+<p><strong><span class=tooltip aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+</section>
+<section id="math-with-katex" class="level1">
+<h1><span class="header-section-number">7</span> Math with KaTeX</h1>
+<p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a>$$</span>
+<span id="cb26-2"><a href="#cb26-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb26-3"><a href="#cb26-3"></a>$$</span></code></pre></div>
+<p>becomes</p>
+<p><span class="math display">\[
+\sum_{i=1}^{10}{\alpha_i}
+\]</span></p>
+</section>
+<section id="appendix-markdown-results" class="level1">
+<h1><span class="header-section-number">8</span> Appendix: markdown results</h1>
+<section id="headings-h2" class="level2">
+<h2><span class="header-section-number">8.1</span> Headings (H2)</h2>
+<section id="h3" class="level3">
+<h3><span class="header-section-number">8.1.1</span> H3</h3>
+<section id="h4" class="level4">
+<h4><span class="header-section-number">8.1.1.1</span> H4</h4>
+<section id="h5" class="level5">
+<h5><span class="header-section-number">8.1.1.1.1</span> H5</h5>
+<section id="h6" class="level6">
+<h6><span class="header-section-number">8.1.1.1.1.1</span> H6</h6>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section id="block-quotations" class="level2">
+<h2><span class="header-section-number">8.2</span> Block quotations</h2>
+<blockquote>
+<p>Single</p>
+</blockquote>
+<blockquote>
+<p>Nesting</p>
+<blockquote>
+<p>another</p>
+</blockquote>
+</blockquote>
+</section>
+<section id="code-blocks" class="level2">
+<h2><span class="header-section-number">8.3</span> Code blocks</h2>
+<p>A code block without line numbers.</p>
+<pre><code>Code block</code></pre>
+<p>A code block with line numbers.</p>
+<div class="sourceCode" id="cb28" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb28-10"><a href="#cb28-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb28-15"><a href="#cb28-15"></a>}</span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="kw">f</span>()</span></code></pre></div>
+<section id="code-blocks-with-long-lines" class="level3">
+<h3><span class="header-section-number">8.3.1</span> Code blocks with long lines</h3>
+<section id="without-specifiying-language" class="level4">
+<h4><span class="header-section-number">8.3.1.1</span> Without specifiying language</h4>
+<pre><code>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </code></pre>
+</section>
+<section id="with-specifying-language" class="level4">
+<h4><span class="header-section-number">8.3.1.2</span> With specifying language</h4>
+<section id="without-line-numbers" class="level5">
+<h5><span class="header-section-number">8.3.1.2.1</span> Without line numbers</h5>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+</section>
+<section id="with-line-numbers" class="level5">
+<h5><span class="header-section-number">8.3.1.2.2</span> With line numbers</h5>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+</section>
+</section>
+</section>
+</section>
+<section id="lists" class="level2">
+<h2><span class="header-section-number">8.4</span> Lists</h2>
+<section id="bullet-lists" class="level3">
+<h3><span class="header-section-number">8.4.1</span> Bullet lists</h3>
+<p>Tight</p>
+<ul>
+<li>Tight 1</li>
+<li>Tight 2
+<ul>
+<li>Tight 2-1</li>
+<li>Tight 2-2</li>
+</ul></li>
+</ul>
+<p>Loose</p>
+<ul>
+<li><p>Loose 1</p></li>
+<li><p>Loose 2</p></li>
+<li><p>Loose 3</p></li>
+</ul>
+</section>
+<section id="ordered-lists" class="level3">
+<h3><span class="header-section-number">8.4.2</span> Ordered lists</h3>
+<ol type="1">
+<li>one</li>
+<li>two</li>
+<li>three</li>
+</ol>
+</section>
+<section id="task-lists" class="level3">
+<h3><span class="header-section-number">8.4.3</span> Task lists</h3>
+<ul>
+<li><input type="checkbox" disabled="" />
+an unchecked task list item</li>
+<li><input type="checkbox" disabled="" checked="" />
+checked item</li>
+</ul>
+</section>
+<section id="definition-lists" class="level3">
+<h3><span class="header-section-number">8.4.4</span> Definition lists</h3>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1
+</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a
+</dd>
+<dd>Definition 2b
+</dd>
+</dl>
+</section>
+</section>
+<section id="horizontal-rule" class="level2">
+<h2><span class="header-section-number">8.5</span> Horizontal rule</h2>
+<hr />
+</section>
+<section id="table" class="level2">
+<h2><span class="header-section-number">8.6</span> Table</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inline-formatting" class="level2">
+<h2><span class="header-section-number">8.7</span> Inline formatting</h2>
+<ul>
+<li><em>Emphasis</em></li>
+<li><strong>Strong emphasis</strong></li>
+<li><del>Strikeout</del></li>
+<li>super<sup>script</sup></li>
+<li>sub<sub>script</sub></li>
+<li><code>Verbatim</code></li>
+<li><span class="smallcaps">Small caps</span></li>
+</ul>
+</section>
+<section id="link" class="level2">
+<h2><span class="header-section-number">8.8</span> Link</h2>
+<p><a href="https://twitter.com/Atsushi776">Atusy’s Twitter</a></p>
+</section>
+<section id="image" class="level2">
+<h2><span class="header-section-number">8.9</span> Image</h2>
+<figure>
+<img src="avator.jpeg" data-external="1" alt="" /><figcaption>Atusy’s avator</figcaption>
+</figure>
+</section>
+<section id="footnote" class="level2">
+<h2><span class="header-section-number">8.10</span> Footnote</h2>
+<p>See<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+</section>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>footnote<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</article>
+</main>
+</body>
+</html>
