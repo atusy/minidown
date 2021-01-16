@@ -62,8 +62,6 @@ jobs:
           rm -rf docs
           Rscript -e 'rmarkdown::render("index.Rmd")'
           diffname=`git diff --name-only`
-          if [[ $diffname -ne "" ]]; then
-            git add .
-            git commit -m "build examples"
-            git push origin examples
-          fi
+          git add .
+          git commit --allow-empty -m "build examples"
+          git push origin examples
