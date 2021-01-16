@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.document.styleSheets[0].insertRule(
     `#TOC a.highlight{display:inline-block;width:100%;color:${getBGColor(anchors[0])};background-color:${window.getComputedStyle(anchors[0]).color}`
-  )
+  );
 
   function highlight() {
     const closest = argMin(headerIDs.map(
