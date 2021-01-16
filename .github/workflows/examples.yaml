@@ -43,19 +43,15 @@ jobs:
 
       - name: Deploy examples
         run: |
-          Rscript -e 'rmarkdown::render("docs/index.Rmd")'
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          echo "fetch"
           git fetch
-          echo "switch"
           git checkout examples
-          echo "rm"
-          ls | grep -v -E "^docs" | xargs rm -rf
-          echo "mv"
+          git rm -rf .
+          git checkout master docs
           mv docs/* .
-          echo "rm"
           rm -rf docs
+          Rscript -e 'rmarkdown::render("index.Rmd")'
           echo "add"
           git add .
           echo "commit"
