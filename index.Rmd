@@ -60,9 +60,9 @@ Documentation is ready at [here](pkgdown/index.html).
 
 # Frameworks and themes
 
-Default framework and its theme are `"sakura"` and `"default"`.
+THe default framework and its theme are `"sakura"` and `"default"`.
 Followings are the list of available ones.
-To preview them, use AI at the top of this page.
+To preview them, use the UI at the top of this page.
 
 ```{r, echo=FALSE, message=FALSE}
 frameworks %>%
