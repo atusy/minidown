@@ -47,7 +47,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           echo "switch"
-          git switch examples
+          git checkout examples
           echo "rm"
           ls | grep -v -E "^docs" | xargs rm -rf
           echo "mv"
