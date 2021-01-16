@@ -68,7 +68,7 @@ mini_document <- function(framework = "sakura",
                           keep_md = FALSE,
                           pandoc_args = NULL,
                           ...) {
-  framework <- match.arg(framework, c("bootstrap", names(frameworks)))
+  framework <- match.arg(framework, c("bootstrap", names(frameworks), "all"))
   html5 <- framework != "bootstrap"
   katex <- identical(math, "katex")
 
