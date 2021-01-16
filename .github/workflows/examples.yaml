@@ -46,6 +46,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git fetch
+          git checkout master
           git checkout examples
           git checkout master docs
           ls | grep -v -E "^docs$" | xargs rm -rf
