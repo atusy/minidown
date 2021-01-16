@@ -49,7 +49,7 @@ jobs:
           git checkout master
           git checkout examples
           git checkout master docs
-          ls -a | grep -v -E "^(docs|\\.git)$" | xargs rm -rf
+          ls -a | grep -v -E "^(docs|\\.git|\\.+)$" | xargs rm -rf
           cp -rf docs/* .
           rm -rf docs
           Rscript -e 'rmarkdown::render("index.Rmd")'
