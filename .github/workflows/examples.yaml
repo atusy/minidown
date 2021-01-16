@@ -48,6 +48,7 @@ jobs:
           git fetch
           git checkout examples
           git rm -rf .
+          git commit -m "build examples"
           git checkout master docs
           mv docs/* .
           rm -rf docs
@@ -55,5 +56,5 @@ jobs:
           echo "add"
           git add .
           echo "commit"
-          git commit -m "built examples"
+          git commit --amend --no-edit
           git push origin examples
