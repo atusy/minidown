@@ -61,7 +61,6 @@ jobs:
           cp -rf docs/* .
           rm -rf docs
           Rscript -e 'rmarkdown::render("index.Rmd")'
-          diffname=`git diff --name-only`
           git add .
           git commit --allow-empty -m "build examples"
           git push origin examples
