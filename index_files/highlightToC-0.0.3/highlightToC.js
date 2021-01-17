@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closest = argMin(headerIDs.map(
       x => Math.pow(document.getElementById(x).getBoundingClientRect().top, 2)
     ));
-    if (highlighted != closest) {
+    if (highlighted !== closest) {
       anchors[highlighted].classList.remove("highlight");
     }
     anchors[closest].classList.add("highlight");
