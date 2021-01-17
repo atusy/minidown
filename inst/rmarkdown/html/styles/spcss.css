@@ -1,0 +1,26 @@
+body {
+  background-color: white;
+}
+div.sourceCode {
+  overflow: visible;
+  margin-left: 0;
+}
+pre.numberSource {
+  margin: 0;
+}
+pre.sourceCode {
+  overflow: auto;
+}
+pre.sourceCode.numberSource {
+  overflow: visible;
+}
+pre.sourceCode.numberSource>code {
+  white-space: pre-wrap
+}
+pre.sourceCode.numberSource>code>span {
+  left: 8px;
+  text-indent: -4.6em;
+}
+pre>code {
+  white-space: pre;
+}
