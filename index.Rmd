@@ -23,6 +23,7 @@ output:
     keep_md: false
 ---
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(results.folding = NULL)
 `%>%` <- magrittr::`%>%`
@@ -498,7 +499,16 @@ See^[footnote]
 
 <!-- Theme changer -->
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
+all_framework <- identical(
+  rmarkdown::metadata$output[["minidown::mini_document"]]$framework,
+  "all"
+)
+```
+
+
+
+```{r, echo=FALSE, eval=all_framework}
 htmltools::tags$aside(htmltools::tags$p(
   htmltools::tags$label("framework: ", "for" = "select-framework"),
   htmltools::tags$select(
@@ -522,7 +532,7 @@ htmltools::tags$aside(htmltools::tags$p(
 ), id = "aside-select-framework")
 ```
 
-```{css, echo=FALSE}
+```{css, echo=FALSE, eval=all_framework}
 #aside-select-framework {
   position: sticky;
   top: 0;
@@ -547,7 +557,7 @@ htmltools::tags$aside(htmltools::tags$p(
 ```
 
 
-```{js, echo=FALSE, eval=TRUE}
+```{js, echo=FALSE, eval=all_framework}
 document.addEventListener("DOMContentLoaded", function() {
   const main = document.getElementsByTagName("main")[0];
   const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
