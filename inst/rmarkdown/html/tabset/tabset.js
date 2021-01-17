@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tabIds.forEach(tabId => {
       const current = tabIds.indexOf(tabId);
       tabs[current].removeAttribute("id");
-      const button = ul.appendChild(document.createElement("li")).
-        appendChild(document.createElement("button"));
+      const button = document.createElement("button");
+      ul.appendChild(document.createElement("li")).appendChild(button);
       button.id = tabId;
       button.textContent = tabs[current].children[0].textContent;
       button.addEventListener("click", function() {
