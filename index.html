@@ -791,7 +791,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const themeSelectors = selectors.slice(1).reduce(
     function(x, y) {
       x[y.id.replace(/^select-theme-/, "")] = y;
-      return x
+      return x;
     },
     {}
   );
@@ -810,13 +810,13 @@ document.addEventListener("DOMContentLoaded", function() {
     label.setAttribute("for", themeSelectors[framework.value].id);
   });
 
-  const minidown = document.querySelector("meta[name='minidown-version']").content
+  const minidown = document.querySelector("meta[name='minidown-version']").content;
   function path_css0() {
-    const theme = themeSelectors[framework.value].selectedOptions[0].value
-    return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`
+    const theme = themeSelectors[framework.value].selectedOptions[0].value;
+    return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`;
   }
   function path_css1() {
-    return `index_files/minidown-${minidown}/${framework.value}.css`
+    return `index_files/minidown-${minidown}/${framework.value}.css`;
   }
   const link0 = document.querySelector("link[href='" + path_css0() + "']");
   const link1 = document.querySelector("link[href='" + path_css1() + "']");
@@ -835,7 +835,7 @@ document.addEventListener("DOMContentLoaded", function() {
     link0.href = path_css0();
     link1.href = path_css1();
     const anchor = document.querySelector("#TOC li>a:not(.highlight)");
-    styleHiToC.innerText = `#TOC a.highlight{display:inline-block;width:100%;color:${getBGColor(anchor)};background-color:${window.getComputedStyle(anchor).color}`;
+    styleHiToC.innerText = `#TOC a.highlight{color:${getBGColor(anchor)};background-color:${window.getComputedStyle(anchor).color}`;
   })
 });
 </script>
