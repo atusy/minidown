@@ -20,6 +20,13 @@ frameworks <- list(
       vader = "sakura-vader.css"
     )
   ),
+  spcss = list(
+    name = "spcss",
+    version = "0.6.0",
+    stylesheet = c(
+      "spcss" = "spcss.min.css"
+    )
+  ),
   water = list(
     name = "water",
     version = "1.4.0",
