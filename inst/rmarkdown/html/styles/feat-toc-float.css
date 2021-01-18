@@ -4,6 +4,7 @@
     max-width: 62.5%;
     margin: 0 auto;
     padding-top: 0;
+    padding-bottom: 0;
   }
   main {
     display: grid;
@@ -15,18 +16,23 @@
     max-width: calc(100% - 4rem);
     padding: 0 0 0 4rem;
   }
-  nav {
+  #TOC {
     grid-row: 1 / -1;
-    grid-columns: 1 / 2;
+    grid-column: 1 / 2;
     border: none;
     margin: 0;
     width: 300px;
+    font-size: 0.9em;
   }
-  nav > ul {
+  #TOC > ul {
     position: sticky;
-    max-height: 85vh;
+    max-height: 100vh;
     overflow-y: auto;
     top: 5px;
     border: none;
+    box-sizing: border-box;
+  }
+  #TOC ul, #TOC li, #TOC a {
+    margin: 0;
   }
 }
