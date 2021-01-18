@@ -562,7 +562,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const main = document.getElementsByTagName("main")[0];
   const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
   const styleToC = document.head.appendChild(document.createElement("style"));
-  styleToC.innerText = `@media screen and (min-width: 900px) { nav > ul {top: ${aside.offsetHeight}px} }`;
+  function updateStyleToC() {
+    styleToC.innerText = `@media screen and (min-width: 900px) { #TOC > ul {top: ${aside.offsetHeight}px; height: calc(100vh - ${aside.offsetHeight}px)} }`;
+  }
+  updateStyleToC();
   
   const selectors = Array.from(aside.querySelectorAll("select"));
 
@@ -605,14 +608,15 @@ document.addEventListener("DOMContentLoaded", function() {
     return (b !== "transparent" &&
             b !== "rgba(0, 0, 0, 0)" &&
             b !== "rgba(255,255,255,0)") ? b
-         : (el.parentNode === null)      ? "white"
+         : (el.tagName === "BODY")       ? "white"
                                          : getBGColor(el.parentNode);
   }
 
   document.getElementById("button-go").addEventListener("click", function() {
-    link0.href = path_css0();
-    link1.href = path_css1();
+    link0.setAttribute('href', path_css0());
+    link1.setAttribute('href', path_css1());
     const anchor = document.querySelector("#TOC li>a:not(.highlight)");
+    updateStyleToC();
     styleHiToC.innerText = `#TOC a.highlight{color:${getBGColor(anchor)};background-color:${window.getComputedStyle(anchor).color}`;
   })
 });
