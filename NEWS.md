@@ -15,7 +15,7 @@
 * On <https://minidown.atusy.net>, available themes can be previewed without jumping pages. This is made possible by adding `mini_document(framework = "all")` as a choice. Note that this option is intended for internal use only. By setting this and `self_contained = FALSE`, the document adds all the stylesheets as its dependencies. Also, a `meta` element will be inserted to header, which tells the version of **minidown** package that builds the document (#35).
 * Floating ToC sticks to the page in the better way. Previously, scroll moved the ToC slightly before sticking in the **sakura** framework (#36).
 * Add **spcss** as a new CSS framework (#37).
-* The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40).
+* The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40, #41).
 
 # minidown 0.0.3
 
