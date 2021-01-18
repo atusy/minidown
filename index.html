@@ -730,13 +730,13 @@ checked item</li>
 <!-- Theme changer -->
 <aside id="aside-select-framework">
 <p>
-<label for="select-framework">framework: </label>
+<label for="select-framework">Framework:</label>
 <select id="select-framework">
 <option value="sakura" data-version="1.1.0">sakura</option>
 <option value="water" data-version="1.4.0">water</option>
 <option value="mini" data-version="3.0.1">mini</option>
 </select>
-<label id="label-select-theme">theme: </label>
+<label id="label-select-theme">Theme:</label>
 <select id="select-theme-sakura">
 <option value="sakura.css">default</option>
 <option value="sakura-dark-solarized.css">dark_solarized</option>
@@ -753,7 +753,7 @@ checked item</li>
 <option value="mini-nord.min.css">nord</option>
 <option value="mini-dark.min.css">dark</option>
 </select>
-<button id="button-go">Go</button>
+<button id="button-go">Click twice!</button>
 </p>
 </aside>
 <style type="text/css">
@@ -762,14 +762,17 @@ checked item</li>
   top: 0;
   background-color: inherit;
   z-index: 100;
-  padding: 1em 0;
+  padding: 5px 0;
+  font-size: 0.9em;
 }
 #aside-select-framework .inactive {
   display: none
 }
 #aside-select-framework label,
-#aside-select-framework select {
+#aside-select-framework select,
+#aside-select-framework button {
   display: inline-block;
+  margin: 0;
 }
 #aside-select-framework select {
   margin-right: 1em;
@@ -783,9 +786,33 @@ checked item</li>
 document.addEventListener("DOMContentLoaded", function() {
   const main = document.getElementsByTagName("main")[0];
   const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
-  const styleToC = document.head.appendChild(document.createElement("style"));
-  styleToC.innerText = `@media screen and (min-width: 900px) { nav > ul {top: ${aside.offsetHeight}px} }`;
-  
+  styleToC = {
+    element: document.head.appendChild(document.createElement("style")),
+    getBGColor: function(el) {
+      const b = window.getComputedStyle(el).backgroundColor;
+      return (b !== "transparent" &&
+              b !== "rgba(0, 0, 0, 0)" &&
+              b !== "rgba(255,255,255,0)") ? b
+           : (el.tagName === "BODY")       ? "white"
+                                           : this.getBGColor(el.parentNode);
+    },
+    updateInnerText: function() {
+      const anchor = document.querySelector("#TOC li>a:not(.highlight)");
+      console.log(window.getComputedStyle(anchor).color);
+      this.element.innerText = String.prototype.concat(
+        '#TOC a.highlight{',
+          `color:${this.getBGColor(anchor)};`,
+          `background-color:${window.getComputedStyle(anchor).color}`,
+        '}',
+        '@media screen and (min-width: 900px){#TOC>ul{',
+          `top: ${aside.offsetHeight}px;`,
+          `height: calc(100vh - ${aside.offsetHeight}px)`,
+        '}}'
+      );
+    }
+  };
+  styleToC.updateInnerText();
+
   const selectors = Array.from(aside.querySelectorAll("select"));
 
   const themeSelectors = selectors.slice(1).reduce(
@@ -821,21 +848,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const link0 = document.querySelector("link[href='" + path_css0() + "']");
   const link1 = document.querySelector("link[href='" + path_css1() + "']");
 
-  const styleHiToC = document.head.appendChild(document.createElement("style"));
-  function getBGColor(el) {
-    const b = window.getComputedStyle(el).backgroundColor;
-    return (b !== "transparent" &&
-            b !== "rgba(0, 0, 0, 0)" &&
-            b !== "rgba(255,255,255,0)") ? b
-         : (el.parentNode === null)      ? "white"
-                                         : getBGColor(el.parentNode);
-  }
-
   document.getElementById("button-go").addEventListener("click", function() {
-    link0.href = path_css0();
-    link1.href = path_css1();
-    const anchor = document.querySelector("#TOC li>a:not(.highlight)");
-    styleHiToC.innerText = `#TOC a.highlight{color:${getBGColor(anchor)};background-color:${window.getComputedStyle(anchor).color}`;
+    link0.setAttribute('href', path_css0());
+    link1.setAttribute('href', path_css1());
+    styleToC.updateInnerText();
   })
 });
 </script>

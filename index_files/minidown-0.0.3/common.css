@@ -3,3 +3,18 @@
     padding: 0 3rem;
   }
 }
+#TOC {
+  font-size: 0.9em;
+  border: none;
+}
+#TOC > ul {
+  box-sizing: border-box;
+  padding: 0;
+}
+#TOC ul {
+  margin: 0;
+}
+#TOC li, #TOC a {
+  margin: 0;
+  padding: 0;
+}
