@@ -28,10 +28,6 @@ knitr::opts_chunk$set(results.folding = NULL)
 `%>%` <- magrittr::`%>%`
 ```
 
-::: {style='text-align: right'}
-[Download Rmd](index.Rmd){download=minidown.Rmd .button}
-:::
-
 This article introduces rich features of `minidown::mini_document` with live examples.
 This format is powered by R Markdown, Pandoc, KaTeX and **light weight CSS framewroks** such as sakura (default), Water.css, mini.css, and so on.
 
