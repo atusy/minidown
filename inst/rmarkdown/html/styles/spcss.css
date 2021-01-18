@@ -1,3 +1,7 @@
+nav ul {
+  list-style-type: none;
+  padding-inline-start: 1rem;
+}
 body {
   background-color: white;
 }
