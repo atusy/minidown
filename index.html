@@ -798,7 +798,6 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     updateInnerText: function() {
       const anchor = document.querySelector("#TOC li>a:not(.highlight)");
-      console.log(window.getComputedStyle(anchor).color);
       this.element.innerText = String.prototype.concat(
         '#TOC a.highlight{',
           `color:${this.getBGColor(anchor)};`,
