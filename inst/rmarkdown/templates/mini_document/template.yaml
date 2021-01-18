@@ -1,0 +1,4 @@
+name: Lightweight Powerfull HTML Document
+description: >
+  HTML document based on `minidown::mini_document`.
+create_dir: false
