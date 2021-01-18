@@ -271,18 +271,18 @@ output:
     result_folding: show
 ---
 
-`r''````{r, include=FALSE}
+`r ''````{r, include=FALSE}
 knitr::opts_knit$set(results.folding=NULL)
-`r''````
+`r ''````
 
-`r''````{r}
+`r ''````{r}
 'This chunk does not fold results'
-`r''````
+`r ''````
 
 
-`r''````{r, result.folding='hide'}
+`r ''````{r, result.folding='hide'}
 'This chunk hides not fold results'
-`r''````
+`r ''````
 ~~~
 
 # Floating TOC {#floating-toc}
