@@ -22,7 +22,6 @@
     border: none;
     margin: 0;
     width: 300px;
-    font-size: 0.9em;
   }
   #TOC > ul {
     position: sticky;
@@ -30,9 +29,5 @@
     overflow-y: auto;
     top: 5px;
     border: none;
-    box-sizing: border-box;
-  }
-  #TOC ul, #TOC li, #TOC a {
-    margin: 0;
   }
 }
