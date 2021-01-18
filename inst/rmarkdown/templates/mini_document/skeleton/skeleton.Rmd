@@ -66,14 +66,6 @@ frameworks <- lapply(
   )
 
 frameworks %>%
-  dplyr::mutate(
-    framework = framework %>%
-      forcats::fct_relevel(
-        c("sakura",
-          framework %>% unique() %>% setdiff(c("sakura", "mini")),
-          "mini")
-      )
-  ) %>%
   dplyr::group_by(framework) %>%
   dplyr::summarise(theme = paste(theme, collapse = ', ')) %>%
   knitr::kable(escape=FALSE)
