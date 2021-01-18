@@ -142,6 +142,7 @@
 <li>When switching tabs in <code>mini_document</code>’s tabset, browser’s URL is updated so that users can easily share the URL of the tab with others (<a href='https://github.com/atusy/minidown/issues/30'>#30</a>).</li>
 <li>On <a href="https://minidown.atusy.net" class="uri">https://minidown.atusy.net</a>, available themes can be previewed without jumping pages. This is made possible by adding <code><a href="../reference/mini_document.html">mini_document(framework = "all")</a></code> as a choice. Note that this option is intended for internal use only. By setting this and <code>self_contained = FALSE</code>, the document adds all the stylesheets as its dependencies. Also, a <code>meta</code> element will be inserted to header, which tells the version of <strong>minidown</strong> package that builds the document (<a href='https://github.com/atusy/minidown/issues/35'>#35</a>).</li>
 <li>Floating ToC sticks to the page in the better way. Previously, scroll moved the ToC slightly before sticking in the <strong>sakura</strong> framework (<a href='https://github.com/atusy/minidown/issues/36'>#36</a>).</li>
+<li>The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (<a href='https://github.com/atusy/minidown/issues/40'>#40</a>).</li>
 </ul>
 </div>
 </div>
