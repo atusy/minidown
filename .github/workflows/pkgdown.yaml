@@ -51,6 +51,7 @@ jobs:
       - name: Deploy examples
         run: |
           repo=`git remote get-url origin`
+          echo $repo
           if [[ $repo == *"atusy/minidown.git" ]]; then
             git config --local user.email "actions@github.com"
             git config --local user.name "GitHub Actions"
@@ -66,4 +67,5 @@ jobs:
             git add .
             git commit --allow-empty -m "build examples"
             git push origin examples
+            echo "deploying minidown.atusy.net"
           fi
