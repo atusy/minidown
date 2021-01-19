@@ -75,7 +75,7 @@ html_dependency_framework <- function(framework = "sakura",
 
   cdn_url <- if (isTRUE(cdn)) {
     frameworks[[framework]][["cdn"]][[if (theme == "default") 1L else theme]]
-  } else if (is.character(cdn)) {
+  } else if (!is.null(cdn)) {
     cdn
   }
   arguments <- frameworks[[framework]]
