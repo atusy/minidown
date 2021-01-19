@@ -52,6 +52,7 @@
 #' @export
 mini_document <- function(framework = "sakura",
                           theme = "default",
+                          cdn = FALSE,
                           toc = FALSE,
                           toc_float = FALSE,
                           toc_highlight = FALSE,
@@ -82,7 +83,8 @@ mini_document <- function(framework = "sakura",
         theme = theme,
         tabset = tabset && html5 && section_divs,
         toc_float = toc && toc_float,
-        toc_highlight = toc_highlight
+        toc_highlight = toc_highlight,
+        cdn = cdn
     ),
     template = spec_template(template, html5),
     includes = spec_includes(includes, katex),

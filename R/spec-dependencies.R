@@ -6,7 +6,8 @@ spec_dependencies <- function(extra_dependencies = NULL,
                               theme = "default",
                               tabset = FALSE,
                               toc_float = FALSE,
-                              toc_highlight = FALSE) {
+                              toc_highlight = FALSE,
+                              cdn = FALSE) {
   if (!html5) {
     return(extra_dependencies)
   }
@@ -14,7 +15,7 @@ spec_dependencies <- function(extra_dependencies = NULL,
   version = utils::packageVersion(pkg)
   all_frameworks = framework == "all"
 
-  c(html_dependency_framework(framework, theme),
+  c(html_dependency_framework(framework, theme, cdn = cdn),
     list(htmltools::htmlDependency(
         name = pkg,
         version = version,

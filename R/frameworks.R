@@ -18,6 +18,9 @@ frameworks <- list(
       dark = "sakura-dark.css",
       earthly = "sakura-earthly.css",
       vader = "sakura-vader.css"
+    ),
+    cdn = c(
+      default = "https://unpkg.com/sakura.css/css/sakura.css"
     )
   ),
   spcss = list(
@@ -51,12 +54,15 @@ default_framework <- names(frameworks)[[1L]]
 
 html_dependency_framework <- function(framework = "sakura",
                                       theme = "default",
-                                      all_files = FALSE) {
+                                      all_files = FALSE,
+                                      cdn = FALSE) {
   if (framework == "all") {
     deps <- lapply(
       names(frameworks),
       function(framework) {
-        dep <- html_dependency_framework(framework, all_files = TRUE)[[1L]]
+        dep <- html_dependency_framework(
+            framework, all_files = TRUE, cdn = FALSE
+          )[[1L]]
         if (framework != default_framework) {
           dep$stylesheet <- NULL
         }
@@ -66,11 +72,25 @@ html_dependency_framework <- function(framework = "sakura",
 
     return(deps)
   }
+
+  cdn_url <- if (cdn) {
+    frameworks[[framework]][["cdn"]][[if (theme == "default") 1L else theme]]
+  }
+  warning(cdn_url)
   arguments <- frameworks[[framework]]
   theme <- match.arg(theme, c("default", names(arguments$stylesheet)))
   arguments$src <- path_mini_frameworks(framework)
-  arguments$stylesheet <-
-    arguments$stylesheet[[if (theme == "default") 1L else theme]]
+  if (is.null(cdn_url)) {
+    arguments$stylesheet <-
+      arguments$stylesheet[[if (theme == "default") 1L else theme]]
+  } else {
+    arguments$stylesheet <- NULL
+    arguments$head <- c(
+      arguments$head,
+      sprintf('<link href="%s" rel="stylesheet">', cdn_url)
+    )
+  }
+
   arguments$all_files <- all_files
   list(do.call(
     htmltools::htmlDependency,
