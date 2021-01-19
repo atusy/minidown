@@ -17,6 +17,7 @@
 * Add **spcss** as a new CSS framework (#37).
 * The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40, #41).
 * Added skeleton.Rmd, which means users can create `minidown::mini_document` from the menu of RStudio (**File** -> **New File** -> **R Markdown...** -> **From Template**) (#42).
+* `mini_document` gains the `cdn` argument. If `TRUE` and the package knows the URL, CDN will be used. It can also be URLs.
 
 # minidown 0.0.3
 
