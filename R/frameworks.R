@@ -73,10 +73,11 @@ html_dependency_framework <- function(framework = "sakura",
     return(deps)
   }
 
-  cdn_url <- if (cdn) {
+  cdn_url <- if (isTRUE(cdn)) {
     frameworks[[framework]][["cdn"]][[if (theme == "default") 1L else theme]]
+  } else if (is.character(cdn)) {
+    cdn
   }
-  warning(cdn_url)
   arguments <- frameworks[[framework]]
   theme <- match.arg(theme, c("default", names(arguments$stylesheet)))
   arguments$src <- path_mini_frameworks(framework)
