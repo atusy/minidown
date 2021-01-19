@@ -50,17 +50,20 @@ jobs:
 
       - name: Deploy examples
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git remote set-branches origin examples
-          git fetch origin examples
-          git checkout origin/examples
-          git checkout -b examples
-          git checkout master docs
-          ls -a | grep -v -E "^(docs|\\.git|\\.+)$" | xargs rm -rf
-          cp -rf docs/* .
-          rm -rf docs
-          Rscript -e 'rmarkdown::render("index.Rmd")'
-          git add .
-          git commit --allow-empty -m "build examples"
-          git push origin examples
+          repo=`git remote get-url origin`
+          if [[ $repo == *"atusy/minidown.git" ]]; then
+            git config --local user.email "actions@github.com"
+            git config --local user.name "GitHub Actions"
+            git remote set-branches origin examples
+            git fetch origin examples
+            git checkout origin/examples
+            git checkout -b examples
+            git checkout master docs
+            ls -a | grep -v -E "^(docs|\\.git|\\.+)$" | xargs rm -rf
+            cp -rf docs/* .
+            rm -rf docs
+            Rscript -e 'rmarkdown::render("index.Rmd")'
+            git add .
+            git commit --allow-empty -m "build examples"
+            git push origin examples
+          fi
