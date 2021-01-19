@@ -16,6 +16,7 @@
 * Floating ToC sticks to the page in the better way. Previously, scroll moved the ToC slightly before sticking in the **sakura** framework (#36).
 * Add **spcss** as a new CSS framework (#37).
 * The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40, #41).
+* Added skeleton.Rmd, which means users can create `minidown::mini_document` from the menu of RStudio (**File** -> **New File** -> **R Markdown...** -> **From Template**) (#42).
 
 # minidown 0.0.3
 
