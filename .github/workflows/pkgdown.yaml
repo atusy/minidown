@@ -51,8 +51,8 @@ jobs:
       - name: Deploy examples
         run: |
           repo=`git remote get-url origin`
-          echo $repo
-          if [[ $repo == *"atusy/minidown" ]]; then
+          echo "Origin is ${repo}"
+          if [[ $repo =~ ^atusy/minidown$ ]]; then
             git config --local user.email "actions@github.com"
             git config --local user.name "GitHub Actions"
             git remote set-branches origin examples
@@ -67,5 +67,7 @@ jobs:
             git add .
             git commit --allow-empty -m "build examples"
             git push origin examples
-            echo "deploying minidown.atusy.net"
+            echo "Deployed minidown.atusy.net"
+          else
+            echo "Skipped deploy"
           fi
