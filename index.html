@@ -859,7 +859,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updateWithLink(sheet, link, updater, i = 0) {
     if (i === 20) {
-      console.log("Failed to re-style ToC.")
+      console.log("Failed to re-style ToC.");
     } else if (sheet === link.sheet) {
       setTimeout(() => updateWithLink(sheet, link, updater, i + 1), 100);
     } else {
