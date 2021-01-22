@@ -29,7 +29,7 @@ output:
 [Download Rmd](skeleton.Rmd){download=minidown.Rmd .button}
 :::
 
-```{r echo=FALSE}
+```{r include=FALSE}
 file.copy(
   system.file(package = "minidown", "rmarkdown", "templates", "mini_document", "skeleton", "skeleton.Rmd"),
   "skeleton.Rmd",
@@ -70,7 +70,7 @@ htmltools::tags$aside(htmltools::tags$p(
       id = paste0("select-theme-", nm)
     )
   }),
-  htmltools::tags$button("Click twice!", id = "button-go")
+  htmltools::tags$button("Apply!", id = "button-go")
 ), id = "aside-select-framework")
 ```
 
@@ -167,10 +167,23 @@ document.addEventListener("DOMContentLoaded", function() {
   const link0 = document.querySelector("link[href='" + path_css0() + "']");
   const link1 = document.querySelector("link[href='" + path_css1() + "']");
 
+  function updateWithLink(sheet, link, updater, i = 0) {
+    if (i === 20) {
+      console.log("Failed to re-style ToC.")
+    } else if (sheet === link.sheet) {
+      setTimeout(() => updateWithLink(sheet, link, updater, i + 1), 100);
+    } else {
+      updater();
+    }
+  }
   document.getElementById("button-go").addEventListener("click", function() {
-    link0.setAttribute('href', path_css0());
-    link1.setAttribute('href', path_css1());
-    styleToC.updateInnerText();
+    const css0 = path_css0();
+    if (link0.href !== css0) {
+      const oldSheet = link0.sheet;
+      link0.setAttribute('href', css0);
+      link1.setAttribute('href', path_css1());
+      updateWithLink(oldSheet, link0, styleToC.updateInnerText.bind(styleToC));
+    }
   })
 });
 ```
