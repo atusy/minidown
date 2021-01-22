@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   document.getElementById("button-go").addEventListener("click", function() {
     const css0 = path_css0();
-    if (css0 !== linl0.href) {
+    if (css0 !== link0.href) {
       const oldSheet = link0.sheet;
       link0.setAttribute('href', css0);
       link1.setAttribute('href', path_css1());
