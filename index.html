@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-01-20" />
+  <meta name="dcterms.date" content="2021-01-22" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -112,7 +112,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-01-20</p>
+<p class="date">2021-01-22</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -167,13 +167,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="text-align: right">
 <p><a href="skeleton.Rmd" class="button" download="minidown.Rmd">Download Rmd</a></p>
 </div>
-<details class=chunk-details open><summary class=chunk-summary>Output</summary>
-<pre class="details show" data-summary="Output"><code>## [1] TRUE</code></pre>
-</details>
-<p></details></p>
 <p>This article introduces rich features of <code>minidown::mini_document</code> with live examples. This format is powered by R Markdown, Pandoc, KaTeX and <strong>light weight CSS framewroks</strong> such as sakura (default), Water.css, mini.css, and so on.</p>
 <p>If you haven’t installed the <code>minidown</code> package on R, install it by</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
 <p>Documentation is ready at <a href="pkgdown/index.html">here</a>.</p>
 <section id="frameworks-and-themes" class="level1">
 <h1><span class="header-section-number">1</span> Frameworks and themes</h1>
@@ -205,10 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Here’s an example YAML frontmatter specifying a framework and a theme.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div>
 </section>
 <section id="code-folding" class="level1">
 <h1><span class="header-section-number">2</span> Code folding</h1>
@@ -223,13 +219,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       error: show</code></pre>
 <p>The above results in</p>
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb5" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>}</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] 1</code></pre>
@@ -270,8 +266,8 @@ output:
 <h2><span class="header-section-number">2.2</span> Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
 <details class=chunk-details open><summary class=chunk-summary>iris.R</summary>
-<div class="sourceCode" id="cb11" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
 <details class=chunk-details><summary class=chunk-summary>Answer</summary>
 <pre class="hide details" data-summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -305,21 +301,21 @@ output:
 <section id="prefer-rmarkdownhtml_document" class="level2">
 <h2><span class="header-section-number">2.4</span> Prefer <code>rmarkdown::html_document</code></h2>
 <p>If you prefer <code>rmarkdown::html_document</code> except for the code foliding, specify the <code>framework: bootstrap</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> bootstrap</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span></code></pre></div>
 </section>
 </section>
 <section id="results-folding" class="level1">
 <h1><span class="header-section-number">3</span> Results folding</h1>
 <p>By specifying <code>result_folding: show</code> or <code>hide</code>, you can fold entire results.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
 <p>This is a good option when you have side effects such as drawing figures and tables. Result button is placed on the left so that you can distinguish from code_folding buttons.</p>
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class='chunk-results'><summary>Results</summary></p>
 <table>
@@ -361,8 +357,8 @@ output:
 <h3><span class="header-section-number">3.2.1</span> Set chunk options</h3>
 <p>with <code>results='hold'</code> and/or <code>fig.show='hold'</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb17" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="st">&#39;foo&#39;</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">&#39;foo&#39;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <p><details class='chunk-results'><summary>Results</summary></p>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
@@ -401,7 +397,7 @@ output:
 <h3><span class="header-section-number">3.2.2</span> Iterate with <code>for</code> or <code>lapply</code></h3>
 <p>or their friends.</p>
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb19" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb18" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
 </details>
 <p><details class='chunk-results'><summary>Results</summary></p>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
@@ -413,12 +409,12 @@ output:
 <section id="define-a-function-with-side-effects" class="level3">
 <h3><span class="header-section-number">3.2.3</span> Define a function with side effects</h3>
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb21" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
-<span id="cb21-3"><a href="#cb21-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
-<span id="cb21-4"><a href="#cb21-4"></a>}</span>
-<span id="cb21-5"><a href="#cb21-5"></a></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
+<span id="cb20-4"><a href="#cb20-4"></a>}</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <p><details class='chunk-results'><summary>Results</summary></p>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
@@ -481,11 +477,11 @@ knitr::opts_knit$set(results.folding=NULL)
 <section id="floating-toc" class="level1">
 <h1><span class="header-section-number">4</span> Floating TOC</h1>
 <p>Table of contents can be floated on the left of the page by specifying <code>toc_float: true</code>. The layout is responsive to the windows size. Thus, floating TOC is available when the viewport has the enough width. See what happens by shrinking the width of your browser. Also, the floating ToC can also be highlighted according to the browsing section by specifying <code>toc_highlight: true</code></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a><span class="at">    </span><span class="fu">toc_highlight</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="at">    </span><span class="fu">toc_highlight</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 </section>
 <section id="tabset" class="level1 tabset">
 <h1><span class="header-section-number">5</span> Tabset</h1>
@@ -525,14 +521,14 @@ This is the second tab.</code></pre>
 <section id="tooltips" class="level1">
 <h1><span class="header-section-number">6</span> Tooltips</h1>
 <p><strong><span class=tooltip aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
 </section>
 <section id="math-with-katex" class="level1">
 <h1><span class="header-section-number">7</span> Math with KaTeX</h1>
 <p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a>$$</span>
-<span id="cb27-2"><a href="#cb27-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
-<span id="cb27-3"><a href="#cb27-3"></a>$$</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a>$$</span>
+<span id="cb26-2"><a href="#cb26-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
+<span id="cb26-3"><a href="#cb26-3"></a>$$</span></code></pre></div>
 <p>becomes</p>
 <p><span class="math display">\[
 \sum_{i=1}^{10}{\alpha_i}
@@ -572,13 +568,13 @@ This is the second tab.</code></pre>
 <p>A code block without line numbers.</p>
 <pre><code>Code block</code></pre>
 <p>A code block with line numbers.</p>
-<div class="sourceCode" id="cb29" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb29-10"><a href="#cb29-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb29-11"><a href="#cb29-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb29-12"><a href="#cb29-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb29-13"><a href="#cb29-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb29-14"><a href="#cb29-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
-<span id="cb29-15"><a href="#cb29-15"></a>}</span>
-<span id="cb29-16"><a href="#cb29-16"></a><span class="kw">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb28" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb28-10"><a href="#cb28-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb28-15"><a href="#cb28-15"></a>}</span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="kw">f</span>()</span></code></pre></div>
 <section id="code-blocks-with-long-lines" class="level3">
 <h3><span class="header-section-number">8.3.1</span> Code blocks with long lines</h3>
 <section id="without-specifiying-language" class="level4">
@@ -589,11 +585,11 @@ This is the second tab.</code></pre>
 <h4><span class="header-section-number">8.3.1.2</span> With specifying language</h4>
 <section id="without-line-numbers" class="level5">
 <h5><span class="header-section-number">8.3.1.2.1</span> Without line numbers</h5>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 <section id="with-line-numbers" class="level5">
 <h5><span class="header-section-number">8.3.1.2.2</span> With line numbers</h5>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long </span></code></pre></div>
 </section>
 </section>
 </section>
@@ -767,7 +763,7 @@ checked item</li>
 <option value="mini-nord.min.css">nord</option>
 <option value="mini-dark.min.css">dark</option>
 </select>
-<button id="button-go">Click twice!</button>
+<button id="button-go">Apply!</button>
 </p>
 </aside>
 <style type="text/css">
@@ -861,10 +857,23 @@ document.addEventListener("DOMContentLoaded", function() {
   const link0 = document.querySelector("link[href='" + path_css0() + "']");
   const link1 = document.querySelector("link[href='" + path_css1() + "']");
 
+  function updateWithLink(sheet, link, updater, i = 0) {
+    if (i === 20) {
+      console.log("Failed to re-style ToC.")
+    } else if (sheet === link.sheet) {
+      setTimeout(() => updateWithLink(sheet, link, updater, i + 1), 100);
+    } else {
+      updater();
+    }
+  }
   document.getElementById("button-go").addEventListener("click", function() {
-    link0.setAttribute('href', path_css0());
-    link1.setAttribute('href', path_css1());
-    styleToC.updateInnerText();
+    const css0 = path_css0();
+    if (link0.href !== css0) {
+      const oldSheet = link0.sheet;
+      link0.setAttribute('href', css0);
+      link1.setAttribute('href', path_css1());
+      updateWithLink(oldSheet, link0, styleToC.updateInnerText.bind(styleToC));
+    }
   })
 });
 </script>
