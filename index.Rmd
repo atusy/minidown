@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateWithLink(sheet, link, updater, i = 0) {
     if (i === 20) {
       console.log("Failed to re-style ToC.");
-    } else if (sheet === link.sheet) {
+    } else if ((sheet === link.sheet) || (i === 0)) {
       setTimeout(() => updateWithLink(sheet, link, updater, i + 1), 100);
     } else {
       updater();
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   document.getElementById("button-go").addEventListener("click", function() {
     const css0 = path_css0();
-    if (link0.href !== css0) {
+    if (css0 !== linl0.href) {
       const oldSheet = link0.sheet;
       link0.setAttribute('href', css0);
       link1.setAttribute('href', path_css1());
