@@ -892,6 +892,16 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 });
 </script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  const aside = document.getElementById("aside-select-framework");
+  window.addEventListener("hashchange", function() {
+    if (document.getElementById(location.hash.substring(1)) !== null) {
+      window.scrollBy(0, -aside.offsetHeight);
+    }
+  })
+})
+</script>
 </section>
 </section>
 <section class="footnotes" role="doc-endnotes">
