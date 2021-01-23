@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 ```
 
-```{js scrollRightPlace, echo=FALSE}
+```{js scrollRightPlace, echo=FALSE, eval=all_framework}
 document.addEventListener("DOMContentLoaded", function() {
   const aside = document.getElementById("aside-select-framework");
   window.addEventListener("hashchange", function() {
