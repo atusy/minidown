@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-01-22" />
+  <meta name="dcterms.date" content="2021-01-23" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -112,7 +112,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-01-22</p>
+<p class="date">2021-01-23</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -794,34 +794,53 @@ checked item</li>
 </style>
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-  const main = document.getElementsByTagName("main")[0];
-  const aside = main.parentElement.insertBefore(document.getElementById("aside-select-framework"), main);
-  styleToC = {
-    element: document.head.appendChild(document.createElement("style")),
-    getBGColor: function(el) {
-      const b = window.getComputedStyle(el).backgroundColor;
-      return (b !== "transparent" &&
-              b !== "rgba(0, 0, 0, 0)" &&
-              b !== "rgba(255,255,255,0)") ? b
-           : (el.tagName === "BODY")       ? "white"
-                                           : this.getBGColor(el.parentNode);
-    },
-    updateInnerText: function() {
-      const anchor = document.querySelector("#TOC li>a:not(.highlight)");
-      this.element.innerText = String.prototype.concat(
-        '#TOC a.highlight{',
-          `color:${this.getBGColor(anchor)};`,
-          `background-color:${window.getComputedStyle(anchor).color}`,
-        '}',
-        '@media screen and (min-width: 900px){#TOC>ul{',
-          `top: ${aside.offsetHeight}px;`,
-          `height: calc(100vh - ${aside.offsetHeight}px)`,
-        '}}'
-      );
-    }
-  };
-  styleToC.updateInnerText();
+  function getBGColor(el) {
+    const b = window.getComputedStyle(el).backgroundColor;
+    return (b !== "transparent" &&
+            b !== "rgba(0, 0, 0, 0)" &&
+            b !== "rgba(255,255,255,0)") ? b
+         : (el.tagName === "BODY")       ? "white"
+                                         : getBGColor(el.parentNode);
+  }
 
+  function addRulesToC(style, aside) {
+    const toc = document.querySelector("#TOC li>a:not(.highlight)");
+    style.innerText = String.prototype.concat(
+      style.innerText,
+      '#TOC a.highlight{',
+        `color:${getBGColor(toc)};`,
+        `background-color:${window.getComputedStyle(toc).color}`,
+      '}',
+      '@media screen and (min-width: 900px){#TOC>ul{',
+        `top: ${aside.offsetHeight}px;`,
+        `height: calc(100vh - ${aside.offsetHeight}px)`,
+      '}}'
+    );
+  }
+
+  function addRulesExtra(style, href) {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", function() {
+      style.innerText = style.innerText + xhr.responseText;
+    });
+    xhr.open("GET", href, true);
+    xhr.send(null);
+  }
+
+  function updateRules(style, hrefTheme, hrefExtra, aside) {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", function() {
+      style.innerText = xhr.responseText;
+      addRulesExtra(style, hrefExtra);
+      addRulesToC(style, aside);
+    });
+    xhr.open("GET", hrefTheme, true);
+    xhr.send(null);
+  }
+
+  const main = document.getElementsByTagName("main")[0];
+  const aside = main.parentElement.insertBefore(
+    document.getElementById("aside-select-framework"), main);
   const selectors = Array.from(aside.querySelectorAll("select"));
 
   const themeSelectors = selectors.slice(1).reduce(
@@ -847,35 +866,46 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const minidown = document.querySelector("meta[name='minidown-version']").content;
-  function path_css0() {
+  function findTheme() {
     const theme = themeSelectors[framework.value].selectedOptions[0].value;
     return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`;
   }
-  function path_css1() {
+  function findExtra() {
     return `index_files/minidown-${minidown}/${framework.value}.css`;
   }
-  const link0 = document.querySelector("link[href='" + path_css0() + "']");
-  const link1 = document.querySelector("link[href='" + path_css1() + "']");
+  const linkTheme = document.querySelector("link[href='" + findTheme() + "']");
+  const linkExtra = document.querySelector("link[href='" + findExtra() + "']");
+  const style = linkTheme.parentElement.insertBefore(
+    document.createElement("style"), linkTheme);
 
-  function updateWithLink(sheet, link, updater, i = 0) {
-    if (i === 20) {
-      console.log("Failed to re-style ToC.");
-    } else if ((sheet === link.sheet) || (i === 0)) {
-      setTimeout(() => updateWithLink(sheet, link, updater, i + 1), 100);
-    } else {
-      updater();
-    }
-  }
+  updateRules(style, linkTheme.href, linkExtra.href, aside);
+  linkTheme.remove();
+  linkExtra.remove();
+  
   document.getElementById("button-go").addEventListener("click", function() {
-    const css0 = path_css0();
-    if (css0 !== link0.href) {
-      const oldSheet = link0.sheet;
-      link0.setAttribute('href', css0);
-      link1.setAttribute('href', path_css1());
-      updateWithLink(oldSheet, link0, styleToC.updateInnerText.bind(styleToC));
-    }
+    updateRules(style, findTheme(), findExtra(), aside);
   })
 });
+</script>
+<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<div class="sourceCode" id="cb32" data-summary="Source"><pre class="sourceCode js details show"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1"></a><span class="va">document</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="kw">const</span> aside <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;aside-select-framework&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;hashchange&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>    <span class="cf">if</span> (<span class="va">document</span>.<span class="at">getElementById</span>(<span class="va">location</span>.<span class="va">hash</span>.<span class="at">substring</span>(<span class="dv">1</span>)) <span class="op">!==</span> <span class="kw">null</span>) <span class="op">{</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>      <span class="va">window</span>.<span class="at">scrollBy</span>(<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="va">aside</span>.<span class="at">offsetHeight</span>)<span class="op">;</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>    <span class="op">}</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>  <span class="op">}</span>)</span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="op">}</span>)</span></code></pre></div>
+</details>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  const aside = document.getElementById("aside-select-framework");
+  window.addEventListener("hashchange", function() {
+    if (document.getElementById(location.hash.substring(1)) !== null) {
+      window.scrollBy(0, -aside.offsetHeight);
+    }
+  })
+})
 </script>
 </section>
 </section>
