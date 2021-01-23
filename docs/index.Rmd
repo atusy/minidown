@@ -198,3 +198,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 ```
 
+```{js scrollRightPlace}
+document.addEventListener("DOMContentLoaded", function() {
+  const aside = document.getElementById("aside-select-framework");
+  window.addEventListener("hashchange", function() {
+    if (document.getElementById(location.hash.substring(1)) !== null) {
+      window.scrollBy(0, -aside.offsetHeight);
+    }
+  })
+})
+```
+
