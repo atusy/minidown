@@ -812,8 +812,8 @@ document.addEventListener("DOMContentLoaded", function() {
         `background-color:${window.getComputedStyle(toc).color}`,
       '}',
       '@media screen and (min-width: 900px){#TOC>ul{',
-        `top: ${aside.offsetHeight}px;`,
-        `height: calc(100vh - ${aside.offsetHeight}px)`,
+        `top: ${aside.offsetHeight}px !important;`,
+        `height: calc(100vh - ${aside.offsetHeight}px) !important`,
       '}}'
     );
   }
@@ -902,16 +902,6 @@ document.addEventListener("DOMContentLoaded", function() {
 <span id="cb32-7"><a href="#cb32-7"></a>  <span class="op">}</span>)</span>
 <span id="cb32-8"><a href="#cb32-8"></a><span class="op">}</span>)</span></code></pre></div>
 </details>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  const aside = document.getElementById("aside-select-framework");
-  window.addEventListener("hashchange", function() {
-    if (document.getElementById(location.hash.substring(1)) !== null) {
-      window.scrollBy(0, -aside.offsetHeight);
-    }
-  })
-})
-</script>
 </section>
 </section>
 <section class="footnotes" role="doc-endnotes">

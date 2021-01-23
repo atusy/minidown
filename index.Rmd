@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function() {
         `background-color:${window.getComputedStyle(toc).color}`,
       '}',
       '@media screen and (min-width: 900px){#TOC>ul{',
-        `top: ${aside.offsetHeight}px;`,
-        `height: calc(100vh - ${aside.offsetHeight}px)`,
+        `top: ${aside.offsetHeight}px !important;`,
+        `height: calc(100vh - ${aside.offsetHeight}px) !important`,
       '}}'
     );
   }
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 ```
 
-```{js scrollRightPlace}
+```{js scrollRightPlace, eval=FALSE, echo=TRUE}
 document.addEventListener("DOMContentLoaded", function() {
   const aside = document.getElementById("aside-select-framework");
   window.addEventListener("hashchange", function() {
