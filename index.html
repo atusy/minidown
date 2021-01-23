@@ -892,16 +892,6 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 });
 </script>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb32" data-summary="Source"><pre class="sourceCode js details show"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1"></a><span class="va">document</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="kw">const</span> aside <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;aside-select-framework&quot;</span>)<span class="op">;</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;hashchange&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>    <span class="cf">if</span> (<span class="va">document</span>.<span class="at">getElementById</span>(<span class="va">location</span>.<span class="va">hash</span>.<span class="at">substring</span>(<span class="dv">1</span>)) <span class="op">!==</span> <span class="kw">null</span>) <span class="op">{</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>      <span class="va">window</span>.<span class="at">scrollBy</span>(<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="va">aside</span>.<span class="at">offsetHeight</span>)<span class="op">;</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>    <span class="op">}</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a>  <span class="op">}</span>)</span>
-<span id="cb32-8"><a href="#cb32-8"></a><span class="op">}</span>)</span></code></pre></div>
-</details>
 </section>
 </section>
 <section class="footnotes" role="doc-endnotes">
