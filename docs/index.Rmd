@@ -183,17 +183,22 @@ document.addEventListener("DOMContentLoaded", function() {
   function findExtra() {
     return `index_files/minidown-${minidown}/${framework.value}.css`;
   }
-  const linkTheme = document.querySelector("link[href='" + findTheme() + "']");
-  const linkExtra = document.querySelector("link[href='" + findExtra() + "']");
+  let currentTheme = findTheme();
+  const linkTheme = document.querySelector("link[href='" + currentTheme + "']");
+  const linkExtra = document.querySelector("link[href='" + findExtra() + "']")
   const style = linkTheme.parentElement.insertBefore(
     document.createElement("style"), linkTheme);
 
   updateRules(style, linkTheme.href, linkExtra.href, aside);
   linkTheme.remove();
   linkExtra.remove();
-  
+
   document.getElementById("button-go").addEventListener("click", function() {
-    updateRules(style, findTheme(), findExtra(), aside);
+    const theme = findTheme();
+    if (theme !== currentTheme) {
+      updateRules(style, theme, findExtra(), aside);
+      currentTheme = theme
+    }
   })
 });
 ```
