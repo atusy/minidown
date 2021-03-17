@@ -1,4 +1,4 @@
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 960px) {
   header, nav, article {
     padding: 0 3rem;
   }
