@@ -80,7 +80,7 @@ htmltools::tags$aside(htmltools::tags$p(
   top: 0;
   background-color: inherit;
   z-index: 100;
-  padding: 5px 0;
+  padding: 5px;
   font-size: 0.9em;
 }
 #aside-select-framework .inactive {
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `color:${getBGColor(toc)};`,
         `background-color:${window.getComputedStyle(toc).color}`,
       '}',
-      '@media screen and (min-width: 900px){#TOC>ul{',
+      '@media screen and (min-width: 960px){#TOC>ul{',
         `top: ${aside.offsetHeight}px !important;`,
         `height: calc(100vh - ${aside.offsetHeight}px) !important`,
       '}}'
