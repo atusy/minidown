@@ -52,6 +52,7 @@ all_framework <- identical(
 
 ```{=html}
 <script src="themer.js"></script>
+<link rel="stylesheet" href="themer.css"></link>
 ```
 
 ```{r, echo=FALSE, eval=all_framework}
@@ -76,31 +77,4 @@ htmltools::tags$aside(htmltools::tags$p(
   }),
   htmltools::tags$button("Apply!", id = "button-go")
 ), id = "aside-select-framework")
-```
-
-```{css, echo=FALSE, eval=all_framework}
-#aside-select-framework {
-  position: sticky;
-  top: 0;
-  background-color: inherit;
-  z-index: 100;
-  padding: 5px;
-  font-size: 0.9em;
-}
-#aside-select-framework .inactive {
-  display: none
-}
-#aside-select-framework label,
-#aside-select-framework select,
-#aside-select-framework button {
-  display: inline-block;
-  margin: 0;
-}
-#aside-select-framework select {
-  margin-right: 1em;
-}
-#aside-select-framework p {
-  margin: 0;
-  text-align: right;
-}
 ```
