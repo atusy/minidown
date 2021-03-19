@@ -104,17 +104,3 @@ htmltools::tags$aside(htmltools::tags$p(
   text-align: right;
 }
 ```
-
-```{js scrollRightPlace, echo=FALSE, eval=all_framework}
-document.addEventListener("DOMContentLoaded", function() {
-  const aside = document.getElementById("aside-select-framework");
-  function scroll() {
-    if (document.getElementById(location.hash.substring(1)) !== null) {
-      window.scrollBy(0, -aside.offsetHeight);
-    }
-  }
-  scroll();
-  window.addEventListener("hashchange", scroll);
-})
-```
-

@@ -118,3 +118,14 @@ document.addEventListener("DOMContentLoaded", function() {
     updateSearchParams();
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const aside = document.getElementById("aside-select-framework");
+  function scroll() {
+    if (document.getElementById(location.hash.substring(1)) !== null) {
+      window.scrollBy(0, -aside.offsetHeight);
+    }
+  }
+  scroll();
+  window.addEventListener("hashchange", scroll);
+});
