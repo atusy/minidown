@@ -116,19 +116,16 @@ There are two remarkable results.
 - The `minidown::mini_document` with full features gains very small weights (< 20KB).
 
 
-```{r render-size, eval=params$eval_render, echo=FALSE}
+```{r eval=params$eval_render}
 render_size <- function(output_format = rmarkdown::html_vignette()) {
   this_rmd <- knitr::current_input()
   temp_html <- tempfile(fileext = ".html")
-  callr::r_vanilla(function(...) {
-                      library(rmarkdown)
-                      rmarkdown::render(...)
-                   },
-                   args = list(input = this_rmd,
-                               output_format = output_format,
-                               output_file = temp_html,
-                               params = list(eval_render = FALSE),
-                               quiet = TRUE))
+  callr::r_safe(function(...) rmarkdown::render(...),
+                args = list(input = this_rmd,
+                            output_format = output_format,
+                            output_file = temp_html,
+                            params = list(eval_render = FALSE),
+                            quiet = TRUE))
   file.size(temp_html)
 }
 
@@ -153,10 +150,6 @@ knitr::kable(tibble::enframe(
   name = "format",
   value = "size (KB)"
 ))
-```
-
-```{r ref.label="render-size", eval=FALSE}
-
 ```
 
 Note that if you are reading this vignette on CRAN, this page is the result of "mini_document with full features."
