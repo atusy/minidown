@@ -1,0 +1,163 @@
+---
+title: "Writing Vignettes with the 'minidown' Package"
+output:
+  minidown::mini_document:
+    framework: sakura
+    toc: true
+    toc_float: true
+    toc_highlight: true
+    code_folding: "hide"
+    results_folding: "show"
+    tabset: true
+    code_download: true
+    math: "katex"
+vignette: >
+  %\VignetteIndexEntry{Writing Vignettes with the 'minidown' Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+params:
+  eval_render: true
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `minidown::mini_document` function provides simple and lightweight yet powerful HTML format.
+Even if all features are enabled, the size of document is comparable with the default `html_vignette` function.
+
+# How easy it is!
+
+Only the difference is the YAML frontmatter.
+
+## 3 steps to go
+
+1. Create an `Rmd` file under the `vignettes` directory
+2. Add a YAML front matter something like below
+
+    ```yaml
+    ---
+    title: "Writing Vignette with the 'minidown' Package"
+    output: minidown::mini_document
+    vignette: >
+      %\VignetteIndexEntry{Writing Vignette with the 'minidown' Package}
+      %\VignetteEngine{knitr::rmarkdown}
+      %\VignetteEncoding{UTF-8}
+    ---
+    ```
+3. Write body
+
+## Details on the YAML front matter
+
+Only the special thing is the YAML front matter.
+Most important things are `minidown::mini_document` in the `output` key, and `%\VignetteEngine{knitr::rmarkdown}` in the `vignette` key.
+These two declares the vignette to be rendered with **minidown** package.
+
+The output format can be customized as usual in the R Markdown.
+Break lines, indent, and specify arguments like below.
+
+```yaml
+output:
+  minidown::mini_document:
+    toc: true
+    toc_float: true
+    toc_highlight: true
+    code_folding: "hide"
+    results_folding: "show"
+    tabset: true
+    code_download: true
+    math: "katex"
+```
+
+The other contents of the YAML front matter are not **minidown**-specific.^[https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes].
+
+# Why authoring vignettes with the minidown package?
+
+Because the `minidown::mini_document` function provides simple and lightweight yet powerful HTML format.
+
+The **rmarkdown** package provides the `html_vignette` function as a lightweight format suitable for creating vignettes.
+As the document says, the `html_vignette` provides much lighter document than the `html_document` document.
+The `html_vignette` loses weight by omitting Bootstrap and jQuery from `html_document`, which in turn loses some nice appearance and features such as floating ToC and code folding.
+However, such features are very important for long format documents, i.e. vignettes.
+
+The `minidown::mini_document` tries to provide as rich features as `html_document`.
+At the same time, it tries to be as light as `html_vignette`.
+
+## Rich opt-in features
+
+Almost all features are opt-in in the `minidown::mini_document` function.
+Authors can chose which feature to add with a subtle weight via the YAML front matter.
+For example,
+
+```yaml
+output:
+  minidown::mini_document:
+    toc: true
+    toc_float: true
+    toc_highlight: true
+    code_folding: "hide"
+    results_folding: "show"
+    tabset: true
+    code_download: true
+    math: "katex"
+```
+
+For more details, refer a help document by `?minidown::mini_documewnt`, or visit a document page which is a live example at the same time: <https://minidown.atusy.net/>.
+
+## Light weight
+
+This section compares the size by compiling this document in variety of formats.
+There are two remarkable results.
+
+- The `minidown::mini_document` function can even be lighter than the `html_vignette` function when `framework = "spcss"` is chosen.
+- The `minidown::mini_document` with full features gains very small weights (< 20KB).
+
+
+```{r render-size, eval=params$eval_render, echo=FALSE}
+render_size <- function(output_format = rmarkdown::html_vignette()) {
+  this_rmd <- knitr::current_input()
+  temp_html <- tempfile(fileext = ".html")
+  callr::r_vanilla(function(...) {
+                      library(rmarkdown)
+                      rmarkdown::render(...)
+                   },
+                   args = list(input = this_rmd,
+                               output_format = output_format,
+                               output_file = temp_html,
+                               params = list(eval_render = FALSE),
+                               quiet = TRUE))
+  file.size(temp_html)
+}
+
+formats <- list(
+  html_vignette = rmarkdown::html_vignette(),
+  'mini_document(framework = "spcss")' = minidown::mini_document(framework = "spcss"),
+  "mini_document() # default" = minidown::mini_document(),
+  "mini_document with full features" = minidown::mini_document(
+    toc = TRUE,
+    toc_float = TRUE,
+    toc_highlight = TRUE,
+    code_folding = "hide",
+    tabset = TRUE,
+    code_download = TRUE,
+    math = "katex"
+  ),
+  html_document = rmarkdown::html_document()
+)
+
+knitr::kable(tibble::enframe(
+  purrr::map_dbl(formats, render_size) / 1000,
+  name = "format",
+  value = "size (KB)"
+))
+```
+
+```{r ref.label="render-size", eval=FALSE}
+
+```
+
+Note that if you are reading this vignette on CRAN, this page is the result of "mini_document with full features."
+In that case, this page includes extra weight by providing download button which embeds source Rmd file (`r file.size(knitr::current_input()) / 1000`KB).
