@@ -50,9 +50,11 @@ Imports:
     rmarkdown,
     xfun
 Suggests:
-    testthat (>= 2.1.0),
+    callr,
     dplyr,
+    purrr,
+    testthat (>= 2.1.0),
     tidyr,
-    tibble,
-    purrr
+    tibble
 SystemRequirements: pandoc (>= 2.7.2) - http://pandoc.org
+VignetteBuilder: knitr
