@@ -1,8 +1,9 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-03-20T14:26Z
+articles:
+  Writing-vignettes-with-minidown: Writing-vignettes-with-minidown.html
+last_built: 2021-03-30T14:09Z
 urls:
   reference: https://minidown.atusy.net/pkgdown/reference
   article: https://minidown.atusy.net/pkgdown/articles
