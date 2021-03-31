@@ -62,6 +62,8 @@ Break lines, indent, and specify arguments like below.
 ```yaml
 output:
   minidown::mini_document:
+    framework: sakura
+    theme: default
     toc: true
     toc_float: true
     toc_highlight: true
@@ -71,6 +73,12 @@ output:
     code_download: true
     math: "katex"
 ```
+
+Note that the `framework` and `theme` keys control appearance of the rendered document.
+The default framework is "sakura", but there are some more like "water" and "spcss".
+Each frameworks also have their own themes.
+For more details on options, visit <https://minidown.atusy.net/>.
+This page also provides examples of all the combinations of frameworks and themes.
 
 The other contents of the YAML front matter are not **minidown**-specific.^[https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes].
 
