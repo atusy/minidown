@@ -21,6 +21,10 @@
 * Demo page adds functionality to set framework and theme via query parameter (e.g., <https://minidown.atusy.net/?framework=spcss&theme=spcss>) (#38)
 * Added a vignette, "Writing Vignettes with the 'minidown' Package" (#46, #47, #48).
 
+## Bug fix
+
+* `mini_document` no more generates invalid HTML by the `results_folding` feature, and removes the `results_folding` section when no output is made (#49).
+
 # minidown 0.0.3
 
 * The code folding feature is re-implemented. The previous implementation used five hooks on the chunk options: "class.source", "class.output", "class.message", "class.warning", "class.error". The new implementation uses a single hook on the "engine" chunk option. This allows the "class.*" chunk options be `NULL` as their default values, which is consistent with `rmarkdown::html_document()`. The previous implementation required the default values be blank string "" in order to trigger the hooks.
