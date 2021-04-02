@@ -7,23 +7,29 @@
 ## Major changes
 
 * `mini_document` experimentally gains the `toc_highlight` argument with default value `FALSE`, which highlights the **floating** table of contents according to the browser's viewport. This feature requires `toc = TRUE` and `toc_float = TRUE` (#26).
-* Internal file structures have refactored (#26).
 * `mini_document` experimentally gains the `tabset` argument with default value `FALSE`, which converts the sections to tabs if they belong to the `tabset`-class section just like `rmarkdown::html_document`. The major difference from `rmarkdown::html_document` is that the names of tabs appear in table of contents, and are accessible by URL. (#27).
-* Fixed a conflict among the `toc_highlight` and `tabset` arguments of `mini_document` (#28).
 * Add the `section_divs` argument to the `mini_document` function. The default value is `TRUE`. It must be `TRUE` when enabling the tabset feature (#29).
 * When switching tabs in `mini_document`'s tabset, browser's URL is updated so that users can easily share the URL of the tab with others (#30).
-* On <https://minidown.atusy.net>, available themes can be previewed without jumping pages. This is made possible by adding `mini_document(framework = "all")` as a choice. Note that this option is intended for internal use only. By setting this and `self_contained = FALSE`, the document adds all the stylesheets as its dependencies. Also, a `meta` element will be inserted to header, which tells the version of **minidown** package that builds the document (#35).
 * Floating ToC sticks to the page in the better way. Previously, scroll moved the ToC slightly before sticking in the **sakura** framework (#36).
 * Add **spcss** as a new CSS framework (#37).
 * The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40, #41).
 * Added skeleton.Rmd, which means users can create `minidown::mini_document` from the menu of RStudio (**File** -> **New File** -> **R Markdown...** -> **From Template**) (#42).
 * The floating ToC has better appearance. Its width remains 300px, but the main contents has changed. If viewport width is between 960px to 1260px, the main contents fills the rest of width (660px to 960px). If viewport width is larger than 1200px, the main content has the fixed width of 960px, and is centered. Previously, contents including the floating ToC are centered (#44).
-* Demo page adds functionality to set framework and theme via query parameter (e.g., <https://minidown.atusy.net/?framework=spcss&theme=spcss>) (#38)
 * Added a vignette, "Writing Vignettes with the 'minidown' Package" (#46, #47, #48).
 
 ## Bug fix
 
 * `mini_document` no more generates invalid HTML by the `results_folding` feature, and removes the `results_folding` section when no output is made (#49).
+* Fixed a conflict among the `toc_highlight` and `tabset` arguments of `mini_document` (#28).
+
+## Internal changes
+
+* Internal file structures have refactored (#26).
+
+## <https://minidown.atusy.net>
+
+* Available themes can be previewed without jumping pages. This is made possible by adding `mini_document(framework = "all")` as a choice. Note that this option is intended for internal use only. By setting this and `self_contained = FALSE`, the document adds all the stylesheets as its dependencies. Also, a `meta` element will be inserted to header, which tells the version of **minidown** package that builds the document (#35).
+* Demo page adds functionality to set framework and theme via query parameter (e.g., <https://minidown.atusy.net/?framework=spcss&theme=spcss>) (#38)
 
 # minidown 0.0.3
 
