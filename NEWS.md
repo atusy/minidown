@@ -1,4 +1,4 @@
-# minidown 0.0.4
+# minidown 0.1.0
 
 ## Breaking changes
 
