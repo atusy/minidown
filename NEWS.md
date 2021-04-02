@@ -15,7 +15,7 @@
 * The ToC is more compact. Also, when the ToC floats, it streches as high as viewport. Previous height was 85% of the viewport height (#40, #41).
 * Added skeleton.Rmd, which means users can create `minidown::mini_document` from the menu of RStudio (**File** -> **New File** -> **R Markdown...** -> **From Template**) (#42).
 * The floating ToC has better appearance. Its width remains 300px, but the main contents has changed. If viewport width is between 960px to 1260px, the main contents fills the rest of width (660px to 960px). If viewport width is larger than 1200px, the main content has the fixed width of 960px, and is centered. Previously, contents including the floating ToC are centered (#44).
-* Added a vignette, "Writing Vignettes with the 'minidown' Package" (#46, #47, #48).
+* Added a vignette, "Writing Vignettes with the 'minidown' Package" (#46, #47, #48, #50).
 
 ## Bug fix
 
