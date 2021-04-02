@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-03-31" />
+  <meta name="dcterms.date" content="2021-04-02" />
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -112,7 +112,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-03-31</p>
+<p class="date">2021-04-02</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -317,7 +317,7 @@ output:
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
 <div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
-<p><details class='chunk-results'><summary>Results</summary></p>
+<details class="chunk-results"><summary>Results</summary>
 <table>
 <thead>
 <tr class="header">
@@ -345,7 +345,7 @@ output:
 </tr>
 </tbody>
 </table>
-<p></details></p>
+</details>
 <section id="change-summary-text" class="level2">
 <h2><span class="header-section-number">3.1</span> Change summary text</h2>
 <p>By default, summary text is “Results”. You can change this by a chunk option, <code>summary.results</code>. Just like <code>summary.*</code> in code folding.</p>
@@ -360,7 +360,7 @@ output:
 <div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">&#39;foo&#39;</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
-<p><details class='chunk-results'><summary>Results</summary></p>
+<details class="chunk-results"><summary>Results</summary>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
@@ -391,7 +391,7 @@ output:
 </tr>
 </tbody>
 </table>
-<p></details></p>
+</details>
 </section>
 <section id="iterate-with-for-or-lapply" class="level3">
 <h3><span class="header-section-number">3.2.2</span> Iterate with <code>for</code> or <code>lapply</code></h3>
@@ -399,12 +399,12 @@ output:
 <details class=chunk-details open><summary class=chunk-summary>Source</summary>
 <div class="sourceCode" id="cb18" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
 </details>
-<p><details class='chunk-results'><summary>Results</summary></p>
+<details class="chunk-results"><summary>Results</summary>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] 1
 ## [1] 2</code></pre>
 </details>
-<p></details></p>
+</details>
 </section>
 <section id="define-a-function-with-side-effects" class="level3">
 <h3><span class="header-section-number">3.2.3</span> Define a function with side effects</h3>
@@ -416,7 +416,7 @@ output:
 <span id="cb20-5"><a href="#cb20-5"></a></span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
-<p><details class='chunk-results'><summary>Results</summary></p>
+<details class="chunk-results"><summary>Results</summary>
 <details class=chunk-details open><summary class=chunk-summary>Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
@@ -447,7 +447,7 @@ output:
 </tr>
 </tbody>
 </table>
-<p></details></p>
+</details>
 </section>
 </section>
 <section id="exceptionally-showhide-some-results" class="level2">
