@@ -170,6 +170,34 @@
 <li>The <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> function can even be lighter than the <code>html_vignette</code> function when <code>framework = "spcss"</code> is chosen.</li>
 <li>The <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> with full features gains very small weights (&lt; 20KB).</li>
 </ul>
+<table class="table">
+<thead><tr class="header">
+<th align="left">format</th>
+<th align="right">size (KB)</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">html_vignette</td>
+<td align="right">23.191</td>
+</tr>
+<tr class="even">
+<td align="left">mini_document(framework = “spcss”)</td>
+<td align="right">23.066</td>
+</tr>
+<tr class="odd">
+<td align="left">mini_document() # default</td>
+<td align="right">25.007</td>
+</tr>
+<tr class="even">
+<td align="left">mini_document with full features</td>
+<td align="right">37.580</td>
+</tr>
+<tr class="odd">
+<td align="left">html_document</td>
+<td align="right">635.941</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">render_size</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">output_format</span> <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_vignette.html">html_vignette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">this_rmd</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/current_input.html">current_input</a></span><span class="op">(</span><span class="op">)</span>
@@ -204,35 +232,7 @@
   name <span class="op">=</span> <span class="st">"format"</span>,
   value <span class="op">=</span> <span class="st">"size (KB)"</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left">format</th>
-<th align="right">size (KB)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">html_vignette</td>
-<td align="right">23.191</td>
-</tr>
-<tr class="even">
-<td align="left">mini_document(framework = “spcss”)</td>
-<td align="right">23.066</td>
-</tr>
-<tr class="odd">
-<td align="left">mini_document() # default</td>
-<td align="right">25.007</td>
-</tr>
-<tr class="even">
-<td align="left">mini_document with full features</td>
-<td align="right">37.448</td>
-</tr>
-<tr class="odd">
-<td align="left">html_document</td>
-<td align="right">635.941</td>
-</tr>
-</tbody>
-</table>
-<p>Note that if you are reading this vignette on CRAN, this page is the result of “mini_document with full features.” In that case, this page includes extra weight by providing download button which embeds source Rmd file (5.619KB).</p>
+<p>Note that if you are reading this vignette on CRAN, this page is the result of “mini_document with full features.” In that case, this page includes extra weight by providing download button which embeds source Rmd file (5.718KB).</p>
 </div>
 </div>
 <div class="footnotes">
