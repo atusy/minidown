@@ -1,4 +1,4 @@
-# minidown 0.0.4
+# minidown 0.1.0
 
 ## Breaking changes
 
@@ -20,6 +20,10 @@
 * The floating ToC has better appearance. Its width remains 300px, but the main contents has changed. If viewport width is between 960px to 1260px, the main contents fills the rest of width (660px to 960px). If viewport width is larger than 1200px, the main content has the fixed width of 960px, and is centered. Previously, contents including the floating ToC are centered (#44).
 * Demo page adds functionality to set framework and theme via query parameter (e.g., <https://minidown.atusy.net/?framework=spcss&theme=spcss>) (#38)
 * Added a vignette, "Writing Vignettes with the 'minidown' Package" (#46, #47, #48).
+
+## Bug fix
+
+* `mini_document` no more generates invalid HTML by the `results_folding` feature, and removes the `results_folding` section when no output is made (#49).
 
 # minidown 0.0.3
 
