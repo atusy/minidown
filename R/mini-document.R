@@ -112,6 +112,7 @@ mini_document <- function(framework = "sakura",
     clean_supporting = self_contained,
     pre_knit = spec_pre_knit(code_download_html),
     pre_processor = spec_pre_processor(code_download_html),
+    post_processor = spec_post_processor(results_folding),
     base_format = fmt
   )
 }

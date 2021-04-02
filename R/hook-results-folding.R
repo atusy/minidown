@@ -1,5 +1,22 @@
 minidown_meta <- new.env()
 
+no_linebreaks <- function(x) {
+  if (grepl("\n", x)) {
+    warning("Removing `\\n` from `results.summary` chunk option.")
+    x <- gsub("\n", "", x)
+  }
+
+  x
+}
+
+as_raw_html <- function(x) {
+  sprintf("\n\n```{=html}\n%s\n```\n\n", x)
+}
+results_folding_start <- '<details%s class="chunk-results"><summary>%s</summary>'
+results_folding_end <- "</details>"
+results_folding_start_escaped <- as_raw_html(results_folding_start)
+results_folding_end_escaped <- as_raw_html(results_folding_end)
+
 hook_start_results_folding <- function(
   knit_hook_source = knitr::knit_hooks$get("source")
 ) {
@@ -23,21 +40,17 @@ hook_start_results_folding <- function(
     summary <- if (is.null(options$summary.results)) {
       "Results"
     } else {
-      options$results.summary
+      no_linebreaks(options$results.summary)
     }
 
     result <- paste0(
       if (identical(minidown_meta$chunk_label, options$label)) {
-        "`</details>`{=html}\n\n"
+        results_folding_end_escaped
       } else {
         ""
       },
       base_source,
-      sprintf(
-        "\n\n`<details%s class='chunk-results'><summary>%s</summary>`{=html}\n\n",
-        opening,
-        summary
-      )
+      sprintf(results_folding_start_escaped, opening, summary)
     )
 
     minidown_meta$chunk_label <- options$label
@@ -49,8 +62,8 @@ hook_start_results_folding <- function(
 hook_end_results_folding <- function() function(options, before) {
   # knit_hooks$set(results_folding = end_results_folding(results_folding))
   if (!before) {
-    return("\n\n`</details>`{=html}\n\n")
     minidown_meta$chunk_label <- NULL
+    return(results_folding_end_escaped)
   }
 }
 
