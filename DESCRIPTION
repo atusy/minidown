@@ -2,11 +2,6 @@ Package: minidown
 Type: Package
 Title: Create Simple Yet Powerful HTML Documents with Light Weight CSS Frameworks
 Version: 0.1.0
-Author: Atsushi Yasumoto [aut, cph, cre]
-    (<https://orcid.org/0000-0002-8335-495X>),
-    Angelos Chalaris [aut] (mini.css),
-    Mitesh Shah [aut] (sakura),
-    Kognise [aut] (Water.css)
 Authors@R: c(
     person(given = "Atsushi",
            family = "Yasumoto",
@@ -32,9 +27,9 @@ Authors@R: c(
     )
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: Create minimal, responsive, and style-agnostic HTML documents with
-    the lightweight CSS frameworks such as 'sakura', 'Water.css', and 'mini.css'.
+    the lightweight CSS frameworks such as 'sakura', 'Water.css', and 'spcss'.
     Powerful features include table of contents floating as a sidebar,
-    folding codes and results, tabsets, and more.
+    folding codes and results, tabset, and more.
 URL: https://minidown.atusy.net, https://github.com/atusy/minidown
 BugReports: https://github.com/atusy/minidown/issues
 License: MIT + file LICENSE
