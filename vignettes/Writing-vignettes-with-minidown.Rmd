@@ -124,7 +124,7 @@ There are two remarkable results.
 - The `minidown::mini_document` with full features gains very small weights (< 20KB).
 
 
-```{r render-size, echo=FALSE, results.folding="none", eval=params$eval_render}
+```{r render-size, echo=FALSE, results.folding="none", eval=params$eval_render && rmarkdown::pandoc_available("2.7.2")}
 render_size <- function(output_format = rmarkdown::html_vignette()) {
   this_rmd <- knitr::current_input()
   temp_html <- tempfile(fileext = ".html")
