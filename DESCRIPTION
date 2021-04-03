@@ -29,13 +29,12 @@ Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: Create minimal, responsive, and style-agnostic HTML documents with
     the lightweight CSS frameworks such as 'sakura', 'Water.css', and 'spcss'.
     Powerful features include table of contents floating as a sidebar,
-    folding codes and results, tabset, and more.
+    folding codes and results, and more.
 URL: https://minidown.atusy.net, https://github.com/atusy/minidown
 BugReports: https://github.com/atusy/minidown/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
