@@ -1,3 +1,5 @@
+testthat::skip_if(!rmarkdown::pandoc_available("2.7.2"))
+
 test_that("render skeleton.Rmd", {
   rendered_file <- rmarkdown::render(
     path_mini_resources(
