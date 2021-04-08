@@ -18,7 +18,6 @@ spec_post_processor <- function(results_folding = c("none", "show", "hide")) {
 
     # Remove blank results_folding
     output <- gsub(results_folding_blank, "", paste(output, collapse = "\n"))
-    cat(output)
 
     # finalize
     xfun::write_utf8(output, output_file)
