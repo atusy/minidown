@@ -1,6 +1,8 @@
 # minidown 0.2.0
 
 * Fix `mini_document` should not run `cat()` in post processor (#51).
+* The tabset feature of `mini_document` allows which tab is open by default.
+  The syntax is same as the `rmarkdown::html_document`, i.e. add `.active` class to the header to be open by default (#52).
 
 # minidown 0.1.0
 
