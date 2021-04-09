@@ -1,5 +1,6 @@
-## Test environments
+This version fixes a CRAN policy violation found at https://cran.r-project.org/web/checks/check_results_minidown.html
 
+## Test environments
 
 - Local
     - Debian GNU/Linux 10 (buster), R 4.0
