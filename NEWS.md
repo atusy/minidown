@@ -1,6 +1,6 @@
 # minidown 0.2.0
 
-* Fix `mini_document` should not run `cat()` in post processor.
+* Fix `mini_document` should not run `cat()` in post processor (#51).
 
 # minidown 0.1.0
 
