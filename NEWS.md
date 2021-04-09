@@ -2,6 +2,8 @@
 
 * Fix `mini_document` should not run `cat()` in post processor (#51).
 
+* Fix CRAN policy violation caused by intermediate files from rmarkdown::render (#53).
+
 # minidown 0.1.0
 
 ## Breaking changes
