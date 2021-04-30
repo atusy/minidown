@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function toggle(elem, from = 0, to = 0) {
     elem[from].classList.remove("active");
     elem[to].classList.add("active");
+    return to;
+  }
+
+  function initialize(tabs) {
+    const active = Array.from(tabs).findIndex(function(x) {
+      const isActive = x.classList.contains("active");
+      x.classList.remove("active");
+      return isActive;
+    });
+    return toggle(tabs, 0, active * (active > 0));
   }
 
   // Implement
@@ -14,8 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return tab.id;
     });
     tabHashes.push(...tabIds.map(id => "#" + id));
-    let active = 0;
-    toggle(tabs);
+    let active = initialize(tabs);
 
     const ul = section.insertBefore(document.createElement("ul"), tabs[0]);
     ul.classList.add("tabmenu");
@@ -29,11 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener("click", function() {
         history.pushState(null, null, "#" + tabId);
         toggle(tabs, active, current);
-        toggle(ul.children, active, current);
-        active = current;
+        active = toggle(ul.children, active, current);
       });
     });
-    toggle(ul.children);
+    toggle(ul.children, 0, active);
   });
 
   // Navigation
