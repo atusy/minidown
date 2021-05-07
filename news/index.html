@@ -134,7 +134,8 @@
 <a href="#minidown-020" class="anchor"></a>minidown 0.2.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>The tabset feature of <code>mini_document</code> allows which tab is open by default. The syntax is same as the <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">rmarkdown::html_document</a></code>, i.e. add <code>.active</code> class to the header to be open by default (<a href='https://github.com/atusy/minidown/issues/52'>#52</a>).</li>
+<li><p>The tabset feature of <code>mini_document</code> allows which tab is open by default. The syntax is same as the <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">rmarkdown::html_document</a></code>, i.e. add <code>.active</code> class to the header to be open by default (<a href='https://github.com/atusy/minidown/issues/52'>#52</a>).</p></li>
+<li><p>The <code>code_folding</code> feature triggers a chunk hook by the chunk option <code>minidown_hook</code> instead of <code>source</code>. This avoids conflict with user settings (<a href='https://github.com/atusy/minidown/issues/57'>#57</a>).</p></li>
 </ul>
 </div>
     <div id="minidown-011" class="section level1">
@@ -142,8 +143,8 @@
 <a href="#minidown-011" class="anchor"></a>minidown 0.1.1<small> 2021-04-09 </small>
 </h1>
 <ul>
-<li>Fix <code>mini_document</code> should not run <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> in post processor (<a href='https://github.com/atusy/minidown/issues/51'>#51</a>).</li>
-<li>Fix CRAN policy violation caused by intermediate files from rmarkdown::render (<a href='https://github.com/atusy/minidown/issues/53'>#53</a>).</li>
+<li><p>Fix <code>mini_document</code> should not run <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> in post processor (<a href='https://github.com/atusy/minidown/issues/51'>#51</a>).</p></li>
+<li><p>Fix CRAN policy violation caused by intermediate files from rmarkdown::render (<a href='https://github.com/atusy/minidown/issues/53'>#53</a>).</p></li>
 </ul>
 </div>
     <div id="minidown-010" class="section level1">

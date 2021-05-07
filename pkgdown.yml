@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Writing-vignettes-with-minidown: Writing-vignettes-with-minidown.html
-last_built: 2021-04-30T14:03Z
+last_built: 2021-05-07T14:13Z
 urls:
   reference: https://minidown.atusy.net/pkgdown/reference
   article: https://minidown.atusy.net/pkgdown/articles
