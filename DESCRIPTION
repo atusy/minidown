@@ -1,7 +1,7 @@
 Package: minidown
 Type: Package
 Title: Create Simple Yet Powerful HTML Documents with Light Weight CSS Frameworks
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: c(
     person(given = "Atsushi",
            family = "Yasumoto",
