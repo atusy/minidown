@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   const anchors = document.querySelectorAll('#TOC li>a');
-  const headerIDs = Array.from(anchors).map(x => x.hash.substring(1));
+  const headerIDs = Array.from(anchors).map(x => x.attributes.href.value.substring(1));
   let highlighted = 0;
 
   window.document.styleSheets[0].insertRule(

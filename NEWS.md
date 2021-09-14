@@ -1,3 +1,7 @@
+# minidown 0.2.0.9999
+
+* Fix TOC highlighting doesn't work with non-ASCII headings (#62)
+
 # minidown 0.2.0
 
 * The tabset feature of `mini_document` allows which tab is open by default.
