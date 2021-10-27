@@ -13,7 +13,7 @@ spec_dependencies <- function(extra_dependencies = NULL,
 
   version = utils::packageVersion(pkg)
   with_framework = framework != "none"
-  all_frameworks = framework != "all"
+  all_frameworks = framework == "all"
 
   c(if (with_framework) html_dependency_framework(framework, theme),
     list(htmltools::htmlDependency(
