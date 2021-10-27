@@ -8,7 +8,8 @@
 #'  (default: `"sakura"`) and its theme (default: `"default"`).
 #'  Note that `theme = "default"` is a special keyword which selects a theme
 #'  defined as default internally. See `frameworks` for available light weight
-#'  CSS frameworks and their themes.
+#'  CSS frameworks and their themes. If you want to scratch styles by yourself,
+#'  use `framework = "none"`.
 #' @param toc_float TRUE to float the table of contents to the left of the main
 #'  document content.
 #' @param toc_highlight This is an experimental feature. `TRUE` highlights the
@@ -72,6 +73,9 @@ mini_document <- function(framework = "sakura",
     framework,
     c("none", "bootstrap", names(frameworks), "all")
   )
+  if (framework == "all" && self_contained) {
+    stop('`framework = "all"` does not support self contained document.')
+  }
   html5 <- !identical(framework, "bootstrap")
   katex <- identical(math, "katex")
 
