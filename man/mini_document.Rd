@@ -30,7 +30,8 @@ mini_document(
 (default: \code{"sakura"}) and its theme (default: \code{"default"}).
 Note that \code{theme = "default"} is a special keyword which selects a theme
 defined as default internally. See \code{frameworks} for available light weight
-CSS frameworks and their themes.}
+CSS frameworks and their themes. If you want to scratch styles by yourself,
+use \code{framework = "none"}.}
 
 \item{toc}{\code{TRUE} to include a table of contents in the output}
 
@@ -40,8 +41,8 @@ document content.}
 \item{toc_highlight}{This is an experimental feature. \code{TRUE} highlights the
 table of contents according to the browser's viewport.}
 
-\item{section_divs}{Wrap sections in <div> tags, and attach identifiers to the
-enclosing <div> rather than the header itself.}
+\item{section_divs}{Wrap sections in \code{<div>} tags, and attach identifiers to the
+enclosing \code{<div>} rather than the header itself.}
 
 \item{code_folding}{Setup code folding by a string or a named list.
 A choice for the string are \code{"none"} to disable,
