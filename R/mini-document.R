@@ -124,5 +124,4 @@ mini_document <- function(framework = "sakura",
   )
 }
 
-guess_type <- mime::guess_type
-
+if (FALSE) guess_type <- mime::guess_type
