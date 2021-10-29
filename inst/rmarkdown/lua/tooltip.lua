@@ -1,14 +1,17 @@
---wip: remove elem.attr.attributes.tooltip
-
 function Span(elem)
   local tooltip = elem.attributes and elem.attributes.tooltip
   if tooltip then
-    return {
-      pandoc.RawInline(
-        "html", '<span class=tooltip aria-label="' .. tooltip .. '">'
-      ),
-      elem,
-      pandoc.RawInline("html", "</span>")
-    }
+    local tooltip_str = pandoc.utils.stringify(tooltip)
+    local attributes = {}
+    attributes["aria-label"] = tooltip_str
+    attributes["title"] = tooltip_str
+    for k,v in pairs(elem.attributes) do
+      if k ~= "tooltip" then
+        attributes[k] = v
+      end
+    end
+    elem.attributes = attributes
+    return elem
   end
 end
+
