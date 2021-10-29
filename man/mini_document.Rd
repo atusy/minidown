@@ -13,6 +13,7 @@ mini_document(
   section_divs = TRUE,
   code_folding = c("none", "show", "hide"),
   results_folding = c("none", "show", "hide"),
+  footnote_tooltip = FALSE,
   tabset = FALSE,
   code_download = FALSE,
   self_contained = TRUE,
@@ -30,7 +31,8 @@ mini_document(
 (default: \code{"sakura"}) and its theme (default: \code{"default"}).
 Note that \code{theme = "default"} is a special keyword which selects a theme
 defined as default internally. See \code{frameworks} for available light weight
-CSS frameworks and their themes.}
+CSS frameworks and their themes. If you want to scratch styles by yourself,
+use \code{framework = "none"}.}
 
 \item{toc}{\code{TRUE} to include a table of contents in the output}
 
@@ -40,8 +42,8 @@ document content.}
 \item{toc_highlight}{This is an experimental feature. \code{TRUE} highlights the
 table of contents according to the browser's viewport.}
 
-\item{section_divs}{Wrap sections in <div> tags, and attach identifiers to the
-enclosing <div> rather than the header itself.}
+\item{section_divs}{Wrap sections in \code{<div>} tags, and attach identifiers to the
+enclosing \code{<div>} rather than the header itself.}
 
 \item{code_folding}{Setup code folding by a string or a named list.
 A choice for the string are \code{"none"} to disable,
@@ -93,6 +95,8 @@ document (typically created using the \code{\link[rmarkdown]{includes}} function
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
 \item{...}{Arguments passed to \code{rmarkdown::html_document}}
+
+\item{footenote_tooltip}{\code{TRUE} let footnotes to be also shown as tooltips.}
 }
 \description{
 The output format is HTML5 in general. If \code{framework = "bootstrap"} is given,

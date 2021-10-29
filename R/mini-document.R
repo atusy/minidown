@@ -25,6 +25,7 @@
 #' @param results_folding Setup results folding by a string, `"none"`, `"show"`,
 #'  or `"hide"`. This feature will fold entire results, including side effects
 #'  such as figures and tables.
+#' @param footenote_tooltip `TRUE` let footnotes to be also shown as tooltips.
 #' @param tabset `TRUE` converts sections to tabs if they belong to the
 #'  `tabset`-class section. The tabs inherit names from the corresponding
 #'  sections. Unlike `rmarkdown::html_document`, the tabs can be navigated by
