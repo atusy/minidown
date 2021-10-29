@@ -123,3 +123,6 @@ mini_document <- function(framework = "sakura",
     base_format = fmt
   )
 }
+
+guess_type <- mime::guess_type
+
