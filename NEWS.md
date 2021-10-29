@@ -1,6 +1,7 @@
-# minidown 0.2.0.9999
+# minidown 0.3.0
 
 * Fix TOC highlighting doesn't work with non-ASCII headings (#62)
+
 * Support css framework-less minimalistic output with `minidown(framework = "none")` or `NULL`. Note that this style also omits the tooltip feature (#64, #65, #67).
 
 # minidown 0.2.0
