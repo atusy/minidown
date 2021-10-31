@@ -26,6 +26,7 @@ output:
 <!-- Include skeleton.Rmd and serve download button -->
 
 ::: {style='text-align: right'}
+[Manual](pkgdown/index.html){.button}
 [Download Rmd](skeleton.Rmd){download=minidown.Rmd .button}
 :::
 
