@@ -12,6 +12,14 @@ Create simple yet powerful html documents with lightweight CSS frameworks.
 
 ## Installation
 
+### CRAN version
+
+``` r
+install.packages("minidown")
+```
+
+### Development version
+
 ``` r
 remotes::install_github("atusy/minidown")
 ```
@@ -20,6 +28,7 @@ remotes::install_github("atusy/minidown")
 
 * Light weight CSS frameworks
     * [sakura](https://oxal.org/projects/sakura/) (default)
+    * [spcss](https://github.com/susam/spcss) 
     * [water](https://kognise.github.io/water.css/)
     * [mini](https://minicss.org/) (archived)
     * and more in the future based on the list in
@@ -37,7 +46,9 @@ remotes::install_github("atusy/minidown")
 
 ## Live Examples
 
-- Package vignettes from
+- Official demo
+    - https://minidown.atusy.net/
+- Package vignettes
     - [digest](https://cran.r-project.org/package=digest),
       [littler](https://cran.r-project.org/package=littler),
       [spdlog](https://cran.r-project.org/package=RcppSpdlog),
