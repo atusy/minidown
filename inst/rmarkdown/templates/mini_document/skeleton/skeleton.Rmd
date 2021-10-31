@@ -37,7 +37,7 @@ If you haven't installed the `minidown` package on R, install it by
 remotes::install_github('atusy/minidown')
 ```
 
-Documentation is ready at [here](pkgdown/index.html).
+Documentation is ready at [here](https://minidown.atusy.net/pkgdown/index.html).
 
 # Frameworks and themes
 
