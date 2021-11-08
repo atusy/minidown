@@ -1,3 +1,7 @@
+# minidown 0.3.0.9999
+
+* Fix tabset should not prevent rendering HTML widgets. This change let tabsets be built on load instead of DOMContentLoaded  (#74).
+
 # minidown 0.3.0
 
 * Fix TOC highlighting doesn't work with non-ASCII headings (#62)
