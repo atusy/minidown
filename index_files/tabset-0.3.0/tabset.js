@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-  let tabHashes = [];
+  let allTabIds = [];
 
   function toggle(elem, from = 0, to = 0) {
     elem[from].classList.remove("active");
@@ -20,23 +20,23 @@ window.addEventListener('load', function() {
   Array.from(document.querySelectorAll("section.tabset")).forEach(section => {
     const tabs = section.querySelectorAll(":scope>section");
     const tabIds = Array.from(tabs).map(tab => {
+      tab.dataset.id = tab.id;
       tab.classList.add("tab");
-      return tab.id;
+      tab.removeAttribute("id");
+      return tab.dataset.id;
     });
-    tabHashes.push(...tabIds.map(id => "#" + id));
+    allTabIds.push(...tabIds);
     let active = initialize(tabs);
 
     const ul = section.insertBefore(document.createElement("ul"), tabs[0]);
     ul.classList.add("tabmenu");
-    tabIds.forEach(tabId => {
-      const current = tabIds.indexOf(tabId);
-      tabs[current].removeAttribute("id");
+    tabs.forEach((tab, current) => {
       const button = document.createElement("button");
       ul.appendChild(document.createElement("li")).appendChild(button);
-      button.id = tabId;
-      button.textContent = tabs[current].children[0].textContent;
+      button.id = tab.dataset.id;
+      button.textContent = tab.children[0].textContent;
       button.addEventListener("click", function() {
-        history.pushState(null, null, "#" + tabId);
+        history.pushState(null, null, "#" + button.id);
         toggle(tabs, active, current);
         active = toggle(ul.children, active, current);
       });
@@ -45,11 +45,23 @@ window.addEventListener('load', function() {
   });
 
   // Navigation
-  function clickHash() {
-    if (tabHashes.indexOf(location.hash) >= 0) {
-      document.querySelector(location.hash).click();
+  function showHashTab() {
+    const button = allTabIds.find(x => ('#' + x) === location.hash);
+    if (!button) return;
+    let el = button.parentElement.parentElement.parentElement;
+    while (el) {
+      if (
+        el.tagName === "SECTION"
+        && el.classList.contains("tab")
+        && !el.classList.contains("active")
+      ) {
+        document.getElementById(el.dataset.id).click();
+      }
+      el = el.parentElement;
     }
+    button.click();
+    button.scrollIntoView();
   }
-  clickHash();
-  window.addEventListener("hashchange", clickHash); 
+  showHashTab();
+  window.addEventListener("hashchange", showHashTab); 
 });
