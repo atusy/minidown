@@ -45,9 +45,11 @@ window.addEventListener('load', function() {
   });
 
   // Navigation
-  window.addEventListener("hashchange", function() {
+  function clickHash() {
     if (tabHashes.indexOf(location.hash) >= 0) {
       document.querySelector(location.hash).click();
     }
-  });
+  }
+  clickHash();
+  window.addEventListener("hashchange", clickHash); 
 });
