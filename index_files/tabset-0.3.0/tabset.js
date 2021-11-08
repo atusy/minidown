@@ -46,8 +46,9 @@ window.addEventListener('load', function() {
 
   // Navigation
   function showHashTab() {
-    const button = allTabIds.find(x => ('#' + x) === location.hash);
-    if (!button) return;
+    const buttonId = allTabIds.find(x => ('#' + x) === location.hash);
+    if (!buttonId) return;
+    const button = document.getElementById(buttonId);
     let el = button.parentElement.parentElement.parentElement;
     while (el) {
       if (
