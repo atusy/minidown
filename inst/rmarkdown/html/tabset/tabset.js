@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
   let tabHashes = [];
 
   function toggle(elem, from = 0, to = 0) {
