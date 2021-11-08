@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* Tabsets can activate nested tab of a selection on `hashChange` or `load` (#76).
+
 * Tabset determines initially active tab based on `location.hash` (#75).
 
 * Fix tabset should not prevent rendering HTML widgets. This change let tabsets be built on load instead of DOMContentLoaded  (#74).
