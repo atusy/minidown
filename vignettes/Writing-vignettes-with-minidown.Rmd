@@ -1,16 +1,6 @@
 ---
 title: "Writing Vignettes with the 'minidown' Package"
-output:
-  minidown::mini_document:
-    framework: sakura
-    toc: true
-    toc_float: true
-    toc_highlight: true
-    code_folding: "hide"
-    results_folding: "show"
-    tabset: true
-    code_download: true
-    math: "katex"
+output: minidown::mini_document
 vignette: >
   %\VignetteIndexEntry{Writing Vignettes with the 'minidown' Package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -50,14 +40,16 @@ Only the difference is the YAML frontmatter.
     ```
 3. Write body
 
-## Details on the YAML front matter
+## Configuring documents 
 
-Only the special thing is the YAML front matter.
+The output format can be configured by the YAML front matter and by the `_output.yml` file.
 Most important things are `minidown::mini_document` in the `output` key, and `%\VignetteEngine{knitr::rmarkdown}` in the `vignette` key.
 These two declares the vignette to be rendered with **minidown** package.
 
 The output format can be customized as usual in the R Markdown.
 Break lines, indent, and specify arguments like below.
+It is also possible to specify the arguments via `vignettes/_output.yml`.
+In that case, `minidown::mini_document` should be the top level key in the YAML file (cf. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/bookdown-project.html#output.yml).
 
 ```yaml
 output:
@@ -81,6 +73,8 @@ For more details on options, visit <https://minidown.atusy.net/>.
 This page also provides examples of all the combinations of frameworks and themes.
 
 The other contents of the YAML front matter are not **minidown**-specific.^[https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes].
+
+### Share 
 
 # Why authoring vignettes with the minidown package?
 

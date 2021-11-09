@@ -1,0 +1,10 @@
+minidown::mini_document:
+  framework: sakura
+  toc: true
+  toc_float: true
+  toc_highlight: true
+  code_folding: "hide"
+  results_folding: "show"
+  tabset: true
+  code_download: true
+  math: "katex"
