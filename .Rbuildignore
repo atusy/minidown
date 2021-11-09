@@ -13,3 +13,5 @@
 ^inst/rmarkdown/templates/mini_document/skeleton/skeleton.html
 ^inst/rmarkdown/templates/mini_document/skeleton/skeleton_files
 ^inst/rmarkdown/templates/mini_document/skeleton/.gitignore
+^doc$
+^Meta$
