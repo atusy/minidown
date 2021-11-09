@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* Document how to use `_output.yml` in package vignettes (#80).
+
 * Tabsets allow markups within tabmenus. The markups inherits from the content of corresponding headings (#78).
 
 * Tabsets can activate nested tab of a selection on `hashChange` or `load` (#76, #77).
