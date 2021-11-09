@@ -13,6 +13,7 @@ mini_document(
   section_divs = TRUE,
   code_folding = c("none", "show", "hide"),
   results_folding = c("none", "show", "hide"),
+  footnote_tooltip = FALSE,
   tabset = FALSE,
   code_download = FALSE,
   self_contained = TRUE,
@@ -94,6 +95,8 @@ document (typically created using the \code{\link[rmarkdown]{includes}} function
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
 \item{...}{Arguments passed to \code{rmarkdown::html_document}}
+
+\item{footenote_tooltip}{\code{TRUE} let footnotes to be also shown as tooltips.}
 }
 \description{
 The output format is HTML5 in general. If \code{framework = "bootstrap"} is given,

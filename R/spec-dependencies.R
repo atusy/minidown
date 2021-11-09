@@ -25,7 +25,6 @@ spec_dependencies <- function(extra_dependencies = NULL,
           paste0(`if`(all_frameworks, default_framework, framework), ".css")
         },
         "common.css",
-        if (with_framework && framework != "mini") "feat-tooltip.css",
         if (toc_float) "feat-toc-float.css"
       ),
       meta = if (all_frameworks) {

@@ -25,6 +25,7 @@
 #' @param results_folding Setup results folding by a string, `"none"`, `"show"`,
 #'  or `"hide"`. This feature will fold entire results, including side effects
 #'  such as figures and tables.
+#' @param footenote_tooltip `TRUE` let footnotes to be also shown as tooltips.
 #' @param tabset `TRUE` converts sections to tabs if they belong to the
 #'  `tabset`-class section. The tabs inherit names from the corresponding
 #'  sections. Unlike `rmarkdown::html_document`, the tabs can be navigated by
@@ -59,6 +60,7 @@ mini_document <- function(framework = "sakura",
                           section_divs = TRUE,
                           code_folding = c("none", "show", "hide"),
                           results_folding = c("none", "show", "hide"),
+                          footnote_tooltip = FALSE,
                           tabset = FALSE,
                           code_download = FALSE,
                           self_contained = TRUE,
@@ -81,7 +83,9 @@ mini_document <- function(framework = "sakura",
 
   fmt <- rmarkdown::html_document(
     theme = if (html5) NULL else theme,
-    pandoc_args = spec_pandoc_args(pandoc_args, html5, katex),
+    pandoc_args = spec_pandoc_args(
+        pandoc_args, html5, katex, footnote_tooltip
+    ),
     extra_dependencies = spec_dependencies(
         extra_dependencies,
         html5 = html5,

@@ -15,6 +15,7 @@ output:
     toc: true
     toc_float: true
     toc_highlight: true
+    footnote_tooltip: true
     tabset: true
     number_sections: true
     anchor_sections: false
