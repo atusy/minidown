@@ -48,6 +48,7 @@ Suggests:
     callr,
     dplyr,
     purrr,
+    shiny,
     testthat (>= 2.1.0),
     tidyr,
     tibble
