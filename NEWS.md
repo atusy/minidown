@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* `mini_document` renders math equations with KaTeX on server side by default. This also means a support of shiny-based runtimes. To use client-side rendering, specify `math = "katex"`. (#81). 
+
 * Document how to use `_output.yml` in package vignettes (#80).
 
 * Tabsets allow markups within tabmenus. The markups inherits from the content of corresponding headings (#78).

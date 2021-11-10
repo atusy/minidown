@@ -16,7 +16,7 @@ mini_document(
   tabset = FALSE,
   code_download = FALSE,
   self_contained = TRUE,
-  math = "katex",
+  math = "katex_serverside",
   template = "default",
   extra_dependencies = NULL,
   includes = list(),
@@ -73,11 +73,13 @@ scripts, stylesheets, images, and videos. Note that even for self contained
 documents MathJax is still loaded externally (this is necessary because of
 its size).}
 
-\item{math}{A string to specify math rendering engine (default: \code{"katex"}).
-If the value is other than \code{"katex"}, the result depends on the \code{framework}
-option. When the given \code{framework} is \code{"bootstrap"}, the \code{math} option is
-passed to the \code{mathjax} option of \code{rmarkdown::html_document}. Otherwise,
-pandoc's built-in feature renders math expressions to unicode characters.}
+\item{math}{A string to specify math rendering engine. The default value is
+\code{"katex_serverside"}, which completes the rendering on HTML creation.
+This is a good choice when you want to exclude JavaScript from the output.
+The value \code{"katex"} attempts client-side rendreing, but falls back to
+server-side rendering when runtime is shiny or shiny_prerendered.
+Otherwise, if the \code{framework} is \code{"bootstrap"}, this option is passed to the
+\code{mathjax} argument of \code{rmarkdown::html_document}.}
 
 \item{template}{Pandoc template. If "default", the package's internal template
 is used. If a path, user's original template is used. If \code{NULL}, pandoc's
