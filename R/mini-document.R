@@ -37,7 +37,8 @@
 #'  A string to specify math rendering engine. The default value is
 #'  `"katex_serverside"`, which completes the rendering on HTML creation.
 #'  This is a good choice when you want to exclude JavaScript from the output.
-#'  If `"katex"`, browsers call JavaScript to render math.
+#'  The value `"katex"` attempts client-side rendreing, but falls back to
+#'  server-side rendering when runtime is shiny or shiny_prerendered.
 #'  Otherwise, if the `framework` is `"bootstrap"`, this option is passed to the
 #'  `mathjax` argument of `rmarkdown::html_document`.
 #' @param template Pandoc template. If "default", the package's internal template
@@ -79,7 +80,9 @@ mini_document <- function(framework = "sakura",
   }
   html4 <- identical(framework, "bootstrap")
   html5 <- !html4
-
+  if (html5) {
+    math <- match.arg("katex", "katex_serverside")
+  }
   fmt <- rmarkdown::html_document(
     theme = if (html4) theme,
     pandoc_args = spec_pandoc_args(pandoc_args, html5, math),
@@ -98,7 +101,7 @@ mini_document <- function(framework = "sakura",
     toc_float = html4 && toc_float,
     code_folding = "none", # As minidown offers different approach
     code_download = html4 && code_download,
-    mathjax = if (!math %in% c("katex", "katex_serverside")) math,
+    mathjax = if (html4 && !math %in% c("katex", "katex_serverside")) math,
     self_contained = self_contained,
     keep_md = keep_md,
     ...
