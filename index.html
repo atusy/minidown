@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Atsushi Yasumoto" />
-  <meta name="dcterms.date" content="2021-11-09" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Atsushi Yasumoto">
+  <meta name="dcterms.date" content="2021-11-10">
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -81,40 +81,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <link href="index_files/sakura-1.1.0/sakura.css" rel="stylesheet" />
+  <link href="index_files/sakura-1.1.0/sakura.css" rel="stylesheet">
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="minidown-version" content="0.3.0" />
-  <link href="index_files/minidown-0.3.0/sakura.css" rel="stylesheet" />
-  <link href="index_files/minidown-0.3.0/common.css" rel="stylesheet" />
-  <link href="index_files/minidown-0.3.0/feat-tooltip.css" rel="stylesheet" />
-  <link href="index_files/minidown-0.3.0/feat-toc-float.css" rel="stylesheet" />
-  <link href="index_files/tabset-0.3.0/tabset.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="minidown-version" content="0.3.0">
+  <link href="index_files/minidown-0.3.0/sakura.css" rel="stylesheet">
+  <link href="index_files/minidown-0.3.0/common.css" rel="stylesheet">
+  <link href="index_files/minidown-0.3.0/feat-tooltip.css" rel="stylesheet">
+  <link href="index_files/minidown-0.3.0/feat-toc-float.css" rel="stylesheet">
+  <link href="index_files/tabset-0.3.0/tabset.css" rel="stylesheet">
   <script src="index_files/tabset-0.3.0/tabset.js"></script>
   <script src="index_files/highlightToC-0.3.0/highlightToC.js"></script>
   <script src="index_files/accessible-code-block-0.0.1/empty-anchor.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        displayMode: true
-      });
-    });
-  </script>
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" data-external="1"></head>
 <body>
 <main>
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-11-09</p>
+<p class="date">2021-11-10</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -170,12 +156,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="pkgdown/index.html" class="button">Manual</a> <a href="skeleton.Rmd" class="button" download="minidown.Rmd">Download Rmd</a></p>
 </div>
 <p>This article introduces rich features of <code>minidown::mini_document</code> with live examples. This format is powered by R Markdown, Pandoc, KaTeX and <strong>light weight CSS framewroks</strong> such as sakura (default), Water.css, mini.css, and so on.</p>
-<p>If you haven’t installed the <code>minidown</code> package on R, install it by</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;atusy/minidown&#39;</span>)</span></code></pre></div>
+<p>If you haven&#x2019;t installed the <code>minidown</code> package on R, install it by</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&apos;atusy/minidown&apos;</span>)</span></code></pre></div>
 <p>Documentation is ready at <a href="https://minidown.atusy.net/pkgdown/index.html">here</a>.</p>
 <section id="frameworks-and-themes" class="level1">
 <h1><span class="header-section-number">1</span> Frameworks and themes</h1>
-<p>THe default framework and its theme are <code>"sakura"</code> and <code>"default"</code>. Followings are the list of available ones. To preview them, use the UI at the top of this page.</p>
+<p>THe default framework and its theme are <code>&quot;sakura&quot;</code> and <code>&quot;default&quot;</code>. Followings are the list of available ones. To preview them, use the UI at the top of this page.</p>
 <table>
 <thead>
 <tr class="header">
@@ -202,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Here’s an example YAML frontmatter specifying a framework and a theme.</p>
+<p>Here&#x2019;s an example YAML frontmatter specifying a framework and a theme.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
@@ -220,30 +206,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       warning: hide
       error: show</code></pre>
 <p>The above results in</p>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Source</summary>
 <div class="sourceCode" id="cb4" data-summary="Source"><pre class="sourceCode numberSource r numberLines details show"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">message</span>(<span class="st">&apos;message&apos;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">warning</span>(<span class="st">&apos;warning&apos;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">stop</span>(<span class="st">&apos;error&apos;</span>)</span>
 <span id="cb4-6"><a href="#cb4-6"></a>}</span>
 <span id="cb4-7"><a href="#cb4-7"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
-<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] 1</code></pre>
 </details>
-<details class=chunk-details><summary class=chunk-summary>Message</summary>
+<details class="chunk-details"><summary class="chunk-summary">Message</summary>
 <pre class="details" data-summary="Message"><code>## message</code></pre>
 </details>
-<details class=chunk-details><summary class=chunk-summary>Warning</summary>
+<details class="chunk-details"><summary class="chunk-summary">Warning</summary>
 <pre class="details" data-summary="Warning"><code>## Warning in f(): warning</code></pre>
 </details>
-<details class=chunk-details open><summary class=chunk-summary>Error</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Error</summary>
 <pre class="details show" data-summary="Error"><code>## Error in f(): error</code></pre>
 </details>
 <p>If the code folding is specified for some of them, then the code folding of the others will be <code>none</code>.</p>
 <p>Like <code>rmarkdown::html_document</code>, <code>code_folding: show</code> indicates source is <code>show</code> and others are <code>none</code>.</p>
-<p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>class.source='details'</code>).</p>
+<p>By default <code>code_folding</code> is <code>none</code>, however, you can select some chunks be folded by giving the <code>details</code> class (e.g., <code>class.source=&apos;details&apos;</code>).</p>
 <section id="showhide-exceptions" class="level2">
 <h2><span class="header-section-number">2.1</span> Show/hide exceptions</h2>
 <p>When <code>source: show</code>, all the sources are shown. In case you need exceptions, add the <code>hide</code> class to the source. If you want to hide all with exceptions, add the <code>show</code> class to the exceptions. Of course, this feature is not limited to the source.</p>
@@ -255,23 +241,23 @@ output:
 ---
 
 ```{r}
-&#39;This is shown&#39;
+&apos;This is shown&apos;
 ```
 
 
-```{r, class.source=&#39;hide&#39;}
-&#39;This is hidden&#39;
+```{r, class.source=&apos;hide&apos;}
+&apos;This is hidden&apos;
 ```</code></pre>
 <p>and <code>hide</code> classes.</p>
 </section>
 <section id="change-summary" class="level2">
 <h2><span class="header-section-number">2.2</span> Change summary</h2>
 <p>The content of summary can be controlled via <code>summary.*</code> chunk options. This feature is useful when you want to show the title of the source, to treat the output as a hidden answer, and so on.</p>
-<details class=chunk-details open><summary class=chunk-summary>iris.R</summary>
-<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&#39;iris.R&#39;, summary.output=&#39;Answer&#39;, class.output=&#39;hide&#39;</span></span>
+<details class="chunk-details" open><summary class="chunk-summary">iris.R</summary>
+<div class="sourceCode" id="cb10" data-summary="iris.R"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># summary.source=&apos;iris.R&apos;, summary.output=&apos;Answer&apos;, class.output=&apos;hide&apos;</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
 </details>
-<details class=chunk-details><summary class=chunk-summary>Answer</summary>
+<details class="chunk-details"><summary class="chunk-summary">Answer</summary>
 <pre class="hide details" data-summary="Answer"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -291,12 +277,12 @@ output:
 ---
 
 ```{r}
-&#39;This is shown&#39;
+&apos;This is shown&apos;
 ```
 
 
-```{r, class.source=&#39;details hide&#39;}
-&#39;This is hidden&#39;
+```{r, class.source=&apos;details hide&apos;}
+&apos;This is hidden&apos;
 ```
 </code></pre>
 </section>
@@ -316,7 +302,7 @@ output:
 <span id="cb14-2"><a href="#cb14-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="at">    </span><span class="fu">results_folding</span><span class="kw">:</span><span class="at"> show</span><span class="co"> # hide or none</span></span></code></pre></div>
 <p>This is a good option when you have side effects such as drawing figures and tables. Result button is placed on the left so that you can distinguish from code_folding buttons.</p>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Source</summary>
 <div class="sourceCode" id="cb15" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <details class="chunk-results"><summary>Results</summary>
@@ -350,20 +336,20 @@ output:
 </details>
 <section id="change-summary-text" class="level2">
 <h2><span class="header-section-number">3.1</span> Change summary text</h2>
-<p>By default, summary text is “Results”. You can change this by a chunk option, <code>summary.results</code>. Just like <code>summary.*</code> in code folding.</p>
+<p>By default, summary text is &#x201C;Results&#x201D;. You can change this by a chunk option, <code>summary.results</code>. Just like <code>summary.*</code> in code folding.</p>
 </section>
 <section id="multiple-results-per-chunk" class="level2">
 <h2><span class="header-section-number">3.2</span> Multiple results per chunk</h2>
 <p>If you have multiple results per chunk and combine them to a single folding, you have three options.</p>
 <section id="set-chunk-options" class="level3">
 <h3><span class="header-section-number">3.2.1</span> Set chunk options</h3>
-<p>with <code>results='hold'</code> and/or <code>fig.show='hold'</code>.</p>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
-<div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">&#39;foo&#39;</span></span>
+<p>with <code>results=&apos;hold&apos;</code> and/or <code>fig.show=&apos;hold&apos;</code>.</p>
+<details class="chunk-details" open><summary class="chunk-summary">Source</summary>
+<div class="sourceCode" id="cb16" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">&apos;foo&apos;</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</span></code></pre></div>
 </details>
 <details class="chunk-results"><summary>Results</summary>
-<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
 <table>
@@ -398,11 +384,11 @@ output:
 <section id="iterate-with-for-or-lapply" class="level3">
 <h3><span class="header-section-number">3.2.2</span> Iterate with <code>for</code> or <code>lapply</code></h3>
 <p>or their friends.</p>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Source</summary>
 <div class="sourceCode" id="cb18" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</span></code></pre></div>
 </details>
 <details class="chunk-results"><summary>Results</summary>
-<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] 1
 ## [1] 2</code></pre>
 </details>
@@ -410,16 +396,16 @@ output:
 </section>
 <section id="define-a-function-with-side-effects" class="level3">
 <h3><span class="header-section-number">3.2.3</span> Define a function with side effects</h3>
-<details class=chunk-details open><summary class=chunk-summary>Source</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Source</summary>
 <div class="sourceCode" id="cb20" data-summary="Source"><pre class="sourceCode r details show"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="kw">print</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="kw">print</span>(<span class="st">&apos;foo&apos;</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>  knitr<span class="op">::</span><span class="kw">knit_print</span>(knitr<span class="op">::</span><span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]))</span>
 <span id="cb20-4"><a href="#cb20-4"></a>}</span>
 <span id="cb20-5"><a href="#cb20-5"></a></span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="kw">f</span>()</span></code></pre></div>
 </details>
 <details class="chunk-results"><summary>Results</summary>
-<details class=chunk-details open><summary class=chunk-summary>Output</summary>
+<details class="chunk-details" open><summary class="chunk-summary">Output</summary>
 <pre class="details show" data-summary="Output"><code>## [1] &quot;foo&quot;</code></pre>
 </details>
 <table>
@@ -454,8 +440,8 @@ output:
 </section>
 <section id="exceptionally-showhide-some-results" class="level2">
 <h2><span class="header-section-number">3.3</span> Exceptionally show/hide some results</h2>
-<p>To disable folding for some chunks, specify <code>results.folding=NULL</code> as a chunk option. When <code>results_folding: show</code> and you want to hide for some, then specify <code>results.folding='hide'</code> as a chunk option. Similarly, you make exeptions for <code>results_folding: hide</code> as well.</p>
-<p>To disable folding by default, but enable it for some chunks, then specify <code>results_folding: show # or hide</code> as a YAML front matter, and run <code>knitr::opts_chunk$set(results.folding=NULL)</code> at the beggining of your document. Then, you can enable the feature for selected chunks by specifying <code>'show'</code> or <code>'hide'</code> to the <code>results.folding</code> chunk option.</p>
+<p>To disable folding for some chunks, specify <code>results.folding=NULL</code> as a chunk option. When <code>results_folding: show</code> and you want to hide for some, then specify <code>results.folding=&apos;hide&apos;</code> as a chunk option. Similarly, you make exeptions for <code>results_folding: hide</code> as well.</p>
+<p>To disable folding by default, but enable it for some chunks, then specify <code>results_folding: show # or hide</code> as a YAML front matter, and run <code>knitr::opts_chunk$set(results.folding=NULL)</code> at the beggining of your document. Then, you can enable the feature for selected chunks by specifying <code>&apos;show&apos;</code> or <code>&apos;hide&apos;</code> to the <code>results.folding</code> chunk option.</p>
 <pre><code>---
 output:
   minidown::mini_document:
@@ -467,12 +453,12 @@ knitr::opts_knit$set(results.folding=NULL)
 ```
 
 ```{r}
-&#39;This chunk does not fold results&#39;
+&apos;This chunk does not fold results&apos;
 ```
 
 
-```{r, result.folding=&#39;hide&#39;}
-&#39;This chunk hides not fold results&#39;
+```{r, result.folding=&apos;hide&apos;}
+&apos;This chunk hides not fold results&apos;
 ```</code></pre>
 </section>
 </section>
@@ -503,7 +489,7 @@ knitr::opts_knit$set(results.folding=NULL)
 <p>Note that a tab may nest tabs, however there will be</p>
 <ul>
 <li>A conflict with the navigation to tabs from URL or ToC.</li>
-<li>A conflict with the <code>toc_highlight</code> option (cf. <span id="floating-toc">Floating TOC</span>).</li>
+<li>A conflict with the <code>toc_highlight</code> option (cf.&#xA0;<span id="floating-toc">Floating TOC</span>).</li>
 </ul>
 </section>
 <section id="example-rmd" class="level2 active">
@@ -529,19 +515,19 @@ If the attribute is missing, the first tab is initially active.</code></pre>
 </section>
 <section id="tooltips" class="level1">
 <h1><span class="header-section-number">6</span> Tooltips</h1>
-<p><strong><span class=tooltip aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a>[text]{tooltip=&#39;tooltip&#39;}</span></code></pre></div>
+<p><strong><span class="tooltip" aria-label="Here is a tooltip"><span data-tooltip="Here is a tooltip"><span class="icon-info"></span>Tooltips</span></span></strong> are available.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a>[text]{tooltip=&apos;tooltip&apos;}</span></code></pre></div>
 </section>
 <section id="math-with-katex" class="level1">
 <h1><span class="header-section-number">7</span> Math with KaTeX</h1>
-<p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="math inline">\(\sum_{i=1}^{10}{\alpha_i}\)</span> and</p>
+<p><code>$\sum_{i=1}^{10}{\alpha_i}$</code> becomes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>10</mn></msubsup><msub><mi>&#x3B1;</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{10}{\alpha_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.253718em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">&#x2211;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.954008em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> and</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a>$$</span>
 <span id="cb26-2"><a href="#cb26-2"></a>\sum_{i=1}^{10}{\alpha_i}</span>
 <span id="cb26-3"><a href="#cb26-3"></a>$$</span></code></pre></div>
 <p>becomes</p>
-<p><span class="math display">\[
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>10</mn></munderover><msub><mi>&#x3B1;</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">
 \sum_{i=1}^{10}{\alpha_i}
-\]</span></p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0787820000000004em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011130000000004em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">&#x2211;</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
 </section>
 <section id="appendix-markdown-results" class="level1">
 <h1><span class="header-section-number">8</span> Appendix: markdown results</h1>
@@ -577,11 +563,11 @@ If the attribute is missing, the first tab is initially active.</code></pre>
 <p>A code block without line numbers.</p>
 <pre><code>Code block</code></pre>
 <p>A code block with line numbers.</p>
-<div class="sourceCode" id="cb28" data-startFrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb28-10"><a href="#cb28-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<div class="sourceCode" id="cb28" data-startfrom="10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r" style="counter-reset: source-line 9;"><span id="cb28-10"><a href="#cb28-10"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
 <span id="cb28-11"><a href="#cb28-11"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
-<span id="cb28-12"><a href="#cb28-12"></a>  <span class="kw">message</span>(<span class="st">&#39;message&#39;</span>)</span>
-<span id="cb28-13"><a href="#cb28-13"></a>  <span class="kw">warning</span>(<span class="st">&#39;warning&#39;</span>)</span>
-<span id="cb28-14"><a href="#cb28-14"></a>  <span class="kw">stop</span>(<span class="st">&#39;error&#39;</span>)</span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="kw">message</span>(<span class="st">&apos;message&apos;</span>)</span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="kw">warning</span>(<span class="st">&apos;warning&apos;</span>)</span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="kw">stop</span>(<span class="st">&apos;error&apos;</span>)</span>
 <span id="cb28-15"><a href="#cb28-15"></a>}</span>
 <span id="cb28-16"><a href="#cb28-16"></a><span class="kw">f</span>()</span></code></pre></div>
 <section id="code-blocks-with-long-lines" class="level3">
@@ -634,9 +620,9 @@ If the attribute is missing, the first tab is initially active.</code></pre>
 <section id="task-lists" class="level3">
 <h3><span class="header-section-number">8.4.3</span> Task lists</h3>
 <ul>
-<li><input type="checkbox" disabled="" />
+<li><input type="checkbox" disabled>
 an unchecked task list item</li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled checked>
 checked item</li>
 </ul>
 </section>
@@ -656,7 +642,7 @@ checked item</li>
 </section>
 <section id="horizontal-rule" class="level2">
 <h2><span class="header-section-number">8.5</span> Horizontal rule</h2>
-<hr />
+<hr>
 </section>
 <section id="table" class="level2">
 <h2><span class="header-section-number">8.6</span> Table</h2>
@@ -730,12 +716,12 @@ checked item</li>
 </section>
 <section id="link" class="level2">
 <h2><span class="header-section-number">8.8</span> Link</h2>
-<p><a href="https://twitter.com/Atsushi776">Atusy’s Twitter</a></p>
+<p><a href="https://twitter.com/Atsushi776">Atusy&#x2019;s Twitter</a></p>
 </section>
 <section id="image" class="level2">
 <h2><span class="header-section-number">8.9</span> Image</h2>
 <figure>
-<img src="avator.jpeg" data-external="1" alt="" /><figcaption>Atusy’s avator</figcaption>
+<img src="avator.jpeg" data-external="1" alt><figcaption>Atusy&#x2019;s avator</figcaption>
 </figure>
 </section>
 <section id="footnote" class="level2">
@@ -744,7 +730,7 @@ checked item</li>
 <!-- Theme changer -->
 <!-- Theme changer -->
 <script src="themer.js"></script>
-<link rel="stylesheet" href="themer.css"></link>
+<link rel="stylesheet" href="themer.css">
 <aside id="aside-select-framework">
 <p>
 <label for="select-framework">Framework:</label>
@@ -780,9 +766,9 @@ checked item</li>
 </section>
 </section>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>footnote<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>footnote<a href="#fnref1" class="footnote-back" role="doc-backlink">&#x21A9;&#xFE0E;</a></p></li>
 </ol>
 </section>
 </article>
