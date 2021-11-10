@@ -7,7 +7,9 @@ spec_post_processor <- function(
   function(metadata, input_file, output_file, clean, verbose) {
     output <- if (
       identical(math, "katex_serverside") ||
-      (identical(math, "katex") && metadata$runtime %in% c("shiny", "shiny_prerendered"))
+      (identical(math, "katex") &&
+       !is.null(metadata$runtime) &&
+       !identical(metadata$runtime, "static"))
     ) {
       katex::render_math_in_html(output_file)
     } else {

@@ -80,8 +80,8 @@ mini_document <- function(framework = "sakura",
   }
   html4 <- identical(framework, "bootstrap")
   html5 <- !html4
-  if (html5) {
-    math <- match.arg("katex", "katex_serverside")
+  if (html5 && !is.null(math)) {
+    math <- match.arg(math, c("katex", "katex_serverside"))
   }
   fmt <- rmarkdown::html_document(
     theme = if (html4) theme,
@@ -96,12 +96,16 @@ mini_document <- function(framework = "sakura",
         toc_highlight = toc_highlight
     ),
     template = spec_template(template, html5),
-    includes = spec_includes(includes, math),
+    includes = includes,
     toc = toc,
     toc_float = html4 && toc_float,
     code_folding = "none", # As minidown offers different approach
     code_download = html4 && code_download,
-    mathjax = if (html4 && !math %in% c("katex", "katex_serverside")) math,
+    mathjax = if (
+      html4 && !is.null(math) && !math %in% c("katex", "katex_serverside")
+    ) {
+      math
+    },
     self_contained = self_contained,
     keep_md = keep_md,
     ...
@@ -122,7 +126,7 @@ mini_document <- function(framework = "sakura",
     keep_md = keep_md,
     clean_supporting = self_contained,
     pre_knit = spec_pre_knit(code_download_html),
-    pre_processor = spec_pre_processor(code_download_html),
+    pre_processor = spec_pre_processor(code_download_html, math),
     post_processor = spec_post_processor(results_folding, math),
     base_format = fmt
   )
