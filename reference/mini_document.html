@@ -151,7 +151,7 @@ except for the behavior of the <code>code_folding</code> option.</p>
   tabset <span class='op'>=</span> <span class='cn'>FALSE</span>,
   code_download <span class='op'>=</span> <span class='cn'>FALSE</span>,
   self_contained <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  math <span class='op'>=</span> <span class='st'>"katex"</span>,
+  math <span class='op'>=</span> <span class='st'>"katex_serverside"</span>,
   template <span class='op'>=</span> <span class='st'>"default"</span>,
   extra_dependencies <span class='op'>=</span> <span class='cn'>NULL</span>,
   includes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
@@ -232,11 +232,13 @@ its size).</p></td>
     </tr>
     <tr>
       <th>math</th>
-      <td><p>A string to specify math rendering engine (default: <code>"katex"</code>).
-If the value is other than <code>"katex"</code>, the result depends on the <code>framework</code>
-option. When the given <code>framework</code> is <code>"bootstrap"</code>, the <code>math</code> option is
-passed to the <code>mathjax</code> option of <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/html_document.html'>rmarkdown::html_document</a></code>. Otherwise,
-pandoc's built-in feature renders math expressions to unicode characters.</p></td>
+      <td><p>A string to specify math rendering engine. The default value is
+<code>"katex_serverside"</code>, which completes the rendering on HTML creation.
+This is a good choice when you want to exclude JavaScript from the output.
+The value <code>"katex"</code> attempts client-side rendreing, but falls back to
+server-side rendering when runtime is shiny or shiny_prerendered.
+Otherwise, if the <code>framework</code> is <code>"bootstrap"</code>, this option is passed to the
+<code>mathjax</code> argument of <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/html_document.html'>rmarkdown::html_document</a></code>.</p></td>
     </tr>
     <tr>
       <th>template</th>
