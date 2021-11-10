@@ -1,23 +1,30 @@
-spec_post_processor <- function(results_folding = c("none", "show", "hide")) {
+spec_post_processor <- function(
+  results_folding = c("none", "show", "hide"),
+  math = "katex_serverside"
+) {
   results_folding <- match.arg(results_folding)
 
-  if (results_folding == "none") {
-    return(NULL)
-  }
-
-  results_folding_blank <- paste0(
-    "\n",
-    sprintf(results_folding_start, "( open)?", "[^\n]*"),
-    "\n*",
-    results_folding_end,
-    "\n"
-  )
-
   function(metadata, input_file, output_file, clean, verbose) {
-    output <- xfun::read_utf8(output_file)
+    output <- if (
+      identical(math, "katex_serverside") ||
+      (identical(math, "katex") && metadata$runtime %in% c("shiny", "shiny_prerendered"))
+    ) {
+      katex::render_math_in_html(output_file)
+    } else {
+      xfun::read_utf8(output_file)
+    }
 
     # Remove blank results_folding
-    output <- gsub(results_folding_blank, "", paste(output, collapse = "\n"))
+    if (!identical(results_folding, "none")) {
+      results_folding_blank <- paste0(
+        "\n",
+        sprintf(results_folding_start, "( open)?", "[^\n]*"),
+        "\n*",
+        results_folding_end,
+        "\n"
+      )
+      output <- gsub(results_folding_blank, "", paste(output, collapse = "\n"))
+    }
 
     # finalize
     xfun::write_utf8(output, output_file)

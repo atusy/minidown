@@ -5,8 +5,8 @@
 #'
 #' @noRd
 spec_includes <- function(includes = list(),
-                          katex = TRUE) {
-  if (katex) {
+                          math = "katex_serverside") {
+  if (identical(math, "katex")) {
     includes$in_header <- c(
       includes$in_header,
       path_mini_resources("html", "katex", "partial.html")

@@ -33,11 +33,13 @@
 #'  `rmarkdown::html_document`. This feature also requires `section_divs = TRUE`.
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
 #'  includes Rmd file itself and supplies download button of it.
-#' @param math A string to specify math rendering engine (default: `"katex"`).
-#'  If the value is other than `"katex"`, the result depends on the `framework`
-#'  option. When the given `framework` is `"bootstrap"`, the `math` option is
-#'  passed to the `mathjax` option of `rmarkdown::html_document`. Otherwise,
-#'  pandoc's built-in feature renders math expressions to unicode characters.
+#' @param math
+#'  A string to specify math rendering engine. The default value is
+#'  `"katex_serverside"`, which completes the rendering on HTML creation.
+#'  This is a good choice when you want to exclude JavaScript from the output.
+#'  If `"katex"`, browsers call JavaScript to render math.
+#'  Otherwise, if the `framework` is `"bootstrap"`, this option is passed to the
+#'  `mathjax` argument of `rmarkdown::html_document`.
 #' @param template Pandoc template. If "default", the package's internal template
 #'  is used. If a path, user's original template is used. If `NULL`, pandoc's
 #'  internal template is used.
@@ -62,7 +64,7 @@ mini_document <- function(framework = "sakura",
                           tabset = FALSE,
                           code_download = FALSE,
                           self_contained = TRUE,
-                          math = "katex",
+                          math = "katex_serverside",
                           template = "default",
                           extra_dependencies = NULL,
                           includes = list(),
@@ -70,18 +72,17 @@ mini_document <- function(framework = "sakura",
                           pandoc_args = NULL,
                           ...) {
   framework <- match.arg(
-    framework,
-    c("none", "bootstrap", names(frameworks), "all")
+    framework, c("none", "bootstrap", names(frameworks), "all")
   )
   if (framework == "all" && self_contained) {
     stop('`framework = "all"` does not support self contained document.')
   }
-  html5 <- !identical(framework, "bootstrap")
-  katex <- identical(math, "katex")
+  html4 <- identical(framework, "bootstrap")
+  html5 <- !html4
 
   fmt <- rmarkdown::html_document(
-    theme = if (html5) NULL else theme,
-    pandoc_args = spec_pandoc_args(pandoc_args, html5, katex),
+    theme = if (html4) theme,
+    pandoc_args = spec_pandoc_args(pandoc_args, html5, math),
     extra_dependencies = spec_dependencies(
         extra_dependencies,
         html5 = html5,
@@ -92,18 +93,18 @@ mini_document <- function(framework = "sakura",
         toc_highlight = toc_highlight
     ),
     template = spec_template(template, html5),
-    includes = spec_includes(includes, katex),
+    includes = spec_includes(includes, math),
     toc = toc,
-    toc_float = !html5 && toc_float,
+    toc_float = html4 && toc_float,
     code_folding = "none", # As minidown offers different approach
-    code_download = code_download && !html5,
-    mathjax = if (katex) NULL else math,
+    code_download = html4 && code_download,
+    mathjax = if (!math %in% c("katex", "katex_serverside")) math,
     self_contained = self_contained,
     keep_md = keep_md,
     ...
   )
 
-  code_download_html <- if (code_download && html5) tempfile(fileext = ".html")
+  code_download_html <- if (html5 && code_download) tempfile(fileext = ".html")
 
   rmarkdown::output_format(
     knitr = rmarkdown::knitr_options(
@@ -119,7 +120,7 @@ mini_document <- function(framework = "sakura",
     clean_supporting = self_contained,
     pre_knit = spec_pre_knit(code_download_html),
     pre_processor = spec_pre_processor(code_download_html),
-    post_processor = spec_post_processor(results_folding),
+    post_processor = spec_post_processor(results_folding, math),
     base_format = fmt
   )
 }
