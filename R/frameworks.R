@@ -13,11 +13,12 @@ frameworks <- list(
     name = "sakura",
     version = "1.1.0",
     stylesheet = c(
-      default = "sakura.css",
-      dark_solarized = "sakura-dark-solarized.css",
-      dark = "sakura-dark.css",
-      earthly = "sakura-earthly.css",
-      vader = "sakura-vader.css"
+      default = "sakura.scss",
+      dark_solarized = "sakura-dark-solarized.scss",
+      dark = "sakura-dark.scss",
+      earthly = "sakura-earthly.scss",
+      ink = "sakura-ink.scss",
+      vader = "sakura-vader.scss"
     )
   ),
   spcss = list(

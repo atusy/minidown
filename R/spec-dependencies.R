@@ -6,7 +6,8 @@ spec_dependencies <- function(extra_dependencies = NULL,
                               theme = "default",
                               tabset = FALSE,
                               toc_float = FALSE,
-                              toc_highlight = FALSE) {
+                              toc_highlight = FALSE,
+                              ...) {
   if (!html5) {
     return(extra_dependencies)
   }
@@ -15,36 +16,26 @@ spec_dependencies <- function(extra_dependencies = NULL,
   with_framework = framework != "none"
   all_frameworks = framework == "all"
 
-  c(if (with_framework) html_dependency_framework(framework, theme),
-    list(htmltools::htmlDependency(
-      name = pkg,
-      version = version,
-      src = path_mini_resources("html", "styles"),
-      stylesheet = c(
-        if (with_framework) {
-          paste0(`if`(all_frameworks, default_framework, framework), ".css")
-        },
-        "common.css",
-        if (with_framework && framework != "mini") "feat-tooltip.css",
-        if (toc_float) "feat-toc-float.css"
-      ),
-      meta = if (all_frameworks) {
-        c("minidown-version" = utils::packageVersion("minidown"))
-      },
-      all_files = all_frameworks
+  c(
+    list(html_dependency_theme(
+      framework,
+      theme,
+      tabset = tabset,
+      toc_float = toc_float,
+      ...
     )),
     if (tabset) {list(htmltools::htmlDependency(
       name = "tabset",
       version = version,
       src = path_mini_resources("html", "tabset"),
       script = "tabset.js",
-      stylesheet = "tabset.css"
+      all_files = FALSE
     ))},
     if (toc_float && toc_highlight) {list(htmltools::htmlDependency(
         name = "highlightToC",
         version = version,
         src = path_mini_resources("html", "highlightToC"),
-        script = "highlightToC.js"
+        script = list(src = "highlightToC.js", defer = NA)
     ))},
     extra_dependencies
   )
