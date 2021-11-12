@@ -1,3 +1,10 @@
+as_scss <- function(x) {
+  if (grepl("\\.scss$", x)) return(x)
+  scss <- tempfile(fileext = ".scss")
+  file.copy(x, scss)
+  return(scss)
+}
+
 process_sass <- function(
   framework,
   theme,
@@ -6,7 +13,7 @@ process_sass <- function(
   ...
 ) {
   inputs <- c(
-    path_mini_frameworks(framework, theme),
+    as_scss(path_mini_frameworks(framework, theme)),
     path_mini_resources("html", "styles", c(
       if (length(framework) != 0L) c(
         paste0(framework, ".scss"), "common.scss",
