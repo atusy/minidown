@@ -8,15 +8,14 @@ spec_dependencies <- function(extra_dependencies = NULL,
                               toc_float = FALSE,
                               toc_highlight = FALSE,
                               ...) {
-  if (!html5) {
-    return(extra_dependencies)
-  }
+  if (!html5) return(extra_dependencies)
 
-  version = utils::packageVersion(pkg)
-  with_framework = framework != "none"
-  all_frameworks = framework == "all"
+  minidown_js <- c(
+    if (tabset) "tabset/tabset.js",
+    if (toc_float && toc_highlight) "highlightToC/highlightToC.js"
+  )
 
-  c(
+  return(c(
     list(html_dependency_theme(
       framework,
       theme,
@@ -24,19 +23,13 @@ spec_dependencies <- function(extra_dependencies = NULL,
       toc_float = toc_float,
       ...
     )),
-    if (tabset) {list(htmltools::htmlDependency(
-      name = "tabset",
-      version = version,
-      src = path_mini_resources("html", "tabset"),
-      script = "tabset.js",
+    if (length(minidown_js) != 0) {list(htmltools::htmlDependency(
+      name = "minidown-js",
+      version = utils::packageVersion(pkg),
+      src = path_mini_resources("html"),
+      script = minidown_js,
       all_files = FALSE
     ))},
-    if (toc_float && toc_highlight) {list(htmltools::htmlDependency(
-        name = "highlightToC",
-        version = version,
-        src = path_mini_resources("html", "highlightToC"),
-        script = list(src = "highlightToC.js", defer = NA)
-    ))},
     extra_dependencies
-  )
+  ))
 }
