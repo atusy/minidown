@@ -1,9 +1,16 @@
 /* Code blocks */
 
 pre {
+  overflow-x: auto;
   border: solid #aaa 1px;
   border-left: .25rem solid var(--pre-color);
   padding: 8px;
+  >code {
+    white-space: pre;
+    overflow: visible;
+    background-color: unset;
+    padding: 0;
+  }
 }
 
 pre.numberSource {
@@ -16,65 +23,58 @@ div.sourceCode {
   overflow: visible;
   margin: 0;
 }
-pre, pre.sourceCode {
-  overflow-x: auto;
-}
 pre.sourceCode {
   margin: var(--universal-margin);
-}
-pre>code {
-  white-space: pre;
-  overflow: visible;
-  background-color: unset;
-  padding: 0;
+  overflow-x: auto;
 }
 
 pre.sourceCode.numberSource {
   overflow-x: visible;
+  > code {
+    white-space: pre-wrap
+  }
+  > span {
+    left: 8px;
+    text-indent: -4.6em;
+  }
 }
-pre.sourceCode.numberSource>code {
-  white-space: pre-wrap
-}
-pre.sourceCode.numberSource>code>span {
-  left: 8px;
-  text-indent: -4.6em;
-}
-
 
 /* code folding */
 .chunk-summary {
   text-align: right;
   margin-right: var(--universal-margin);
+  + {
+    pre, div.sourceCode {
+      margin-top: 2px;
+    }
+  }
 }
-.chunk-summary+pre,
-.chunk-summary+div.sourceCode {
-  margin-top: 2px;
-}
-
 
 /* TOC */
-nav > ul {
-  border: .0625rem solid #444;
-  border-radius: 4px;
-  margin: 5px;
-  padding: 5px;
-}
-nav ul {
-  list-style-type: none;
-}
-nav ul li {
-  padding: 0;
-}
-nav ul ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-nav code {
-  background-color: unset;
-  color: unset;
-  padding: 0;
+nav {
+  > ul {
+    border: .0625rem solid #444;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      padding: 0;
+    }
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  code {
+    background-color: unset;
+    color: unset;
+    padding: 0;
+  }
 }
 
 /* header */
@@ -82,16 +82,14 @@ header {
   height: auto;
 }
 
-
 /* accordion */
 article > .collapse {
   margin: 0;
   width: auto;
-}
-
-article > .collapse > label,
-article > .collapse > label + div,
-article > .collapse > :checked + label + div {
-  margin: 0 calc(2*var(--universal-margin));
-  width: calc(100%-4*var(--universal-margin));
+  > {
+    label, label + div, :checked + label + div {
+      margin: 0 calc(2*var(--universal-margin));
+      width: calc(100%-4*var(--universal-margin));
+    }
+  }
 }
