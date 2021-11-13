@@ -3,17 +3,17 @@
     padding: 0 3rem;
   }
 }
-#TOC {
+nav[role="doc-toc"] {
   font-size: 0.9em;
   border: none;
-}
-#TOC > ul {
-  box-sizing: border-box;
-}
-#TOC ul {
-  margin: 0;
-}
-#TOC li, #TOC a {
-  margin: 0;
-  padding: 0;
+  > ul {
+    box-sizing: border-box;
+  }
+  ul {
+    margin: 0;
+  }
+  li, a {
+    margin: 0;
+    padding: 0;
+  }
 }
