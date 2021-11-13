@@ -30,10 +30,10 @@ frameworks <- list(
   ),
   water = list(
     name = "water",
-    version = "1.4.0",
+    version = "2.1.0",
     stylesheet = c(
-      light = "light.min.css",
-      dark = "dark.min.css"
+      light = "light.css",
+      dark = "dark.css"
     )
   ),
   mini = list(
