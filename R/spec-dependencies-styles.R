@@ -28,7 +28,7 @@ process_sass <- function(
 
 choose_frameworks <- function(framework) {
   if (is.null(framework)) return(list(name = NULL))
-  if (identical(framework, "all")) return(frameworks)
+  if (identical(framework, "all")) return(rev(frameworks))
   if (identical(framework, "default")) return(framework[1L])
   frameworks[match.arg(framework, names(frameworks))]
 }
@@ -39,7 +39,7 @@ choose_themes <- function(framework, theme) {
   themes <- frameworks[[framework]][["stylesheet"]]
   if (identical(theme, "all")) return(themes)
   if (identical(theme, "default")) return(themes[1L])
-  themes[match.arg(theme, themes)]
+  themes[match.arg(theme, names(themes))]
 }
 
 html_dependency_theme <- function(
