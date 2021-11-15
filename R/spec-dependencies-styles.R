@@ -52,8 +52,9 @@ html_dependency_theme <- function(
   ...
 ) {
   dir.create(src, showWarnings = FALSE)
+  if (framework == "all") theme <- "all"
   for (.framework in choose_frameworks(framework)) {
-    .themes <- choose_themes(.framework[["name"]], theme)
+    .themes <- choose_themes(.framework[["name"]], "all")
     stylesheet <- paste0(.framework[["name"]], "-", names(.themes), ".css")
     for (i in seq_along(.themes)) {
       process_sass(
