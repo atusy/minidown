@@ -23,7 +23,11 @@ process_sass <- function(
     )),
     if (tabset) path_mini_resources("html", "tabset", "tabset.scss")
   )
-  sass::sass(lapply(inputs, sass::sass_file), ...)
+  sass::sass(
+    lapply(inputs, sass::sass_file),
+    options = sass::sass_options(output_style = "compressed"),
+    ...
+  )
 }
 
 choose_frameworks <- function(framework) {
