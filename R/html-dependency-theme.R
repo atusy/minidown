@@ -74,8 +74,8 @@ html_dependency_theme <- function(
   do.call(
     function(...) {
       htmltools::htmlDependency(
-        name = "minidown",
-        version = packageVersion("minidown"),
+        name = pkg,
+        version = packageVersion(pkg),
         src = src,
         meta = frameworks[[framework]][["meta"]],
         stylesheet = stylesheet[[1L]],
