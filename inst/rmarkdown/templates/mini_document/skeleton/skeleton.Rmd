@@ -2,7 +2,7 @@
 title: "minidown::mini_document"
 output:
   minidown::mini_document:
-    framework: mini
+    framework: sakura
     theme: default
     code_folding:
       source: show
