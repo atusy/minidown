@@ -45,6 +45,13 @@ frameworks <- list(
       dark = "mini-dark.min.css"
     ),
     meta = list(viewport = "width=device-width, initial-scale=1")
+  ),
+  none = list(
+    name = "none",
+    version = "1.0.0",
+    stylesheet = c(
+      none = "none.scss"
+    )
   )
 )
 

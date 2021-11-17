@@ -15,7 +15,7 @@ process_sass <- function(
   inputs <- c(
     as_scss(path_mini_frameworks(framework, theme)),
     path_mini_resources("html", "styles", c(
-      if (length(framework) != 0L) c(
+      if (!identical(framework, "none")) c(
         paste0(framework, ".scss"), "common.scss",
         if (framework != "mini") "feat-tooltip.scss"
       ),
@@ -31,15 +31,12 @@ process_sass <- function(
 }
 
 choose_frameworks <- function(framework) {
-  if (is.null(framework)) return(list(name = NULL))
   if (identical(framework, "all")) return(rev(frameworks))
   if (identical(framework, "default")) return(framework[1L])
   frameworks[match.arg(framework, names(frameworks))]
 }
 
 choose_themes <- function(framework, theme) {
-  if (is.null(framework)) return(c(vanilla = NA_character_))
-
   themes <- frameworks[[framework]][["stylesheet"]]
   if (identical(theme, "all")) return(themes)
   if (identical(theme, "default")) return(themes[1L])
@@ -58,7 +55,7 @@ html_dependency_theme <- function(
   dir.create(src, showWarnings = FALSE)
   if (framework == "all") theme <- "all"
   for (.framework in choose_frameworks(framework)) {
-    .themes <- choose_themes(.framework[["name"]], "all")
+    .themes <- choose_themes(.framework[["name"]], theme)
     stylesheet <- paste0(.framework[["name"]], "-", names(.themes), ".css")
     for (i in seq_along(.themes)) {
       process_sass(
