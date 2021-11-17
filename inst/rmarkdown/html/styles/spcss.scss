@@ -1,9 +1,9 @@
+body {
+  background-color: white;
+}
 nav ul {
   list-style-type: none;
   padding-inline-start: 1rem;
-}
-body {
-  background-color: white;
 }
 div.sourceCode {
   overflow: visible;
@@ -17,13 +17,13 @@ pre.sourceCode {
 }
 pre.sourceCode.numberSource {
   overflow: visible;
-}
-pre.sourceCode.numberSource>code {
-  white-space: pre-wrap
-}
-pre.sourceCode.numberSource>code>span {
-  left: 8px;
-  text-indent: -4.5em;
+  >code {
+    white-space: pre-wrap;
+    >span {
+      left: 8px;
+      text-indent: -4.5em;
+    }
+  }
 }
 pre>code {
   white-space: pre;

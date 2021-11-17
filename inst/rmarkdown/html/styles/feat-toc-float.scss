@@ -13,24 +13,24 @@
     grid-template-columns: var(--toc-width) 1fr;
     grid-template-rows: auto auto;
   }
-  #TOC {
+  nav[role="doc-toc"] {
     grid-row: 1 / -1;
     grid-column: 1 / 2;
     border: none;
     margin: 0;
     width: var(--toc-width);
-  }
-  #TOC > ul {
-    padding-top: 0;
-    padding-bottom: 0;
-    position: sticky;
-    max-height: 100vh;
-    overflow-y: auto;
-    top: 0;
-    border: none;
-  }
-  #TOC > ul > li:first-child {
-    padding-top: 0.5rem;
+    > ul {
+      padding-top: 0;
+      padding-bottom: 0;
+      position: sticky;
+      max-height: 100vh;
+      overflow-y: auto;
+      top: 0;
+      border: none;
+      > li:first-child {
+        padding-top: 0.5rem;
+      }
+    }
   }
 }
 

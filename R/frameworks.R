@@ -13,11 +13,12 @@ frameworks <- list(
     name = "sakura",
     version = "1.1.0",
     stylesheet = c(
-      default = "sakura.css",
-      dark_solarized = "sakura-dark-solarized.css",
-      dark = "sakura-dark.css",
-      earthly = "sakura-earthly.css",
-      vader = "sakura-vader.css"
+      default = "sakura.scss",
+      dark_solarized = "sakura-dark-solarized.scss",
+      dark = "sakura-dark.scss",
+      earthly = "sakura-earthly.scss",
+      ink = "sakura-ink.scss",
+      vader = "sakura-vader.scss"
     )
   ),
   spcss = list(
@@ -29,10 +30,10 @@ frameworks <- list(
   ),
   water = list(
     name = "water",
-    version = "1.4.0",
+    version = "2.1.0",
     stylesheet = c(
-      light = "light.min.css",
-      dark = "dark.min.css"
+      light = "light.css",
+      dark = "dark.css"
     )
   ),
   mini = list(
@@ -44,6 +45,13 @@ frameworks <- list(
       dark = "mini-dark.min.css"
     ),
     meta = list(viewport = "width=device-width, initial-scale=1")
+  ),
+  none = list(
+    name = "none",
+    version = "1.0.0",
+    stylesheet = c(
+      none = "none.scss"
+    )
   )
 )
 

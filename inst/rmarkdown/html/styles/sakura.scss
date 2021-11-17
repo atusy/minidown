@@ -1,0 +1,71 @@
+/* Code blocks */
+div.sourceCode {
+  overflow: visible;
+}
+pre {
+  border: solid #aaa 1px;
+  padding: 8px;
+  >code {
+    white-space: pre;
+    overflow: visible;
+    background-color: unset;
+    padding: 0;
+  }
+}
+pre.numberSource {
+  margin: 0;
+  padding-left: 0;
+}
+pre, pre.sourceCode {
+  overflow-x: auto;
+}
+pre.sourceCode.numberSource {
+  overflow-x: visible;
+  > code {
+    white-space: pre-wrap;
+    > span {
+      left: 8px;
+      text-indent: -4.6em;
+    }
+  }
+}
+
+/* code folding */
+.chunk-summary {
+  text-align: right;
+  + {
+    pre, div.sourceCode {
+      margin-top: 2px;
+    }
+  }
+}
+
+/* TOC */
+nav[role="doc-toc"] {
+  > ul {
+    border: .0625rem solid #444;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+  }
+  ul {
+    list-style-type: none;
+    padding-inline-start: 1rem;
+    li {
+      padding: 0;
+    }
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  code {
+    background-color: unset;
+    color: unset;
+  }
+}
+a.button:hover{
+  border-width: 1px;
+}

@@ -1,0 +1,19 @@
+@media screen and (max-width: 960px) {
+  header, nav, article {
+    padding: 0 3rem;
+  }
+}
+nav[role="doc-toc"] {
+  font-size: 0.9em;
+  border: none;
+  > ul {
+    box-sizing: border-box;
+  }
+  ul {
+    margin: 0;
+  }
+  li, a {
+    margin: 0;
+    padding: 0;
+  }
+}
