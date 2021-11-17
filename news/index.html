@@ -134,6 +134,7 @@
 <a href="#minidown-0309999" class="anchor"></a>minidown 0.3.0.9999<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations. Also, the sakura and water CSS frameworks are updated to the latest versions. Especially the water CSS framework allows customizations via CSS variables. See files under <code>inst/frameworks/water</code> for available variables (<a href='https://github.com/atusy/minidown/issues/84'>#84</a>).</p></li>
 <li><p><code>mini_document</code> renders math equations with KaTeX on server side by default. This also means a support of shiny-based runtimes. To use client-side rendering, specify <code>math = "katex"</code>. (<a href='https://github.com/atusy/minidown/issues/81'>#81</a>).</p></li>
 <li><p>Document how to use <code>_output.yml</code> in package vignettes (<a href='https://github.com/atusy/minidown/issues/80'>#80</a>).</p></li>
 <li><p>Tabsets allow markups within tabmenus. The markups inherits from the content of corresponding headings (<a href='https://github.com/atusy/minidown/issues/78'>#78</a>).</p></li>
@@ -219,7 +220,7 @@
 <a href="#httpsminidownatusynet" class="anchor"></a><a href="https://minidown.atusy.net" class="uri">https://minidown.atusy.net</a>
 </h2>
 <ul>
-<li>Available themes can be previewed without jumping pages. This is made possible by adding <code><a href="../reference/mini_document.html">mini_document(framework = "all")</a></code> as a choice. Note that this option is intended for internal use only. By setting this and <code>self_contained = FALSE</code>, the document adds all the stylesheets as its dependencies. Also, a <code>meta</code> element will be inserted to header, which tells the version of <strong>minidown</strong> package that builds the document (<a href='https://github.com/atusy/minidown/issues/35'>#35</a>).</li>
+<li>Available themes can be previewed without jumping pages. This is made possible by adding <code>mini_document(framework = "all")</code> as a choice. Note that this option is intended for internal use only. By setting this and <code>self_contained = FALSE</code>, the document adds all the stylesheets as its dependencies. Also, a <code>meta</code> element will be inserted to header, which tells the version of <strong>minidown</strong> package that builds the document (<a href='https://github.com/atusy/minidown/issues/35'>#35</a>).</li>
 <li>Demo page adds functionality to set framework and theme via query parameter (e.g., <a href="https://minidown.atusy.net/?framework=spcss&amp;theme=spcss" class="uri">https://minidown.atusy.net/?framework=spcss&amp;theme=spcss</a>) (<a href='https://github.com/atusy/minidown/issues/38'>#38</a>)</li>
 </ul>
 </div>
@@ -263,8 +264,8 @@
 </li>
 <li>Template and layouts
 <ul>
-<li>On template, Elements after <code>include-before</code> and <code>include-after</code> are wrapped by <code>&lt;main&gt;</code> element. Accordingly, <code><a href="../reference/mini_document.html">mini_document(toc_float = TRUE)</a></code> applies CSS Grid Layout on <code>&lt;main&gt;</code> element and its contents. In this way, users can safely include additional contents.</li>
-<li>For the consistency with <code><a href="../reference/mini_document.html">mini_document(code_folding = TRUE)</a></code>, the max-width of body become 900px when <code>code_folding = FALSE</code>
+<li>On template, Elements after <code>include-before</code> and <code>include-after</code> are wrapped by <code>&lt;main&gt;</code> element. Accordingly, <code>mini_document(toc_float = TRUE)</code> applies CSS Grid Layout on <code>&lt;main&gt;</code> element and its contents. In this way, users can safely include additional contents.</li>
+<li>For the consistency with <code>mini_document(code_folding = TRUE)</code>, the max-width of body become 900px when <code>code_folding = FALSE</code>
 </li>
 </ul>
 </li>
