@@ -1,6 +1,9 @@
 # minidown 0.3.0.9999
 
-* Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations (#84).
+* Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations.
+  Also, the sakura and water CSS frameworks are updated to the latest versions.
+  Especially the water CSS framework allows customizations via CSS variables.
+  See files under `inst/frameworks/water` for available variables (#84).
 
 * `mini_document` renders math equations with KaTeX on server side by default. This also means a support of shiny-based runtimes. To use client-side rendering, specify `math = "katex"`. (#81). 
 
