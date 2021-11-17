@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations (#84).
+
 * Document how to use `_output.yml` in package vignettes (#80).
 
 * Tabsets allow markups within tabmenus. The markups inherits from the content of corresponding headings (#78).
