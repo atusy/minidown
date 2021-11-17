@@ -32,11 +32,10 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.send(null);
   }
 
-  function updateRules(style, hrefTheme, hrefExtra, aside) {
+  function updateRules(style, hrefTheme, aside) {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function() {
       style.innerText = xhr.responseText;
-      addRulesExtra(style, hrefExtra);
       addRulesToC(style, aside);
     });
     xhr.open("GET", hrefTheme, true);
@@ -60,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const frameworkSelector = selectors[0];
+  const minidown = frameworkSelector.dataset.minidown;
   let framework = frameworkSelector.selectedOptions[0];
   const label = document.getElementById("label-select-theme");
   label.setAttribute("for", themeSelectors[framework.value].id);
@@ -71,23 +71,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   frameworkSelector.addEventListener("change", updateThemeSelector);
 
-  const minidown = document.querySelector("meta[name='minidown-version']").content;
   function findTheme() {
     const theme = themeSelectors[framework.value].selectedOptions[0].value;
-    return `index_files/${framework.value}-${framework.attributes["data-version"].value}/${theme}`;
-  }
-  function findExtra() {
-    return `index_files/minidown-${minidown}/${framework.value}.css`;
+    return `index_files/minidown-${minidown}/${theme}`;
   }
   let currentTheme = findTheme();
   const linkTheme = document.querySelector("link[href='" + currentTheme + "']");
-  const linkExtra = document.querySelector("link[href='" + findExtra() + "']");
   const style = linkTheme.parentElement.insertBefore(
     document.createElement("style"), linkTheme);
 
-  updateRules(style, linkTheme.href, linkExtra.href, aside);
+  updateRules(style, linkTheme.href, aside);
   linkTheme.remove();
-  linkExtra.remove();
 
   function selectIndex(x, label) {
     x.selectedIndex = Array.from(x.children).findIndex(x => x.label == label);
@@ -103,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("button-go").addEventListener("click", function() {
     const theme = findTheme();
     if (theme !== currentTheme) {
-      updateRules(style, theme, findExtra(), aside);
+      updateRules(style, theme, aside);
       currentTheme = theme;
       updateSearchParams();
     }

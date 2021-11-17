@@ -65,15 +65,16 @@ htmltools::tags$aside(htmltools::tags$p(
         nm, value = nm, "data-version" = framework$version
       )
     }),
-    id = "select-framework"
+    id = "select-framework",
+    `data-minidown` = packageVersion("minidown")
   ),
   htmltools::tags$label("Theme:", id = "label-select-theme"),
-  purrr::imap(minidown:::frameworks, function(framework, nm) {
+  purrr::imap(minidown:::frameworks, function(framework, fnm) {
     htmltools::tags$select(
-      purrr::imap(framework$stylesheet, function(path, nm) {
-        htmltools::tags$option(nm, value = path)
+      purrr::map(names(framework$stylesheet), function(tnm) {
+        htmltools::tags$option(tnm, value = paste0(fnm, '-', tnm, '.css'))
       }),
-      id = paste0("select-theme-", nm)
+      id = paste0("select-theme-", fnm)
     )
   }),
   htmltools::tags$button("Apply!", id = "button-go")

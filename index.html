@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Atsushi Yasumoto">
-  <meta name="dcterms.date" content="2021-11-10">
+  <meta name="dcterms.date" content="2021-11-17">
   <title>minidown::mini_document</title>
   <style>
       code{white-space: pre-wrap;}
@@ -81,18 +81,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <link href="index_files/sakura-1.1.0/sakura.css" rel="stylesheet">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="minidown-version" content="0.3.0">
-  <link href="index_files/minidown-0.3.0/sakura.css" rel="stylesheet">
-  <link href="index_files/minidown-0.3.0/common.css" rel="stylesheet">
-  <link href="index_files/minidown-0.3.0/feat-tooltip.css" rel="stylesheet">
-  <link href="index_files/minidown-0.3.0/feat-toc-float.css" rel="stylesheet">
-  <link href="index_files/tabset-0.3.0/tabset.css" rel="stylesheet">
-  <script src="index_files/tabset-0.3.0/tabset.js"></script>
-  <script src="index_files/highlightToC-0.3.0/highlightToC.js"></script>
+  <link href="index_files/minidown-0.3.0/sakura-default.css" rel="stylesheet">
+  <script src="index_files/minidown-js-0.3.0/tabset/tabset.js"></script>
+  <script src="index_files/minidown-js-0.3.0/highlightToC/highlightToC.js"></script>
   <script src="index_files/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" data-external="1"></head>
 <body>
@@ -100,7 +91,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header">
 <h1 class="title">minidown::mini_document</h1>
 <p class="author">Atsushi Yasumoto</p>
-<p class="date">2021-11-10</p>
+<p class="date">2021-11-17</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -171,20 +162,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">sakura</td>
+<td style="text-align: left;">default, dark_solarized, dark, earthly, ink, vader</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">spcss</td>
+<td style="text-align: left;">spcss</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">water</td>
+<td style="text-align: left;">light, dark</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">mini</td>
 <td style="text-align: left;">default, nord, dark</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">sakura</td>
-<td style="text-align: left;">default, dark_solarized, dark, earthly, vader</td>
-</tr>
 <tr class="odd">
-<td style="text-align: left;">spcss</td>
-<td style="text-align: left;">spcss</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">water</td>
-<td style="text-align: left;">light, dark</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">none</td>
 </tr>
 </tbody>
 </table>
@@ -734,31 +729,36 @@ checked item</li>
 <aside id="aside-select-framework">
 <p>
 <label for="select-framework">Framework:</label>
-<select id="select-framework">
+<select id="select-framework" data-minidown="0.3.0">
 <option value="sakura" data-version="1.1.0">sakura</option>
 <option value="spcss" data-version="0.6.0">spcss</option>
-<option value="water" data-version="1.4.0">water</option>
+<option value="water" data-version="2.1.0">water</option>
 <option value="mini" data-version="3.0.1">mini</option>
+<option value="none" data-version="1.0.0">none</option>
 </select>
 <label id="label-select-theme">Theme:</label>
 <select id="select-theme-sakura">
-<option value="sakura.css">default</option>
-<option value="sakura-dark-solarized.css">dark_solarized</option>
+<option value="sakura-default.css">default</option>
+<option value="sakura-dark_solarized.css">dark_solarized</option>
 <option value="sakura-dark.css">dark</option>
 <option value="sakura-earthly.css">earthly</option>
+<option value="sakura-ink.css">ink</option>
 <option value="sakura-vader.css">vader</option>
 </select>
 <select id="select-theme-spcss">
-<option value="spcss.min.css">spcss</option>
+<option value="spcss-spcss.css">spcss</option>
 </select>
 <select id="select-theme-water">
-<option value="light.min.css">light</option>
-<option value="dark.min.css">dark</option>
+<option value="water-light.css">light</option>
+<option value="water-dark.css">dark</option>
 </select>
 <select id="select-theme-mini">
-<option value="mini-default.min.css">default</option>
-<option value="mini-nord.min.css">nord</option>
-<option value="mini-dark.min.css">dark</option>
+<option value="mini-default.css">default</option>
+<option value="mini-nord.css">nord</option>
+<option value="mini-dark.css">dark</option>
+</select>
+<select id="select-theme-none">
+<option value="none-none.css">none</option>
 </select>
 <button id="button-go">Apply!</button>
 </p>

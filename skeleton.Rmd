@@ -62,6 +62,7 @@ frameworks <- lapply(
   )
 
 frameworks %>%
+  dplyr::mutate(framework = factor(framework, levels = unique(framework))) %>%
   dplyr::group_by(framework) %>%
   dplyr::summarise(theme = paste(theme, collapse = ', ')) %>%
   knitr::kable(escape=FALSE)
