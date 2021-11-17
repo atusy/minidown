@@ -75,7 +75,7 @@ html_dependency_theme <- function(
     function(...) {
       htmltools::htmlDependency(
         name = pkg,
-        version = packageVersion(pkg),
+        version = utils::packageVersion(pkg),
         src = src,
         meta = frameworks[[framework]][["meta"]],
         stylesheet = stylesheet[[1L]],
