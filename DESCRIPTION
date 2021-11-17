@@ -42,6 +42,7 @@ Imports:
     knitr,
     mime,
     rmarkdown,
+    sass,
     xfun
 Suggests:
     callr,
