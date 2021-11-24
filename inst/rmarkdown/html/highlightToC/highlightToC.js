@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return x.indexOf(Math.min(...x));
   }
 
-  const anchors = document.querySelectorAll('#TOC li>a');
+  const anchors = document.querySelectorAll('nav[role="doc-toc"] li>a');
   const headerIDs = Array.from(anchors).map(x => x.attributes.href.value.substring(1));
   let highlighted = 0;
 
   window.document.styleSheets[0].insertRule(
-    `#TOC a.highlight{display:inline-block;width:100%;color:${getBGColor(anchors[0])};background-color:${window.getComputedStyle(anchors[0]).color}`
+    `nav[role="doc-toc"] a.highlight{display:inline-block;width:100%;color:${getBGColor(anchors[0])};background-color:${window.getComputedStyle(anchors[0]).color}`
   );
 
   function highlight() {
