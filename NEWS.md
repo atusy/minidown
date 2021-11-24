@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* Changed querySelector in `highlightToC.js` so that ToC can be modified regardless of `--id-prefix` is given to Pandoc (#85).
+
 * Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations.
   Also, the sakura and water CSS frameworks are updated to the latest versions.
   Especially the water CSS framework allows customizations via CSS variables.
