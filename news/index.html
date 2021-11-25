@@ -134,6 +134,7 @@
 <a href="#minidown-0309999" class="anchor"></a>minidown 0.3.0.9999<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Changed querySelector in <code>highlightToC.js</code> so that ToC can be modified regardless of <code>--id-prefix</code> is given to Pandoc (<a href='https://github.com/atusy/minidown/issues/85'>#85</a>).</p></li>
 <li><p>Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations. Also, the sakura and water CSS frameworks are updated to the latest versions. Especially the water CSS framework allows customizations via CSS variables. See files under <code>inst/frameworks/water</code> for available variables (<a href='https://github.com/atusy/minidown/issues/84'>#84</a>).</p></li>
 <li><p><code>mini_document</code> renders math equations with KaTeX on server side by default. This also means a support of shiny-based runtimes. To use client-side rendering, specify <code>math = "katex"</code>. (<a href='https://github.com/atusy/minidown/issues/81'>#81</a>).</p></li>
 <li><p>Document how to use <code>_output.yml</code> in package vignettes (<a href='https://github.com/atusy/minidown/issues/80'>#80</a>).</p></li>
