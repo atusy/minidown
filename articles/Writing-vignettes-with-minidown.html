@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">minidown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -67,7 +69,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/atusy/minidown/">
+  <a href="https://github.com/atusy/minidown/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -88,7 +90,7 @@
       <h1 data-toc-skip>Writing Vignettes with the ‘minidown’ Package</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/atusy/minidown/blob/master/vignettes/Writing-vignettes-with-minidown.Rmd"><code>vignettes/Writing-vignettes-with-minidown.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/atusy/minidown/blob/HEAD/vignettes/Writing-vignettes-with-minidown.Rmd" class="external-link"><code>vignettes/Writing-vignettes-with-minidown.Rmd</code></a></small>
       <div class="hidden name"><code>Writing-vignettes-with-minidown.Rmd</code></div>
 
     </div>
@@ -96,13 +98,13 @@
     
     
 <p>The <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> function provides simple and lightweight yet powerful HTML format. Even if all features are enabled, the size of document is comparable with the default <code>html_vignette</code> function.</p>
-<div id="how-easy-it-is" class="section level1">
-<h1 class="hasAnchor">
-<a href="#how-easy-it-is" class="anchor"></a>How easy it is!</h1>
+<div class="section level2">
+<h2 id="how-easy-it-is">How easy it is!<a class="anchor" aria-label="anchor" href="#how-easy-it-is"></a>
+</h2>
 <p>Only the difference is the YAML frontmatter.</p>
-<div id="steps-to-go" class="section level2">
-<h2 class="hasAnchor">
-<a href="#steps-to-go" class="anchor"></a>3 steps to go</h2>
+<div class="section level3">
+<h3 id="steps-to-go">3 steps to go<a class="anchor" aria-label="anchor" href="#steps-to-go"></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Create an <code>Rmd</code> file under the <code>vignettes</code> directory</p></li>
 <li>
@@ -119,11 +121,11 @@
 <li><p>Write body</p></li>
 </ol>
 </div>
-<div id="configuring-documents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#configuring-documents" class="anchor"></a>Configuring documents</h2>
+<div class="section level3">
+<h3 id="configuring-documents">Configuring documents<a class="anchor" aria-label="anchor" href="#configuring-documents"></a>
+</h3>
 <p>The output format can be configured by the YAML front matter and by the <code>_output.yml</code> file. Most important things are <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> in the <code>output</code> key, and <code>%\VignetteEngine{knitr::rmarkdown}</code> in the <code>vignette</code> key. These two declares the vignette to be rendered with <strong>minidown</strong> package.</p>
-<p>The output format can be customized as usual in the R Markdown. Break lines, indent, and specify arguments like below. It is also possible to specify the arguments via <code>vignettes/_output.yml</code>. In that case, <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> should be the top level key in the YAML file (cf. <a href="https://bookdown.org/yihui/rmarkdown/bookdown-project.html#output.yml">R Markdown: The Definitive Guide</a>.</p>
+<p>The output format can be customized as usual in the R Markdown. Break lines, indent, and specify arguments like below. It is also possible to specify the arguments via <code>vignettes/_output.yml</code>. In that case, <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> should be the top level key in the YAML file (cf. <a href="https://bookdown.org/yihui/rmarkdown/bookdown-project.html#output.yml" class="external-link">R Markdown: The Definitive Guide</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">framework</span><span class="kw">:</span><span class="at"> sakura</span></span>
@@ -136,23 +138,23 @@
 <span id="cb2-10"><a href="#cb2-10"></a><span class="at">    </span><span class="fu">tabset</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb2-11"><a href="#cb2-11"></a><span class="at">    </span><span class="fu">code_download</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb2-12"><a href="#cb2-12"></a><span class="at">    </span><span class="fu">math</span><span class="kw">:</span><span class="at"> </span><span class="st">"katex"</span></span></code></pre></div>
-<p>Note that the <code>framework</code> and <code>theme</code> keys control appearance of the rendered document. The default framework is “sakura”, but there are some more like “water” and “spcss”. Each frameworks also have their own themes. For more details on options, visit <a href="https://minidown.atusy.net/" class="uri">https://minidown.atusy.net/</a>. This page also provides examples of all the combinations of frameworks and themes.</p>
+<p>Note that the <code>framework</code> and <code>theme</code> keys control appearance of the rendered document. The default framework is “sakura”, but there are some more like “water” and “spcss”. Each frameworks also have their own themes. For more details on options, visit <a href="https://minidown.atusy.net/" class="external-link uri">https://minidown.atusy.net/</a>. This page also provides examples of all the combinations of frameworks and themes.</p>
 <p>The other contents of the YAML front matter are not <strong>minidown</strong>-specific.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<div id="share" class="section level3">
-<h3 class="hasAnchor">
-<a href="#share" class="anchor"></a>Share</h3>
+<div class="section level4">
+<h4 id="share">Share<a class="anchor" aria-label="anchor" href="#share"></a>
+</h4>
 </div>
 </div>
 </div>
-<div id="why-authoring-vignettes-with-the-minidown-package" class="section level1">
-<h1 class="hasAnchor">
-<a href="#why-authoring-vignettes-with-the-minidown-package" class="anchor"></a>Why authoring vignettes with the minidown package?</h1>
+<div class="section level2">
+<h2 id="why-authoring-vignettes-with-the-minidown-package">Why authoring vignettes with the minidown package?<a class="anchor" aria-label="anchor" href="#why-authoring-vignettes-with-the-minidown-package"></a>
+</h2>
 <p>Because the <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> function provides simple and lightweight yet powerful HTML format.</p>
 <p>The <strong>rmarkdown</strong> package provides the <code>html_vignette</code> function as a lightweight format suitable for creating vignettes. As the document says, the <code>html_vignette</code> provides much lighter document than the <code>html_document</code> document. The <code>html_vignette</code> loses weight by omitting Bootstrap and jQuery from <code>html_document</code>, which in turn loses some nice appearance and features such as floating ToC and code folding. However, such features are very important for long format documents, i.e. vignettes.</p>
 <p>The <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> tries to provide as rich features as <code>html_document</code>. At the same time, it tries to be as light as <code>html_vignette</code>.</p>
-<div id="rich-opt-in-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rich-opt-in-features" class="anchor"></a>Rich opt-in features</h2>
+<div class="section level3">
+<h3 id="rich-opt-in-features">Rich opt-in features<a class="anchor" aria-label="anchor" href="#rich-opt-in-features"></a>
+</h3>
 <p>Almost all features are opt-in in the <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> function. Authors can chose which feature to add with a subtle weight via the YAML front matter. For example,</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="at">  minidown:</span><span class="fu">:mini_document</span><span class="kw">:</span></span>
@@ -164,11 +166,11 @@
 <span id="cb3-8"><a href="#cb3-8"></a><span class="at">    </span><span class="fu">tabset</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="at">    </span><span class="fu">code_download</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb3-10"><a href="#cb3-10"></a><span class="at">    </span><span class="fu">math</span><span class="kw">:</span><span class="at"> </span><span class="st">"katex"</span></span></code></pre></div>
-<p>For more details, refer a help document by <code>?minidown::mini_documewnt</code>, or visit a document page which is a live example at the same time: <a href="https://minidown.atusy.net/" class="uri">https://minidown.atusy.net/</a>.</p>
+<p>For more details, refer a help document by <code>?minidown::mini_documewnt</code>, or visit a document page which is a live example at the same time: <a href="https://minidown.atusy.net/" class="external-link uri">https://minidown.atusy.net/</a>.</p>
 </div>
-<div id="light-weight" class="section level2">
-<h2 class="hasAnchor">
-<a href="#light-weight" class="anchor"></a>Light weight</h2>
+<div class="section level3">
+<h3 id="light-weight">Light weight<a class="anchor" aria-label="anchor" href="#light-weight"></a>
+</h3>
 <p>This section compares the size by compiling this document in variety of formats. There are two remarkable results.</p>
 <ul>
 <li>The <code><a href="../reference/mini_document.html">minidown::mini_document</a></code> function can even be lighter than the <code>html_vignette</code> function when <code>framework = "spcss"</code> is chosen.</li>
@@ -203,20 +205,20 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">render_size</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">output_format</span> <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_vignette.html">html_vignette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">this_rmd</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/current_input.html">current_input</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="va">temp_html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".html"</span><span class="op">)</span>
-  <span class="fu">callr</span><span class="fu">::</span><span class="fu"><a href="https://callr.r-lib.org/reference/r.html">r_safe</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,
-                args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>input <span class="op">=</span> <span class="va">this_rmd</span>,
+<code class="sourceCode R"><span class="va">render_size</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">output_format</span> <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_vignette.html" class="external-link">html_vignette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">this_rmd</span> <span class="op">&lt;-</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/current_input.html" class="external-link">current_input</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="va">temp_html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".html"</span><span class="op">)</span>
+  <span class="fu">callr</span><span class="fu">::</span><span class="fu"><a href="https://callr.r-lib.org/reference/r.html" class="external-link">r_safe</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,
+                args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>input <span class="op">=</span> <span class="va">this_rmd</span>,
                             output_format <span class="op">=</span> <span class="va">output_format</span>,
                             output_file <span class="op">=</span> <span class="va">temp_html</span>,
-                            params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>eval_render <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+                            params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>eval_render <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
                             quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/file.info.html">file.size</a></span><span class="op">(</span><span class="va">temp_html</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.size</a></span><span class="op">(</span><span class="va">temp_html</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">formats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  html_vignette <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_vignette.html">html_vignette</a></span><span class="op">(</span><span class="op">)</span>,
+<span class="va">formats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+  html_vignette <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_vignette.html" class="external-link">html_vignette</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="st">'mini_document(framework = "spcss")'</span> <span class="op">=</span> <span class="fu">minidown</span><span class="fu">::</span><span class="fu"><a href="../reference/mini_document.html">mini_document</a></span><span class="op">(</span>framework <span class="op">=</span> <span class="st">"spcss"</span><span class="op">)</span>,
   <span class="st">"mini_document() # default"</span> <span class="op">=</span> <span class="fu">minidown</span><span class="fu">::</span><span class="fu"><a href="../reference/mini_document.html">mini_document</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="st">"mini_document with full features"</span> <span class="op">=</span> <span class="fu">minidown</span><span class="fu">::</span><span class="fu"><a href="../reference/mini_document.html">mini_document</a></span><span class="op">(</span>
@@ -228,11 +230,11 @@
     code_download <span class="op">=</span> <span class="cn">TRUE</span>,
     math <span class="op">=</span> <span class="st">"katex_serverside"</span>
   <span class="op">)</span>,
-  html_document <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">html_document</a></span><span class="op">(</span><span class="op">)</span>
+  html_document <span class="op">=</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html" class="external-link">html_document</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/enframe.html">enframe</a></span><span class="op">(</span>
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">formats</span>, <span class="va">render_size</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1000</span>,
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/enframe.html" class="external-link">enframe</a></span><span class="op">(</span>
+  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dbl</a></span><span class="op">(</span><span class="va">formats</span>, <span class="va">render_size</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1000</span>,
   name <span class="op">=</span> <span class="st">"format"</span>,
   value <span class="op">=</span> <span class="st">"size (KB)"</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -242,7 +244,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes" class="external-link uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -258,11 +260,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Atsushi Yasumoto, Angelos Chalaris, Susam Pal, Mitesh Shah, Kognise.</p>
+  <p></p>
+<p>Developed by Atsushi Yasumoto, Angelos Chalaris, Susam Pal, Mitesh Shah, Kognise.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -270,6 +274,8 @@
 
   
 
+
+  
 
   </body>
 </html>

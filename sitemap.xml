@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://minidown.atusy.net/pkgdown/404.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/articles/Writing-vignettes-with-minidown.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/authors.html</loc>
+  </url>
+  <url>
     <loc>https://minidown.atusy.net/pkgdown/index.html</loc>
+  </url>
+  <url>
+    <loc>https://minidown.atusy.net/pkgdown/news/index.html</loc>
   </url>
   <url>
     <loc>https://minidown.atusy.net/pkgdown/reference/download_rmd_button.html</loc>
@@ -10,9 +31,9 @@
     <loc>https://minidown.atusy.net/pkgdown/reference/frameworks.html</loc>
   </url>
   <url>
-    <loc>https://minidown.atusy.net/pkgdown/reference/mini_document.html</loc>
+    <loc>https://minidown.atusy.net/pkgdown/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://minidown.atusy.net/pkgdown/articles/Writing-vignettes-with-minidown.html</loc>
+    <loc>https://minidown.atusy.net/pkgdown/reference/mini_document.html</loc>
   </url>
 </urlset>
