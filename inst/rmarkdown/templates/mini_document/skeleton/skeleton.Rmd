@@ -268,7 +268,7 @@ knitr::opts_knit$set(results.folding=NULL)
 `r ''````
 
 
-`r ''````{r, result.folding='hide'}
+`r ''````{r, results.folding='hide'}
 'This chunk hides not fold results'
 `r ''````
 ~~~
