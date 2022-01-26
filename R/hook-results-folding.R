@@ -40,7 +40,7 @@ hook_start_results_folding <- function(
     summary <- if (is.null(options$summary.results)) {
       "Results"
     } else {
-      no_linebreaks(options$results.summary)
+      no_linebreaks(options$summary.results)
     }
 
     result <- paste0(
