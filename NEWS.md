@@ -1,5 +1,7 @@
 # minidown 0.3.0.9999
 
+* Fix `summary.results` chunk option not working as expected (#87)
+
 * Changed querySelector in `highlightToC.js` so that ToC can be modified regardless of `--id-prefix` is given to Pandoc (#85).
 
 * Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations.
