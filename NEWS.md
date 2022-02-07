@@ -9,8 +9,9 @@
   At the same time, the updated water CSS framework allows customizations via CSS variables.
   See files under `inst/frameworks/water` for available variables (#84).
 
-* `mini_document` renders math equations with KaTeX on server side by default.
-  This also means a support of shiny-based runtimes. To use client-side rendering, specify `math = "katex"` (#81). 
+* `mini_document` gains `"katex_serverside"` as a new oprion for the `katex` parameter.
+  `"katex_serverside"` renders math well on shiny-based runtimes, too.
+  Note that this feature may change in a later version in order to incorporate the generalized feature from [rstudio/rmarkdown#1940](https://github.com/rstudio/rmarkdown/pull/1940) (#81, #88). 
 
 * Document how to use `_output.yml` in package vignettes (#80).
 

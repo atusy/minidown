@@ -34,13 +34,11 @@
 #' @param code_download If `TRUE` and `framework = "bootstrap"`, the output
 #'  includes Rmd file itself and supplies download button of it.
 #' @param math
-#'  A string to specify math rendering engine. The default value is
-#'  `"katex_serverside"`, which completes the rendering on HTML creation.
 #'  This is a good choice when you want to exclude JavaScript from the output.
-#'  The value `"katex"` attempts client-side rendreing, but falls back to
-#'  server-side rendering when runtime is shiny or shiny_prerendered.
-#'  Otherwise, if the `framework` is `"bootstrap"`, this option is passed to the
-#'  `mathjax` argument of `rmarkdown::html_document`.
+#'  The default value `"katex"` attempts client-side rendreing, but falls back to
+#'  server-side rendering, i.e. `"katex_serverside"`, when runtime is shiny or
+#'  shiny_prerendered.  Otherwise, if the `framework` is `"bootstrap"`, this
+#'  option is passed to the `mathjax` argument of `rmarkdown::html_document`.
 #' @param template Pandoc template. If "default", the package's internal template
 #'  is used. If a path, user's original template is used. If `NULL`, pandoc's
 #'  internal template is used.
