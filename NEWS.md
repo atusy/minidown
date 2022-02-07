@@ -2,14 +2,15 @@
 
 * Fix `summary.results` chunk option not working as expected (#87)
 
-* Changed querySelector in `highlightToC.js` so that ToC can be modified regardless of `--id-prefix` is given to Pandoc (#85).
+* Changed querySelector in `highlightToC.js` so that ToC can be querried regardless of `--id-prefix` is given to Pandoc (#85).
 
 * Introduce SASS to unify and minify CSS files. Current implementation do not include options for customizations.
   Also, the sakura and water CSS frameworks are updated to the latest versions.
-  Especially the water CSS framework allows customizations via CSS variables.
+  At the same time, the updated water CSS framework allows customizations via CSS variables.
   See files under `inst/frameworks/water` for available variables (#84).
 
-* `mini_document` renders math equations with KaTeX on server side by default. This also means a support of shiny-based runtimes. To use client-side rendering, specify `math = "katex"`. (#81). 
+* `mini_document` renders math equations with KaTeX on server side by default.
+  This also means a support of shiny-based runtimes. To use client-side rendering, specify `math = "katex"` (#81). 
 
 * Document how to use `_output.yml` in package vignettes (#80).
 
