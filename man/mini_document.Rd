@@ -73,13 +73,11 @@ scripts, stylesheets, images, and videos. Note that even for self contained
 documents MathJax is still loaded externally (this is necessary because of
 its size).}
 
-\item{math}{A string to specify math rendering engine. The default value is
-\code{"katex_serverside"}, which completes the rendering on HTML creation.
-This is a good choice when you want to exclude JavaScript from the output.
-The value \code{"katex"} attempts client-side rendreing, but falls back to
-server-side rendering when runtime is shiny or shiny_prerendered.
-Otherwise, if the \code{framework} is \code{"bootstrap"}, this option is passed to the
-\code{mathjax} argument of \code{rmarkdown::html_document}.}
+\item{math}{This is a good choice when you want to exclude JavaScript from the output.
+The default value \code{"katex"} attempts client-side rendreing, but falls back to
+server-side rendering, i.e. \code{"katex_serverside"}, when runtime is shiny or
+shiny_prerendered.  Otherwise, if the \code{framework} is \code{"bootstrap"}, this
+option is passed to the \code{mathjax} argument of \code{rmarkdown::html_document}.}
 
 \item{template}{Pandoc template. If "default", the package's internal template
 is used. If a path, user's original template is used. If \code{NULL}, pandoc's
