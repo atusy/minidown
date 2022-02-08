@@ -1,4 +1,3 @@
-# minidown 0.3.0.9999
 # minidown 0.4.0
 
 * Fix `summary.results` chunk option not working as expected (#87)
