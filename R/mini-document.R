@@ -130,4 +130,4 @@ mini_document <- function(framework = "sakura",
   )
 }
 
-if (FALSE) guess_type <- mime::guess_type
+guess_type <- function() mime::guess_type
