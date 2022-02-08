@@ -15,3 +15,4 @@
 ^inst/rmarkdown/templates/mini_document/skeleton/.gitignore
 ^doc$
 ^Meta$
+^CRAN-SUBMISSION$
